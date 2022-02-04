@@ -9,5 +9,5 @@ class Brand(models.Model):
     link = models.URLField("브랜드 링크")
 
 class BrandLike(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    brand_id = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
