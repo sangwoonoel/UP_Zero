@@ -10,9 +10,15 @@
 
 {% block content %}
 <section id="brand-detail">
-  <div class="brand d-flex" data-id="{{brand.id}}">
+  <div class="brand d-flex" data-id="{{brand.id}}"
+  {% if is_liked %}
+    data-liked="true"
+  {% else %}
+    data-liked="false"
+  {% endif %}
+  >
     <div class="brand__left">
-      <img src="{{brand.image.url}}" alt="{{brand}}" class="brand__img" />
+      <img src="{{brand.image.url}}" alt="{{brand}}" class="brand__img" width="300" height="400" />
     </div>
     <div class="brand__right">
       <div class="brand__content">
@@ -23,11 +29,17 @@
         </p>
       </div>
       <div class="brand__interactions d-flex">
-        <div class="wish-container">
-          <span class="wish-cnt">{{wish_cnt}}</span>
-          <button class="wish-btn">wish</button>
+        <div class="like-container d-flex">
+          <button class="like-btn" title="좋아요"
+          {% if user.is_authenticated %}
+          onclick="onClickLike({{user.id}}, {{brand.id}})"
+          {% else %}
+          onclick="onClickAlert()"
+          {% endif %}>
+          <i class="fab fa-gratipay"></i></button>
+          <p class="like-info"><span class="like-cnt">{{like_cnt}}</span>명이 좋아한 브랜드</p>
         </div>
-        <button class="share-btn">share</button>
+        <button class="share-btn"><i class="fas fa-share-alt"></i></button>
       </div>
     </div>
   </div>
@@ -40,5 +52,5 @@
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
   crossorigin="anonymous"
 ></script>
-<script src="{% static 'js/brand/wish.js' %}"></script>
+<script src="{% static 'js/brand/like.js' %}"></script>
 {% endblock %}
