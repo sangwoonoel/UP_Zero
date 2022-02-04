@@ -1,3 +1,9 @@
 from django.db import models
+from users.models import *
 
-# Create your models here.
+class Brand(models.Model):
+    name = models.CharField("브랜드명", max_length=20)
+    # category
+    image = models.ImageField("브랜드 이미지", upload_to="brand/")
+    info = models.TextField("브랜드 소개")
+    link = models.URLField("브랜드 링크")
