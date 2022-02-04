@@ -8,6 +8,12 @@ class Brand(models.Model):
     info = models.TextField("브랜드 소개")
     link = models.URLField("브랜드 링크")
 
+    def __str__(self):
+        return self.name
+
 class BrandLike(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user.username}님의 {self.brand.name} 찜 기록"
