@@ -7,7 +7,8 @@ def show_list(request):
 
 def show_detail(request, pk):
     brand = get_object_or_404(Brand, pk=pk)
-    return render(request, "brand/detail.html", {"brand":brand})
+    wish_cnt = BrandLike.objects.filter(brand=brand).count()
+    return render(request, "brand/detail.html", {"brand":brand, "wish_cnt":wish_cnt})
 
 def wish_brand(request):
     pass

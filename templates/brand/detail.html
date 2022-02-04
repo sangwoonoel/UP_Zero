@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %} {{brand}} {% endblock %} 
+{% extends 'base.html' %} {% load static %} {% block title %} {{brand}} {% endblock %} 
 {% block link %}
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -18,21 +18,27 @@
       <div class="brand__content">
         <h3 class="brand__name">{{brand}}</h3>
         <p class="brand__info">{{brand.info}}</p>
-        <p class="brand__link">{{brand.link}}</p>
+        <p class="brand__link">
+          <a href="{{brand.link}}">{{brand.link}}</a>
+        </p>
       </div>
-      <div class="brand__interactions">
-        <button class="brand__wish">wish</button>
-        <button class="brand__share">share</button>
+      <div class="brand__interactions d-flex">
+        <div class="wish-container">
+          <span class="wish-cnt">{{wish_cnt}}</span>
+          <button class="wish-btn">wish</button>
+        </div>
+        <button class="share-btn">share</button>
       </div>
     </div>
   </div>
 </section>
 {% endblock %}
 
-[% block script %}
+{% block script %}
 <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
   crossorigin="anonymous"
 ></script>
+<script src="{% static 'js/brand/wish.js' %}"></script>
 {% endblock %}
