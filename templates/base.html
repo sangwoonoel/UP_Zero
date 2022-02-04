@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    {% block link %} {% endblock %}
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Logo</a>
+        <a href="#">Brand</a>
+        <a href="#">Community</a>
+        <a href="#">Fund</a>
+        <a href="#">Mypage</a>
+        <a href="#">Log in</a>
+        <a href="#">Sign up</a>
+
+
+    </nav>
+    {% block content %} {% endblock %}
+    <script src="https://kit.fontawesome.com/6a23cd815d.js" crossorigin="anonymous"></script>
+    {% block script %} {% endblock %}
+</body>
+</html>
