@@ -16,4 +16,4 @@ class BrandLike(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user.username}님의 {self.brand.name} 찜 기록"
+        return f"{self.user.username}님의 {self.brand.name} 좋아요 기록"

@@ -2,11 +2,12 @@ const brand = document.querySelector(".brand");
 const brandLiked = brand.getAttribute("data-liked");
 const likeBtn = brand.querySelector(".like-btn");
 if (brandLiked === "true") {
-    likeBtn.style.color = "red";}
+  likeBtn.style.color = "red";
+}
 
 const onClickAlert = () => {
-    alert("로그인이 필요합니다.");
-}
+  alert("로그인이 필요합니다.");
+};
 
 const requestLike = new XMLHttpRequest();
 const onClickLike = (userID, brandID) => {
@@ -28,7 +29,9 @@ const onClickLike = (userID, brandID) => {
     "Content-Type",
     "application/x-www-form-urlencoded"
   );
-  requestLike.send(JSON.stringify({ user_id: userID, brand_id: brandID, action: action }));
+  requestLike.send(
+    JSON.stringify({ user_id: userID, brand_id: brandID, action: action })
+  );
 };
 
 const likeResHandler = () => {
@@ -42,7 +45,7 @@ const likeResHandler = () => {
       likeBtn.style.color = "red";
       num = Number(likeCnt.innerText) + 1;
     } else {
-        likeBtn.style.color = "black";
+      likeBtn.style.color = "black";
       num = Number(likeCnt.innerText) - 1;
     }
     likeCnt.innerText = num;
