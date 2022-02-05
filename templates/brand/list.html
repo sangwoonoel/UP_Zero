@@ -11,9 +11,10 @@
   {% if request.GET.keyword %}
   <!-- 검색어 포함된 URL로 접속 시 -->
   <p class="search-result">
+    {% if not brands %} 검색 결과가 없습니다. {% else %}
     <span class="search-result__keyword">{{request.GET.keyword}}</span>에 대한
     <span class="search-result__cnt">{{brands.count}}</span>개의 브랜드 검색
-    결과입니다.
+    결과입니다. {% endif %}
   </p>
   {% endif %}
   <div class="search-container d-flex justify-content-center">
@@ -22,7 +23,6 @@
       class="keyword"
       placeholder="브랜드를 검색하세요"
       autocomplete
-      required
     />
     <button onclick="onClickSearch()"><i class="fas fa-search"></i></button>
   </div>
