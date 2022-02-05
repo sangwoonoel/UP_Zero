@@ -5,8 +5,13 @@ from django.http import JsonResponse
 from .models import *
 
 def show_list(request):
-    brands = Brand.objects.all()   
-    return render(request, "brand/list.html", {"brands":brands})
+    if request.GET:
+        keyword = request.GET.get('keyword')
+        brands = Brand.objects.all().filter(name__icontains=keyword)
+    else:
+        brands = Brand.objects.all()
+
+    return render(request, 'brand/list.html', {'brands': brands})
 
 
 def show_detail(request, pk):
@@ -42,3 +47,12 @@ def like_brand(request):
         brand_like.delete()
 
     return JsonResponse({"action":action})
+
+
+@csrf_exempt
+def search_for_brands(request):
+    req = json.loads(request.body)
+    keyword = req["keyword"]
+    brands = Brand.objects.all().filter(name__icontains=keyword)
+
+    return JsonResponse({"keyword":keyword, "brands":list(brands.values())}) # 각 brand object를 dictionary 형태로 변환
