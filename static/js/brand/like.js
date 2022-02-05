@@ -11,7 +11,7 @@ const onClickAlert = () => {
 
 const requestLike = new XMLHttpRequest();
 const onClickLike = (userID, brandID) => {
-  const brand = document.querySelector(`.brand[data-id="${userID}"]`);
+  const brand = document.querySelector(`.brand[data-id="${brandID}"]`);
   const brandLiked = brand.getAttribute("data-liked");
 
   let action;

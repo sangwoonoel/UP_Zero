@@ -1,17 +1,17 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.http import JsonResponse
 from .models import *
 
 def show_list(request):
-    if request.GET:
-        keyword = request.GET.get('keyword')
-        brands = Brand.objects.all().filter(name__icontains=keyword)
+    if request.GET: # 검색어 포함된 URL로 접속 시
+        keyword = request.GET.get("keyword")
+        brands = Brand.objects.filter(name__icontains=keyword)
     else:
         brands = Brand.objects.all()
 
-    return render(request, 'brand/list.html', {'brands': brands})
+    return render(request, "brand/list.html", {"brands": brands})
 
 
 def show_detail(request, pk):
@@ -43,16 +43,15 @@ def like_brand(request):
     if action == "on":
         BrandLike.objects.create(user=user, brand=brand)
     else:
-        brand_like = get_object_or_404(BrandLike, user=user, brand=brand)
-        brand_like.delete()
+        get_object_or_404(BrandLike, user=user, brand=brand).delete()
 
     return JsonResponse({"action":action})
 
 
 @csrf_exempt
 def search_for_brands(request):
-    req = json.loads(request.body)
+    req = json.loads(request.body) # need to learn how to deserialize queryset
     keyword = req["keyword"]
-    brands = Brand.objects.all().filter(name__icontains=keyword)
+    brands = Brand.objects.filter(name__icontains=keyword)
 
     return JsonResponse({"keyword":keyword, "brands":list(brands.values())}) # 각 brand object를 dictionary 형태로 변환
