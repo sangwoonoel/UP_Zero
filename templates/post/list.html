@@ -24,6 +24,9 @@
             <div class="post-comment">
                 댓글 : {{post.comment_set.count}}개
             </div>
+            <div class="post-like">
+                좋아요 : {{post.postlike_set.count}}개
+            </div>
         </a>
         {% endfor %}
     </div>
