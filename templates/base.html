@@ -24,13 +24,13 @@
         <a href="{% url 'post:list' %}">Community</a>
         <a href="#">Fund</a>
         <a href="#">Mypage</a>
-        <a href="#">Log in</a>
-        <a href="#">Sign up</a>
+        <!-- <a href="#">Log in</a>
+        <a href="#">Sign up</a> -->
       </nav>
-      {% if user.is_authenticated %}
+      <!-- {% if user.is_authenticated %}
       <span>{{user.username}}님 접속 중</span>
       {% endif %}
-      <!-- 임시로 해놨음 -->
+      임시로 해놨음 -->
     </header>
     {% block content %} {% endblock %}
     <script
