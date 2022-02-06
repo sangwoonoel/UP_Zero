@@ -44,21 +44,20 @@ INSTALLED_APPS = [
     'brand',
     'post',
     # 'django_social_share',
-    'community', 
 
-    #allauth
+    # allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
-    #provider
+    # provider
     'allauth.socialaccount.providers.google'
 ]
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
- 
+
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
@@ -71,7 +70,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'SCOPE': [
             'profile',
             'email',
-            
+
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
