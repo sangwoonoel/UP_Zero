@@ -1,0 +1,27 @@
+{% extends 'users/main.html' %}
+
+{% block content %}
+
+{{help_text}}
+<form method="POST" action="">
+    {% csrf_token %}
+        아이디: <br>
+        <input name="username" type="text">
+        <br>
+        비밀번호: <br>
+        <input name="password1" type="password">
+        <br>
+        비밀번호 확인: <br>
+        <input name="password2" type="password">
+        <br>
+        이메일: <br>
+        <input name="email" type="email">
+        <br>
+        닉네임: <br>
+        <input name="nickname" type="text">
+        <br>
+        <br><br>
+        <input type="submit" value="Sign Up">
+    
+</form>
+{% endblock content %}
