@@ -10,14 +10,14 @@
 <section id="brand-list">
   {% if request.GET.keyword %}
   <!-- 검색어 포함된 URL로 접속 시 -->
-  <p class="search-result">
+  <p class="search-title">
     {% if not brands %} 검색 결과가 없습니다. {% else %}
-    <span class="search-result__keyword">{{request.GET.keyword}}</span>에 대한
-    <span class="search-result__cnt">{{brands.count}}</span>개의 브랜드 검색
+    <span class="search-title__keyword">{{request.GET.keyword}}</span>에 대한
+    <span class="search-title__cnt">{{brands.count}}</span>개의 브랜드 검색
     결과입니다. {% endif %}
   </p>
   {% endif %}
-  <div class="search-container d-flex justify-content-center">
+  <div class="keyword-container d-flex justify-content-center">
     <input
       type="text"
       class="keyword"
@@ -26,6 +26,7 @@
     />
     <button onclick="onClickSearch()"><i class="fas fa-search"></i></button>
   </div>
+  {% if brands %}
   <div class="brands d-flex">
     {% for brand in brands %}
     <div class="brand">
@@ -45,6 +46,7 @@
     </div>
     {% endfor %}
   </div>
+  {% endif %}
 </section>
 {% endblock %} {% block script %}
 <script

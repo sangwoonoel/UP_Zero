@@ -47,26 +47,35 @@ const searchResHandler = () => {
 
     const brandListSection = document.querySelector("#brand-list");
 
-    const existingSearchResult = document.querySelector(".search-result");
-    if (existingSearchResult) {
-      existingSearchResult.remove();
+    const existingSearchTitle = document.querySelector(".search-title");
+    if (existingSearchTitle) {
+      existingSearchTitle.remove();
     } // 기존 검색 결과 안내 있었다면 삭제
-    const searchResult = document.createElement("p");
-    searchResult.classList.toggle("search-result"); // 새로운 검색 결과 안내
+    const searchTitle = document.createElement("p");
+    searchTitle.classList.toggle("search-title"); // 새로운 검색 결과 안내
 
-    const brandsContainer = document.querySelector(".brands");
-    brandsContainer.innerHTML = ""; // 브랜드 리스트 초기화
+    const existingBrandsContainer = document.querySelector(".brands");
+    if (existingBrandsContainer) {
+      existingBrandsContainer.remove();
+    } // 기존 브랜드 리스트 있었다면 삭제
 
     if (brands.length === 0) {
-      searchResult.innerHTML = "검색 결과가 없습니다.";
-      brandListSection.prepend(searchResult);
+      // 검색 결과 없을 때
+      searchTitle.innerHTML = "검색 결과가 없습니다.";
+      brandListSection.prepend(searchTitle);
       return;
     }
 
-    searchResult.innerHTML = `<span class="search-result__keyword">${keyword}</span>에 대한
-      <span class="search-result__cnt">${brands.length}</span>개의 브랜드 검색
+    // 검색 결과 존재 시
+
+    searchTitle.innerHTML = `<span class="search-title__keyword">${keyword}</span>에 대한
+      <span class="search-title__cnt">${brands.length}</span>개의 브랜드 검색
       결과입니다.`;
-    brandListSection.prepend(searchResult);
+    brandListSection.prepend(searchTitle);
+
+    const brandsContainer = document.createElement("div");
+    brandsContainer.classList.toggle("brands"); // 새로운 브랜드 리스트
+    brandListSection.append(brandsContainer);
 
     for (const brand of brands) {
       const brandContainer = document.createElement("div");
