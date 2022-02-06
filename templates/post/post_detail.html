@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block content %}
+
+
+<div class="post-detail">
+    <div 
+    class="post"
+    data-id="{{post.id}}"
+    {% if is_liked %}
+    data-liked="true"
+    {% else %}
+    data-liked="false"
+    {% endif %}
+    >
+        <div class="post-detail__user">
+            <p>{{ post.user }}</p>
+            <p>글쓴이 소개</p>
+            <a href="">링크</a>
+        </div>
+        <div class="post-detail__content">
+            <h4>{{ post.category }}</h4>
+            <h3>{{ post.title }}</h3>
+            {% if post.image %}
+            <img class="post-detail__img" src="{{ post.image.url }}" height="220" width="160">
+            {% endif %}
+            <p class="post-detail__item">
+                {{ post.content }}
+            </p>
+        </div>
+        <div class="post-detail__btns">
+            <a href="{% url 'post:post_delete' pk=post.pk %}">삭제</a>
+            <a href="">목록</a>
+            <a href="{% url 'post:post_update' pk=post.pk %}">수정</a>
+        </div>
+        <div class="post-like">
+            <div class="post-like__container">
+                <button
+                    class="post-like__btn"
+                    title="좋아요"
+                    {% if user.is_authenticated %}
+                    onclick="onClickLike({{user.id}}, {{post.id}})"
+                    {% else %}
+                    onclick="onClickAlert()"
+                    {% endif %}>
+                    <i class="fab fa-gratipay"></i>
+                </button>
+                <p class="post-like__info">
+                    <span class="post-like__cnt">{{ like_cnt }}</span>
+                </p>
+            </div>
+        </div>
+        <div class="post-comment">
+            {% for comment in comments %}
+                {% if comment.post == post %}
+                <div class="post-comment__container">
+                    <span>{{ comment.user }}</span>
+                    <span>{{ comment.message }}</span>
+                    <a href=""><span>삭제</span></a>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="post-comment__input">
+            <input class="comment-input" type="text" placeholder="댓글을 입력하세요">
+            <button class="comment-btn" type="button" onclick="">추가</button>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/post/like.js' %}"></script>
+{% endblock %}
