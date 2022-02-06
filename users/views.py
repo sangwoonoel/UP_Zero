@@ -71,4 +71,4 @@ def signup(request):
         return render(request, template_name='users/signup.html')
 
 def main(request):
-    return render(request, "base.html") # 나중에 users/main.html 로 수정
+    return render(request, "users/main.html")
