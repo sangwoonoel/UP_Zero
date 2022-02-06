@@ -1,5 +1,7 @@
 from django.db import models
 from users.models import *
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 
 class Post(models.Model):
@@ -13,6 +15,23 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def created_string(self):
+        time = datetime.now(tz=timezone.utc) - self.created_at
+        print(time)
+        if time < timedelta(minutes=1):
+            return '방금 전'
+        elif time < timedelta(hours=1):
+            return str(int(time.seconds / 60)) + '분 전'
+        elif time < timedelta(days=1):
+            return str(int(time.seconds / 3600)) + '시간 전'
+        elif time < timedelta(days=7):
+            time = datetime.now(tz=timezone.utc).date() - \
+                self.created_at.date()
+            return str(time.days) + '일 전'
+        else:
+            return False
 
 
 class Comment(models.Model):

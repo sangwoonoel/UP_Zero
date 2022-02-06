@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block title %} All posts {% endblock %}
+{% block content %}
+<section id="post-list">
+    <div class="post-list">
+        {% for post in posts %}
+        <div class="post-title">
+            제목: {{post.title}}
+        </div>
+        <div class="post-preview">
+            {{post.content|truncatechars:20}}
+        </div>
+        <div class="post-author">
+            작성자 : {{post.user.username}}
+        </div>
+        <div class="post-created">
+            <span>작성시간 : </span>
+            {% if post.created_string == False %}
+            <td>{{ post.created_at|date:'m월 d일' }}</td>
+            {% else %}
+            <td>{{ post.created_string }}</td>
+            {% endif %}
+        </div>
+        <div class="post-comment">
+            댓글 : {{post.comment_set.count}}개
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
