@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="css/reset.css">
 </head>
 <body>
+    {% if messages %}
+            {% for message in messages%}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+    {% endif %}
     <nav>
         <a href="/">Logo</a>
         <a href="#">Brand</a>
