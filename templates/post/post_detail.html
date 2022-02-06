@@ -30,7 +30,7 @@
         </div>
         <div class="post-detail__btns">
             <a href="{% url 'post:post_delete' pk=post.pk %}">삭제</a>
-            <a href="">목록</a>
+            <a href="{% url 'post:list' %}">목록</a>
             <a href="{% url 'post:post_update' pk=post.pk %}">수정</a>
         </div>
         <div class="post-like">
