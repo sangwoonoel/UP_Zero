@@ -1,28 +1,15 @@
-{% extends 'base.html' %}
-{% load socialaccount %}
-
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <div>
-    {% if user.is_authenticated %} 
+  {% if user.is_authenticated %}
     <div>
-        <div>
-            <p>Welcome, {{ user.username }} !</p>
-            <a href="{% url 'users:log_out' %}">로그아웃</a>
-        </div>
+      <p>Welcome, {{ user.username }} !</p>
     </div>
-    {% else %}
-    <div>
-        <div>
-            <a href="{% url 'users:login' %}">로그인</a>
-            <a href="{% url 'users:signup' %}">회원가입</a>
-            <a href="{% provider_login_url 'google' %}">구글 로그인</a><br>
-        </div>
-    </div>
-    
-    {% endif %}
+
+
+  </div>
+
+  {% endif %}
 </div>
 
-
-{% endblock%}
+{% endblock %}
