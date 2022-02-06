@@ -67,7 +67,6 @@ const searchResHandler = () => {
     }
 
     // 검색 결과 존재 시
-
     searchTitle.innerHTML = `<span class="search-title__keyword">${keyword}</span>에 대한
       <span class="search-title__cnt">${brands.length}</span>개의 브랜드 검색
       결과입니다.`;

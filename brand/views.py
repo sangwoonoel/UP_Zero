@@ -6,12 +6,12 @@ from .models import *
 
 def show_list(request):
     if request.GET: # 검색어 포함된 URL로 접속 시
-        keyword = request.GET.get("keyword")
+        keyword = request.GET.get('keyword')
         brands = Brand.objects.filter(name__icontains=keyword)
     else:
         brands = Brand.objects.all()
 
-    return render(request, "brand/list.html", {"brands": brands})
+    return render(request, 'brand/list.html', {'brands': brands})
 
 
 def show_detail(request, pk):
@@ -27,31 +27,31 @@ def show_detail(request, pk):
     except TypeError: # 로그인 안 한 상태일 때       
         is_liked = False
         
-    return render(request, "brand/detail.html", {"brand":brand, "is_liked":is_liked, "like_cnt":like_cnt})
+    return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked, 'like_cnt':like_cnt})
 
 
 @csrf_exempt
 def like_brand(request):
     req = json.loads(request.body)
-    user_id = req["user_id"]
-    brand_id = req["brand_id"]
-    action = req["action"]
+    user_id = req['user_id']
+    brand_id = req['brand_id']
+    action = req['action']
 
     user = get_object_or_404(User, id=user_id)
     brand = get_object_or_404(Brand, id=brand_id)
 
-    if action == "on":
+    if action == 'on':
         BrandLike.objects.create(user=user, brand=brand)
     else:
         get_object_or_404(BrandLike, user=user, brand=brand).delete()
 
-    return JsonResponse({"action":action})
+    return JsonResponse({'action':action})
 
 
 @csrf_exempt
 def search_for_brands(request):
     req = json.loads(request.body) # need to learn how to deserialize queryset
-    keyword = req["keyword"]
+    keyword = req['keyword']
     brands = Brand.objects.filter(name__icontains=keyword)
 
-    return JsonResponse({"keyword":keyword, "brands":list(brands.values())}) # 각 brand object를 dictionary 형태로 변환
+    return JsonResponse({'keyword':keyword, 'brands':list(brands.values())}) # 각 brand object를 dictionary 형태로 변환
