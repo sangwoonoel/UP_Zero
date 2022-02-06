@@ -11,6 +11,7 @@ def post_detail(request, pk):
     post = Post.objects.get(id=pk)
     comments = Comment.objects.all()
     like_cnt = PostLike.objects.filter(post=post).count()
+    comments_cnt = Comment.objects.filter(post=post).count()
 
     try: # 로그인 한 상태일 때
         if PostLike.objects.filter(user=request.user, post=post).exists():
@@ -20,7 +21,7 @@ def post_detail(request, pk):
     
     except TypeError: # 로그인 안 한 상태일 때       
         is_liked = False
-    ctx = {'post':post, 'comments':comments, "is_liked":is_liked, 'like_cnt':like_cnt}
+    ctx = {'post':post, 'comments':comments, "is_liked":is_liked, 'like_cnt':like_cnt, 'comments_cnt':comments_cnt}
 
     return render(request, template_name='post/post_detail.html', context=ctx)
 
@@ -59,7 +60,7 @@ def post_update(request, pk):
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
-    return redirect('post:post_list')
+    return redirect('post:list')
 
 
 @csrf_exempt
@@ -79,6 +80,31 @@ def like_post(request):
         post_like.delete()
 
     return JsonResponse({"action":action})
+
+
+@csrf_exempt
+def create_comment(request):
+    req = json.loads(request.body)
+    user_id = req['user_id']
+    post_id= req['post_id']
+    message = req['message']
+
+    user = get_object_or_404(User, id=user_id)
+    post = get_object_or_404(Post, id=post_id)
+    comment = Comment.objects.create(user=user, post=post, message=message)
+    comment.save()
+    
+    return JsonResponse({'user': user.username, 'post_id':post_id, 'message': message, 'comment_id': comment.id})
+
+
+@csrf_exempt
+def delete_comment(request):
+    req = json.loads(request.body)
+    comment_id = req['id']
+
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.delete()
+    return JsonResponse({'id': comment_id})
 
 
 def post_list(request):
