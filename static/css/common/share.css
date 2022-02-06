@@ -1,0 +1,44 @@
+.social .fbtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  line-height: 18px;
+  float: left;
+}
+.social .fa {
+  padding: 15px 0px;
+}
+.facebook {
+  background-color: #3b5998;
+}
+.twitter {
+  background-color: #55acee;
+}
+.url-btn {
+  background-color: black;
+}
+
+.share-button.sharer {
+  height: 20px;
+}
+.share-button.sharer .social.active.bottom {
+  transform: translateY(10px);
+}
+.share-button.sharer .social.active {
+  opacity: 1; 
+  transition: all 0.4s ease;
+  visibility: visible;
+}
+.share-button.sharer .social.bottom {
+  margin-top: 10px;
+  /* transform-origin: 0 0 0; */
+}
+.share-button.sharer .social {
+  margin-left: -50px;
+  opacity: 0;
+  transition: all 0.4s ease;
+  visibility: hidden;
+}
