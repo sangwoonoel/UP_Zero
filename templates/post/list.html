@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% load static %} {% block title %} All posts {% endblock %}
+{% block content %}
+<section id="post-list">
+    {% if request.GET.keyword %}
+    <!-- 검색어 포함된 URL로 접속 시 -->
+    <p class="post-search-title">
+        {% if not brands %} 검색 결과가 없습니다. {% else %}
+        <span class="post-search-title__keyword">{{request.GET.keyword}}</span>에 대한
+        <span class="post-search-title__cnt">{{brands.count}}</span>개의 브랜드 검색
+        결과입니다. 
+        {% endif %}
+    </p>
+    {% endif %}
+    <div class="post-list">
+        <div class="keyword-container">
+            <input
+                type="text"
+                class="keyword"
+                placeholder="게시물을 검색하세요"
+                autocomplete
+                id = "keyword"
+            />
+            <button onclick="onClickSearch(keyword)"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="posts">
+        {% for post in posts %}
+        <div class="post">
+            <a href="#">
+                <div class="post-title">
+                    제목: {{post.title}}
+                </div>
+                <div class="post-preview">
+                    {{post.content|truncatechars:20}}
+                </div>
+                <div class="post-author">
+                    작성자 : {{post.user.username}}
+                </div>
+                <div class="post-created">
+                    <span>작성시간 : </span>
+                    {% if post.created_string == False %}
+                    <td>{{ post.created_at|date:'m월 d일' }}</td>
+                    {% else %}
+                    <td>{{ post.created_string }}</td>
+                    {% endif %}
+                </div>
+                <div class="post-comment">
+                    댓글 : {{post.comment_set.count}}개
+                </div>
+                <div class="post-like">
+                    좋아요 : {{post.postlike_set.count}}개
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/post/search.js' %}"></script>
+{% endblock %}
+
+
