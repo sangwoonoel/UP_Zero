@@ -91,6 +91,7 @@ def search_for_posts(request):
     req = json.loads(request.body)  # need to learn how to deserialize queryset
     keyword = req["keyword"]
     posts = Post.objects.filter(title__icontains=keyword)
+    postlist = list(posts.values())  # 딕셔너리 포스트들이 들어있는 리스트
 
     # 각 brand object를 dictionary 형태로 변환
     return JsonResponse({"keyword": keyword, "posts": list(posts.values())})

@@ -22,7 +22,6 @@ const onClickSearch = async(keyword) => {
 
 const searchResHandler = (keyword,posts) => {
     keyword = keyword.toLowerCase();
-
     const newURL = `?keyword=${keyword}`;
     history.replaceState(null, null, newURL); // Querystring 형태로 URL 변경 (99% 완성..?)
 
@@ -67,6 +66,7 @@ const searchResHandler = (keyword,posts) => {
     postListSection.append(postsContainer);
 
     for (const post of posts) {
+      console.log(post.username)
       const postContainer = document.createElement("div");
       postContainer.classList.toggle("post");
       postContainer.innerHTML = `<a href="{% url 'post:post_detail' post.id %}">
@@ -77,7 +77,7 @@ const searchResHandler = (keyword,posts) => {
           ${post.content}
       </div>
       <div class="post-author">
-          작성자 : {{post.user.username}}
+          작성자 : {{post.user}}
       </div>
       <div class="post-created">
           <span>작성시간 : </span>

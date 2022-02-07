@@ -40,7 +40,7 @@
                     {% if post.created_string == False %}
                     <td>{{ post.created_at|date:'m월 d일' }}</td>
                     {% else %}
-                    <td>{{ post.created_string }}</td>
+                    <td class="post_created_time">{{ post.created_string }}</td>
                     {% endif %}
                 </div>
                 <div class="post-comment">
