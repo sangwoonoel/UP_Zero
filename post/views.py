@@ -93,5 +93,12 @@ def search_for_posts(request):
     posts = Post.objects.filter(title__icontains=keyword)
     postlist = list(posts.values())  # 딕셔너리 포스트들이 들어있는 리스트
 
+    for post in postlist:
+        user = get_object_or_404(User, id=post['user_id'])
+        i = get_object_or_404(Post, id=post['id'])
+        post["username"] = user.username
+        post["created_at"] = i.created_string
+        print(post)
+
     # 각 brand object를 dictionary 형태로 변환
-    return JsonResponse({"keyword": keyword, "posts": list(posts.values())})
+    return JsonResponse({"keyword": keyword, "posts": postlist})
