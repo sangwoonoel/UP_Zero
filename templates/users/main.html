@@ -1,15 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-
-<div>
   {% if user.is_authenticated %}
-    <div>
-      <p>Welcome, {{ user.username }} !</p>
-    </div>
-
-
-  </div>
-
+      <p>Welcome, {{ user.username }}!</p>
   {% endif %}
-</div>
-
 {% endblock %}
