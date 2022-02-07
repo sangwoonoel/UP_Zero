@@ -31,8 +31,8 @@ def post_create(request):
         form = PostForm(request.POST, request.FILES) 
         if form.is_valid():
             post = form.save()
-            # post.user = request.user
-            # post.save()
+            post.user = request.user
+            post.save()
             return redirect('post:post_detail', pk=post.pk)
     else:
         form = PostForm()
