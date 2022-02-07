@@ -1,6 +1,7 @@
 
 const requestComment = new XMLHttpRequest();
 const requestDel = new XMLHttpRequest();
+const requestUpdate = new XMLHttpRequest();
 
 const onClickComment = (postId, userId) => {
     const url = "/post/create_comment/";
@@ -24,7 +25,6 @@ const CreateHandleResponse = () => {
         let {user, post_id, message, comment_id} = JSON.parse(requestComment.response);
         const element = document.querySelector(`.post-comment__${post_id}`);
         const newComment = document.createElement("li");
-        
         const commentUser = document.createElement("span");    
         const commentMessage = document.createElement("span");    
         const delBtn = document.createElement("button");
@@ -81,3 +81,44 @@ requestDel.onreadystatechange = () => {
         DelHandleResponse();
     }
 }
+
+// const onClickUpdate = (commentId) => {
+//     const url = "/post/update_comment/";
+//     const message = document.querySelector(`.comment-up-input__${postId}`).value;
+//     requestComment.open("POST", url, true);
+//     requestComment.setRequestHeader(
+//         "Content-Type", "application/x-www-form-urlencoded"
+//     );
+//     requestComment.send(JSON.stringify({comment_id: commentId, message: message}));
+// }
+
+// requestUpdate.onreadystatechange = () => {
+//     if(requestUpdate.readyState === XMLHttpRequest.DONE){
+//         UpdateHandleResponse();
+//     }
+// }
+
+
+// const UpdateHandleResponse = () => {
+//     if (requestUpdate.status < 400){
+//         let {comment_id, user, message} = JSON.parse(requestUpdate.response);
+//         const element = document.querySelector(`.comment__${comment_id}`);
+        
+//         const updateInput =  document.createElement("input");
+//         const updateBtn =  document.createElement("button");
+
+//         updateInput.setAttribute("class", `.comment-up-input__${postId}`);
+//         updateInput.setAttribute("type", "text");
+//         updateInput.value = `${message}`;
+
+//         updateBtn.setAttribute("class", "comment__up-btn");
+//         updateBtn.setAttribute("type", "button");
+//         updateBtn.setAttribute("onclick", `onClickUpdate(${comment_id})`);
+//         updateBtn.innerText = "수정";
+        
+//         element.appendChild(updateInput);
+//         element.appendChild(updateBtn);
+        
+        
+//     };
+// };

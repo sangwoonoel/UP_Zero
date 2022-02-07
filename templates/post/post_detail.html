@@ -14,24 +14,26 @@
     {% endif %}
     >
         <div class="post-detail__user">
-            <p>{{ post.user }}</p>
+            <p>글쓴이: {{ post.user }}</p>
             <p>글쓴이 소개</p>
             <a href="">링크</a>
         </div>
         <div class="post-detail__content">
-            <h4>{{ post.category }}</h4>
-            <h3>{{ post.title }}</h3>
+            <h4>카테고리: {{ post.category }}</h4>
+            <h3>제목: {{ post.title }}</h3>
             {% if post.image %}
             <img class="post-detail__img" src="{{ post.image.url }}" height="220" width="160">
             {% endif %}
             <p class="post-detail__item">
-                {{ post.content }}
+                내용: {{ post.content }}
             </p>
         </div>
         <div class="post-detail__btns">
+            {% if request.user == post.user %}
             <a href="{% url 'post:post_delete' pk=post.pk %}">삭제</a>
-            <a href="{% url 'post:list' %}">목록</a>
             <a href="{% url 'post:post_update' pk=post.pk %}">수정</a>
+            {% endif %}
+            <a href="{% url 'post:list' %}">목록</a>          
         </div>
         <div class="post-like">
             <div class="post-like__container">
@@ -63,8 +65,8 @@
                         <span>{{ comment.user }}</span>
                         <span>{{ comment.message }}</span>
                         {% if request.user == comment.user %}
+                        <button class="comment__update-btn" onclick="onClickUpdate({{comment.id}})">수정</button>
                         <button class="comment__del-btn" onclick="onClickDel({{comment.id}})">삭제</button>
-                        
                         {% endif %}
                     </li>
                     {% endif %}
