@@ -23,16 +23,7 @@ const onClickSearch = async(keyword) => {
 const searchResHandler = (keyword,posts) => {
     keyword = keyword.toLowerCase();
     const newURL = `?keyword=${keyword}`;
-    history.replaceState(null, null, newURL); // Querystring 형태로 URL 변경 (99% 완성..?)
-
-    // if (typeof history.pushState != "undefined") {
-    //   let baseURL = location.href.includes("?")
-    //     ? location.href.split("?")[0]
-    //     : location.href;
-    //   baseURL = baseURL.slice(0, -1); // Remove trailing slash
-    //   const newURL = baseURL + `?keyword=${keyword}`;
-    //   history.pushState({ path: newURL }, null, newURL);
-    // }
+    history.replaceState(null, null, newURL); 
 
     const postListSection = document.querySelector("#post-list");
 
