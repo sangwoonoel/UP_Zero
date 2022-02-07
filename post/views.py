@@ -121,10 +121,15 @@ def search_for_posts(request):
 
     for post in postlist:
         user = get_object_or_404(User, id=post['user_id'])
-        i = get_object_or_404(Post, id=post['id'])
+        comment_cnt = Comment.objects.filter(post=post['id']).count()
+        like_cnt = PostLike.objects.filter(post=post['id']).count()
+        poster = get_object_or_404(Post, id=post['id'])
         post["username"] = user.username
-        post["created_at"] = i.created_string
-        print(post)
+        post["created_at"] = poster.created_string
+        post["comment_cnt"] = comment_cnt
+        post["like_cnt"] = like_cnt
+
+        #post["comment_cnt"] = len(comment)
 
     # 각 brand object를 dictionary 형태로 변환
     return JsonResponse({"keyword": keyword, "posts": postlist})
