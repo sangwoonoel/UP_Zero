@@ -66,9 +66,6 @@ const searchResHandler = (keyword,posts) => {
     postListSection.append(postsContainer);
 
     for (const post of posts) {
-      console.log(post);
-      console.log(post.username);
-      console.log(post.created_at)
       const postContainer = document.createElement("div");
       postContainer.classList.toggle("post");
       postContainer.innerHTML = `<a href="{% url 'post:post_detail' post.id %}">
@@ -79,21 +76,17 @@ const searchResHandler = (keyword,posts) => {
           ${post.content}
       </div>
       <div class="post-author">
-          작성자 : {{post.user}}
+          작성자 : ${post.username}
       </div>
       <div class="post-created">
           <span>작성시간 : </span>
-          {% if post.created_string == False %}
-          <td>{{ post.created_at|date:'m월 d일' }}</td> 
-          {% else %}
-          <td>{{ post.created_string }}</td>
-          {% endif %}
+          <td>${ post.created_at }</td>
       </div>
       <div class="post-comment">
-          댓글 : {{post.comment_set.count}}개
+          댓글 : ${post.comment_cnt}개
       </div>
       <div class="post-like">
-          좋아요 : {{post.postlike_set.count}}개
+          좋아요 : ${post.like_cnt}개
       </div>
   </a>`; 
       postsContainer.append(postContainer);
