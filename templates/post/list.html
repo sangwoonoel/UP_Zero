@@ -53,12 +53,24 @@
         </div>
         {% endfor %}
         </div>
+        <div class="post-create">
+            {% if user.is_authenticated %}
+            <a class="post-create__btn" href="{% url 'post:post_create' %}">게시물작성</a>
+            {% else %}
+            <button
+                class="post-create__btn"
+                type="button"
+                onclick="onClickAlert()"
+            >게시물작성</button>
+            {% endif %}
+        </div>
     </div>
 </section>
 {% endblock %}
 {% block script %}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{% static 'js/post/search.js' %}"></script>
+<script src="{% static 'js/post/like.js' %}"></script>
 {% endblock %}
 
 

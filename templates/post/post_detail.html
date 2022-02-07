@@ -14,24 +14,26 @@
     {% endif %}
     >
         <div class="post-detail__user">
-            <p>{{ post.user }}</p>
+            <p>글쓴이: {{ post.user }}</p>
             <p>글쓴이 소개</p>
             <a href="">링크</a>
         </div>
         <div class="post-detail__content">
-            <h4>{{ post.category }}</h4>
-            <h3>{{ post.title }}</h3>
+            <h4>카테고리: {{ post.category }}</h4>
+            <h3>제목: {{ post.title }}</h3>
             {% if post.image %}
             <img class="post-detail__img" src="{{ post.image.url }}" height="220" width="160">
             {% endif %}
             <p class="post-detail__item">
-                {{ post.content }}
+                내용: {{ post.content }}
             </p>
         </div>
         <div class="post-detail__btns">
+            {% if request.user == post.user %}
             <a href="{% url 'post:post_delete' pk=post.pk %}">삭제</a>
-            <a href="">목록</a>
             <a href="{% url 'post:post_update' pk=post.pk %}">수정</a>
+            {% endif %}
+            <a href="{% url 'post:list' %}">목록</a>          
         </div>
         <div class="post-like">
             <div class="post-like__container">
@@ -50,26 +52,49 @@
                 </p>
             </div>
         </div>
+        {% include "share.html" %}
         <div class="post-comment">
-            {% for comment in comments %}
-                {% if comment.post == post %}
-                <div class="post-comment__container">
-                    <span>{{ comment.user }}</span>
-                    <span>{{ comment.message }}</span>
-                    <a href=""><span>삭제</span></a>
-                </div>
-                {% endif %}
-            {% endfor %}
+            <p class="post-comment__info">
+                <span>댓글</span>
+                <span class="post-comment__cnt">{{ comments_cnt }}</span>
+            </p>
+            <ul class="post-comment__{{post.id}}">
+                {% for comment in comments %}
+                    {% if comment.post == post %}
+                    <li class="comment__{{comment.id}}">
+                        <span>{{ comment.user }}</span>
+                        <span>{{ comment.message }}</span>
+                        {% if request.user == comment.user %}
+                        <button class="comment__update-btn" onclick="onClickUpdate({{comment.id}})">수정</button>
+                        <button class="comment__del-btn" onclick="onClickDel({{comment.id}})">삭제</button>
+                        {% endif %}
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <div class="post-comment__input">
+                <input class="comment-input__{{post.id}}" type="text" placeholder="댓글을 입력하세요">
+                
+                <button
+                class="comment__add-btn"
+                type="button"
+                {% if user.is_authenticated %}
+                onclick="onClickComment({{post.id}}, {{user.id}})"
+                {% else %}
+                onclick="onClickAlert()"
+                {% endif %}>추가</button>
+            </div>
         </div>
-        <div class="post-comment__input">
-            <input class="comment-input" type="text" placeholder="댓글을 입력하세요">
-            <button class="comment-btn" type="button" onclick="">추가</button>
-        </div>
+        
+        
     </div>
 </div>
 
 
 {% endblock %}
 {% block script %}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{% static 'js/post/like.js' %}"></script>
+<script src="{% static 'js/post/comment.js' %}"></script>
+<script src="{% static 'js/share.js' %}"></script>
 {% endblock %}
