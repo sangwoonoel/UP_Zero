@@ -4,6 +4,7 @@ from .form import *
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.http import JsonResponse
+from django.db.models import Q
 
 
 def post_detail(request, pk):
@@ -116,7 +117,8 @@ def post_list(request):
 def search_for_posts(request):
     req = json.loads(request.body)  # need to learn how to deserialize queryset
     keyword = req["keyword"]
-    posts = Post.objects.filter(title__icontains=keyword)
+    posts = Post.objects.filter(
+        Q(title__icontains=keyword) | Q(content__icontains=keyword))
     postlist = list(posts.values())  # 딕셔너리 포스트들이 들어있는 리스트
 
     for post in postlist:
@@ -124,12 +126,13 @@ def search_for_posts(request):
         comment_cnt = Comment.objects.filter(post=post['id']).count()
         like_cnt = PostLike.objects.filter(post=post['id']).count()
         poster = get_object_or_404(Post, id=post['id'])
+
+        if len(poster.content) > 20:
+            post['content'] = poster.content[:19]+'...'
         post["username"] = user.username
         post["created_at"] = poster.created_string
         post["comment_cnt"] = comment_cnt
         post["like_cnt"] = like_cnt
-
-        #post["comment_cnt"] = len(comment)
 
     # 각 brand object를 dictionary 형태로 변환
     return JsonResponse({"keyword": keyword, "posts": postlist})
