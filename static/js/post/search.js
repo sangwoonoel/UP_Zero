@@ -66,7 +66,9 @@ const searchResHandler = (keyword,posts) => {
     postListSection.append(postsContainer);
 
     for (const post of posts) {
-      console.log(post.username)
+      console.log(post);
+      console.log(post.username);
+      console.log(post.created_at)
       const postContainer = document.createElement("div");
       postContainer.classList.toggle("post");
       postContainer.innerHTML = `<a href="{% url 'post:post_detail' post.id %}">
