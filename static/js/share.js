@@ -53,11 +53,11 @@ const shareKakao = () => {
   });
 };
 
-const shareFacebook = () => {
-  open(`http://www.facebook.com/sharer.php?u=${url}&t=${title}`);
-};
 const shareTwitter = () => {
   open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`);
+};
+const shareFacebook = () => {
+  open(`http://www.facebook.com/sharer.php?u=${url}&t=${title}`);
 };
 const copyURL = () => {
   let dummy = document.createElement("input");
