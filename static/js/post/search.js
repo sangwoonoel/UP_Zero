@@ -11,7 +11,8 @@ const onClickSearch = async(keyword) => {
         location.href = "/post/list";
         return;
         }
-
+    console.log(keyword)
+    console.log(keyword.value)
     const url = "/post/search/";
     const {data} = await axios.post(url, {
         keyword:keyword.value
@@ -64,7 +65,7 @@ const searchResHandler = (keyword,posts) => {
           제목: ${post.title}
       </div>
       <div class="post-preview">
-          ${post.content}
+          내용: ${post.content}
       </div>
       <div class="post-author">
           작성자 : ${post.username}
