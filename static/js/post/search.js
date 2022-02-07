@@ -59,7 +59,7 @@ const searchResHandler = (keyword,posts) => {
     for (const post of posts) {
       const postContainer = document.createElement("div");
       postContainer.classList.toggle("post");
-      postContainer.innerHTML = `<a href="{% url 'post:post_detail' post.id %}">
+      postContainer.innerHTML = `<a href = "/post/${post.id}">
       <div class="post-title">
           제목: ${post.title}
       </div>
