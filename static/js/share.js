@@ -10,10 +10,22 @@ $(document).ready(function () {
   });
 });
 
+const title = document.querySelector(".brand__name").innerText;
+const url = location.href;
+
+document.querySelector("meta[property='og:url']").setAttribute("content", url);
+document.querySelector("meta[name='twitter:url']").setAttribute("content", url);
+
+const shareFacebook = () => {
+  open(`http://www.facebook.com/sharer.php?u=${url}&t=${title}`);
+};
+const shareTwitter = () => {
+  open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`);
+};
 const copyURL = () => {
   let dummy = document.createElement("input");
   document.body.append(dummy);
-  dummy.value = location.href;
+  dummy.value = url;
   dummy.select();
   document.execCommand("copy");
   dummy.remove();
