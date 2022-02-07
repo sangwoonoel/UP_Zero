@@ -98,6 +98,16 @@ def create_comment(request):
 
 
 @csrf_exempt
+def update_comment(request):
+    req = json.loads(request.body)
+    comment_id = req['id']
+
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.delete()
+    return JsonResponse({'id': comment_id})
+
+
+@csrf_exempt
 def delete_comment(request):
     req = json.loads(request.body)
     comment_id = req['id']

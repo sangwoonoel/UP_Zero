@@ -1,7 +1,27 @@
-
 const requestComment = new XMLHttpRequest();
 const requestDel = new XMLHttpRequest();
 const requestUpdate = new XMLHttpRequest();
+
+const onClickEdit = (commentId) => {
+    const element = document.querySelector(`.comment__${commentId}`);
+    const message = element.querySelector(".comment__message").textContent;
+        
+    const updateInput =  document.createElement("input");
+    const updateBtn =  document.createElement("button");
+
+    updateInput.setAttribute("class", "comment-edit-input");
+    updateInput.setAttribute("type", "text");
+    updateInput.value = `${message}`;
+
+    updateBtn.setAttribute("class", "comment__up-btn");
+    updateBtn.setAttribute("type", "button");
+    updateBtn.setAttribute("onclick", `onClickUpdate(${commentId})`);
+    updateBtn.innerText = "수정";
+    
+    element.innerHTML = '';
+    element.appendChild(updateInput);
+    element.appendChild(updateBtn);
+}
 
 const onClickComment = (postId, userId) => {
     const url = "/post/create_comment/";
