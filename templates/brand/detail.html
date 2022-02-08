@@ -2,12 +2,14 @@
 <meta property="og:type" , content="website" />
 <meta property="og:title" , content="{{brand}}" />
 <meta property="og:description" , content="{{brand.desc}}" />
-<meta property="og:url" , content="" /> <!-- 배포하면 HTML로 -->
+<meta property="og:url" , content="" />
+<!-- 배포하면 HTML로 -->
 <meta property="og:image" , content="" />
 <meta name="twitter:title" , content="{{brand}}" />
 <meta name="twitter:description" , content="{{brand.desc}}" />
 <meta name="twitter:card" , content="summary" />
-<meta name="twitter:url" , content="" /> <!-- 배포하면 HTML로 -->
+<meta name="twitter:url" , content="" />
+<!-- 배포하면 HTML로 -->
 <meta name="twitter:image" , content="" />
 {% endblock %} {% block title %}{{brand}}{% endblock %} {% block link %}
 <link
@@ -19,7 +21,12 @@
 <link rel="stylesheet" href="{% static 'css/brand/share.css' %}" />
 {% endblock %} {% block content %}
 <main id="brand-detail">
-  <div
+  <ul class="brand-detail__breadcrumb d-flex">
+    <li><a href="{% url 'brand:all' %}">전체</a></li>
+    <span>></span>
+    <li><a href="{% url 'brand:category' brand.category.name %}">{{brand.category}}</a></li>
+  </ul>
+  <section
     class="brand d-flex"
     data-id="{{brand.id}}"
     {% if is_liked %}
@@ -39,15 +46,15 @@
     </div>
     <div class="brand__right">
       <div class="brand__content">
-        <h3 class="brand__name">{{brand}}</h3>
-        <h3 class="brand__desc">{{brand.desc}}</h3>
+        <h1 class="brand__name">{{brand}}</h1>
+        <p class="brand__desc">{{brand.desc}}</p>
         <p class="brand__info">{{brand.info}}</p>
         <p class="brand__link">
           <a href="{{brand.link}}">{{brand.link}}</a>
         </p>
       </div>
       <div class="brand__interactions d-flex">
-        <div class="like-container d-flex">
+        <div class="brand__likes d-flex">
           <button
             class="like-btn"
             title="좋아요"
@@ -60,13 +67,14 @@
             <i class="fab fa-gratipay"></i>
           </button>
           <p class="like-info">
-            <span class="like-cnt">{{like_cnt}}</span>명이 좋아한 브랜드
+            <span class="like-cnt">{{brand.brandlike_set.all.count}}</span>명이
+            좋아한 브랜드
           </p>
         </div>
         {% include "brand/share.html" %}
       </div>
     </div>
-  </div>
+  </section>
 </main>
 {% endblock %} {% block script %}
 <script

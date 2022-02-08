@@ -4,18 +4,21 @@ import json
 from django.http import JsonResponse
 from .models import *
 
-def show_list(request):
-    brands = Brand.objects.all()
-    return render(request, 'brand/list.html', {'brands': brands})
+def show_list(request, cate=None):
+    if not cate:
+        brands = Brand.objects.all()
+    else:
+        brands = Brand.objects.filter(category__name=cate)
+        cate = get_object_or_404(Category, name=cate).name_ko
+    return render(request, 'brand/list.html', {'cate': cate, 'brands': brands})
 
 def show_search_results(request):
     keyword = request.GET.get('keyword')
     brands = Brand.objects.filter(name__icontains=keyword)
-    return render(request, 'brand/list.html', {'brands': brands})
+    return render(request, 'brand/search-results.html', {'brands': brands})
 
 def show_detail(request, pk):
     brand = get_object_or_404(Brand, pk=pk)
-    like_cnt = BrandLike.objects.filter(brand=brand).count()
 
     try: # 로그인 한 상태일 때
         if BrandLike.objects.filter(user=request.user, brand=brand).exists():
@@ -25,7 +28,7 @@ def show_detail(request, pk):
     except TypeError: # 로그인 안 한 상태일 때       
         is_liked = False
         
-    return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked, 'like_cnt':like_cnt})
+    return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked})
 
 
 @csrf_exempt
