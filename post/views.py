@@ -109,7 +109,12 @@ def delete_comment(request):
 
 
 def post_list(request):
-    posts = Post.objects.all()
+    if request.GET:
+        keyword = request.GET.get('keyword')
+        posts = Post.objects.filter(
+            Q(title__icontains=keyword) | Q(content__icontains=keyword))
+    else:
+        posts = Post.objects.all()
     return render(request, 'post/list.html', locals())
 
 
