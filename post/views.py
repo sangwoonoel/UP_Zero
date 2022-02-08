@@ -1,3 +1,4 @@
+from email import message
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .form import *
@@ -96,6 +97,21 @@ def create_comment(request):
     comment.save()
 
     return JsonResponse({'user': user.username, 'post_id': post_id, 'message': message, 'comment_id': comment.id})
+
+
+@csrf_exempt
+def update_comment(request):
+    req = json.loads(request.body)
+    post_id = req['post_id']
+    comment_id = req['comment_id']
+    message = req['message']
+
+    post = get_object_or_404(Post, id=post_id)
+    comment = get_object_or_404(Comment, post=post, id=comment_id)
+    comment.message = message
+    comment.save()
+
+    return JsonResponse({'message': message, 'comment_id': comment_id})
 
 
 @csrf_exempt
