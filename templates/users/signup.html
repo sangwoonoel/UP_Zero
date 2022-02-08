@@ -1,27 +1,28 @@
 {% extends 'users/main.html' %}
 
 {% block content %}
-
 {{help_text}}
 <form method="POST" action="">
     {% csrf_token %}
-        아이디: <br>
-        <input name="username" type="text">
-        <br>
-        비밀번호: <br>
-        <input name="password1" type="password">
-        <br>
-        비밀번호 확인: <br>
-        <input name="password2" type="password">
-        <br>
-        이메일: <br>
-        <input name="email" type="email">
-        <br>
-        닉네임: <br>
-        <input name="nickname" type="text">
-        <br>
-        <br><br>
-        <input type="submit" value="Sign Up">
     
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+        {% for field in form %}
+            {% if field.errors %}
+            {{ field.errors }}
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}
+    <div>{{form.username.label_tag}} {{form.username}}</div>
+    <div>{{form.password.label_tag}} {{form.password}}</div>
+    <div>{{form.password2.label_tag}} {{form.password2}}</div>
+    <div>{{form.email.label_tag}} {{form.email}}</div>
+    <div>{{form.nickname.label_tag}} {{form.nickname}}</div>
+
+
+                                
+    <button>Signup</button>
 </form>
+
 {% endblock content %}

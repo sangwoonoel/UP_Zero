@@ -10,8 +10,6 @@ const onClickSearch = async (keyword) => {
     location.href = "/post/list";
     return;
   }
-  console.log(keyword);
-  console.log(keyword.value);
   const url = "/post/search/";
   const { data } = await axios.post(url, {
     keyword: keyword.value,
