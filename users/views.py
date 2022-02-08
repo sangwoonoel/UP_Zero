@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from .forms import LoginForm, SignUpForm
 from django.contrib import messages,auth
+import re
 
 class LoginView(View):
     def get(self, request):
@@ -74,13 +75,47 @@ def log_out(request):
 #         form = SignUpForm()
 #         ctx = {'form':form}
 #         return render(request, template_name='users/signup.html', context=ctx)
+# def signup(request):
+#     if request.method =="POST":
+#         form = SignUpForm(request.POST)
+#         if form.is_valid():
+#             if request.POST['password'] != request.POST['password2'] and len(request.POST['password']) < 8:
+#                 help_text = '비밀번호가 일치하지 않습니다! 비밀번호는 8자리 이상이어야합니다!'
+#             elif len(request.POST['password']) < 8:
+#                 help_text = '비밀번호는 8자리 이상이어야합니다!'
+#             elif request.POST['password'] != request.POST['password2']:
+#                 help_text = '비밀번호가 일치하지 않습니다!'
+#             else:
+#                 user = User.objects.create_user(
+#                 username= request.POST['username'],
+#                 password = request.POST['password'],
+#                 email = request.POST['email'],
+#                 nickname = request.POST['nickname']
+#             )
+#                 auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+#                 messages.success(request, f"{user.username}님의 회원 가입을 축하합니다!" )
+#                 return redirect('/')
+#             context = {'form': form, 'help_text': help_text}
+#             return render(request, 'users/signup.html', context)
+#     else:
+        
+#         form = SignUpForm()
+#     context = {'form': form}
+#     return render(request, 'users/signup.html', context)
 
 def signup(request):
     if request.method =="POST":
         form = SignUpForm(request.POST)
-        
         if form.is_valid():
-            if request.POST['password'] == request.POST['password2']:
+            if re.findall('[ㄱ-ㅣ가-힣]', request.POST['username']) or re.findall('[`~!@#$%^&*(),<.>/?]+', request.POST['username']):
+                help_text = '아이디는 영문과 숫자만 가능합니다'
+            elif len(request.POST['password']) < 8 or len(request.POST['password']) > 21 or not re.findall('[0-9]+', request.POST['password']) or \
+    re.findall('[ㄱ-ㅣ가-힣]', request.POST['password']):
+                help_text = '비밀번호 기준(숫자, 영문 대소문자 구성)에 맞지 않습니다.'
+            elif not re.findall('[`~!@#$%^&*(),<.>/?]+', request.POST['password']):
+                help_text = '비밀번호는 최소 1개 이상의 특수문자가 포함되어야 합니다'
+            
+            else:
                 user = User.objects.create_user(
                 username= request.POST['username'],
                 password = request.POST['password'],
@@ -90,8 +125,8 @@ def signup(request):
                 auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 messages.success(request, f"{user.username}님의 회원 가입을 축하합니다!" )
                 return redirect('/')
-            else: 
-                messages.success(request, "양식을 지켜주세요!" )
+            context = {'form': form, 'help_text': help_text}
+            return render(request, 'users/signup.html', context)
     else:
         
         form = SignUpForm()
