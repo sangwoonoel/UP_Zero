@@ -2,10 +2,11 @@ from django.db import models
 from users.models import *
 
 class Category(models.Model):
-    name = models.CharField('카테고리명', max_length=20)
+    name = models.CharField('영문 카테고리명', max_length=20)
+    name_ko = models.CharField('국문 카테고리명', max_length=20)
 
     def __str__(self):
-        return self.name
+        return self.name_ko
 
 class Brand(models.Model):
     name = models.CharField('브랜드명', max_length=20)

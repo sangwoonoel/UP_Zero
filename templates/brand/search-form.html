@@ -1,0 +1,12 @@
+<div class="search-form-container d-flex justify-content-center">
+  <form class="search-form" action="{% url 'brand:search' %}">
+    <input
+      type="text"
+      name="keyword"
+      placeholder="브랜드를 검색하세요"
+      minlength="2"
+      required
+    />
+    <button><i class="fas fa-search"></i></button>
+  </form>
+</div>
