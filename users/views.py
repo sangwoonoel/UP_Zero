@@ -107,14 +107,13 @@ def signup(request):
     if request.method =="POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
-            if re.findall('[ㄱ-ㅣ가-힣]', request.POST['username']) or re.findall('[`~!@#$%^&*(),<.>/?]+', request.POST['username']):
-                help_text = '아이디는 영문과 숫자만 가능합니다'
+            if re.findall('[ㄱ-ㅣ가-힣]', request.POST['username']) or re.findall('[`~!@#$%^&*(),<.>/?]+', request.POST['username']) or re.findall('[A-Z]', request.POST['username']):
+                help_text = '아이디는 영문 소문자와 숫자만 가능합니다'
             elif len(request.POST['password']) < 8 or len(request.POST['password']) > 21 or not re.findall('[0-9]+', request.POST['password']) or \
-    re.findall('[ㄱ-ㅣ가-힣]', request.POST['password']):
-                help_text = '비밀번호 기준(숫자, 영문 대소문자 구성)에 맞지 않습니다.'
-            elif not re.findall('[`~!@#$%^&*(),<.>/?]+', request.POST['password']):
-                help_text = '비밀번호는 최소 1개 이상의 특수문자가 포함되어야 합니다'
-            
+    re.findall('[ㄱ-ㅣ가-힣]', request.POST['password']) or not re.findall('[`~!@#$%^&*(),<.>/?]+', request.POST['password']):
+                help_text = '영문 대소문자, 숫자, 한 개 이상의 특수문자를 조합해서 8~21자리 비밀번호를 만들어주세요.'
+                
+        
             else:
                 user = User.objects.create_user(
                 username= request.POST['username'],
