@@ -11,7 +11,7 @@
 <main id="brand-search-results">
   {% include "brand/search-form.html" %}
   <div class="search-header text-center">
-    {% if not brands %}검색 결과가 없습니다. {% else %}
+    {% if not brands %} 검색 결과가 없습니다. {% else %}
     <span class="search-header__keyword">{{request.GET.keyword}}</span>에 대한
     <span class="search-header__cnt">{{brands.count}}</span>개의 브랜드 검색
     결과입니다. {% endif %}
