@@ -7,14 +7,29 @@
   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
   crossorigin="anonymous"
 />
+<style>
+  #brand-list .active {
+    background: palevioletred;
+    color: white;
+  }
+</style>
 {% endblock %} {% block content %}
 <main id="brand-list">
   {% include "brand/search-form.html" %}
   <div class="d-flex">
     {% include "brand/sidebar.html" %}
-    <section>
-      <h1>{% if not cate %}전체{% else %}{{cate}}{% endif %}</h1>
-      <div class="brands d-flex">
+    <div>
+      <header>
+        <h2 class="selected-category">
+          {% if not cate %}All{% else %}{{cate}}{% endif %}
+        </h2>
+        <p>전체 <span class="brands-cnt">{{brands.count}}</span>개</p>
+      </header>
+      <form class="sort-form d-flex justify-content-end w-100">
+        <input type="hidden" name="sort" value="like" />
+        <button class="sort-btn">좋아요 순으로 보기</button>
+      </form>
+      <section class="brands d-flex">
         {% for brand in brands %}
         <article class="brand">
           <div class="brand__img">
@@ -27,12 +42,12 @@
             /></a>
           </div>
           <div class="brand__content">
-            <h2 class="brand__header d-flex flex-column">
+            <h1 class="brand__header d-flex flex-column">
               {% if not cate %}<span class="brand__category"
                 >{{brand.category}}</span
               >{% endif %}
               <span class="brand__name">{{brand}}</span>
-            </h2>
+            </h1>
             <p class="brand__desc">{{brand.desc}}</p>
             <div class="brand__likes">
               <i class="far fa-heart"></i>
@@ -41,8 +56,8 @@
           </div>
         </article>
         {% endfor %}
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </main>
 {% endblock %} {% block script %}
@@ -51,4 +66,5 @@
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
   crossorigin="anonymous"
 ></script>
+<script src="{% static 'js/brand/sort.js' %}"></script>
 {% endblock %}

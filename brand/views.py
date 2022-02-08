@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Count
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.http import JsonResponse
@@ -10,8 +11,14 @@ def show_list(request, cate=None):
     else: # 카테고리 선택한 경우
         brands = Brand.objects.filter(category__name=cate)
         cate = get_object_or_404(Category, name=cate).name_ko # 카테고리 국문명
+
+    if request.GET: # 정렬한 경우
+        if request.GET.get('sort') == 'like':
+            brands = brands.annotate(like_cnt=Count('brandlike')) \
+                .order_by('-like_cnt')
         
     return render(request, 'brand/list.html', {'cate': cate, 'brands': brands})
+
 
 def show_search_results(request):
     keyword = request.GET.get('keyword')
