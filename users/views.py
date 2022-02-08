@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import User
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
-from .forms import LoginForm, SignupForm
+from .forms import LoginForm, SignUpForm
+from django.contrib import messages,auth
 
 class LoginView(View):
     def get(self, request):
@@ -34,41 +35,68 @@ def log_out(request):
     logout(request)
     return redirect("users:main")
 
+# def signup(request):
+#     if request.method =="POST":
+        
+#         if User.objects.filter(username = request.POST['username']).exists():
+#             help_text = '이미 있는 아이디입니다.'
+        
+
+#         elif len(request.POST['password1']) < 6:
+#             help_text = '비밀번호가 너무 간단합니다!'
+
+#         elif User.objects.filter(nickname = request.POST['nickname']).exists():
+#             help_text = '이미 있는 닉네임 입니다!'
+
+        
+
+#         elif request.POST['password1'] != request.POST['password2']:
+#             help_text = '비밀번호가 일치하지 않습니다'
+
+#         elif User.objects.filter(email = request.POST['email']).exists():
+#             help_text = '이미 존재하는 이메일입니다.'
+#         else :
+#             user = User.objects.create_user(
+#                 username= request.POST['username'],
+#                 password = request.POST['password'],
+#                 email = request.POST['email'],
+#                 nickname = request.POST['nickname']
+#             )
+#             auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+#             messages.success(request, f"{user.username}님의 회원 가입을 축하합니다!" )
+#             return redirect('/')
+
+#         form = SignUpForm()
+#         ctx = {'help_text':help_text, 'form':form}
+#         return render(request, template_name='users/signup.html',context=ctx)
+        
+#     else:
+#         form = SignUpForm()
+#         ctx = {'form':form}
+#         return render(request, template_name='users/signup.html', context=ctx)
+
 def signup(request):
-    
     if request.method =="POST":
-       
-        if User.objects.filter(username = request.POST['username']).exists():
-            help_text = '이미 있는 아이디입니다.'
+        form = SignUpForm(request.POST)
         
-
-        elif len(request.POST['password1']) < 6:
-            help_text = '비밀번호가 너무 간단합니다!'
-
-        elif User.objects.filter(nickname = request.POST['nickname']).exists():
-            help_text = '이미 있는 닉네임 입니다!'
-
-        
-
-        elif request.POST['password1'] != request.POST['password2']:
-            help_text = '비밀번호가 일치하지 않습니다'
-
-        elif User.objects.filter(email = request.POST['email']).exists():
-            help_text = '이미 존재하는 이메일입니다.'
-        else :
-            user = User.objects.create_user(
+        if form.is_valid():
+            if request.POST['password'] == request.POST['password2']:
+                user = User.objects.create_user(
                 username= request.POST['username'],
-                password = request.POST['password1'],
+                password = request.POST['password'],
                 email = request.POST['email'],
                 nickname = request.POST['nickname']
             )
-            
-
-            return redirect ('users:main')
-        ctx = {'help_text':help_text}
-        return render(request, template_name='users/signup.html',context=ctx)
+                auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                messages.success(request, f"{user.username}님의 회원 가입을 축하합니다!" )
+                return redirect('/')
+            else: 
+                messages.success(request, "양식을 지켜주세요!" )
     else:
-        return render(request, template_name='users/signup.html')
+        
+        form = SignUpForm()
+    context = {'form': form}
+    return render(request, 'users/signup.html', context)
 
 def main(request):
     return render(request, "users/main.html")
