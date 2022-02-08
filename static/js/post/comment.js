@@ -25,26 +25,48 @@ const CreateHandleResponse = () => {
         let {user, post_id, message, comment_id} = JSON.parse(requestComment.response);
         const element = document.querySelector(`.post-comment__${post_id}`);
         const newComment = document.createElement("li");
+        const commentMain = document.createElement("div");
         const commentUser = document.createElement("span");    
         const commentMessage = document.createElement("span");    
         const delBtn = document.createElement("button");
-        
+        const editBtn = document.createElement("button");
+        const commentEdit = document.createElement("div");
+        const editInput = document.createElement("input");
+        const updateBtn = document.createElement("button");
+
         newComment.setAttribute("class", `comment__${comment_id}`);
+        commentMain.setAttribute("class", "comment__main");
         delBtn.setAttribute("onclick", `onClickDel(${comment_id})`);
+        delBtn.setAttribute("class", "comment__del-btn");
+        editBtn.setAttribute("class", "comment__edit-btn");
+        editBtn.setAttribute("onclick", `onClickEdit(${comment_id})`);
         
         commentMessage.innerText = `${message} `;
         commentUser.innerText = `${user} `;
 
+        commentEdit.setAttribute("class", "comment__edit");
+        commentEdit.setAttribute("style", "display: none;");
+        editInput.setAttribute("class", "comment__edit-input");
+        editInput.setAttribute("value", `${message}`);
+        editInput.setAttribute("type", "text");
+        updateBtn.setAttribute("class", "comment__update-btn");
+        updateBtn.setAttribute("onclick", `onClickUpdate(${comment_id})`);
+
         delBtn.innerText = "삭제";
+        editBtn.innerText = "수정";
+        updateBtn.innerText = "수정";
         const input = document.querySelector(`.comment-input__${post_id}`)
-        console.log(input)
         input.value = '';
         
-
         element.append(newComment);
-        newComment.appendChild(commentUser);
-        newComment.appendChild(commentMessage);
-        newComment.appendChild(delBtn);
+        newComment.append(commentMain);
+        newComment.append(commentEdit);
+        commentMain.appendChild(commentUser);
+        commentMain.appendChild(commentMessage);
+        commentMain.appendChild(editBtn);
+        commentMain.appendChild(delBtn);
+        commentEdit.appendChild(editInput);
+        commentEdit.appendChild(updateBtn);
 
         const commentNum = document.querySelector(".post-comment__cnt");
         const commentCnt = parseInt(commentNum.innerText);
@@ -64,7 +86,7 @@ const onClickDel = (id) => {
 }
 
 const DelHandleResponse = () => {
-    if (requestComment.status < 400){
+    if (requestDel.status < 400){
         const {id} = JSON.parse(requestDel.response)
 
         const element = document.querySelector(`.comment__${id}`)
@@ -84,33 +106,23 @@ requestDel.onreadystatechange = () => {
 
 const onClickEdit = (commentId) => {
     const element = document.querySelector(`.comment__${commentId}`);
-    const message = element.querySelector(".comment__message").textContent;
-        
-    const updateInput =  document.createElement("input");
-    const updateBtn =  document.createElement("button");
+    const main = element.querySelector(".comment__main");
+    const edit = element.querySelector(".comment__edit");
 
-    updateInput.setAttribute("class", `comment-edit-input__${commentId}`);
-    updateInput.setAttribute("type", "text");
-    updateInput.value = `${message}`;
-
-    updateBtn.setAttribute("class", "comment__up-btn");
-    updateBtn.setAttribute("type", "button");
-    updateBtn.setAttribute("onclick", `onClickUpdate(${commentId})`);
-    updateBtn.innerText = "수정";
-    
-    element.innerHTML = '';
-    element.appendChild(updateInput);
-    element.appendChild(updateBtn);
+    main.style.display = "none";
+    edit.style.display = "block";
 }
 
-const onClickUpdate = (commentId) => {
+const onClickUpdate = (postId, commentId) => {
     const url = "/post/update_comment/";
-    const message = document.querySelector(`.comment-edit-input__${commentId}`).value;
-    requestComment.open("POST", url, true);
-    requestComment.setRequestHeader(
+    const element = document.querySelector(`.comment__${commentId}`);
+    const commentEdit = element.querySelector(".comment__edit")
+    const message = commentEdit.querySelector(".comment__edit-input").value;
+    requestUpdate.open("POST", url, true);
+    requestUpdate.setRequestHeader(
         "Content-Type", "application/x-www-form-urlencoded"
     );
-    requestComment.send(JSON.stringify({comment_id: commentId, message: message}));
+    requestUpdate.send(JSON.stringify({post_id: postId, message: message, comment_id: commentId}));
 }
 
 requestUpdate.onreadystatechange = () => {
@@ -122,25 +134,15 @@ requestUpdate.onreadystatechange = () => {
 
 const UpdateHandleResponse = () => {
     if (requestUpdate.status < 400){
-        let {user, post_id, message, comment_id} = JSON.parse(requestUpdate.response);
+        const {message, comment_id} = JSON.parse(requestUpdate.response);
+        console.log(message);
         const element = document.querySelector(`.comment__${comment_id}`);
-        const commentUser = document.createElement("span");    
-        const commentMessage = document.createElement("span");    
-        const delBtn = document.createElement("button");
+        const commentMain = element.querySelector(".comment__main");
+        const commentEdit = element.querySelector(".comment__edit");
+        const comment = commentMain.querySelector(".comment__message");
 
-        newComment.setAttribute("class", `comment__${comment_id}`);
-        delBtn.setAttribute("onclick", `onClickDel(${comment_id})`);
-        
-        commentMessage.innerText = `${editInput} `;
-        commentUser.innerText = `${user} `;
-
-        delBtn.innerText = "삭제";
-            
-
-        element.innerHTML = '';
-        element.appendChild(commentUser);
-        element.appendChild(commentMessage);
-        element.appendChild(delBtn);
-        
+        commentMain.style.display = "block";
+        commentEdit.style.display = "none";
+        comment.innerText = `${message}`;            
     };
 };
