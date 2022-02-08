@@ -19,7 +19,6 @@
             <a href="">링크</a>
         </div>
         <div class="post-detail__content">
-            <h4>카테고리: {{ post.category }}</h4>
             <h3>제목: {{ post.title }}</h3>
             {% if post.image %}
             <img class="post-detail__img" src="{{ post.image.url }}" height="220" width="160">
@@ -52,7 +51,6 @@
                 </p>
             </div>
         </div>
-        {% include "share.html" %}
         <div class="post-comment">
             <p class="post-comment__info">
                 <span>댓글</span>
@@ -96,5 +94,4 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{% static 'js/post/like.js' %}"></script>
 <script src="{% static 'js/post/comment.js' %}"></script>
-<script src="{% static 'js/share.js' %}"></script>
 {% endblock %}
