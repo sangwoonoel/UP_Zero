@@ -7,7 +7,7 @@
   crossorigin="anonymous"
 />
 {% endblock %} {% block content %}
-<section id="brand-list">
+<main id="brand-list">
   {% if request.GET.keyword %}
   <!-- 검색어 포함된 URL로 접속 시 -->
   <p class="search-title">
@@ -47,7 +47,7 @@
     {% endfor %}
   </div>
   {% endif %}
-</section>
+</main>
 {% endblock %} {% block script %}
 <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
