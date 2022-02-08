@@ -1,4 +1,18 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block meta %}
+<meta name="description" content="업사이클링으로 가는 첫걸음">
+<meta property="og:type" , content="website" />
+<meta property="og:title" , content="UP&Zero" />
+<meta property="og:description" , content="업사이클링으로 가는 첫걸음" />
+<!-- <meta property="og:url" , content="배포 도메인" /> -->
+<!-- <meta property="og:image" , content="로고" /> -->
+<meta name="twitter:title" , content="UP&Zero" />
+<meta name="twitter:description" , content="업사이클링으로 가는 첫걸음" />
+<meta name="twitter:card" , content="summary" />
+<!-- <meta name="twitter:url" , content="배포 도메인" /> -->
+<!-- <meta name="twitter:image" , content="로고" /> -->
+{% endblock %}
+{% block content %}
   {% if user.is_authenticated %}
       <p>Welcome, {{ user.username }}!</p>
   {% endif %}
