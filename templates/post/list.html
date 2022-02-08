@@ -4,9 +4,9 @@
     {% if request.GET.keyword %}
     <!-- 검색어 포함된 URL로 접속 시 -->
     <p class="post-search-title">
-        {% if not brands %} 검색 결과가 없습니다. {% else %}
+        {% if not posts %} 검색 결과가 없습니다. {% else %}
         <span class="post-search-title__keyword">{{request.GET.keyword}}</span>에 대한
-        <span class="post-search-title__cnt">{{brands.count}}</span>개의 브랜드 검색
+        <span class="post-search-title__cnt">{{posts.count}}</span>개의 게시물 검색
         결과입니다. 
         {% endif %}
     </p>
