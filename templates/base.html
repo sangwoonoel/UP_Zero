@@ -11,22 +11,20 @@
     <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/">Logo</a>
-        <a href="{% url 'brand:all' %}">Brand</a>
-        <a href="{% url 'post:list' %}">Community</a>
-        <a href="#">Fund</a>
-        <a href="#">Mypage</a>
-        {% if user.is_authenticated %}
-        <a href="{% url 'users:log_out' %}">로그아웃</a>
-        {% else %}
-        <a href="{% url 'users:login' %}">Log in</a>
-        <a href="{% url 'users:signup' %}">Sign up</a>
-        <a href="{% provider_login_url 'google' %}">구글 로그인</a>
-        {% endif %}
-      </nav>
-    </header>
+    <nav>
+      <a href="/">Logo</a>
+      <a href="{% url 'brand:all' %}">Brand</a>
+      <a href="{% url 'post:list' %}">Community</a>
+      <a href="#">Fund</a>
+      <a href="#">Mypage</a>
+      {% if user.is_authenticated %}
+      <a href="{% url 'users:log_out' %}">로그아웃</a>
+      {% else %}
+      <a href="{% url 'users:login' %}">Log in</a>
+      <a href="{% url 'users:signup' %}">Sign up</a>
+      <a href="{% provider_login_url 'google' %}">구글 로그인</a>
+      {% endif %}
+    </nav>
     {% if messages %} {% for message in messages %}
     <div class="alert alert-{{ message.tags }}">{{ message }}</div>
     {% endfor %} {% endif %} {% block content %} {% endblock %}
