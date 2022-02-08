@@ -21,6 +21,7 @@ class LoginForm(forms.Form):
             raise forms.ValidationError("No User!!!")
 
 class SignUpForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, label="비밀번호")
     password2 = forms.CharField(widget=forms.PasswordInput, label = "비밀번호확인")
 
     class Meta:
@@ -28,9 +29,7 @@ class SignUpForm(forms.ModelForm):
         fields = ['username', 'password', 'email', 'nickname']
 
         labels = {
-                'username': '제목',
-                'password': '비밀번호',
-                'password2': '비밀번호확인',
+                'username': '아이디',
                 'email': '이메일',
                 'nickname': '닉네임',
             }
