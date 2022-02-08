@@ -7,9 +7,10 @@ from .models import *
 def show_list(request, cate=None):
     if not cate:
         brands = Brand.objects.all()
-    else:
+    else: # 카테고리 선택한 경우
         brands = Brand.objects.filter(category__name=cate)
-        cate = get_object_or_404(Category, name=cate).name_ko
+        cate = get_object_or_404(Category, name=cate).name_ko # 카테고리 국문명
+        
     return render(request, 'brand/list.html', {'cate': cate, 'brands': brands})
 
 def show_search_results(request):
@@ -20,12 +21,12 @@ def show_search_results(request):
 def show_detail(request, pk):
     brand = get_object_or_404(Brand, pk=pk)
 
-    try: # 로그인 한 상태일 때
+    try: # 로그인 상태
         if BrandLike.objects.filter(user=request.user, brand=brand).exists():
             is_liked = True
         else:
             is_liked = False
-    except TypeError: # 로그인 안 한 상태일 때       
+    except TypeError: # 로그인 안 한 상태
         is_liked = False
         
     return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked})

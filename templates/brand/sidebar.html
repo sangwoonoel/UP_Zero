@@ -1,9 +1,9 @@
-<aside class="brand-sidebar">
+<div class="brand-sidebar">
     <ul class="brand-sidebar__categories">
-       <li><a href="{% url 'brand:all' %}">전체</a></li>
-       <li><a href="{% url 'brand:category' "fashion" %}">패션</a></li>
-       <li><a href="{% url 'brand:category' "daily" %}">생활용품</a></li>
-       <li><a href="{% url 'brand:category' "furniture" %}">가구</a></li>
-       <li><a href="{% url 'brand:category' "food" %}">푸드</a></li>
+       <li class="all"><a href="{% url 'brand:all' %}">전체</a></li>
+       <li class="fashion"><a href="{% url 'brand:category' "fashion" %}">패션</a></li>
+       <li class="daily"><a href="{% url 'brand:category' "daily" %}">생활용품</a></li>
+       <li class="furniture"><a href="{% url 'brand:category' "furniture" %}">가구</a></li>
+       <li class="food"><a href="{% url 'brand:category' "food" %}">푸드</a></li>
     </ul>
- </aside>
+ </div>
