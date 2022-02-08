@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<div class="post-detail">
+<main class="post-detail">
     <div 
     class="post"
     data-id="{{post.id}}"
@@ -60,18 +60,24 @@
                 {% for comment in comments %}
                     {% if comment.post == post %}
                     <li class="comment__{{comment.id}}">
-                        <span>{{ comment.user }}</span>
-                        <span class="comment__message">{{ comment.message }}</span>
-                        {% if request.user == comment.user %}
-                        <button class="comment__edit-btn" onclick="onClickEdit({{comment.id}})">수정</button>
-                        <button class="comment__del-btn" onclick="onClickDel({{comment.id}})">삭제</button>
-                        {% endif %}
+                        <div class="comment__main">
+                            <span>{{ comment.user }}</span>
+                            <span class="comment__message">{{ comment.message }}</span>
+                            {% if request.user == comment.user %}
+                            <button class="comment__edit-btn" onclick="onClickEdit({{comment.id}})">수정</button>
+                            <button class="comment__del-btn" onclick="onClickDel({{comment.id}})">삭제</button>
+                            {% endif %}
+                        </div>
+                        <div class="comment__edit" style="display: none;">
+                            <input class="comment__edit-input" type="text" value="{{comment.message}}" onKeypress="javascript:if(event.keyCode==13) {onClickUpdate({{post.id}},{{comment.id}})}">
+                            <button class="comment__update-btn" onclick="onClickUpdate({{post.id}},{{comment.id}})">수정</button>
+                        </div>
                     </li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <div class="post-comment__input">
-                <input class="comment-input__{{post.id}}" type="text" placeholder="댓글을 입력하세요">
+                <input class="comment-input__{{post.id}}" type="text" placeholder="댓글을 입력하세요" onKeypress="javascript:if(event.keyCode==13) {onClickComment({{post.id}}, {{user.id}})}">
                 
                 <button
                 class="comment__add-btn"
@@ -86,7 +92,7 @@
         
         
     </div>
-</div>
+</main>
 
 
 {% endblock %}
