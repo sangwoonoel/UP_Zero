@@ -20,7 +20,21 @@ class LoginForm(forms.Form):
         except User.DoesNotExist:
             raise forms.ValidationError("No User!!!")
 
-class SignupForm(forms.ModelForm):
+class SignUpForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, label="비밀번호")
+    password2 = forms.CharField(widget=forms.PasswordInput, label = "비밀번호확인")
+
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = ['username', 'password', 'email', 'nickname']
+
+        labels = {
+                'username': '아이디',
+                'email': '이메일',
+                'nickname': '닉네임',
+            }
+        
+       
+
+
+

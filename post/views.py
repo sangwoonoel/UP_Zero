@@ -146,7 +146,7 @@ def search_for_posts(request):
         comment_cnt = Comment.objects.filter(post=post['id']).count()
         like_cnt = PostLike.objects.filter(post=post['id']).count()
         poster = get_object_or_404(Post, id=post['id'])
-
+        print(poster)
         if len(poster.content) > 20:
             post['content'] = poster.content[:19]+'...'
         post["username"] = user.username
