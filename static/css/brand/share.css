@@ -1,15 +1,15 @@
 .social .fbtn {
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
-  line-height: 18px;
+  line-height: 1.8rem;
   float: left;
 }
 .social .fa {
-  padding: 15px 0px;
+  padding: 1.5rem 0;
 }
 .facebook {
   background-color: #3b5998;
@@ -22,22 +22,22 @@
 }
 
 .share-button.sharer {
-  height: 20px;
+  height: 2rem;
 }
 .share-button.sharer .social.active.bottom {
-  transform: translateY(10px);
+  transform: translateY(1rem);
 }
 .share-button.sharer .social.active {
-  opacity: 1; 
+  opacity: 1;
   transition: all 0.4s ease;
   visibility: visible;
 }
 .share-button.sharer .social.bottom {
-  margin-top: 10px;
+  margin-top: 1rem;
   /* transform-origin: 0 0 0; */
 }
 .share-button.sharer .social {
-  margin-left: -50px;
+  margin-left: -5rem;
   opacity: 0;
   transition: all 0.4s ease;
   visibility: hidden;
