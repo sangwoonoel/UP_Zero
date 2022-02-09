@@ -13,4 +13,5 @@ urlpatterns = [
     path('create_comment/', views.create_comment, name='create_comment'),
     path('delete_comment/', views.delete_comment, name='delete_comment'),
     path('update_comment/', views.update_comment, name='update_comment'),
+    path('author/', views.show_author_posts, name='author')
 ]
