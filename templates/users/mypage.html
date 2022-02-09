@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% if user.is_authenticated %}
+<p>Welcome, {{ user.username }}!</p>
+
+
+<h1>브랜드 찜</h1>
+{%for BrandLike in BrandLikes %}
+    <div>
+        
+        <a href="{% url 'brand:detail' BrandLike.brand.id %}">{{ BrandLike.brand.name }}</a>
+        <a href="{% url 'users:mypage_brand_delete' %}">삭제</a>
+    </div>
+    {% endfor %}
+
+
+<h1>포스트 스크랩</h1>
+{%for PostLike in PostLikes %}
+    <div>
+        
+        
+        <a href="{% url 'post:post_detail' PostLike.post.id %}">{{ PostLike.post.title }}</a>
+        <a href="{% url 'users:mypage_post_delete' %}">삭제</a>
+        
+        </div>
+    </div>
+    {% endfor %}
+
+<h1><a href="{% url 'users:user_post' %}">작성한 글 목록</a></h1>
+
+
+
+{% endif %} 
+
+
+{% endblock %}
