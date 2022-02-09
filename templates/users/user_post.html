@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% if user.is_authenticated %}
+<p>Welcome, {{ user.username }}!</p>
+
+<h1>작성한 글 목록</h1>
+{%for MyPost in MyPosts %}
+    <div>
+        
+        
+        <a href="{% url 'post:post_detail' MyPost.id %}">{{MyPost}}</a>
+        
+        <a href="{% url 'post:post_delete' MyPost.pk %}">삭제</a>
+        <a href="{% url 'post:post_update' MyPost.pk %}">수정</a>
+                
+        </div>
+    </div>
+    {% endfor %}
+
+
+
+{% endif %} 
+
+
+{% endblock %}
