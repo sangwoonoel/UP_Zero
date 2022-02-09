@@ -1,9 +1,10 @@
 <div class="brand-sidebar">
-    <ul class="brand-sidebar__categories">
-       <li class="all"><a href="{% url 'brand:all' %}">All</a></li>
-       <li class="fashion"><a href="{% url 'brand:category' "fashion" %}">패션</a></li>
-       <li class="daily"><a href="{% url 'brand:category' "daily" %}">생활용품</a></li>
-       <li class="furniture"><a href="{% url 'brand:category' "furniture" %}">가구</a></li>
-       <li class="food"><a href="{% url 'brand:category' "food" %}">푸드</a></li>
-    </ul>
- </div>
+  <ul>
+    <li><a href="{% url 'brand:list' %}">All</a></li>
+    {% for cate in cates %}
+    <li data-id="{{cate.id}}">
+      <a href="/brand/list?category={{cate.id}}">{{cate}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
