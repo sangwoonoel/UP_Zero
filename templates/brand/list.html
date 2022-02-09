@@ -9,11 +9,15 @@
 />
 {% endblock %} {% block css %}
 <style>
-  a.active {
+  .brand-sidebar li.active {
+    font-weight: bold;
+  }
+  a.sort-btn.active {
     background: palevioletred;
     color: white;
   }
 </style>
+<script defer src="{% static 'js/brand/list.js' %}"></script>
 {% endblock %} {% block content %}
 <main id="brand-list">
   {% include "brand/search-form.html" %}
@@ -70,5 +74,4 @@
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
   crossorigin="anonymous"
 ></script>
-<script src="{% static 'js/brand/sort.js' %}"></script>
 {% endblock %}
