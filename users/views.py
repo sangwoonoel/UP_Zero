@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
+
+from brand.models import BrandLike, Brand, Category
+from post.models import *
+import users
 from .models import User
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from .forms import LoginForm, SignUpForm
 from django.contrib import messages,auth
 import re
+from django.contrib.auth.decorators import login_required
+
 
 class LoginView(View):
     def get(self, request):
@@ -134,3 +140,50 @@ def signup(request):
 
 def main(request):
     return render(request, "users/main.html")
+
+@login_required
+def mypage(request):
+    # devs = Devtool.objects.get(id=pk)
+    # idea = Devtool.idea_set.objects.filter(devtool='')
+    
+    # BrandLikes = PostLike.objects.filter(user = pk)
+    BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
+    PostLikes = PostLike.objects.filter(user__id=request.user.pk)
+
+    context = {'BrandLikes' :  BrandLikes, 'PostLikes' : PostLikes}
+
+    return render(request, 'users/mypage.html', context)
+
+@login_required
+def user_post(request):
+    # devs = Devtool.objects.get(id=pk)
+    # idea = Devtool.idea_set.objects.filter(devtool='')
+    
+    # BrandLikes = PostLike.objects.filter(user = pk)
+    
+    MyPosts = Post.objects.filter(user__id=request.user.pk)
+    
+    context = {'MyPosts' : MyPosts}
+
+    return render(request, 'users/user_post.html', context)
+
+def mypage_brand_delete(request):
+    BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
+    BrandLikes[0].delete()
+    
+    
+    return redirect('users:mypage')
+
+def mypage_post_delete(request):
+    PostLikes = PostLike.objects.filter(user__id=request.user.pk)
+    PostLikes[0].delete()
+    
+    
+    return redirect('users:mypage')
+
+# def user_post_delete(request):
+#     MyPosts = Post.objects.filter(user__id=request.user.pk)
+#     MyPosts[0].delete()
+#     return redirect('users:mypage')
+
+
