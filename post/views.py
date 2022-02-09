@@ -128,7 +128,6 @@ def post_list(request):
 
     if request.GET.get('keyword'):
         keyword = request.GET.get('keyword')
-        print(keyword)
         posts = Post.objects.filter(
             Q(title__icontains=keyword) | Q(content__icontains=keyword))
     else:
