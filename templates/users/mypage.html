@@ -17,8 +17,6 @@
 <h1>포스트 스크랩</h1>
 {%for PostLike in PostLikes %}
     <div>
-        
-        
         <a href="{% url 'post:post_detail' PostLike.post.id %}">{{ PostLike.post.title }}</a>
         <a href="{% url 'users:mypage_post_delete' %}">삭제</a>
         
