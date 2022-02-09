@@ -5,25 +5,29 @@ import json
 from django.http import JsonResponse
 from .models import *
 
-def show_list(request, cate=None):
-    if not cate:
-        brands = Brand.objects.all()
-    else: # 카테고리 선택한 경우
-        brands = Brand.objects.filter(category__name=cate)
-        cate = get_object_or_404(Category, name=cate).name_ko # 카테고리 국문명
+def show_list(request):
+    brands = Brand.objects.all()
+    cate = None
 
-    if request.GET: # 정렬한 경우
-        if request.GET.get('sort') == 'like':
-            brands = brands.annotate(like_cnt=Count('brandlike')) \
-                .order_by('-like_cnt')
-        
-    return render(request, 'brand/list.html', {'cate': cate, 'brands': brands})
+    if request.GET.get('category'): # 카테고리 선택한 경우
+        cate_id = int(request.GET.get('category'))
+        brands = Brand.objects.filter(category__id=cate_id)
+        cate = get_object_or_404(Category, id=cate_id) # 선택한 카테고리
+
+    if request.GET.get('sort') == 'like': # 좋아요 정렬 선택한 경우
+        brands = brands.annotate(like_cnt=Count('brandlike')) \
+            .order_by('-like_cnt')
+
+    cates = Category.objects.all() # for brand/sidebar.html
+    return render(request, 'brand/list.html', {'cate': cate, 'brands': brands, 'cates': cates})
 
 
 def show_search_results(request):
     keyword = request.GET.get('keyword')
     brands = Brand.objects.filter(name__icontains=keyword)
-    return render(request, 'brand/search-results.html', {'brands': brands})
+    cates = cates = Category.objects.all() # for brand/sidebar.html
+    return render(request, 'brand/search-results.html', {'brands': brands, 'cates': cates})
+
 
 def show_detail(request, pk):
     brand = get_object_or_404(Brand, pk=pk)
@@ -35,7 +39,7 @@ def show_detail(request, pk):
             is_liked = False
     except TypeError: # 로그인 안 한 상태
         is_liked = False
-        
+    
     return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked})
 
 

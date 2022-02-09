@@ -23,9 +23,9 @@
 <main id="brand-detail">
   <div class="brand-detail__breadcrumb">
     <ul class="d-flex">
-      <li><a href="{% url 'brand:all' %}">전체</a></li>
+      <li><a href="{% url 'brand:list' %}">전체</a></li>
       <i class="fas fa-chevron-right"></i>
-      <li><a href="{% url 'brand:category' brand.category.name %}">{{brand.category}}</a></li>
+      <li><a href="/brand/list?category={{brand.category.id}}">{{brand.category}}</a></li>
     </ul>
   </div>
   <section
