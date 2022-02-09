@@ -6,12 +6,12 @@
 <main class="post-detail">
     <div 
     class="post"
-    data-id="{{post.id}}"
-    {% if is_liked %}
-    data-liked="true"
-    {% else %}
-    data-liked="false"
-    {% endif %}
+        data-id="{{post.id}}"
+        {% if is_liked %}
+        data-liked="true"
+        {% else %}
+        data-liked="false"
+        {% endif %}
     >
         <div class="post-detail__user">
             <p>글쓴이: {{ post.user }}</p>

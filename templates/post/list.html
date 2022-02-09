@@ -13,16 +13,33 @@
     {% endif %}
     <div class="post-list">
         <div class="keyword-container">
-            <input
-                type="text"
-                class="keyword"
+            <form action="" method="get">
+                <div class="pagination">
+                    {% if page_obj.has_previous %}
+                    <a href="?page=1&keyword={{keyword}}">First</a>
+                    <a href="?page={{page_obj.previous_page_number}}&keyword={{keyword}}">Previous</a>
+                    {% endif %}
+                
+                    <span>{{page_obj.number}} / {{page_obj.paginator.num_pages}}</span>
+                
+                    {% if page_obj.has_next %}
+                    <a href="?page={{page_obj.next_page_number}}&keyword={{keyword}}">Next</a>
+                    <a href="?page={{page_obj.paginator.num_pages}}&keyword={{keyword}}">Last</a>
+                    {% endif %}
+                </div>    
+                <input 
+                class="keyword" 
+                type="text" 
+                name="keyword" 
                 placeholder="게시물을 검색하세요"
+                value="{{keyword}}"
                 autocomplete
-            />
-            <button onclick="onClickSearch(keyword)"><i class="fas fa-search"></i></button>
+                >
+                <button type="submit" value="검색"><i class="fas fa-search"></i></button>
+            </form>
         </div>
         <div class="posts">
-        {% for post in posts %}
+        {% for post in page_obj %}
         <div class="post">
             <a href="{% url 'post:post_detail' post.id %}">
                 <div class="post-title">
@@ -64,12 +81,13 @@
             {% endif %}
         </div>
     </div>
+
 </section>
 {% endblock %}
 {% block script %}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<!-- <script src="{% static 'js/post/search.js' %}"></script> -->
 <script src="{% static 'js/post/like.js' %}"></script>
 {% endblock %}
 
 
+<!-- type="submit" value="검색"-->

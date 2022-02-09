@@ -1,5 +1,6 @@
 const post = document.querySelector(".post");
 const postLiked = post.getAttribute("data-liked");
+console.log(postLiked)
 const likeBtn = post.querySelector(".post-like__btn");
 
 if (postLiked === "true") {
