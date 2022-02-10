@@ -18,7 +18,13 @@
       <a href="{% url 'post:list' %}">Community</a>
       <a href="#">Fund</a>
       <a href="{% url 'users:mypage' %}">Mypage</a>
-      {% if user.is_authenticated %}
+      {% if user.is_authenticated %} {% if user.image %}
+      <!-- 나중에 if문 지워도 됨 -->
+      <div class="login-user__avatar" style="display: inline">
+        <img src="{{user.image.url}}" alt="유저 프로필 이미지" width="30rem"
+        height="30rem" / >
+      </div>
+      {% endif %}
       <a href="{% url 'users:log_out' %}">로그아웃</a>
       {% else %}
       <a href="{% url 'users:login' %}">Log in</a>

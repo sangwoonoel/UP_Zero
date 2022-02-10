@@ -1,25 +1,23 @@
 {% extends 'base.html' %} 
 {% block content %} 
 {% if user.is_authenticated %}
-<p>Welcome, {{ user.username }}!</p>
-
-<h1>작성한 글 목록</h1>
+<header class="mypage__header" style="display:flex;" >
+  {% if user.image %} <!-- 나중에 if문 지워도 됨 -->
+    <div class="mypage__avatar">
+      <img src="{{user.image.url}}" alt="유저 프로필 이미지" width="50rem" height="50rem" />
+    </div>
+  {% endif %}
+  <h1 class="mypage__nickname">
+    {{user.username}} <!-- will change to nickname -->
+  </h1>
+</header>
 {%for MyPost in MyPosts %}
     <div>
-        
-        
         <a href="{% url 'post:post_detail' MyPost.id %}">{{MyPost}}</a>
-        
         <a href="{% url 'post:post_delete' MyPost.pk %}">삭제</a>
-        <a href="{% url 'post:post_update' MyPost.pk %}">수정</a>
-                
+        <a href="{% url 'post:post_update' MyPost.pk %}">수정</a>    
         </div>
     </div>
     {% endfor %}
-
-
-
 {% endif %} 
-
-
 {% endblock %}
