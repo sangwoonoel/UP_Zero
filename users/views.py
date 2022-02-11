@@ -147,25 +147,48 @@ def mypage(request):
     # idea = Devtool.idea_set.objects.filter(devtool='')
     
     # BrandLikes = PostLike.objects.filter(user = pk)
+    # BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
+    # # PostLikes = PostLike.objects.filter(user__id=request.user.pk)
+    # # Comments = Comment.objects.filter(user__id=request.user.pk)
+
+    # context = {'BrandLikes' :  BrandLikes}
+
+    return render(request, 'users/mypage.html')
+
+@login_required
+def brand_like(request):
     BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
+    
+    context = {'BrandLikes' : BrandLikes}
+
+    return render(request, 'users/brand_like.html', context)
+
+@login_required
+def post_like(request):
     PostLikes = PostLike.objects.filter(user__id=request.user.pk)
+    
+    context = {'PostLikes' : PostLikes}
 
-    context = {'BrandLikes' :  BrandLikes, 'PostLikes' : PostLikes}
+    return render(request, 'users/post_like.html', context)
 
-    return render(request, 'users/mypage.html', context)
+
+
 
 @login_required
 def user_post(request):
-    # devs = Devtool.objects.get(id=pk)
-    # idea = Devtool.idea_set.objects.filter(devtool='')
-    
-    # BrandLikes = PostLike.objects.filter(user = pk)
-    
     MyPosts = Post.objects.filter(user__id=request.user.pk)
     
     context = {'MyPosts' : MyPosts}
 
     return render(request, 'users/user_post.html', context)
+
+@login_required
+def comments_list(request):
+    Comments = Comment.objects.filter(user__id=request.user.pk)
+
+    context = {'Comments' : Comments}
+
+    return render(request, 'users/comments_list.html', context)
 
 def mypage_brand_delete(request):
     BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
@@ -180,6 +203,12 @@ def mypage_post_delete(request):
     
     
     return redirect('users:mypage')
+
+def mypage_comment_delete(request):
+    Comments = Comment.objects.filter(user__id=request.user.pk)
+    print(Comments)
+    Comments[0].delete()
+    return redirect('users:mypage')    
 
 # def user_post_delete(request):
 #     MyPosts = Post.objects.filter(user__id=request.user.pk)

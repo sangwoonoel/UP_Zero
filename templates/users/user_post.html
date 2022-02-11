@@ -3,10 +3,10 @@
 {% if user.is_authenticated %}
 <p>Welcome, {{ user.username }}!</p>
 
+
 <h1>작성한 글 목록</h1>
 {%for MyPost in MyPosts %}
     <div>
-        
         
         <a href="{% url 'post:post_detail' MyPost.id %}">{{MyPost}}</a>
         
@@ -16,9 +16,6 @@
         </div>
     </div>
     {% endfor %}
-
-
-
 {% endif %} 
 
 
