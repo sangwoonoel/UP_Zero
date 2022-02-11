@@ -6,6 +6,7 @@ import json
 from django.http import JsonResponse
 from django.db.models import Q
 from django.core.paginator import Paginator
+from django.db.models import Count
 
 
 def post_detail(request, pk):
@@ -129,15 +130,24 @@ def post_list(request):
     if request.GET.get('keyword'):
         keyword = request.GET.get('keyword')
         posts = Post.objects.filter(
-            Q(title__icontains=keyword) | Q(content__icontains=keyword))
+            Q(title__icontains=keyword) | Q(content__icontains=keyword)).order_by('-created_at')
     else:
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-created_at')
+
+    if request.GET.get('sort') == 'like':  # 좋아요 정렬 선택한 경우
+        posts = posts.annotate(like_cnt=Count('postlike')) \
+            .order_by('-like_cnt', '-created_at')
+    elif request.GET.get('sort') == 'past':  # 과거순 정렬 선택한 경우
+        posts = posts.order_by('created_at')
+    elif request.GET.get('sort') == 'latest':  # 최신순 정렬 선택한 경우
+        posts = posts.order_by('-created_at')
 
     paginator = Paginator(posts, 2)
     page = request.GET.get('page', 1)
     page_obj = paginator.get_page(page)
 
     return render(request, 'post/list.html', locals())
+
 
 
 def show_author_posts(request):
