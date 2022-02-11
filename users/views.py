@@ -186,4 +186,13 @@ def mypage_post_delete(request):
 #     MyPosts[0].delete()
 #     return redirect('users:mypage')
 
+from django.core.mail.message import EmailMessage
+
+def send_email(request):
+    subject = "message"
+    to = ["id@gmail.com"]
+    from_email = "id@gmail.com"
+    message = "메지시 테스트"
+    EmailMessage(subject=subject, body=message, to=to, from_email=from_email).send()
+
 
