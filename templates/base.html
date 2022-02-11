@@ -8,6 +8,7 @@
     {% block meta %} {% endblock %}
     <title>{% block title %}UP&Zero{% endblock %}</title>
     {% block bootstrap %} {% endblock %}
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     {% block css %} {% endblock %}
   </head>
@@ -18,7 +19,13 @@
       <a href="{% url 'post:list' %}">Community</a>
       <a href="#">Fund</a>
       <a href="{% url 'users:mypage' %}">Mypage</a>
-      {% if user.is_authenticated %}
+      {% if user.is_authenticated %} {% if user.image %}
+      <!-- 나중에 if문 지워도 됨 -->
+      <div class="login-user__avatar" style="display: inline">
+        <img src="{{user.image.url}}" alt="유저 프로필 이미지" width="30rem"
+        height="30rem" / >
+      </div>
+      {% endif %}
       <a href="{% url 'users:log_out' %}">로그아웃</a>
       {% else %}
       <a href="{% url 'users:login' %}">Log in</a>

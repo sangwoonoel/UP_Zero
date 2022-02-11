@@ -6,12 +6,12 @@ from django.http import JsonResponse
 from .models import *
 
 def show_list(request):
-    brands = Brand.objects.all()
+    brands = Brand.objects.order_by('name')
     cate = None
 
     if request.GET.get('category'): # 카테고리 선택한 경우
         cate_id = int(request.GET.get('category'))
-        brands = Brand.objects.filter(category__id=cate_id)
+        brands = brands.filter(category__id=cate_id)
         cate = get_object_or_404(Category, id=cate_id) # 선택한 카테고리
 
     if request.GET.get('sort') == 'like': # 좋아요 정렬 선택한 경우
@@ -24,7 +24,8 @@ def show_list(request):
 
 def show_search_results(request):
     keyword = request.GET.get('keyword')
-    brands = Brand.objects.filter(name__icontains=keyword)
+    brands = Brand.objects.filter(name__icontains=keyword).order_by('name')
+    
     cates = cates = Category.objects.all() # for brand/sidebar.html
     return render(request, 'brand/search-results.html', {'brands': brands, 'cates': cates})
 
