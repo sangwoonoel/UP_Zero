@@ -12,19 +12,6 @@
     </p>
     {% endif %}
     <div class="post-list">
-        <div class="keyword-container">
-            <form action="" method="get">
-                <input 
-                class="keyword" 
-                type="text" 
-                name="keyword" 
-                placeholder="게시물을 검색하세요"
-                value="{{keyword}}"
-                autocomplete
-                >
-                <button type="submit" value="검색"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
         <div class="posts">
         {% for post in page_obj %}
         <div class="post">
@@ -68,24 +55,45 @@
             {% endif %}
         </div>
     </div>
-    <div class="pagination">
-        {% if page_obj.has_previous %}
-        <a href="{% if keyword %}?keyword={{keyword}}&page=1{% else %}?page=1{% endif %}">First</a>
-        <a href="{% if keyword %}?keyword={{keyword}}&page={{page_obj.previous_page_number}}{% else %}?page={{page_obj.previous_page_number}}{% endif %}">Previous</a>
-        {% endif %}
-    
-        <span>{{page_obj.number}} / {{page_obj.paginator.num_pages}}</span>
-    
-        {% if page_obj.has_next %}
-        <a href="{% if keyword %}?keyword={{keyword}}&page={{page_obj.next_page_number}}{% else %}?page={{page_obj.next_page_number}}{% endif %}">Next</a>
-        <a href="{% if keyword %}?keyword={{keyword}}&page={{page_obj.paginator.num_pages}}{% else %}?page={{page_obj.paginator.num_pages}}{% endif %}">Last</a>
-        {% endif %}
-    </div>   
+    <form action="" method="get">
+        <div class="sort-btn">
+            <select class="sort" name="sort" id="sort">
+            <option class="sort=like" value="like" id="like" {% if sort == 'like' %}selected {% endif %} >좋아요순</option>
+            <option class="sort=latest" value="latest" id="latest" {% if sort == 'latest' %}selected {% endif %} >최신순</option>
+            <option class="sort=past" value="past" id="past" {% if sort == 'past' %}selected {% endif %} >과거순</option>
+            </select>
+            <button type="submit" value="">정렬</button>
+        </div>
+        <div class="keyword-container">
+            <input 
+            type="text" 
+            name="keyword" 
+            placeholder="게시물을 검색하세요"
+            value="{{keyword}}"
+            autocomplete
+            >
+            <button type="submit" value="검색"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+            <button name="page" value="1">First</button>
+            <button name="page" value="{{page_obj.previous_page_number}}">Prev</button>
+            {% endif %}
+        
+            <span>{{page_obj.number}} / {{page_obj.paginator.num_pages}}</span>
+        
+            {% if page_obj.has_next %}
+            <button name="page" value="{{page_obj.next_page_number}}">Next</button>
+            <button name="page" value="{{page_obj.next_page_number}}">Last</a>
+                {% endif %}
+        </div> 
+    </form>  
 </section>
 {% endblock %}
 {% block script %}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{% static 'js/post/like.js' %}"></script>
+<script src="{% static 'js/post/sort.js' %}"></script>
 {% endblock %}
 
 
