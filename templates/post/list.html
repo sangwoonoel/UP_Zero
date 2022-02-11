@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static %}
-{% block title %} All posts {%endblock %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %} All posts
+{%endblock %} {% block content %}
 <main id="post-list">
   {% if request.GET.keyword %}
   <!-- 검색어 포함된 URL로 접속 시 -->
@@ -32,7 +32,7 @@
         <a href="{% url 'post:post_detail' post.id %}">
           <div class="post-title">제목: {{post.title}}</div>
           <div class="post-preview">
-            내용: {{post.content|truncatechars:20}}
+            내용: {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
           </div>
           <div class="post-author" style="display: flex">
             {% if post.user.image %}

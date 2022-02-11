@@ -22,12 +22,9 @@
             <a href="/post/author?id={{post.user.username}}">{{ post.user.username }}</a> <!-- will change to nickname -->
         </div>
         <div class="post-detail__content">
-            <h3>제목: {{ post.title }}</h3>
-            {% if post.image %}
-            <img class="post-detail__img" src="{{ post.image.url }}" height="220" width="160">
-            {% endif %}
+            <h1>{{ post.title }}</h1>
             <p class="post-detail__item">
-                내용: {{ post.content }}
+                {{ post.content | safe}}
             </p>
         </div>
         <div class="post-detail__btns">

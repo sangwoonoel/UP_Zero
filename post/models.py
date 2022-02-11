@@ -2,13 +2,13 @@ from django.db import models
 from users.models import *
 from datetime import datetime, timedelta
 from django.utils import timezone
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=20)
-    content = models.TextField()
-    image = models.ImageField(upload_to='community/', blank=True, null=True)
+    content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
