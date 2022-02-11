@@ -1,8 +1,5 @@
 {% extends 'base.html' %} {% load static %}
-
 {% block content %}
-
-
 <main class="post-detail">
     <div 
     class="post"
@@ -13,10 +10,16 @@
         data-liked="false"
         {% endif %}
     >
-        <div class="post-detail__user">
-            <p>글쓴이: <a href="/post/author?id={{post.user.username}}">{{ post.user.username }}</a></p> <!-- 나중에 nickname으로 보여주기 -->
-            <!-- <p>글쓴이 소개</p> -->
-            <!-- <a href="">링크</a> -->
+        <div class="post-detail__user" style="display: flex;" ">
+            {% if post.user.image %} <!-- 나중에 if문 지워도 됨 -->
+        <img
+          src="{{post.user.image.url}}"
+          alt="작성자 프로필 이미지"
+          width="30rem"
+          height="30rem"
+        />
+        {% endif %}
+            <a href="/post/author?id={{post.user.username}}">{{ post.user.username }}</a> <!-- will change to nickname -->
         </div>
         <div class="post-detail__content">
             <h3>제목: {{ post.title }}</h3>
@@ -98,8 +101,6 @@
         
     </div>
 </main>
-
-
 {% endblock %}
 {% block script %}
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
