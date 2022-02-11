@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% load static %}
+{% block title %}{{author.username}}님의 작성 게시글 | UP&Zero{% endblock %}
+{% block content %}
+<main id="author-posts">
+  <header class="author-posts__header" style="display: flex">
+    {% if author.image %} <!-- 나중에 if문 지워도 됨 -->
+    <div class="author-posts__avatar">
+      <img
+        src="{{author.image.url}}"
+        alt="작성자 프로필 이미지"
+        width="50rem"
+        height="50rem"
+      />
+    </div>
+    {% endif %}
+    <h1 class="author-posts__title">
+      <span class="author__nickname">{{author.username}}</span>님의 작성 게시글
+    </h1>
+    <!-- will change to nickname -->
+  </header>
+
+  <div class="post-list">
+    <div class="posts">
+      {% for post in page_obj %}
+      <div class="post">
+        <a href="{% url 'post:post_detail' post.id %}">
+          <div class="post-title">제목: {{post.title}}</div>
+          <!-- <div class="post-preview">
+            내용: {{post.content|truncatechars:20}}
+          </div> -->
+          <!-- <div class="post-author">작성자 : {{post.user.username}}</div> -->
+          <div class="post-created">
+            <span>작성시간 : </span>
+            {% if post.created_string == False %}
+            <td>{{ post.created_at|date:'m월 d일' }}</td>
+            {% else %}
+            <td class="post_created_time">{{ post.created_string }}</td>
+            {% endif %}
+          </div>
+          <div class="post-comment">댓글 : {{post.comment_set.count}}개</div>
+          <div class="post-like">좋아요 : {{post.postlike_set.count}}개</div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="pagination">
+    {% if page_obj.has_previous %}
+    <a href="/post/author?id={{author.username}}&page=1">First</a>
+    <a
+      href="/post/author?id={{author.username}}&page={{page_obj.previous_page_number}}"
+      >Previous</a
+    >
+    {% endif %}
+
+    <span>{{page_obj.number}} / {{page_obj.paginator.num_pages}}</span>
+
+    {% if page_obj.has_next %}
+    <a
+      href="/post/author?id={{author.username}}&page={{page_obj.next_page_number}}"
+      >Next</a
+    >
+    <a
+      href="/post/author?id={{author.username}}&page={{page_obj.paginator.num_pages}}"
+      >Last</a
+    >
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

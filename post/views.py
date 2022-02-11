@@ -149,4 +149,16 @@ def post_list(request):
     return render(request, 'post/list.html', locals())
 
 
-# .order_by('-created_at')
+
+def show_author_posts(request):
+    author = get_object_or_404(User, username=request.GET.get('id'))
+    posts = Post.objects.filter(user=author).order_by('-created_at')
+
+    paginator = Paginator(posts, 2)
+    page = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page)
+
+    if author == request.user:
+        return redirect('users:user_post')
+    else:
+        return render(request, 'post/author_posts.html', locals())
