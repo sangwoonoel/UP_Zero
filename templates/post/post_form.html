@@ -13,5 +13,10 @@
   {{ form.content|add_class:'post-form__content' }}
   <button type="submit">저장</button>
 </form>
-
+{% endblock %}
+{% block script %}
+<script>
+  CKEDITOR.config.removeDialogTabs = 'image:Link;image:advanced';
+  CKEDITOR.config.image_previewText = CKEDITOR.tools.repeat('미리보기 텍스트', 1);
+</script>
 {% endblock %}
