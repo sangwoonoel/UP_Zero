@@ -6,6 +6,7 @@ from ckeditor_uploader import views as views_ckeditor
 from django.views.decorators.cache import never_cache
 
 urlpatterns = [
+    path('account/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('brand/', include('brand.urls')),
     path('post/', include('post.urls')),

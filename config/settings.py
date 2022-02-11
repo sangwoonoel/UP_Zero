@@ -11,7 +11,31 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os, json
+from django.core.exceptions import ImproperlyConfigured
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+
+secret_file = os.path.join(BASE_DIR, 'secrets.json')
+
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
+
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
+SECRET_KEY = get_secret("SECRET_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +45,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h2t^*l8ql2ai1-n7h0m2sf&1z(gky$a%$v3-amp011gl6ttk#u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -175,3 +198,27 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 
 
 AUTH_USER_MODEL = 'users.User'
+
+# Email 전송
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# 메일을 호스트하는 서버
+EMAIL_HOST = 'smtp.gmail.com'
+
+# gmail과의 통신하는 포트
+EMAIL_PORT = '587'
+
+# 발신할 이메일
+# EMAIL_HOST_USER = '구글아이디@gmail.com'
+EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")
+
+# 발신할 메일의 비밀번호
+# EMAIL_HOST_PASSWORD = '구글비밀번호'
+EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
+
+# TLS 보안 방법
+EMAIL_USE_TLS = True
+
+# 사이트와 관련한 자동응답을 받을 이메일 주소
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
