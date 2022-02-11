@@ -1,107 +1,116 @@
-{% extends 'base.html' % } { % load static % } { % block title % } All posts { % endblock % }
-{% block content % }
-<main id = "post-list" >
-    {% if request.GET.keyword % }
-    <!-- 검색어 포함된 URL로 접속 시 -->
-    <p class = "post-search-title" >
-        {% if not posts % } 검색 결과가 없습니다. { % else % }
-        <span class = "post-search-title__keyword" > {{request.GET.keyword}} < /span > 에 대한
-        <span class = "post-search-title__cnt" > {{posts.count}} < /span > 개의 게시물 검색
-        결과입니다.
-        {% endif % }
-    </p >
-    {% endif % }
-    <div class = "post-list" >
-       <div class = "sort-select" >
-            <select class = "sort" name = "sort" id = "sort" onchange = "SortChange(this)" >
-            <option class = "sort=latest" value = "latest" id = "latest" > 최신순 < /option >
-            <option class = "sort=like" value = "like" id = "like" > 좋아요순 < /option >
-            <option class = "sort=past" value = "past" id = "past" > 과거순 < /option >
-            </select >
-        </div >
-        <div class = "posts" >
-        { % for post in page_obj % }
-        <div class = "post" >
-           <a href = "{% url 'post:post_detail' post.id %}" >
-               <div class = "post-title" >
-                제목: {{post.title}}
-                </div >
-                <div class = "post-preview" >
-                  내용: {{post.content|striptags|cut: "&nbsp;"|truncatechars: 50}}
-                </div >
-                <div class="post-author" style="display: flex">
-                            {% if post.user.image %}
-                            <!-- 나중에 if문 지워도 됨 -->
-                            <img
-                            src="{{post.user.image.url}}"
-                            alt="작성자 프로필 이미지"
-                            width="30rem"
-                            height="30rem"
-                            />
-                            {% endif %}
-                            <span>{{post.user.username}}</span>
-                </div>
-                <div class = "post-created" >
-                    <span > 작성시간 : < /span >
-                    { % if post.created_string == False % }
-                    <td > {{ post.created_at|date:'m월 d일' }} < /td>
-                    { % else % }
-                    <td class = "post_created_time" > {{ post.created_string }}</td>
-                    { % endif % }
-                </div >
-                <div class = "post-comment" >
-                 댓글: {{post.comment_set.count}}개
-                </div >
-                <div class = "post-like" >
-                 좋아요: {{post.postlike_set.count}}개
-                </div >
-            </a >
-        </div >
-        { % endfor % }
-        </div >
-        <div class = "post-create" >
-            { % if user.is_authenticated % }
-            <a class = "post-create__btn" href = "{% url 'post:post_create' %}">게시물작성</a>
-            { % else % }
-            <button
-              class = "post-create__btn"
-               type = "button"
-                onclick = "onClickAlert()"
-            >게시물작성 < /button >
-            { % endif % }
-        </div >
-    </div >
-    <form action = "" method = "get">
-       <div class = "keyword-container" >
-         <input
-          type = "text"
-           name = "keyword"
-            placeholder = "게시물을 검색하세요"
-            value = "{{keyword}}"
-            autocomplete
-            >
-            <button type = "submit" value = "검색"><i class="fas fa-search"></i></button>
-        </div >
-    </form >
-       <div class = "pagination" >
-            { % if page_obj.has_previous % }
-            <button onclick = "page(this)" name = "page" value="1">First</button>
-            <button onclick = "page(this)" name = "page" value="{{page_obj.previous_page_number}}">Prev</button>
-            { % endif % }
+{% extends 'base.html' %} {% load static %}
+{% block title %}All posts{% endblock %} {% block content %}
+<main id="post-list">
+  {% if request.GET.keyword %}
+  <!-- 검색어 포함된 URL로 접속 시 -->
+  <p class="post-search-title">
+    {% if not posts %} 검색 결과가 없습니다. {% else %}
+    <span class="post-search-title__keyword"> {{request.GET.keyword}} </span> 에
+    대한 <span class="post-search-title__cnt"> {{posts.count}} </span> 개의
+    게시물 검색 결과입니다. {% endif %}
+  </p>
+  {% endif %}
+  <div class="post-list">
+    <div class="sort-select">
+      <select class="sort" name="sort" id="sort" onchange="SortChange(this)">
+        <option class="sort=latest" value="latest" id="latest">최신순</option>
+        <option class="sort=like" value="like" id="like">좋아요순</option>
+        <option class="sort=past" value="past" id="past">과거순</option>
+      </select>
+    </div>
+    <div class="posts">
+      {% for post in page_obj %}
+      <div class="post">
+        <a href="{% url 'post:post_detail' post.id %}">
+          <div class="post-title">제목: {{post.title}}</div>
+          <div class="post-preview">
+            내용: {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
+          </div>
+          <div class="post-author" style="display: flex">
+            {% if post.user.image %}
+            <!-- 나중에 if문 지워도 됨 -->
+            <img
+              src="{{post.user.image.url}}"
+              alt="작성자 프로필 이미지"
+              width="30rem"
+              height="30rem"
+            />
+            {% endif %}
+            <span>{{post.user.username}}</span>
+          </div>
+          <div class="post-created">
+            <span> 작성시간 : </span>
+            {% if post.created_string == False %}
+            <td>{{ post.created_at|date:'m월 d일' }}</td>
+            {% else %}
+            <td class="post_created_time">{{ post.created_string }}</td>
+            {% endif %}
+          </div>
+          <div class="post-comment">댓글: {{post.comment_set.count}}개</div>
+          <div class="post-like">좋아요: {{post.postlike_set.count}}개</div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="post-create">
+      {% if user.is_authenticated %}
+      <a class="post-create__btn" href="{% url 'post:post_create' %}"
+        >게시물작성</a
+      >
+      {% else %}
+      <button class="post-create__btn" type="button" onclick="onClickAlert()">
+        게시물작성
+      </button>
+      {% endif %}
+    </div>
+  </div>
+  <form action="" method="get">
+    <div class="keyword-container">
+      <input
+        type="text"
+        name="keyword"
+        placeholder="게시물을 검색하세요"
+        value="{{keyword}}"
+        autocomplete
+      />
+      <button type="submit" value="검색"><i class="fas fa-search"></i></button>
+    </div>
+  </form>
+  <div class="pagination">
+    {% if page_obj.has_previous %}
+    <button onclick="page(this)" name="page" value="1">First</button>
+    <button
+      onclick="page(this)"
+      name="page"
+      value="{{page_obj.previous_page_number}}"
+    >
+      Prev
+    </button>
+    {% endif %}
 
-            <span > {{page_obj.number}} / {{page_obj.paginator.num_pages}} < /span>
+    <span> {{page_obj.number}} / {{page_obj.paginator.num_pages}} </span>
 
-            { % if page_obj.has_next % }
-            <button onclick = "page(this)" name = "page" value="{{page_obj.next_page_number}}">Next</button>
-            <button onclick = "page(this)" name = "page" value="{{page_obj.paginator.num_pages}}">Last</button>
-            { % endif % }
-        </div >
-</main >
-{ % endblock % }
-{ % block script % }
-<script src = "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" > </script>
-<script src = "{% static 'js/post/like.js' %}" > </script>
-<script src = "{% static 'js/post/sort.js' %}" > </script>
-{ % endblock % }
-
+    {% if page_obj.has_next %}
+    <button
+      onclick="page(this)"
+      name="page"
+      value="{{page_obj.next_page_number}}"
+    >
+      Next
+    </button>
+    <button
+      onclick="page(this)"
+      name="page"
+      value="{{page_obj.paginator.num_pages}}"
+    >
+      Last
+    </button>
+    {% endif %}
+  </div>
+</main>
+{% endblock %} {% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/post/like.js' %}"></script>
+<script src="{% static 'js/post/sort.js' %}"></script>
+{% endblock %}
 <!-- type = "submit" value = "검색"-->
