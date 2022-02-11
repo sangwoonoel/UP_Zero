@@ -206,12 +206,11 @@ CKEDITOR_CONFIGS = {
             ['Link', 'Image', 'Flash', 'Table', 'Smiley', 'SpecialChar', 'PageBreak'],
             ['Undo', 'Redo'],
             '/',
-            ['Styles', 'Format', 'Font', 'FontSize'],
+            ['Styles', 'Format', 'FontSize'],
             ['TextColor', 'BGColor']
         ]
     }
 }
-
 
 AUTH_USER_MODEL = 'users.User'
 

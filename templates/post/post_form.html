@@ -16,11 +16,11 @@
 </form>
 {% endblock %} {% block script %}
 <script>
-  CKEDITOR.config.removeDialogTabs = "image:Link;image:advanced";
   CKEDITOR.config.image_previewText = CKEDITOR.tools.repeat(
     "미리보기 텍스트",
     1
   );
-  CKEDITOR.config.removeDialogTabs = "link:target;link:advanced";
+  CKEDITOR.config.removeDialogTabs =
+    "link:target;link:advanced;image:Link;image:advanced";
 </script>
 {% endblock %}
