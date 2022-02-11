@@ -11,6 +11,12 @@ from django.contrib import messages,auth
 import re
 from django.contrib.auth.decorators import login_required
 
+from django.conf import settings
+
+from django.core.mail import EmailMessage
+ 
+from .decorators import unauthenticated_user
+
 
 class LoginView(View):
     def get(self, request):
@@ -185,5 +191,30 @@ def mypage_post_delete(request):
 #     MyPosts = Post.objects.filter(user__id=request.user.pk)
 #     MyPosts[0].delete()
 #     return redirect('users:mypage')
+
+from django.template.loader import render_to_string
+
+@unauthenticated_user
+def ForgotIDView(request):
+	context = {}
+	if request.method == 'POST':
+		email = request.POST.get('email')
+        
+		try:
+			user = User.objects.get(email=email)
+			if user is not None:
+				template = render_to_string('users/email_template.html', {'name': user.nickname, 'id':user.username})
+				method_email = EmailMessage(
+					'Your ID is in the email',
+					template,
+					settings.EMAIL_HOST_USER,
+					[email],
+					)
+				method_email.send(fail_silently=False)
+				return render(request, 'users/id_sent.html', context)
+		except:	
+			messages.info(request, "There is no username along with the email")
+	context = {}
+	return render(request, 'users/forgot_id.html', context)
 
 
