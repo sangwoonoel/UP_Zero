@@ -130,9 +130,9 @@ def post_list(request):
     if request.GET.get('keyword'):
         keyword = request.GET.get('keyword')
         posts = Post.objects.filter(
-            Q(title__icontains=keyword) | Q(content__icontains=keyword))
+            Q(title__icontains=keyword) | Q(content__icontains=keyword)).order_by('-created_at')
     else:
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-created_at')
 
     if request.GET.get('sort') == 'like':  # 좋아요 정렬 선택한 경우
         posts = posts.annotate(like_cnt=Count('postlike')) \
