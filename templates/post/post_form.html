@@ -5,7 +5,8 @@
   class="post-form"
   enctype="multipart/form-data"
   style="display: flex; flex-direction: column"
-> <!-- 임시 CSS -->
+>
+  <!-- 임시 CSS -->
   {% csrf_token %} {{ form.media }}
   <label for="id_title">제목:</label>
   {{ form.title|add_class:'post-form__title' }}
@@ -13,10 +14,13 @@
   {{ form.content|add_class:'post-form__content' }}
   <button type="submit">저장</button>
 </form>
-{% endblock %}
-{% block script %}
+{% endblock %} {% block script %}
 <script>
-  CKEDITOR.config.removeDialogTabs = 'image:Link;image:advanced';
-  CKEDITOR.config.image_previewText = CKEDITOR.tools.repeat('미리보기 텍스트', 1);
+  CKEDITOR.config.removeDialogTabs = "image:Link;image:advanced";
+  CKEDITOR.config.image_previewText = CKEDITOR.tools.repeat(
+    "미리보기 텍스트",
+    1
+  );
+  CKEDITOR.config.removeDialogTabs = "link:target;link:advanced";
 </script>
 {% endblock %}
