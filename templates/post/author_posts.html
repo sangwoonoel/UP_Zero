@@ -2,11 +2,17 @@
 {% block title %}{{author.username}}님의 작성 게시글 | UP&Zero{% endblock %}
 {% block content %}
 <main id="author-posts">
-  <header class="author-posts__header">
-    <!-- <div class="author-posts__avatar">
-      if author.image: <img src="author.image.url" alt="">
-      else: images 폴더에 UP&Zero 로고 이미지 파일 넣어서 보여주기
-    </div> -->
+  <header class="author-posts__header" style="display: flex">
+    {% if author.image %} <!-- 나중에 if문 지워도 됨 -->
+    <div class="author-posts__avatar">
+      <img
+        src="{{author.image.url}}"
+        alt="작성자 프로필 이미지"
+        width="50rem"
+        height="50rem"
+      />
+    </div>
+    {% endif %}
     <h1 class="author-posts__title">
       <span class="author__nickname">{{author.username}}</span>님의 작성 게시글
     </h1>
@@ -51,7 +57,8 @@
     <span>{{page_obj.number}} / {{page_obj.paginator.num_pages}}</span>
 
     {% if page_obj.has_next %}
-    <a href="/post/author?id={{author.username}}&page={{page_obj.next_page_number}}"
+    <a
+      href="/post/author?id={{author.username}}&page={{page_obj.next_page_number}}"
       >Next</a
     >
     <a
@@ -61,7 +68,4 @@
     {% endif %}
   </div>
 </main>
-{% endblock %} {% block script %}
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="{% static 'js/post/like.js' %}"></script>
 {% endblock %}
