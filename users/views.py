@@ -22,8 +22,11 @@ class LoginView(View):
     def get(self, request):
         #form = LoginForm()
         #return render(request, "accounts/login.html")
+        next = None
+        if request.GET.get("next"):
+            next = request.GET.get("next")
         form = LoginForm()
-        return render(request, "users/login.html", {"form": form})
+        return render(request, "users/login.html", {"form": form, "next": next})
 
     def post(self, request):
         form = LoginForm(request.POST)
@@ -37,7 +40,9 @@ class LoginView(View):
                 # print(user.pk)
                 # print(user.username)
                 # print(user.user_score)
-                return render(request, "users/main.html")
+                if request.POST.get("next"):
+                    return redirect(request.POST.get("next"))
+                return redirect("/")
 
             return render(request, "users/login.html")
 

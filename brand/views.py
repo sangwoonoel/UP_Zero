@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 import json
 from django.http import JsonResponse
 from .models import *
@@ -33,13 +34,13 @@ def show_search_results(request):
 def show_detail(request, pk):
     brand = get_object_or_404(Brand, pk=pk)
 
-    try: # 로그인 상태
+    if request.user.is_authenticated:
         if BrandLike.objects.filter(user=request.user, brand=brand).exists():
-            is_liked = True
+            is_liked = "true"
         else:
-            is_liked = False
-    except TypeError: # 로그인 안 한 상태
-        is_liked = False
+            is_liked = "false"
+    else:
+        is_liked = "false"
     
     return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked})
 
