@@ -1,9 +1,18 @@
 @import "common/variables.css";
+@import "components/navbar.css";
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap');
 
 html {
   font-size: 62.5%;
+  box-sizing: border-box;
 }
+
+ol,
+ul {
+    list-style: none;
+}
+
 blockquote {
   font-style: italic;
   font-family: Georgia, Times, "Times New Roman", serif;
@@ -17,4 +26,14 @@ body {
   font-family: "Nanum Gothic", sans-serif;
   font-size: 1.6rem;
   color: var(--black);
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+/* 방문한 적 있는 링크 */
+a:visited {
+    text-decoration: none;
 }
