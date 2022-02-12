@@ -66,7 +66,6 @@ INSTALLED_APPS = [
     'users',
     'brand',
     'post',
-    # 'django_social_share',
 
     # allauth
     'allauth',
