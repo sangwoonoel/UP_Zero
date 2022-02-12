@@ -19,7 +19,7 @@
         height="30rem"
       />
       {% endif %}
-      <a href="/post/author?id={{post.user.username}}"
+      <a href="{% url 'post:author' %}?id={{post.user.username}}"
         >{{ post.user.username }}</a
       >
       <!-- will change to nickname -->

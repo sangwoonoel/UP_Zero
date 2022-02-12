@@ -19,7 +19,7 @@
       <li><a href="{% url 'brand:list' %}">전체</a></li>
       <i class="fas fa-chevron-right"></i>
       <li>
-        <a href="/brand/list?category={{brand.category.id}}"
+        <a href="{% url 'brand:list' %}?category={{brand.category.id}}"
           >{{brand.category}}</a
         >
       </li>
