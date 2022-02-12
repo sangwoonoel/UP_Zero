@@ -75,7 +75,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     # provider
-    'allauth.socialaccount.providers.google'
+    'allauth.socialaccount.providers.google',
+
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -181,6 +184,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -190,13 +194,31 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CKEDITOR_UPLOAD_PATH = "community/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': 750,
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike'],
+            ['NumberedList', 'BulletedList', '-', 'Blockquote', 'HorizontalRule', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Image', 'Flash', 'Table', 'Smiley', 'SpecialChar', 'PageBreak'],
+            ['Undo', 'Redo'],
+            '/',
+            ['Styles', 'Format', 'FontSize'],
+            ['TextColor', 'BGColor']
+        ]
+    }
+}
+
 AUTH_USER_MODEL = 'users.User'
 
 # Email 전송
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # 메일을 호스트하는 서버
 EMAIL_HOST = 'smtp.gmail.com'
-
 # gmail과의 통신하는 포트
 EMAIL_PORT = '587'
 
@@ -213,5 +235,3 @@ EMAIL_USE_TLS = True
 
 # 사이트와 관련한 자동응답을 받을 이메일 주소
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-

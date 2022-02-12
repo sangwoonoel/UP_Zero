@@ -23,7 +23,7 @@ urlpatterns = [
     path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('update/', views.update, name='update'),
     path('delete', views.delete, name='delete'),
-     path('password/', views.password, name='password'),
+    path('password/', views.password, name='password'),
+    path('forgot_id/', views.ForgotIDView, name="forgot_id"),
     # path("user_post_delete/", views.user_post_delete, name="user_post_delete")
-    
 ]
