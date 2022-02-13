@@ -70,12 +70,9 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
 
-    # allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
-    # provider
     'allauth.socialaccount.providers.google'
 ]
 
@@ -88,17 +85,13 @@ AUTH_USER_MODEL = 'users.User'
 SITE_ID = 1
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
-            'profile',
             'email',
-
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
+        ]
     }
 }
 
@@ -124,8 +117,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages'
             ],
         },
     },

@@ -1,25 +1,17 @@
-from django.shortcuts import render, redirect, get_object_or_404
-
-from brand.models import BrandLike, Brand, Category
-from post.models import *
-import users
-from .models import User
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.views import View
-from .forms import LoginForm, SignUpForm
-from django.contrib import messages,auth
-import re
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
-from .forms import CustomUserChangeForm
-
-
+from django.contrib import messages, auth
+from django.views import View
 from django.conf import settings
-
 from django.core.mail import EmailMessage
- 
 from .decorators import unauthenticated_user
-
+from brand.models import *
+from post.models import *
+from .models import User
+from .forms import LoginForm, SignUpForm, CustomUserChangeForm
+import re
 
 class LoginView(View):
     def get(self, request):
@@ -52,9 +44,9 @@ class LoginView(View):
         ctx = {"form": form}
         return render(request, "users/login.html", ctx)
 
-def log_out(request):
-    logout(request)
-    return redirect("users:main")
+# def log_out(request):
+#     logout(request)
+    # return redirect("users:main")
 
 # def signup(request):
 #     if request.method =="POST":
