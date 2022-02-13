@@ -62,11 +62,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'widget_tweaks',
     'users',
     'brand',
     'post',
+    'widget_tweaks',
     'bootstrap4',
+    'ckeditor',
+    'ckeditor_uploader',
 
     # allauth
     'allauth',
@@ -74,21 +76,17 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     # provider
-    'allauth.socialaccount.providers.google',
-
-    'ckeditor',
-    'ckeditor_uploader'
+    'allauth.socialaccount.providers.google'
 ]
 
 AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
 ]
 
+AUTH_USER_MODEL = 'users.User'
 SITE_ID = 1
+LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -127,7 +125,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'django.template.context_processors.request',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -212,8 +210,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-AUTH_USER_MODEL = 'users.User'
-LOGIN_URL = 'users:login'
 
 # Email 전송
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
