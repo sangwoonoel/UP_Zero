@@ -6,11 +6,11 @@ let activeCate;
 
 if (cateId) {
   activeCate = document.querySelector(`li[data-category='${cateId}']`);
-  activeCate.classList.toggle("active");
 } else {
   activeCate = document.querySelector(`li[data-category='0']`);
-  activeCate.classList.toggle("active");
 }
+activeCate.classList.toggle("active");
+
 
 // deactivate sort button
 if (params.get("sort") === "like") {
@@ -21,8 +21,8 @@ if (params.get("sort") === "like") {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     let url = location.pathname;
-    if (params.get("category")) {
-      url += `?category=${params.get("category")}`;
+    if (cateId) {
+      url += `?category=${cateId}`;
     }
     location.href = url;
   });
