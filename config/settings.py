@@ -67,7 +67,6 @@ INSTALLED_APPS = [
     'brand',
     'post',
     'bootstrap4',
-    # 'django_social_share',
 
     # allauth
     'allauth',
