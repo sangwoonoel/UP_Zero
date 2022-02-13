@@ -69,6 +69,15 @@
         {% for comment in comments %} {% if comment.post == post %}
         <li class="comment__{{comment.id}}">
           <div class="comment__main">
+            {% if post.user.image %}
+            <!-- 나중에 if문 지워도 됨 -->
+            <img
+              src="{{post.user.image.url}}"
+              alt="작성자 프로필 이미지"
+              width="30rem"
+              height="30rem"
+            />
+            {% endif %}
             <span>{{ comment.user }}</span>
             <span class="comment__message">{{ comment.message }}</span>
             {% if request.user == comment.user %}
