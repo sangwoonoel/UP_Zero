@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'users',
     'brand',
     'post',
+    'bootstrap4',
     # 'django_social_share',
 
     # allauth
@@ -213,6 +214,7 @@ CKEDITOR_CONFIGS = {
 }
 
 AUTH_USER_MODEL = 'users.User'
+LOGIN_URL = 'users:login'
 
 # Email 전송
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
