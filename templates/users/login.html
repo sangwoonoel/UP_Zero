@@ -1,11 +1,19 @@
-{% extends 'base.html' %} {% block content %}
-<form method="POST">
-  {% csrf_token %}
-  {{form.as_table}}
-  {% if next %}
-  <input type="hidden" name="next" value="{{next}}" />
-  {% endif %}
-  <button>Login</button>
+{% extends 'base.html' %} {% load static %} {% load socialaccount %}
+
+
+{% block content %}
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.as_table}}
+    {% if next %}
+    <input type="hidden" name="next" value="{{next}}" />
+    {% endif %}
+    <button>Login</button>
 </form>
 <a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
+<a href="{% url 'users:password_reset' %}">비밀번호 찾기</a>
+
+<a href="{% provider_login_url 'google' %}">구글 로그인</a>
+<p>아직 계정이 없으신가요?</p>
+<a href="{% url 'users:signup' %}">Sign up</a>
 {% endblock content %}

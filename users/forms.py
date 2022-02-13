@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User
-
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import get_user_model
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=40, label = "아이디")
@@ -33,6 +34,13 @@ class SignUpForm(forms.ModelForm):
                 'email': '이메일',
                 'nickname': '닉네임',
             }
+
+
+
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = get_user_model()
+        fields = ['nickname', 'email']
         
        
 

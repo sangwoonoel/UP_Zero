@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'users',
     'brand',
     'post',
+    'bootstrap4',
 
     # allauth
     'allauth',

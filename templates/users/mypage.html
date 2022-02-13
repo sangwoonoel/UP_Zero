@@ -1,7 +1,13 @@
 {% extends 'base.html' %} 
 {% block content %} 
 {% if user.is_authenticated %}
-<p>Welcome, {{ user.username }}!</p>
+<p>Welcome, {{ user.nickname }}!</p>
+
+{% if user == user %}
+<div>
+<a href="{% url 'users:update' %}">계정정보수정</a>
+</div>
+{% endif %}
 
 
 
