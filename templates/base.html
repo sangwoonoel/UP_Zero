@@ -22,13 +22,13 @@
       <div class="navbar__column">
         <a class="navbar__logo-container" href="/"><img class="navbar__logo" src="{% static 'images/slownique_logo.png' %}" /></a>
       </div>
-      <div class="navbar__column">
-        <a class="navbar__items" href="{% url 'brand:list' %}">Brand</a>
-        <a class="navbar__items" href="{% url 'post:list' %}">Community</a>
-        <a class="navbar__items" href="#" onclick="onClickFund()">Fund</a>
+      <div class="navbar__column navbar-right">
+        <a id="nav-brand" class="navbar__items" href="{% url 'brand:list' %}">Brand</a>
+        <a id="nav-community" class="navbar__items" href="{% url 'post:list' %}">Community</a>
+        <a id="nav-fund" class="navbar__items" href="#" onclick="onClickFund()">Fund</a>
         {% if user.is_authenticated %} {% if user.image %}
         <!-- 나중에 if문 지워도 됨 -->
-        <div class="login-user__avatar navbar__items" style="display: inline">
+        <div id="nav-mypage" class="login-user__avatar navbar__items" style="display: inline">
             <a class="avatar-container" href="{% url 'users:mypage' %}">
                 <img class="avatar-img" src="{{user.image.url}}" alt="유저 프로필 이미지" width="30rem"
             height="30rem" / >
@@ -56,6 +56,20 @@
     <script>
         function onClickFund() {
             alert("준비중인 기능입니다! 다음에 다시 찾아주세요~*^^*");
+        }
+    </script>
+    <script>
+        const currentUrl = window.location.pathname;
+        const navBrand = document.querySelector("#nav-brand");
+        const navComunity = document.querySelector("#nav-community");
+        const navRight = document.querySelector(".navbar-right");
+
+        if (currentUrl.includes('brand')) {
+            navBrand.className += " curr";
+        } else if (currentUrl.includes('post')) {
+            navComunity.className += " curr";
+        } else if (currentUrl.includes('login') || currentUrl.includes('signup') || currentUrl.includes('forgot')) {
+            navRight.className += " hidden";
         }
     </script>
     {% block script %} {% endblock %}

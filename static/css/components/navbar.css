@@ -1,7 +1,7 @@
 .navbar {
     font-family: 'Poppins', sans-serif;
     display: flex;
-    width: 100%;
+    width: 100vw;
     height: 10rem;
     padding: 0 10rem;
     justify-content: center;
@@ -11,6 +11,7 @@
 .navbar__column {
     width: 50%;
     font-weight: 400;
+    overflow: hidden;
 }
 
 .navbar__column:last-child {
@@ -33,12 +34,8 @@
     color: #83ccc8;
 }
 
-.login-user__avatar {
-    border-radius: 70%;
-    overflow: hidden;
-}
-
 .avatar-img {
+    border-radius: 70%;
     object-fit: cover;
 }
 
@@ -54,4 +51,8 @@
 .log-btn:hover {
     color: white;
     background-color: #83ccc8; 
+}
+
+.curr {
+    font-weight: 600;
 }
