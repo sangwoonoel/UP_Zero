@@ -14,15 +14,14 @@
       <!-- 나중에 if문 지워도 됨 -->
       <img
         src="{{post.user.image.url}}"
-        alt="작성자 프로필 이미지"
+        alt="글 작성자 프로필 이미지"
         width="30rem"
         height="30rem"
       />
       {% endif %}
       <a href="{% url 'post:author' %}?id={{post.user.username}}"
-        >{{ post.user.username }}</a
+        >{{ post.user }}</a
       >
-      <!-- will change to nickname -->
     </div>
     <h1 class="post-detail__title text-center">{{ post.title }}</h1>
     <div class="d-flex justify-content-center">
@@ -69,16 +68,17 @@
         {% for comment in comments %} {% if comment.post == post %}
         <li class="comment__{{comment.id}}">
           <div class="comment__main">
-            {% if post.user.image %}
+            {% if comment.user.image %}
             <!-- 나중에 if문 지워도 됨 -->
             <img
-              src="{{post.user.image.url}}"
-              alt="작성자 프로필 이미지"
+              src="{{comment.user.image.url}}"
+              alt="댓글 작성자 프로필 이미지"
               width="30rem"
               height="30rem"
             />
             {% endif %}
-            <span>{{ comment.user }}</span>
+            <a href="{% url 'post:author' %}?id={{comment.user.username}}"
+        ><span>{{ comment.user }}</span></a>
             <span class="comment__message">{{ comment.message }}</span>
             {% if request.user == comment.user %}
             <button
