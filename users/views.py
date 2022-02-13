@@ -260,7 +260,6 @@ def update(request):
             return redirect('users:mypage')
     else:
         user_change_form = CustomUserChangeForm(instance = request.user) 
-        print(user_change_form)
         return render(request, 'users/update.html', {'user_change_form':user_change_form})
 
 @login_required

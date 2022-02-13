@@ -1,7 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 <p>
-  Welcome, {% if user.nickname %} {{ user.nickname }} {% else %} {{ user }}!
-  {% endif %}
+  Welcome, {{ user }}!
 </p>
 
 {% if user == user %}
