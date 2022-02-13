@@ -1,15 +1,14 @@
-{% extends 'base.html' %} 
-{% block content %} 
-{% if user.is_authenticated %}
-<p>Welcome, {{ user.nickname }}!</p>
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<p>
+  Welcome, {% if user.nickname %} {{ user.nickname }} {% else %} {{ user }}!
+  {% endif %}
+</p>
 
 {% if user == user %}
 <div>
-<a href="{% url 'users:update' %}">계정정보수정</a>
+  <a href="{% url 'users:update' %}">계정정보수정</a>
 </div>
 {% endif %}
-
-
 
 <h1><a href="{% url 'users:brand_like' %}">브랜드 찜</a></h1>
 
@@ -19,9 +18,4 @@
 
 <h1><a href="{% url 'users:user_post' %}">작성한 글 목록</a></h1>
 
-
-
-{% endif %} 
-
-
-{% endblock %}
+{% endif %} {% endblock %}

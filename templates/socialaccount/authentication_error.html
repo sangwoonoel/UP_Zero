@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %} 로그인 중 오류가 발생했습니다.
+<form method="POST" action="/accounts/google/login/">
+  {% csrf_token %}
+  <button>구글 로그인 다시 시도</button>
+</form>
+<a href="{% url 'users:login' %}">SLOWNIQUE 계정으로 로그인</a>
+<p>아직 계정이 없으신가요?</p>
+<a href="{% url 'users:signup' %}">Sign up</a>
+{% endblock %}

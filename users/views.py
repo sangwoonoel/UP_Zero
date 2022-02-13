@@ -141,9 +141,10 @@ def signup(request):
                 email = request.POST['email'],
                 nickname = request.POST['nickname']
             )
-                auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-                messages.success(request, f"{user.username}님의 회원 가입을 축하합니다!" )
-                return redirect('/')
+                # auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                # messages.success(request, f"{user.username}님의 회원 가입을 축하합니다!" )
+                return render(request, 'users/first_login.html')
+
             context = {'form': form, 'help_text': help_text}
             return render(request, 'users/signup.html', context)
     else:
