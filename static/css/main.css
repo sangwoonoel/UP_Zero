@@ -1,0 +1,135 @@
+.main {
+    width: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.main-header {
+    max-width: 100%;
+}
+
+.main-header > img {
+    max-width: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.main-header__txt {
+    position: absolute;
+    top: 17rem;
+    left: 24rem;
+}
+
+.main-header__title {
+    color: white;
+    font-size: 5rem;
+}
+
+.main-header__title:first-child {
+    font-weight: 300;
+}
+
+.main-header__title:last-child {
+    font-weight: 500;
+}
+
+.main-header__desc {
+    font-weight: 300;
+    font-size: 1.8rem;
+}
+
+.main-header__desc {
+    color: white;
+    margin: 1.5rem 0;
+}
+
+.main-header__a {
+    margin-right: 1rem;
+    padding: 0.5rem 3rem;
+    font-weight: 500;
+    font-size: 1.4rem;
+    border-radius: 1.7rem;
+}
+
+.main-header__more {
+    background-color: var(--mint);
+    color: var(--black);
+}
+
+.main-header__more:hover {
+    color: white;
+}
+
+.main-header__btn {
+    background-color: var(--black);
+    color: white;
+}
+
+.main-header__btn:hover {
+    color: var(--mint);
+}
+
+.main-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-brand__title {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-top: 7rem;
+}
+
+.main-brand__wrapper {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+}
+
+.gi1, .gi5 {
+    grid-column: 1/2;
+    text-align: center;
+}
+
+.gi3 {
+    grid-column: 1/3;
+    margin-right: 1.5rem;
+}
+
+.gi2, .gi6 {
+    grid-column: 2/4;
+    margin-left: 1.5rem;
+}
+
+.gi4 {
+    grid-column: 3/4;
+    text-align: center;
+}
+
+.main-brand__img, .main-brand__info {
+    margin-top: 5rem;
+}
+
+.main-brand__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+.info__name {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+}
+
+.info__desc {
+    font-weight: 200;
+    font-size: 1.5rem;
+}
+
+footer {
+    background-color: var(--black);
+    margin-top: 10rem;
+    height: 10rem;
+}
