@@ -1,12 +1,11 @@
-{% extends 'base.html' %}
-
-
-{% block content %}
-<form method="POST" action="">
-    {% csrf_token %}
-    {{form.as_table}}
-    <button>Login</button>
+{% extends 'base.html' %} {% block content %}
+<form method="POST">
+  {% csrf_token %}
+  {{form.as_table}}
+  {% if next %}
+  <input type="hidden" name="next" value="{{next}}" />
+  {% endif %}
+  <button>Login</button>
 </form>
 <a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
-
 {% endblock content %}

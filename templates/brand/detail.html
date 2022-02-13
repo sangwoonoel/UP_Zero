@@ -2,14 +2,12 @@
 <meta property="og:type" , content="website" />
 <meta property="og:title" , content="{{brand}}" />
 <meta property="og:description" , content="{{brand.desc}}" />
-<meta property="og:url" , content="" />
-<!-- 배포하면 HTML로 -->
+<meta property="og:url" , content="" /> <!-- 배포하면 HTML로 -->
 <meta property="og:image" , content="" />
 <meta name="twitter:title" , content="{{brand}}" />
 <meta name="twitter:description" , content="{{brand.desc}}" />
 <meta name="twitter:card" , content="summary" />
-<meta name="twitter:url" , content="" />
-<!-- 배포하면 HTML로 -->
+<meta name="twitter:url" , content="" /> <!-- 배포하면 HTML로 -->
 <meta name="twitter:image" , content="" />
 {% endblock %} {% block title %}{{brand}} | UP&Zero{% endblock %}
 {% block css %}
@@ -21,7 +19,7 @@
       <li><a href="{% url 'brand:list' %}">전체</a></li>
       <i class="fas fa-chevron-right"></i>
       <li>
-        <a href="/brand/list?category={{brand.category.id}}"
+        <a href="{% url 'brand:list' %}?category={{brand.category.id}}"
           >{{brand.category}}</a
         >
       </li>
@@ -30,11 +28,7 @@
   <section
     class="brand d-flex"
     data-id="{{brand.id}}"
-    {% if is_liked %}
-    data-liked="true"
-    {% else %}
-    data-liked="false"
-    {% endif %}
+    data-liked="{{is_liked}}"
   >
     <div class="brand__left">
       <img
@@ -60,7 +54,7 @@
             {% if user.is_authenticated %}
             onclick="onClickLike({{user.id}}, {{brand.id}})"
             {% else %}
-            onclick="onClickAlert()"
+            onclick="onClickLogin()"            
             {% endif %}
           >
             <i class="fab fa-gratipay"></i>
