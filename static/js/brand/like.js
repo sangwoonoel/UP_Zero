@@ -1,25 +1,17 @@
 const brand = document.querySelector(".brand");
-const brandLiked = brand.getAttribute("data-liked");
+const isBrandLiked = brand.getAttribute("data-liked"); // when the page is loaded for the first time
 const likeBtn = brand.querySelector(".like-btn");
-if (brandLiked === "true") {
+if (isBrandLiked === "true") {
   likeBtn.style.color = "red";
 }
 
-const onClickAlert = () => {
-  alert("로그인이 필요합니다.");
-};
-
 const onClickLike = async (userID, brandID) => {
-  const brand = document.querySelector(`.brand[data-id="${brandID}"]`);
-  const brandLiked = brand.getAttribute("data-liked");
-
+  const isBrandLiked = brand.getAttribute("data-liked"); // needs to be defined inside the function as well
   let action;
-  if (brandLiked === "true") {
+  if (isBrandLiked === "true") {
     action = "off";
-    brand.setAttribute("data-liked", "false");
   } else {
     action = "on";
-    brand.setAttribute("data-liked", "true");
   }
 
   const url = "/brand/like/";
@@ -32,16 +24,23 @@ const onClickLike = async (userID, brandID) => {
 };
 
 const likeResHandler = (action) => {
-  const likeBtn = document.querySelector(".like-btn");
-  const likeCnt = document.querySelector(".like-cnt");
+  const likeCnt = brand.querySelector(".like-cnt");
   let num;
 
   if (action === "on") {
+    brand.setAttribute("data-liked", "true");
     likeBtn.style.color = "red";
     num = Number(likeCnt.innerText) + 1;
   } else {
+    brand.setAttribute("data-liked", "false");
     likeBtn.style.color = "black";
     num = Number(likeCnt.innerText) - 1;
   }
   likeCnt.innerText = num;
+};
+
+const onClickLogin = () => {
+  if (confirm("로그인이 필요합니다. 로그인 하시겠습니까?")) {
+    location.href = `/login?next=${location.pathname}`;
+  }
 };

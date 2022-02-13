@@ -10,6 +10,9 @@ from .forms import LoginForm, SignUpForm
 from django.contrib import messages,auth
 import re
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm
+from .forms import CustomUserChangeForm
+
 
 from django.conf import settings
 
@@ -22,8 +25,11 @@ class LoginView(View):
     def get(self, request):
         #form = LoginForm()
         #return render(request, "accounts/login.html")
+        next = None
+        if request.GET.get("next"):
+            next = request.GET.get("next")
         form = LoginForm()
-        return render(request, "users/login.html", {"form": form})
+        return render(request, "users/login.html", {"form": form, "next": next})
 
     def post(self, request):
         form = LoginForm(request.POST)
@@ -37,7 +43,9 @@ class LoginView(View):
                 # print(user.pk)
                 # print(user.username)
                 # print(user.user_score)
-                return render(request, "users/main.html")
+                if request.POST.get("next"):
+                    return redirect(request.POST.get("next"))
+                return redirect("/")
 
             return render(request, "users/login.html")
 
@@ -246,4 +254,46 @@ def ForgotIDView(request):
 	context = {}
 	return render(request, 'users/forgot_id.html', context)
 
+
+#
+
+#정보 수정
+@login_required
+def update(request):
+    if request.method == 'POST':
+        user_change_form = CustomUserChangeForm(request.POST, instance=request.user)
+        if user_change_form.is_valid():
+            user_change_form.save()
+            return redirect('users:mypage')
+    else:
+        user_change_form = CustomUserChangeForm(instance = request.user) 
+        print(user_change_form)
+        return render(request, 'users/update.html', {'user_change_form':user_change_form})
+
+@login_required
+def delete(request):
+    if request.method == 'POST':
+        request.user.delete()
+        return redirect('/')
+    return render(request, 'users/delete.html')
+
+
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+
+@login_required
+def password(request):
+    if request.method == 'POST':
+        password_change_form = PasswordChangeForm(request.user, request.POST)
+        
+        # 키워드인자명을 함께 써줘도 가능
+        # password_change_form = PasswordChangeForm(user=request.user, data=request.POST)
+        if password_change_form.is_valid():
+            user = password_change_form.save()
+            update_session_auth_hash(request, user)
+            return redirect('users:mypage')
+    
+    else:
+        password_change_form = PasswordChangeForm(request.user)
+    return render(request, 'users/password.html',{'password_change_form':password_change_form})
 

@@ -66,7 +66,7 @@ INSTALLED_APPS = [
     'users',
     'brand',
     'post',
-    # 'django_social_share',
+    'bootstrap4',
 
     # allauth
     'allauth',
@@ -206,14 +206,14 @@ CKEDITOR_CONFIGS = {
             ['Link', 'Image', 'Flash', 'Table', 'Smiley', 'SpecialChar', 'PageBreak'],
             ['Undo', 'Redo'],
             '/',
-            ['Styles', 'Format', 'Font', 'FontSize'],
+            ['Styles', 'Format', 'FontSize'],
             ['TextColor', 'BGColor']
         ]
     }
 }
 
-
 AUTH_USER_MODEL = 'users.User'
+LOGIN_URL = 'users:login'
 
 # Email 전송
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

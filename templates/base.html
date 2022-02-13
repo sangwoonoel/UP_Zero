@@ -4,36 +4,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" sizes="16x16" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% block meta %} {% endblock %}
     <title>{% block title %}UP&Zero{% endblock %}</title>
-    {% block bootstrap %} {% endblock %}
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     {% block css %} {% endblock %}
   </head>
   <body>
-    <nav>
-      <a href="/">Logo</a>
-      <a href="{% url 'brand:list' %}">Brand</a>
-      <a href="{% url 'post:list' %}">Community</a>
-      <a href="#">Fund</a>
-      <a href="{% url 'users:mypage' %}">Mypage</a>
-      {% if user.is_authenticated %} {% if user.image %}
-      <!-- 나중에 if문 지워도 됨 -->
-      <div class="login-user__avatar" style="display: inline">
-        <img src="{{user.image.url}}" alt="유저 프로필 이미지" width="30rem"
-        height="30rem" / >
+    <nav class="navbar">
+      <div class="navbar__column">
+        <a class="navbar__logo-container" href="/"><img class="navbar__logo" src="{% static 'images/slownique_logo.png' %}" /></a>
       </div>
-      {% endif %}
-      <a href="{% url 'users:log_out' %}">로그아웃</a>
-      {% else %}
-      <a href="{% url 'users:login' %}">Log in</a>
-      <a href="{% url 'users:signup' %}">Sign up</a>
-      <a href="{% provider_login_url 'google' %}">구글 로그인</a>
-      <a href="{% url 'users:password_reset' %}">비밀번호 찾기</a> 
-    
-      {% endif %}
+      <div class="navbar__column navbar-right">
+        <a id="nav-brand" class="navbar__items" href="{% url 'brand:list' %}">Brand</a>
+        <a id="nav-community" class="navbar__items" href="{% url 'post:list' %}">Community</a>
+        <a id="nav-fund" class="navbar__items" href="#" onclick="onClickFund()">Fund</a>
+        {% if user.is_authenticated %} {% if user.image %}
+        <!-- 나중에 if문 지워도 됨 -->
+        <div id="nav-mypage" class="login-user__avatar navbar__items" style="display: inline">
+            <a class="avatar-container" href="{% url 'users:mypage' %}">
+                <img class="avatar-img" src="{{user.image.url}}" alt="유저 프로필 이미지" width="30rem"
+            height="30rem" / >
+            </a>
+        </div>
+        {% endif %}
+        <a class="navbar__items log-btn" href="{% url 'users:log_out' %}">Log out</a>
+        {% else %}
+        <a class="navbar__items log-btn" href="{% url 'users:login' %}">Log in</a>
+        {% endif %}
+      </div>
     </nav>
     {% if messages %} {% for message in messages %}
     <div class="alert alert-{{ message.tags }}">{{ message }}</div>
@@ -42,6 +48,30 @@
       src="https://kit.fontawesome.com/6a23cd815d.js"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        function onClickFund() {
+            alert("준비중인 기능입니다! 다음에 다시 찾아주세요~*^^*");
+        }
+    </script>
+    <script>
+        const currentUrl = window.location.pathname;
+        const navBrand = document.querySelector("#nav-brand");
+        const navComunity = document.querySelector("#nav-community");
+        const navRight = document.querySelector(".navbar-right");
+
+        if (currentUrl.includes('brand')) {
+            navBrand.className += " curr";
+        } else if (currentUrl.includes('post')) {
+            navComunity.className += " curr";
+        } else if (currentUrl.includes('login') || currentUrl.includes('signup') || currentUrl.includes('forgot')) {
+            navRight.className += " hidden";
+        }
+    </script>
     {% block script %} {% endblock %}
   </body>
 </html>
