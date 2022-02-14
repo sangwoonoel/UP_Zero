@@ -70,13 +70,11 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
 
-    # allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
-    # provider
-    'allauth.socialaccount.providers.google'
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.naver',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -88,17 +86,13 @@ AUTH_USER_MODEL = 'users.User'
 SITE_ID = 1
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
-            'profile',
-            'email',
-
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
+            'email'
+        ]
     }
 }
 
@@ -124,8 +118,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages'
             ],
         },
     },
@@ -191,8 +184,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CKEDITOR_UPLOAD_PATH = "community/"
-CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_UPLOAD_PATH = 'community/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 CKEDITOR_CONFIGS = {
     'default': {

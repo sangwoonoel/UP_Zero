@@ -84,7 +84,7 @@
     width: 70%;
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 33% 33% 33%;
+    grid-template-rows: 28rem 28rem 28rem;
 }
 
 .gi1, .gi5 {
@@ -126,10 +126,21 @@
 .info__desc {
     font-weight: 200;
     font-size: 1.5rem;
+    margin-bottom: 3rem;
 }
 
 footer {
     background-color: var(--black);
     margin-top: 10rem;
     height: 10rem;
+}
+
+.underline {
+    width: 16rem;
+    height: 0.4rem;
+    background-color: var(--black);
+}
+
+.underline-right {
+    margin-left: 73%;
 }
