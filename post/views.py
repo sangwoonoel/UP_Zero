@@ -159,6 +159,6 @@ def show_author_posts(request):
     page_obj = paginator.get_page(page)
 
     if author == request.user:
-        return redirect('users:user_post')
+        return redirect('users:my_post')
     else:
         return render(request, 'post/author_posts.html', locals())

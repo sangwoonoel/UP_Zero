@@ -1,0 +1,17 @@
+<nav class="brand-navbar">
+  <ul class="d-flex align-items-end">
+    <li data-category="0" class="d-flex flex-column align-items-center">
+      <div class="focus hidden"></div>
+      <a href="{% url 'brand:list' %}">All</a>
+    </li>
+    {% for cate in cates %}
+    <li
+      data-category="{{cate.id}}"
+      class="d-flex flex-column align-items-center"
+    >
+      <div class="focus hidden"></div>
+      <a href="{% url 'brand:list' %}?category={{cate.id}}">{{cate}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

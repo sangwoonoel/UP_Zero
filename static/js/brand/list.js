@@ -2,7 +2,7 @@ const params = new URL(location.href).searchParams;
 const cateId = params.get("category");
 const sort = params.get("sort");
 
-// activate selected category
+// Activate selected category
 let activeCate;
 if (cateId) {
   activeCate = document.querySelector(`li[data-category='${cateId}']`);
@@ -10,14 +10,15 @@ if (cateId) {
   activeCate = document.querySelector(`li[data-category='0']`);
 }
 activeCate.classList.toggle("active");
+activeCate.querySelector(".focus").classList.toggle("hidden");
 
-// deactivate sort button
+// When brands are sorted
 if (sort === "like") {
-  const btn = document.querySelector(".sort-btn");
-  btn.classList.toggle("active");
-  btn.innerText = "좋아요 순으로 보기 해제";
+  const sortBtn = document.querySelector(".sort-btn");
+  sortBtn.classList.toggle("active");
+  sortBtn.previousElementSibling.innerText = "좋아요 순으로 보기 해제";
 
-  btn.addEventListener("click", (e) => {
+  sortBtn.addEventListener("click", (e) => {
     e.preventDefault();
     let url = location.pathname;
     if (cateId) {
@@ -27,7 +28,7 @@ if (sort === "like") {
   });
 }
 
-// pagination
+// Pagination
 const pagination = (angleBtn) => {
   let url = location.pathname;
 

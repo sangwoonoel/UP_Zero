@@ -1,49 +1,67 @@
 @import "common/variables.css";
 @import "components/navbar.css";
 
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;700;900&display=swap");
 
 html {
   font-size: 62.5%;
-  box-sizing: border-box;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 blockquote {
   font-style: italic;
-  font-family: Georgia, Times, "Times New Roman", serif;
+  font-family: Georgia, Times, "Times New Roman", serif !important;
   margin: 1.3rem 4rem;
   padding: 0.2rem 0.8rem 0 2rem;
   border: solid #ccc 0;
   border-left-width: 0.5rem;
 }
 
+button {
+  background: inherit;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    width: 100%;
-    font-size: 1.6rem;
-    color: var(--black);
+  width: 100%;
+  font-size: 1.6rem;
+  color: var(--black);
 }
 
 a {
-    text-decoration: none;
-    outline: none;
+  text-decoration: none;
+  outline: none;
 }
 
 /* 방문한 적 있는 링크 */
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 main {
-    padding-top: 10rem;
+  padding-top: 10rem;
 }

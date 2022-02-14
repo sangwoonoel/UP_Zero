@@ -1,6 +1,7 @@
 :root {
   --black: rgb(30, 30, 30);
   --mint: rgb(131, 204, 200);
+  --dark-gray: rgb(150, 150, 150);
   --gray: #a6a6a6;
   --post-hover: #fbfbfb;
 }

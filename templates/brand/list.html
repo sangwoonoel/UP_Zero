@@ -1,109 +1,102 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
-{% if not cate %}전체{% else %}{{cate.name_ko}}{% endif %} 브랜드 | UP&Zero{% endblock %}
+{% if not cate %}전체{% else %}{{cate}}{% endif %} 브랜드 | SLOW:NIQUE{% endblock %}
 {% block css %}
-<style>
-  .brand-sidebar li.active {
-    font-weight: bold;
-  }
-  a.sort-btn.active {
-    background: palevioletred;
-    color: white;
-  }
-</style>
+<link rel="stylesheet" href="{% static 'css/brand/brand.css' %}" />
 <link rel="stylesheet" href="{% static 'css/components/pagination.css' %}" />
 <script defer src="{% static 'js/brand/list.js' %}"></script>
 {% endblock %} {% block content %}
 <main id="brand-list">
-  
-  {% include "brand/search-form.html" %}
-  <div class="d-flex">
-    {% include "brand/sidebar.html" %}
-    <div>
-      <header>
-        <h2 class="selected-category">
-          {% if not cate %}All{% else %}{{cate.name_ko}}{% endif %}
-        </h2>
-        <p>전체 <span class="brands-cnt">{{brands.count}}</span>개</p>
-      </header>
-      <div class="d-flex justify-content-end w-100">
-        <a
-          class="sort-btn"
-          href="{% if cate %} {% url 'brand:list' %}?category={{cate.id}}&sort=like
-          {% else %} {% url 'brand:list' %}?sort=like
-          {% endif %}"
-          >좋아요 순으로 보기</a
-        >
+  {% include "brand/navbar.html" %}
+  <div class="brand-layout">
+    {% include "brand/search-form.html" %}
+    <header class="brand-list__header">
+      <h2 class="brand-list__category">
+        {% if not cate %}All{% else %}{{cate}}{% endif %}
+      </h2>
+      <div
+        class="brand-list__count-sort d-flex justify-content-between align-items-center"
+      >
+        <span class="brand-list__count">전체 {{brands.count}}개</span>
+        <div class="brand-list__sort d-flex align-items-center">
+          <span class="sort-by">좋아요 순으로 보기</span>
+          <a
+            class="sort-btn"
+            href="{% if cate %}{% url 'brand:list' %}?category={{cate.id}}&sort=like{% else %}{% url 'brand:list' %}?sort=like{% endif %}"
+            ><div class="sort-btn__bg">
+              <div class="sort-btn__indicator"></div></div
+          ></a>
+        </div>
       </div>
-      <section class="brands d-flex">
-        {% for brand in paginated_brands %}
-        <article class="brand">
-          <div class="brand__img">
-            <a href="{% url 'brand:detail' brand.id %}"
-              ><img
-                src="{{brand.image.url}}"
-                alt="{{brand}}"
-                width="300"
-                height="150"
-            /></a>
-          </div>
-          <div class="brand__content">
-            <h1 class="brand__header d-flex flex-column">
-              {% if not cate %}<span class="brand__category"
-                >{{brand.category}}</span
-              >{% endif %}
-              <span class="brand__name">{{brand}}</span>
-            </h1>
-            <p class="brand__desc">{{brand.desc}}</p>
+    </header>
+    <section class="brands">
+      {% for brand in paginated_brands %}
+      <article class="brand">
+        <div class="brand__img">
+          <a href="{% url 'brand:detail' brand.id %}"
+            ><img src="{{brand.image.url}}" alt="{{brand}}"
+          /></a>
+        </div>
+        <div class="brand__content">
+          <div
+            class="brand__sub-header d-flex justify-content-between align-items-center"
+          >
+            {% if not cate %}<span class="brand__category"
+              >{{brand.category}}</span
+            >{% endif %}
             <div class="brand__likes">
               <i class="far fa-heart"></i>
               <span class="like-cnt">{{brand.brandlike_set.all.count}}</span>
             </div>
           </div>
-        </article>
-        {% endfor %}
-      </section>
+          <div class="brand__header">
+            <h1 class="brand__name text-center">{{brand}}</h1>
+          </div>
+          <p class="brand__desc text-center">{{brand.desc}}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+
+    <div class="pagination">
+      {% if paginated_brands.has_previous %}
+      <button onclick="pagination(this)" name="page" value="1">
+        <i class="icon fa-solid fa-angles-left"></i>
+      </button>
+      <button
+        onclick="pagination(this)"
+        name="page"
+        value="{{paginated_brands.previous_page_number}}"
+      >
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      {% else %}
+      <button disabled style="width: 6.75rem"></button>
+      {% endif %}
+
+      <span class="page"> <strong>{{paginated_brands.number}}</strong></span>
+      <span> / </span>
+      <span>{{paginated_brands.paginator.num_pages}} </span>
+
+      {% if paginated_brands.has_next %}
+      <button
+        onclick="pagination(this)"
+        name="page"
+        value="{{paginated_brands.next_page_number}}"
+      >
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+      <button
+        onclick="pagination(this)"
+        name="page"
+        value="{{paginated_brands.paginator.num_pages}}"
+      >
+        <i class="fas fa-solid fa-angles-right"></i>
+      </button>
+      {% else %}
+      <button disabled style="width: 6.75rem"></button>
+      {% endif %}
     </div>
+    
   </div>
-
-  <div class="pagination">
-    {% if paginated_brands.has_previous %}
-    <button onclick="pagination(this)" name="page" value="1">
-      <i class="icon fa-solid fa-angles-left"></i>
-    </button>
-    <button
-      onclick="pagination(this)"
-      name="page"
-      value="{{paginated_brands.previous_page_number}}"
-    >
-      <i class="fa-solid fa-angle-left"></i>
-    </button>
-    {% else %}
-    <button disabled style="width: 6.75rem"></button>
-    {% endif %}
-
-    <span class="page"> <strong>{{paginated_brands.number}}</strong></span>
-    <span> / </span>
-    <span>{{paginated_brands.paginator.num_pages}} </span>
-
-    {% if paginated_brands.has_next %}
-    <button
-      onclick="pagination(this)"
-      name="page"
-      value="{{paginated_brands.next_page_number}}"
-    >
-      <i class="fa-solid fa-angle-right"></i>
-    </button>
-    <button
-      onclick="pagination(this)"
-      name="page"
-      value="{{paginated_brands.paginator.num_pages}}"
-    >
-      <i class="fas fa-solid fa-angles-right"></i>
-    </button>
-    {% else %}
-    <button disabled style="width: 6.75rem"></button>
-    {% endif %}
-  </div>
-  
 </main>
 {% endblock %}
