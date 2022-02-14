@@ -3,20 +3,19 @@
 
 {% block content %}
 <main>
-    <h3>Forgot ID</h3>
-    
-    <p>Forgotten your ID? Enter your email address below, and we’ll email your ID.</p>
-    
-    <form method="post">
-    
-        {% csrf_token %}
-        Email: <input type="email" name="email">
-        <input type="Submit" name="email_submit">
-    
-        {% for message in messages %}
-            {{message}}
-        {% endfor %}
-</main>
+	<h3>Forgot ID</h3>
 	
-
+	<p>Forgotten your ID? Enter your email address below, and we’ll email your ID.</p>
+	
+	<form method="post">
+	
+		{% csrf_token %}
+		Email: <input type="email" name="email">
+		<input type="Submit" name="email_submit">
+	
+		{% for message in messages %}
+			{{message}}
+		{% endfor %}
+	</form>	
+</main>
 {% endblock content %}

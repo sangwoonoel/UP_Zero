@@ -124,7 +124,8 @@ def signup(request):
             elif len(request.POST['password']) < 8 or len(request.POST['password']) > 21 or not re.findall('[0-9]+', request.POST['password']) or \
     re.findall('[ㄱ-ㅣ가-힣]', request.POST['password']) or not re.findall('[`~!@#$%^&*(),<.>/?]+', request.POST['password']):
                 help_text = '영문 대소문자, 숫자, 한 개 이상의 특수문자를 조합해서 8~21자리 비밀번호를 만들어주세요.'
-                
+            elif request.POST['password'] != request.POST['password2']:
+                help_text = '비밀번호가 일치하지 않습니다!'    
         
             else:
                 user = User.objects.create_user(
@@ -165,10 +166,10 @@ def mypage(request):
 @login_required
 def brand_like(request):
     BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
-    
+   
     context = {'BrandLikes' : BrandLikes}
 
-    return render(request, 'users/brand_like.html', context)
+    return render(request, 'users/my_brand.html', context)
 
 @login_required
 def post_like(request):
@@ -176,7 +177,7 @@ def post_like(request):
     
     context = {'PostLikes' : PostLikes}
 
-    return render(request, 'users/post_like.html', context)
+    return render(request, 'users/my_scrap.html', context)
 
 
 
@@ -187,7 +188,7 @@ def user_post(request):
     
     context = {'MyPosts' : MyPosts}
 
-    return render(request, 'users/user_post.html', context)
+    return render(request, 'users/my_post.html', context)
 
 @login_required
 def comments_list(request):
@@ -195,14 +196,26 @@ def comments_list(request):
 
     context = {'Comments' : Comments}
 
-    return render(request, 'users/comments_list.html', context)
+    return render(request, 'users/my_comment.html', context)
 
 def mypage_brand_delete(request):
     BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
+    
     BrandLikes[0].delete()
     
     
     return redirect('users:mypage')
+
+
+# def mypage_brand_delete(request):
+#     brand = BrandLike.objects.filter(user__id=request.user.pk)
+#     BrandLikes = BrandLike.objects.filter(brand__id=brand.id)
+   
+#     print(BrandLikes)
+#     context = {'BrandLikes' : BrandLikes}
+    
+#     return render(request, 'users/brand_like.html', context)
+
 
 def mypage_post_delete(request):
     PostLikes = PostLike.objects.filter(user__id=request.user.pk)
