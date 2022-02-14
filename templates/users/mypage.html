@@ -9,12 +9,12 @@
 </div>
 {% endif %}
 
-<h1><a href="{% url 'users:brand_like' %}">브랜드 찜</a></h1>
+<h1><a href="{% url 'users:my_brand' %}">브랜드 찜</a></h1>
 
-<h1><a href="{% url 'users:post_like' %}">포스트 스크랩</a></h1>
+<h1><a href="{% url 'users:my_scrap' %}">포스트 스크랩</a></h1>
 
-<h1><a href="{% url 'users:comments_list' %}">내가 쓴 댓글</a></h1>
+<h1><a href="{% url 'users:my_comment' %}">내가 쓴 댓글</a></h1>
 
-<h1><a href="{% url 'users:user_post' %}">작성한 글 목록</a></h1>
+<h1><a href="{% url 'users:my_post' %}">작성한 글 목록</a></h1>
 
 {% endif %} {% endblock %}
