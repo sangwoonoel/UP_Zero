@@ -16,6 +16,11 @@
   width: 120rem;
 }
 
+.post a {
+  text-decoration: none;
+  color: var(--black);
+}
+
 .post-footer {
   display: flex;
   justify-content: space-between;

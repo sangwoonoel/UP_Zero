@@ -37,7 +37,7 @@
             {% for post in page_obj %}
             <div class="post">
                 <a href="{% url 'post:post_detail' post.id %}">
-                    <div class="post-title">제목: {{post.title}}</div>
+                    <h2 class="post-title">{{post.title}}</h2>
                     <div class="post-preview">
                         내용: {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
                     </div>
