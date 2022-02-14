@@ -1,5 +1,19 @@
+const search = new URL(location.href).searchParams;
+const value = search.get("sort")
+const element = document.querySelector(`option[value=${value}]`);
+
+//정렬 option클릭시 고정 - select default 초기화 방지 
+if (element) {
+    element.selected = true;
+}
+
+const keyword = document.querySelector(".input-keyword");
+keyword.addEventListener("keydown", (e) => {
+    if (e.keyCode !== 13) return;
+    PostSearch(this); // 엔터 쳐도 PostSearch 실행
+});
+
 function SortChange(e) {
-    const search = new URL(location.href).searchParams;
     const keyword = search.get("keyword")
     const page = search.get("page")
 
@@ -11,23 +25,8 @@ function SortChange(e) {
     } 
 }
 
-const params = new URL(location.href).searchParams;
-const value = params.get("sort")
-const element = document.querySelector(`option[value=${value}]`);
-
-if (element) {
-    element.selected = true;
-}
-
-const keyword = document.querySelector(".input-keyword");
-keyword.addEventListener("keydown", (e) => {
-  if (e.keyCode !== 13) return;
-  PostSearch(this); // 엔터 쳐도 onClickSearch 실행
-});
-
 function PostSearch(e) {
     const keyword = document.querySelector(".input-keyword").value;
-    const search = new URL(location.href).searchParams;
     const sort = search.get("sort")
 
     if (sort) {
@@ -39,7 +38,6 @@ function PostSearch(e) {
 }
 
 function pagination(e) {
-    const search = new URL(location.href).searchParams;
     const sort = search.get("sort")
     const keyword = search.get("keyword")
 
