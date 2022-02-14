@@ -164,7 +164,7 @@ def mypage(request):
 @login_required
 def brand_like(request):
     BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
-    
+    print(BrandLikes)
     context = {'BrandLikes' : BrandLikes}
 
     return render(request, 'users/brand_like.html', context)
@@ -198,10 +198,22 @@ def comments_list(request):
 
 def mypage_brand_delete(request):
     BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
+    
     BrandLikes[0].delete()
     
     
     return redirect('users:mypage')
+
+
+# def mypage_brand_delete(request):
+#     brand = BrandLike.objects.filter(user__id=request.user.pk)
+#     BrandLikes = BrandLike.objects.filter(brand__id=brand.id)
+   
+#     print(BrandLikes)
+#     context = {'BrandLikes' : BrandLikes}
+    
+#     return render(request, 'users/brand_like.html', context)
+
 
 def mypage_post_delete(request):
     PostLikes = PostLike.objects.filter(user__id=request.user.pk)
