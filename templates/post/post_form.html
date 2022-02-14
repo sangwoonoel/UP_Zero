@@ -1,19 +1,21 @@
 {% extends 'base.html' %} {% load static %} {% load widget_tweaks %}
 {% block content %}
-<form
-  method="post"
-  class="post-form"
-  enctype="multipart/form-data"
-  style="display: flex; flex-direction: column"
->
-  <!-- 임시 CSS -->
-  {% csrf_token %} {{ form.media }}
-  <label for="id_title">제목:</label>
-  {{ form.title|add_class:'post-form__title' }}
-  <label for="id_content">내용:</label>
-  {{ form.content|add_class:'post-form__content' }}
-  <button type="submit">저장</button>
-</form>
+<main>
+    <form
+    method="post"
+    class="post-form"
+    enctype="multipart/form-data"
+    style="display: flex; flex-direction: column"
+    >
+    <!-- 임시 CSS -->
+    {% csrf_token %} {{ form.media }}
+    <label for="id_title">제목:</label>
+    {{ form.title|add_class:'post-form__title' }}
+    <label for="id_content">내용:</label>
+    {{ form.content|add_class:'post-form__content' }}
+    <button type="submit">저장</button>
+    </form>
+</main>
 {% endblock %} {% block script %}
 <script>
   CKEDITOR.config.image_previewText = CKEDITOR.tools.repeat(

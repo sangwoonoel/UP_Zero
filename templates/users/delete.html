@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+<main>
+    <h1>User delete</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p>정말로 탈퇴하시겠습니까?</p>
+        <input type="submit" value="탈퇴"/>
+    </form>
+</main>
 
-<h1>User delete</h1>
-<form method="POST">
-    {% csrf_token %}
-    <p>정말로 탈퇴하시겠습니까?</p>
-    <input type="submit" value="탈퇴"/>
-</form>
 {% endblock %}

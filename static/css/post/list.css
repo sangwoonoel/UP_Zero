@@ -8,7 +8,8 @@
 
 .post-header {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   width: 120rem;
 }
 
@@ -17,8 +18,43 @@
 }
 
 .post a {
-  text-decoration: none;
   color: var(--black);
+}
+
+.post:hover {
+  background-color: var(--post-hover);
+}
+
+.post-preview {
+  color: var(--gray);
+}
+
+.post-write {
+  display: flex;
+}
+
+.post-write .username {
+  text-align: center;
+}
+
+.post-created {
+  padding-right: 1rem;
+}
+
+.post-res {
+  display: flex;
+}
+
+.post-like {
+  margin-right: 1rem;
+}
+
+.like-icon {
+  color: rgb(164, 0, 1);
+}
+
+.comment-icon {
+  color: var(--mint);
 }
 
 .post-footer {

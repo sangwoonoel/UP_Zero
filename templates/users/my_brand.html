@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% if user.is_authenticated %}
+<main>
+    <p>Welcome, {{ user.username }}!</p>
+
+    <h1>브랜드 찜</h1>
+        {%for BrandLike in BrandLikes %}
+            <div>
+            
+                <a href="{% url 'brand:detail' BrandLike.brand.id %}">{{ BrandLike.brand.name }}</a>
+                <a href="">삭제</a>
+            </div>
+        {% endfor %}
+
+    {% endif %}
+</main>
+{% endblock %}
