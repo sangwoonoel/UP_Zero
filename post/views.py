@@ -93,11 +93,12 @@ def create_comment(request):
     message = req['message']
 
     user = get_object_or_404(User, id=user_id)
+    img_url = user.image.url
     post = get_object_or_404(Post, id=post_id)
     comment = Comment.objects.create(user=user, post=post, message=message)
     comment.save()
 
-    return JsonResponse({'user': user.username, 'post_id': post_id, 'message': message, 'comment_id': comment.id})
+    return JsonResponse({'user': user.nickname, 'username': user.username, 'post_id': post_id, 'message': message, 'comment_id': comment.id, 'img_url':img_url})
 
 
 @csrf_exempt

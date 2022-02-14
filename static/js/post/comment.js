@@ -22,10 +22,12 @@ requestComment.onreadystatechange = () => {
 
 const CreateHandleResponse = () => {
     if (requestComment.status < 400){
-        let {user, post_id, message, comment_id} = JSON.parse(requestComment.response);
+        let {user, username, post_id, message, comment_id, img_url} = JSON.parse(requestComment.response);
         const element = document.querySelector(`.post-comment__${post_id}`);
         const newComment = document.createElement("li");
         const commentMain = document.createElement("div");
+        const commentUserImg = document.createElement("img");
+        const commentUserLink = document.createElement("a");
         const commentUser = document.createElement("span");    
         const commentMessage = document.createElement("span");    
         const delBtn = document.createElement("button");
@@ -36,13 +38,19 @@ const CreateHandleResponse = () => {
 
         newComment.setAttribute("class", `comment__${comment_id}`);
         commentMain.setAttribute("class", "comment__main");
+        commentUserImg.setAttribute("class", "avatar-img");
+        commentUserImg.setAttribute("src", `${img_url}`);
+        commentUserImg.setAttribute("alt", "댓글 작성자 프로필 이미지");
+        commentUserImg.setAttribute("width", "30rem");
+        commentUserImg.setAttribute("height", "30rem");
+        commentUserLink.setAttribute("href", `/post/author/?id=${username}`);
         delBtn.setAttribute("onclick", `onClickDel(${comment_id})`);
         delBtn.setAttribute("class", "comment__del-btn");
         editBtn.setAttribute("class", "comment__edit-btn");
         editBtn.setAttribute("onclick", `onClickEdit(${comment_id})`);
         
         commentMessage.innerText = `${message} `;
-        commentUser.innerText = `${user} `;
+        commentUser.innerText = ` ${user} `;
 
         commentEdit.setAttribute("class", "comment__edit");
         commentEdit.setAttribute("style", "display: none;");
@@ -61,7 +69,9 @@ const CreateHandleResponse = () => {
         element.append(newComment);
         newComment.append(commentMain);
         newComment.append(commentEdit);
-        commentMain.appendChild(commentUser);
+        commentMain.appendChild(commentUserImg);
+        commentMain.appendChild(commentUserLink);
+        commentUserLink.appendChild(commentUser);
         commentMain.appendChild(commentMessage);
         commentMain.appendChild(editBtn);
         commentMain.appendChild(delBtn);

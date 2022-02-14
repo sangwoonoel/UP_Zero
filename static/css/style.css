@@ -1,5 +1,3 @@
-@import "./main.css";
-
 @import "common/variables.css";
 @import "components/navbar.css";
 
@@ -44,4 +42,8 @@ a:visited {
 
 .hidden {
     visibility: hidden;
+}
+
+main {
+    padding-top: 10rem;
 }
