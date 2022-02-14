@@ -68,6 +68,8 @@ def post_delete(request, pk):
 
 @csrf_exempt
 def like_post(request):
+    # TODO : 누구나 좋아요 요청 가능.
+    # TODO : request.user & login_required 사용하기
     req = json.loads(request.body)
     user_id = req["user_id"]
     post_id = req["post_id"]
@@ -87,6 +89,8 @@ def like_post(request):
 
 @csrf_exempt
 def create_comment(request):
+    # TODO : 누구나 좋아요 요청 가능.
+    # TODO : request.user & login_required 사용하기
     req = json.loads(request.body)
     user_id = req['user_id']
     post_id = req['post_id']
@@ -103,6 +107,8 @@ def create_comment(request):
 
 @csrf_exempt
 def update_comment(request):
+    # TODO : 누구나 좋아요 요청 가능.
+    # TODO : request.user & login_required 사용하기
     req = json.loads(request.body)
     post_id = req['post_id']
     comment_id = req['comment_id']
@@ -118,6 +124,8 @@ def update_comment(request):
 
 @csrf_exempt
 def delete_comment(request):
+    # TODO : 누구나 좋아요 요청 가능.
+    # TODO : request.user & login_required 사용하기
     req = json.loads(request.body)
     comment_id = req['id']
 

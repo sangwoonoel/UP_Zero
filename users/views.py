@@ -29,7 +29,7 @@ class LoginView(View):
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
             user = authenticate(request, username=username, password=password)
-            
+
             if user is not None:
                 login(request, user)
                 # print(user.pk)
@@ -50,10 +50,10 @@ class LoginView(View):
 
 # def signup(request):
 #     if request.method =="POST":
-        
+
 #         if User.objects.filter(username = request.POST['username']).exists():
 #             help_text = '이미 있는 아이디입니다.'
-        
+
 
 #         elif len(request.POST['password1']) < 6:
 #             help_text = '비밀번호가 너무 간단합니다!'
@@ -61,7 +61,7 @@ class LoginView(View):
 #         elif User.objects.filter(nickname = request.POST['nickname']).exists():
 #             help_text = '이미 있는 닉네임 입니다!'
 
-        
+
 
 #         elif request.POST['password1'] != request.POST['password2']:
 #             help_text = '비밀번호가 일치하지 않습니다'
@@ -82,7 +82,7 @@ class LoginView(View):
 #         form = SignUpForm()
 #         ctx = {'help_text':help_text, 'form':form}
 #         return render(request, template_name='users/signup.html',context=ctx)
-        
+
 #     else:
 #         form = SignUpForm()
 #         ctx = {'form':form}
@@ -110,7 +110,7 @@ class LoginView(View):
 #             context = {'form': form, 'help_text': help_text}
 #             return render(request, 'users/signup.html', context)
 #     else:
-        
+
 #         form = SignUpForm()
 #     context = {'form': form}
 #     return render(request, 'users/signup.html', context)
@@ -125,8 +125,8 @@ def signup(request):
     re.findall('[ㄱ-ㅣ가-힣]', request.POST['password']) or not re.findall('[`~!@#$%^&*(),<.>/?]+', request.POST['password']):
                 help_text = '영문 대소문자, 숫자, 한 개 이상의 특수문자를 조합해서 8~21자리 비밀번호를 만들어주세요.'
             elif request.POST['password'] != request.POST['password2']:
-                help_text = '비밀번호가 일치하지 않습니다!'    
-        
+                help_text = '비밀번호가 일치하지 않습니다!'
+
             else:
                 user = User.objects.create_user(
                 username= request.POST['username'],
@@ -141,7 +141,7 @@ def signup(request):
             context = {'form': form, 'help_text': help_text}
             return render(request, 'users/signup.html', context)
     else:
-        
+
         form = SignUpForm()
     context = {'form': form}
     return render(request, 'users/signup.html', context)
@@ -153,7 +153,7 @@ def main(request):
 def mypage(request):
     # devs = Devtool.objects.get(id=pk)
     # idea = Devtool.idea_set.objects.filter(devtool='')
-    
+
     # BrandLikes = PostLike.objects.filter(user = pk)
     # BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
     # # PostLikes = PostLike.objects.filter(user__id=request.user.pk)
@@ -165,16 +165,19 @@ def mypage(request):
 
 @login_required
 def brand_like(request):
+    # TODO : 클래스를 제외한 인스턴스는, 소문자 네이밍을 사용하는게 좋습니다.
+    # brand_likes
     BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
-   
+
     context = {'BrandLikes' : BrandLikes}
 
     return render(request, 'users/my_brand.html', context)
 
 @login_required
 def post_like(request):
+    # TODO : 클래스를 제외한 인스턴스는, 소문자 네이밍을 사용하는게 좋습니다.
     PostLikes = PostLike.objects.filter(user__id=request.user.pk)
-    
+
     context = {'PostLikes' : PostLikes}
 
     return render(request, 'users/my_scrap.html', context)
@@ -184,14 +187,16 @@ def post_like(request):
 
 @login_required
 def user_post(request):
+    # TODO : 클래스를 제외한 인스턴스는, 소문자 네이밍을 사용하는게 좋습니다.
     MyPosts = Post.objects.filter(user__id=request.user.pk)
-    
+
     context = {'MyPosts' : MyPosts}
 
     return render(request, 'users/my_post.html', context)
 
 @login_required
 def comments_list(request):
+    # TODO : 클래스를 제외한 인스턴스는, 소문자 네이밍을 사용하는게 좋습니다.
     Comments = Comment.objects.filter(user__id=request.user.pk)
 
     context = {'Comments' : Comments}
@@ -199,36 +204,38 @@ def comments_list(request):
     return render(request, 'users/my_comment.html', context)
 
 def mypage_brand_delete(request):
+    # TODO : 클래스를 제외한 인스턴스는, 소문자 네이밍을 사용하는게 좋습니다.
     BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
-    
+
+    # 첫 번째 브랜드 좋아요만 지우는 이유가 있나요?
     BrandLikes[0].delete()
-    
-    
+
+
     return redirect('users:mypage')
 
 
 # def mypage_brand_delete(request):
 #     brand = BrandLike.objects.filter(user__id=request.user.pk)
 #     BrandLikes = BrandLike.objects.filter(brand__id=brand.id)
-   
+
 #     print(BrandLikes)
 #     context = {'BrandLikes' : BrandLikes}
-    
+
 #     return render(request, 'users/brand_like.html', context)
 
 
 def mypage_post_delete(request):
     PostLikes = PostLike.objects.filter(user__id=request.user.pk)
     PostLikes[0].delete()
-    
-    
+
+
     return redirect('users:mypage')
 
 def mypage_comment_delete(request):
     Comments = Comment.objects.filter(user__id=request.user.pk)
     print(Comments)
     Comments[0].delete()
-    return redirect('users:mypage')    
+    return redirect('users:mypage')
 
 # def user_post_delete(request):
 #     MyPosts = Post.objects.filter(user__id=request.user.pk)
@@ -242,7 +249,7 @@ def ForgotIDView(request):
 	context = {}
 	if request.method == 'POST':
 		email = request.POST.get('email')
-        
+
 		try:
 			user = User.objects.get(email=email)
 			if user is not None:
@@ -255,7 +262,7 @@ def ForgotIDView(request):
 					)
 				method_email.send(fail_silently=False)
 				return render(request, 'users/id_sent.html', context)
-		except:	
+		except:
 			messages.info(request, "There is no username along with the email")
 	context = {}
 	return render(request, 'users/forgot_id.html', context)
@@ -272,7 +279,7 @@ def update(request):
             user_change_form.save()
             return redirect('users:mypage')
     else:
-        user_change_form = CustomUserChangeForm(instance = request.user) 
+        user_change_form = CustomUserChangeForm(instance = request.user)
         return render(request, 'users/update.html', {'user_change_form':user_change_form})
 
 @login_required
@@ -290,15 +297,14 @@ from django.contrib.auth import update_session_auth_hash
 def password(request):
     if request.method == 'POST':
         password_change_form = PasswordChangeForm(request.user, request.POST)
-        
+
         # 키워드인자명을 함께 써줘도 가능
         # password_change_form = PasswordChangeForm(user=request.user, data=request.POST)
         if password_change_form.is_valid():
             user = password_change_form.save()
             update_session_auth_hash(request, user)
             return redirect('users:mypage')
-    
+
     else:
         password_change_form = PasswordChangeForm(request.user)
     return render(request, 'users/password.html',{'password_change_form':password_change_form})
-

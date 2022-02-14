@@ -11,6 +11,7 @@ def show_list(request):
     brands = Brand.objects.order_by('name')
     cate = None
 
+    # TODO : 이거 category & sort 값 둘다 들어오면 어떻게 되나요?
     if request.GET.get('category'): # 카테고리 선택한 경우
         cate_id = int(request.GET.get('category'))
         brands = brands.filter(category__id=cate_id)
@@ -33,6 +34,7 @@ def show_search_results(request):
     brands = Brand.objects.filter(Q(name__icontains=keyword)|Q(tag__name__icontains=keyword)).distinct() \
         .order_by('name')
 
+    # TODO : 문법 에러
     cates = cates = Category.objects.all() # for brand/sidebar.html
     return render(request, 'brand/search-results.html', {'brands': brands, 'cates': cates})
 
@@ -42,17 +44,20 @@ def show_detail(request, pk):
 
     if request.user.is_authenticated:
         if BrandLike.objects.filter(user=request.user, brand=brand).exists():
+            # TODO : liked를 문자열로 true/false 하는 이유가 있나요?
             is_liked = 'true'
         else:
             is_liked = 'false'
     else:
         is_liked = 'false'
-    
+
     return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked})
 
 
 @csrf_exempt
 def like_brand(request):
+    # TODO : 권한 체크가 필요합니다.
+    # TODO : 누구나 좋아요가 가능합니다.
     req = json.loads(request.body)
     user_id = req['user_id']
     brand_id = req['brand_id']
