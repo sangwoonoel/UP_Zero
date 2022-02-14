@@ -13,10 +13,29 @@ function SortChange(e) {
 
 const params = new URL(location.href).searchParams;
 const value = params.get("sort")
-const element = document.querySelector(`option[value=${value}`);
+const element = document.querySelector(`option[value=${value}]`);
 
 if (element) {
     element.selected = true;
+}
+
+const keyword = document.querySelector(".input-keyword");
+keyword.addEventListener("keydown", (e) => {
+  if (e.keyCode !== 13) return;
+  PostSearch(this); // 엔터 쳐도 onClickSearch 실행
+});
+
+function PostSearch(e) {
+    const keyword = document.querySelector(".input-keyword").value;
+    const search = new URL(location.href).searchParams;
+    const sort = search.get("sort")
+
+    if (sort) {
+        location.href = "/post/list/?keyword="+keyword+"&sort="+ sort;
+    }
+    else {
+        location.href = "/post/list/?keyword="+ keyword;
+    }
 }
 
 function pagination(e) {

@@ -18,18 +18,18 @@
         </p>
     {% endif %}
     <div class="post-header">
-        <form action="" method="get">
             <div class="keyword-container">
                 <input
+                class="input-keyword"
                 type="text"
                 name="keyword"
                 placeholder="게시물을 검색하세요"
                 value="{{keyword}}"
                 autocomplete
+
                 />
-                <button type="submit" value="검색"><i class="fas fa-search"></i></button>
+                <button type="submit" value="검색" onclick="PostSearch(this)"><i class="fas fa-search"></i></button>
             </div>
-        </form>
     </div>
     <div class="post-list">
         <div class="posts">
