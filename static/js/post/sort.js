@@ -14,11 +14,12 @@ function SortChange(e) {
 const params = new URL(location.href).searchParams;
 const value = params.get("sort")
 const element = document.querySelector(`option[value=${value}`);
-element.selected = true;
 
-const btn = document.querySelector(".page");
+if (element) {
+    element.selected = true;
+}
 
-function page(e) {
+function pagination(e) {
     const search = new URL(location.href).searchParams;
     const sort = search.get("sort")
     const keyword = search.get("keyword")

@@ -1,0 +1,54 @@
+#post-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  width: 120rem;
+}
+
+.post-list {
+  width: 120rem;
+}
+
+.post a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pagination button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  margin: 0;
+  padding: 0.5rem 1rem;
+
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  background: none;
+  display: inline-block;
+
+  border: none;
+  border-radius: 4px;
+}
