@@ -142,12 +142,11 @@ def post_list(request):
     elif request.GET.get('sort') == 'latest':  # 최신순 정렬 선택한 경우
         posts = posts.order_by('-created_at')
 
-    paginator = Paginator(posts, 2)
+    paginator = Paginator(posts, 5)
     page = request.GET.get('page', 1)
     page_obj = paginator.get_page(page)
 
     return render(request, 'post/list.html', locals())
-
 
 
 def show_author_posts(request):

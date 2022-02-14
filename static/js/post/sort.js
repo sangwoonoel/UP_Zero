@@ -18,7 +18,7 @@ element.selected = true;
 
 const btn = document.querySelector(".page");
 
-function page(e) {
+function pagination(e) {
     const search = new URL(location.href).searchParams;
     const sort = search.get("sort")
     const keyword = search.get("keyword")
