@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 from django.db.models import Count
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
@@ -19,13 +20,18 @@ def show_list(request):
         brands = brands.annotate(like_cnt=Count('brandlike')) \
             .order_by('-like_cnt')
 
+    paginator = Paginator(brands, 9)
+    page = request.GET.get('page', 1)
+    paginated_brands = paginator.get_page(page)
+
     cates = Category.objects.all() # for brand/sidebar.html
-    return render(request, 'brand/list.html', {'cate': cate, 'brands': brands, 'cates': cates})
+    return render(request, 'brand/list.html', locals())
 
 
 def show_search_results(request):
     keyword = request.GET.get('keyword')
-    brands = Brand.objects.filter(Q(name__icontains=keyword)|Q(tag__name__icontains=keyword)).distinct().order_by('name')
+    brands = Brand.objects.filter(Q(name__icontains=keyword)|Q(tag__name__icontains=keyword)).distinct() \
+        .order_by('name')
 
     cates = cates = Category.objects.all() # for brand/sidebar.html
     return render(request, 'brand/search-results.html', {'brands': brands, 'cates': cates})

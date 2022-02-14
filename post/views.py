@@ -142,7 +142,7 @@ def post_list(request):
     elif request.GET.get('sort') == 'latest':  # 최신순 정렬 선택한 경우
         posts = posts.order_by('-created_at')
 
-    paginator = Paginator(posts, 5)
+    paginator = Paginator(posts, 1)
     page = request.GET.get('page', 1)
     page_obj = paginator.get_page(page)
 
