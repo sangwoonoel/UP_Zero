@@ -1,0 +1,11 @@
+.post-detail__user > a {
+    color: var(--black);
+}
+
+.comment__main > a {
+    color: var(--black);
+}
+
+.post-detail {
+    display: flex;
+}
