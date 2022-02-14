@@ -19,17 +19,18 @@
     {% endif %}
     <div class="post-header">
         <a id="nav-community" class="navbar__items" href="{% url 'post:list' %}">Community</a>
-        <div class="post-create">
-            {% if user.is_authenticated %}
-            <a class="post-create__btn" href="{% url 'post:post_create' %}"
-                >게시물작성</a
-            >
-            {% else %}
-            <button class="post-create__btn" type="button" onclick="onClickAlert()">
-                게시물작성
-            </button>
-            {% endif %}
-        </div>
+        <form action="" method="get">
+            <div class="keyword-container">
+                <input
+                type="text"
+                name="keyword"
+                placeholder="게시물을 검색하세요"
+                value="{{keyword}}"
+                autocomplete
+                />
+                <button type="submit" value="검색"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
     </div>
     <div class="post-list">
         <div class="posts">
@@ -74,18 +75,17 @@
                     <option class="sort=past" value="past" id="past">과거순</option>
                 </select>
             </div>
-            <form action="" method="get">
-                <div class="keyword-container">
-                    <input
-                    type="text"
-                    name="keyword"
-                    placeholder="게시물을 검색하세요"
-                    value="{{keyword}}"
-                    autocomplete
-                    />
-                    <button type="submit" value="검색"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
+            <div class="post-create">
+                {% if user.is_authenticated %}
+                <a class="post-create__btn" href="{% url 'post:post_create' %}"
+                    >게시물작성</a
+                >
+                {% else %}
+                <button class="post-create__btn" type="button" onclick="onClickAlert()">
+                    게시물작성
+                </button>
+                {% endif %}
+            </div>      
         </div>
     </div>
     <div class="pagination">
