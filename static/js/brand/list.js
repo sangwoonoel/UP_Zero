@@ -1,9 +1,9 @@
 const params = new URL(location.href).searchParams;
+const cateId = params.get("category");
+const sort = params.get("sort");
 
 // activate selected category
-const cateId = params.get("category");
 let activeCate;
-
 if (cateId) {
   activeCate = document.querySelector(`li[data-category='${cateId}']`);
 } else {
@@ -11,9 +11,8 @@ if (cateId) {
 }
 activeCate.classList.toggle("active");
 
-
 // deactivate sort button
-if (params.get("sort") === "like") {
+if (sort === "like") {
   const btn = document.querySelector(".sort-btn");
   btn.classList.toggle("active");
   btn.innerText = "좋아요 순으로 보기 해제";
@@ -27,3 +26,27 @@ if (params.get("sort") === "like") {
     location.href = url;
   });
 }
+
+// pagination
+const pagination = (angleBtn) => {
+  let url = location.pathname;
+
+  let queryArr = new Array();
+  if (cateId) {
+    queryArr.push(`category=${cateId}`);
+  }
+  if (sort) {
+    queryArr.push(`sort=${sort}`);
+  }
+
+  if (queryArr.length === 0) {
+    location.href = `${url}?page=${angleBtn.value}`;
+    return;
+  } else if (queryArr.length === 1) {
+    url += "?" + queryArr[0];
+  } else {
+    // queryArr.length === 2
+    url += "?" + queryArr[0] + "&" + queryArr[1];
+  }
+  location.href = `${url}&page=${angleBtn.value}`;
+};
