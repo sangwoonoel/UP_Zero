@@ -49,6 +49,14 @@
   margin-right: 1rem;
 }
 
+.like-icon {
+  color: rgb(164, 0, 1);
+}
+
+.comment-icon {
+  color: var(--mint);
+}
+
 .post-footer {
   display: flex;
   justify-content: space-between;

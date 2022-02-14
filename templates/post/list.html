@@ -18,18 +18,17 @@
         </p>
     {% endif %}
     <div class="post-header">
-            <div class="keyword-container">
-                <input
-                class="input-keyword"
-                type="text"
-                name="keyword"
-                placeholder="게시물을 검색하세요"
-                value="{{keyword}}"
-                autocomplete
-
-                />
-                <button type="submit" value="검색" onclick="PostSearch(this)"><i class="fas fa-search"></i></button>
-            </div>
+        <div class="keyword-container">
+            <input
+            class="input-keyword"
+            type="text"
+            name="keyword"
+            placeholder="게시물을 검색하세요"
+            value="{{keyword}}"
+            autocomplete
+            />
+            <button type="submit" value="검색" onclick="PostSearch(this)"><i class="fas fa-search"></i></button>
+        </div>
     </div>
     <div class="post-list">
         <div class="posts">
@@ -62,8 +61,8 @@
                         </div>
                     </div>
                     <div class="post-res">
-                        <div class="post-like"><i class="fa-heart fa-solid"></i> {{post.postlike_set.count}}</div>
-                        <div class="post-comment"><i class="fa-solid fa-comment"></i> {{post.comment_set.count}}</div>
+                        <div class="post-like"><i class="like-icon fa-heart far"></i> {{post.postlike_set.count}}</div>
+                        <div class="post-comment"><i class="comment-icon far fa-comment"></i> {{post.comment_set.count}}</div>
                     </div>
                 </a>
             </div>
