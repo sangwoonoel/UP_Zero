@@ -1,22 +1,24 @@
 {% extends 'base.html' %} 
 {% block content %} 
 {% if user.is_authenticated %}
-<p>Welcome, {{ user.username }}!</p>
+<main>
+    <p>Welcome, {{ user.username }}!</p>
 
 
-<h1>내가 쓴 댓글</h1>
-{%for Comment in Comments %}
-    <div>
+    <h1>내가 쓴 댓글</h1>
+    {%for Comment in Comments %}
+        <div>
         
-        <a href="{% url 'post:post_detail' Comment.post.id %}">{{Comment.message}}</a>
+            <a href="{% url 'post:post_detail' Comment.post.id %}">{{Comment.message}}</a>
         
-        <a href="">삭제</a>
+            <a href="">삭제</a>
         
                 
         </div>
-    </div>
+   
     {% endfor %}
 {% endif %} 
+</main>
 
 
 {% endblock %}

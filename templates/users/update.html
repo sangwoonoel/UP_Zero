@@ -6,19 +6,20 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>{% endblock %}
 {% load bootstrap4 %}
 {% block content %}
+<main>
 
-<h1>User Edit</h1>
+    <h1>User Edit</h1>
 
-<form method="POST">
-    {% csrf_token %}
-    
-    {% bootstrap_form user_change_form %}
-    
-    <input type="submit" value="Submit"/>
-</form>
+    <form method="POST">
+        {% csrf_token %}
+        
+        {% bootstrap_form user_change_form %}
+        
+        <input type="submit" value="Submit"/>
+    </form>
 
-<a href="{% url 'users:delete' %}" class="btn btn-danger">회원탈퇴</a>
-<a href="{% url 'users:password' %}">비밀밀호 변경</a>
-
+    <a href="{% url 'users:delete' %}" class="btn btn-danger">회원탈퇴</a>
+    <a href="{% url 'users:password' %}">비밀밀호 변경</a>
+</main>
 {% endblock %}
 

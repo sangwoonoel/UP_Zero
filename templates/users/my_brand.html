@@ -1,17 +1,18 @@
 {% extends 'base.html' %} 
 {% block content %} 
 {% if user.is_authenticated %}
-<p>Welcome, {{ user.username }}!</p>
+<main>
+    <p>Welcome, {{ user.username }}!</p>
 
-<h1>브랜드 찜</h1>
-    {%for BrandLike in BrandLikes %}
-        <div>
-        
-            <a href="{% url 'brand:detail' BrandLike.brand.id %}">{{ BrandLike.brand.name }}</a>
-            <a href="">삭제</a>
-        </div>
-    {% endfor %}
+    <h1>브랜드 찜</h1>
+        {%for BrandLike in BrandLikes %}
+            <div>
+            
+                <a href="{% url 'brand:detail' BrandLike.brand.id %}">{{ BrandLike.brand.name }}</a>
+                <a href="">삭제</a>
+            </div>
+        {% endfor %}
 
-{% endif %}
-
+    {% endif %}
+</main>
 {% endblock %}
