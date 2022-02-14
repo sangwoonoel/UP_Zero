@@ -1,28 +1,30 @@
 {% extends 'users/main.html' %}
 
 {% block content %}
-{{help_text}}
-<form method="POST" action="">
-    {% csrf_token %}
-    
-    {% if form.errors %}
-        <div class="alert alert-danger" role="alert">
-        {% for field in form %}
-            {% if field.errors %}
-            {{ field.errors }}
-            {% endif %}
-        {% endfor %}
-        </div>
-    {% endif %}
-    <div>{{form.username.label_tag}} {{form.username}}</div>
-    <div>{{form.password.label_tag}} {{form.password}}</div>
-    <div>{{form.password2.label_tag}} {{form.password2}}</div>
-    <div>{{form.email.label_tag}} {{form.email}}</div>
-    <div>{{form.nickname.label_tag}} {{form.nickname}}</div>
+<main>
+    {{help_text}}
+    <form method="POST" action="">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+        <div>{{form.username.label_tag}} {{form.username}}</div>
+        <div>{{form.password.label_tag}} {{form.password}}</div>
+        <div>{{form.password2.label_tag}} {{form.password2}}</div>
+        <div>{{form.email.label_tag}} {{form.email}}</div>
+        <div>{{form.nickname.label_tag}} {{form.nickname}}</div>
 
 
-                                
-    <button>Signup</button>
-</form>
+                                    
+        <button>Signup</button>
+    </form>
+</main>
 
 {% endblock content %}
