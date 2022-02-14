@@ -10,11 +10,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120rem;
+  width: 70%;
 }
 
 .post-list {
-  width: 120rem;
+  width: 70%;
 }
 
 .post a {
@@ -31,9 +31,7 @@
 
 .post-write {
   display: flex;
-}
-
-.post-write .username {
+  align-items: center;
   text-align: center;
 }
 
