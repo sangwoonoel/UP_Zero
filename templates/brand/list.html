@@ -1,10 +1,11 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
-{% if not cate %}전체{% else %}{{cate}}{% endif %} 브랜드 | SLOW:NIQUE{% endblock %}
+{% if not cate %}전체{% else %}{{cate}}{% endif %} 브랜드 | SLOW:NIQUE {% endblock %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/brand/brand.css' %}" />
+<link rel="stylesheet" href="{% static 'css/brand/brands.css' %}" />
 <link rel="stylesheet" href="{% static 'css/components/pagination.css' %}" />
 <script defer src="{% static 'js/brand/list.js' %}"></script>
-{% endblock %} {% block content %}
+{% endblock %}
+{% block content %}
 <main id="brand-list">
   {% include "brand/navbar.html" %}
   <div class="brand-layout">
@@ -19,40 +20,44 @@
         <span class="brand-list__count">전체 {{brands.count}}개</span>
         <div class="brand-list__sort d-flex align-items-center">
           <span class="sort-by">좋아요 순으로 보기</span>
-          <a
+          <button
             class="sort-btn"
-            href="{% if cate %}{% url 'brand:list' %}?category={{cate.id}}&sort=like{% else %}{% url 'brand:list' %}?sort=like{% endif %}"
-            ><div class="sort-btn__bg">
-              <div class="sort-btn__indicator"></div></div
-          ></a>
+            onclick="location.href='{% if cate %}{% url 'brand:list' %}?category={{cate.id}}&sort=like{% else %}{% url 'brand:list' %}?sort=like{% endif %}'"
+          >
+            <div class="sort-btn__bg">
+              <div class="sort-btn__indicator"></div>
+            </div>
+          </button>
         </div>
       </div>
     </header>
     <section class="brands">
       {% for brand in paginated_brands %}
       <article class="brand">
-        <div class="brand__img">
-          <a href="{% url 'brand:detail' brand.id %}"
-            ><img src="{{brand.image.url}}" alt="{{brand}}"
-          /></a>
-        </div>
-        <div class="brand__content">
-          <div
-            class="brand__sub-header d-flex justify-content-between align-items-center"
-          >
-            {% if not cate %}<span class="brand__category"
-              >{{brand.category}}</span
-            >{% endif %}
-            <div class="brand__likes">
-              <i class="far fa-heart"></i>
-              <span class="like-cnt">{{brand.brandlike_set.all.count}}</span>
+        <a href="{% url 'brand:detail' brand.id %}">
+          <div class="brand__img">
+            <img src="{{brand.image.url}}" alt="{{brand}}" />
+          </div>
+          <div class="brand__content">
+            <div
+              class="brand__sub-header d-flex justify-content-between align-items-center"
+            >
+              {% if not cate %}<span class="brand__category"
+                >{{brand.category}}</span
+              >{% else %}<span class="brand__category hidden"
+                >{{brand.category}}</span
+              >{% endif %}
+              <div class="brand__likes">
+                <i class="far fa-heart"></i>
+                {{brand.brandlike_set.all.count}}
+              </div>
             </div>
-          </div>
-          <div class="brand__header">
-            <h1 class="brand__name text-center">{{brand}}</h1>
-          </div>
-          <p class="brand__desc text-center">{{brand.desc}}</p>
-        </div>
+            <div class="brand__header">
+              <h1 class="brand__name text-center">{{brand}}</h1>
+            </div>
+            <p class="brand__desc text-center">{{brand.desc}}</p>
+          </div></a
+        >
       </article>
       {% endfor %}
     </section>

@@ -1,10 +1,11 @@
+/* COMMON BRAND LIST & SEARCH PAGE ELEMENTS */
 #brand-list,
 #brand-search {
   font-family: "Noto Sans KR", sans-serif;
   position: relative;
 }
 
-/* Brand navbar */
+/* Navbar */
 .brand-navbar {
   width: 100%;
   position: fixed;
@@ -24,19 +25,19 @@
 }
 .brand-navbar a {
   padding: 0.4rem 2rem 1rem 2rem;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   color: inherit;
 }
 .brand-navbar a:hover {
   color: var(--mint);
 }
 
-/* Brand layout & search bar */
+/* Layout & search bar */
 .brand-layout {
-  padding: 4.7rem 10rem 0 10rem;
+  padding: 4.55rem 10rem 0 10rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
 }
 .search-form-container {
-  margin: 3rem 0 2.5rem 0;
+  margin: 3rem 0;
 }
 .search-form {
   width: 50%;
@@ -53,7 +54,68 @@
   color: var(--gray);
 }
 
-/* Sort in brand list */
+/* Section */
+.brands {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 10rem;
+}
+.brand a {
+  color: inherit;
+}
+
+.brand__content {
+  padding: 0 1rem;
+}
+.brand__img {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding-top: calc(100% * 2 / 3);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.brand__img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease-in-out;
+}
+.brand__img img:hover {
+  filter: brightness(0.75);
+  transform: scale(1.05);
+}
+.brand__category,
+.brand__likes {
+  font-size: 1.3rem;
+  color: var(--gray);
+}
+.brand__name {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem 0;
+}
+.brand__desc {
+  font-size: 1.4rem;
+}
+/* END COMMON ELEMENTS */
+
+/* BRAND LIST */
+/* Header */
+.brand-list__header {
+  margin-bottom: 3rem;
+}
+.brand-list__category {
+  font-weight: 900;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Sort */
 .brand-list__sort {
   gap: 0.5rem;
 }
@@ -98,59 +160,18 @@
   transform: translateX(-2.5rem);
   filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
 }
+/* END BRAND LIST */
 
-/* Brand list header */
-.brand-list__category {
-  font-weight: 900;
-  font-size: 3.5rem;
-}
-.brand-list__count-sort {
-  margin: 0.5rem 0 2rem 0;
-}
-
-/* Brand list section */
-#brand-list .brands {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
-  padding-bottom: 10rem;
-}
-#brand-list .brand__content {
-  padding: 0 1rem;
-}
-#brand-list .brand__img {
-  position: relative;
-  width: 100%;
-  margin-bottom: 0.5rem;
-  padding-top: calc(100% * 2 / 3);
-  border-radius: 1.5rem;
-  overflow: hidden;
-}
-#brand-list .brand__img img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.5s ease-in-out;
-}
-#brand-list .brand__img img:hover {
-  filter: brightness(0.7);
-  transform: scale(1.05);
-}
-#brand-list .brand__category {
-  font-size: 1.3rem;
-  color: var(--dark-gray);
-}
-#brand-list .brand__likes {
-  font-size: 1.3rem;
-  color: var(--gray);
-}
-#brand-list .brand__name {
+/* BRAND SEARCH */
+.brand-search__result {
   font-size: 2.3rem;
-  font-weight: 700;
 }
-#brand-list .brand__desc {
-  margin: 1rem 0;
+.brand-search__header {
+  background: rgb(248, 248, 248);
+  padding: 3.5rem 0;
+  margin-bottom: 5rem;
 }
+.brand-search__count {
+  color: var(--mint);
+}
+/* END BRAND SEARCH */
