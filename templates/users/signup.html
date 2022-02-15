@@ -1,9 +1,14 @@
-{% extends 'users/main.html' %}
+{% extends 'users/main.html' %} {% load static %}
+{% block title %}회원가입 | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/signup.css' %}" />
+{% endblock %}
 
 {% block content %}
-<main>
+<main class="signup">
+    <h3 class="signup__title">회원가입</h3>
     {{help_text}}
-    <form method="POST" action="">
+    <form class="signup__form" method="POST" action="">
         {% csrf_token %}
         
         {% if form.errors %}
@@ -15,15 +20,19 @@
             {% endfor %}
             </div>
         {% endif %}
-        <div>{{form.username.label_tag}} {{form.username}}</div>
-        <div>{{form.password1.label_tag}} {{form.password1}}</div>
-        <div>{{form.password2.label_tag}} {{form.password2}}</div>
-        <div>{{form.email.label_tag}} {{form.email}}</div>
-        <div>{{form.nickname.label_tag}} {{form.nickname}}</div>
+        <label for="signup-username">아이디</label>
+        <div id="username">{{form.username}}</div>
+        <label for="signup-password">비밀번호</label>
+        <div id="signup-password">{{form.password1}}</div>
+        <div>{{form.password2}}</div>
+        <label for="signup-email">이메일</label>
+        <div id="signup-email">{{form.email}}</div>
+        <label for="signup-nickname">닉네임</label>
+        <div id="signup-nickname">{{form.nickname}}</div>
 
 
                                     
-        <button>Signup</button>
+        <button>회원가입</button>
     </form>
 </main>
 
