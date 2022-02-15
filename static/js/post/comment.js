@@ -29,8 +29,9 @@ const CreateHandleResponse = () => {
         const commentUserImg = document.createElement("img");
         const commentUserLink = document.createElement("a");
         const commentUser = document.createElement("span");    
-        const commentMessage = document.createElement("span");    
+        const commentMessage = document.createElement("p");    
         const delBtn = document.createElement("button");
+        const btnDivision = document.createElement("span");
         const editBtn = document.createElement("button");
         const commentEdit = document.createElement("div");
         const editInput = document.createElement("input");
@@ -50,7 +51,10 @@ const CreateHandleResponse = () => {
         editBtn.setAttribute("onclick", `onClickEdit(${comment_id})`);
         
         commentMessage.innerText = `${message} `;
+        commentMessage.setAttribute("class", "comment__message");
         commentUser.innerText = ` ${user} `;
+        commentUser.setAttribute("class", "comment__user");
+        commentUser.style.fontWeight = "500";
 
         commentEdit.setAttribute("class", "comment__edit");
         commentEdit.setAttribute("style", "display: none;");
@@ -59,10 +63,12 @@ const CreateHandleResponse = () => {
         editInput.setAttribute("type", "text");
         updateBtn.setAttribute("class", "comment__update-btn");
         updateBtn.setAttribute("onclick", `onClickUpdate(${comment_id})`);
+        btnDivision.setAttribute("class", "button-division");
 
         delBtn.innerText = "삭제";
         editBtn.innerText = "수정";
         updateBtn.innerText = "수정";
+        btnDivision.innerText = " | ";
         const input = document.querySelector(`.comment-input__${post_id}`)
         input.value = '';
         
@@ -74,6 +80,7 @@ const CreateHandleResponse = () => {
         commentUserLink.appendChild(commentUser);
         commentMain.appendChild(commentMessage);
         commentMain.appendChild(editBtn);
+        commentMain.appendChild(btnDivision);
         commentMain.appendChild(delBtn);
         commentEdit.appendChild(editInput);
         commentEdit.appendChild(updateBtn);
