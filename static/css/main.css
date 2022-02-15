@@ -133,12 +133,6 @@ main {
     margin-bottom: 3rem;
 }
 
-footer {
-    background-color: var(--black);
-    margin-top: 10rem;
-    height: 10rem;
-}
-
 .underline {
     width: 16rem;
     height: 0.4rem;

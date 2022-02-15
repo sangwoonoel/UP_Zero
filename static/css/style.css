@@ -46,6 +46,7 @@ body {
   width: 100%;
   font-size: 1.6rem;
   color: var(--black);
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 a {
@@ -64,4 +65,10 @@ a:visited {
 
 main {
   padding-top: 10rem;
+}
+
+footer {
+    background-color: var(--black);
+    margin-top: 10rem;
+    height: 10rem;
 }
