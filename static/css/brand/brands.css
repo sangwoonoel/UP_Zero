@@ -138,7 +138,7 @@
   height: 1.5rem;
   border-radius: 50%;
   background: white;
-  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0.2rem 0.4rem 6rem rgba(0, 0, 0, 0.2));
   transition: all 0.3s ease-in-out;
 }
 .sort-btn:hover .sort-btn__bg {
@@ -146,7 +146,7 @@
 }
 .sort-btn:hover .sort-btn__indicator {
   transform: translateX(2.5rem);
-  filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(-0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.2));
 }
 
 .sort-btn.active .sort-btn__bg {
@@ -154,11 +154,11 @@
   background: var(--mint);
 }
 .sort-btn.active .sort-btn__indicator {
-  filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(-0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.2));
 }
 .sort-btn.active:hover .sort-btn__indicator {
   transform: translateX(-2.5rem);
-  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.2));
 }
 /* END BRAND LIST */
 
