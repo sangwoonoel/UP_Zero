@@ -24,7 +24,7 @@ def show_list(request):
     page = request.GET.get('page', 1)
     paginated_brands = paginator.get_page(page)
 
-    cates = Category.objects.all() # for brand/nav-bar.html
+    cates = Category.objects.all() # for brand/navbar.html
     return render(request, 'brand/list.html', locals())
 
 
@@ -33,7 +33,7 @@ def show_search_results(request):
     brands = Brand.objects.filter(Q(name__icontains=keyword)|Q(tag__name__icontains=keyword)).distinct() \
         .order_by('name')
 
-    cates = Category.objects.all() # for brand/nav-bar.html
+    cates = Category.objects.all() # for brand/navbar.html
     return render(request, 'brand/search-results.html', {'brands': brands, 'cates': cates})
 
 
