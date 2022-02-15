@@ -7,7 +7,6 @@
 <main id="brand-search">
   {% include "brand/navbar.html" %}
   <div class="brand-layout">
-    {% include "brand/search-form.html" %}
     <header class="brand-search__header">
       <p class="brand-search__result text-center">
         {% if not brands %} 검색 결과가 없습니다. {% else %} '<span
@@ -18,6 +17,7 @@
         브랜드 검색 결과입니다. {% endif %}
       </p>
     </header>
+
     {% if brands %}
     <section class="brands">
       {% for brand in brands %}
@@ -46,6 +46,7 @@
       {% endfor %}
     </section>
     {% endif %}
+    
   </div>
 </main>
 {% endblock %}

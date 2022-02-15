@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Count
-from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.http import JsonResponse
@@ -30,8 +29,7 @@ def show_list(request):
 
 def show_search_results(request):
     keyword = request.GET.get('keyword')
-    brands = Brand.objects.filter(Q(name__icontains=keyword)|Q(tag__name__icontains=keyword)).distinct() \
-        .order_by('name')
+    brands = Brand.objects.filter(name__icontains=keyword).order_by('name')
 
     cates = Category.objects.all() # for brand/navbar.html
     return render(request, 'brand/search-results.html', {'brands': brands, 'cates': cates})
