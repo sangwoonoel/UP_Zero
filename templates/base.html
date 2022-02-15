@@ -68,6 +68,11 @@
         } else if (currentUrl.includes('login') || currentUrl.includes('signup') || currentUrl.includes('forgot')) {
             navRight.className += " hidden";
         }
+
+        if (currentUrl.includes('mypage')) {
+            navBrand.classList.remove('curr');
+            navComunity.classList.remove('curr');
+        }
     </script>
     {% block script %} {% endblock %}
   </body>
