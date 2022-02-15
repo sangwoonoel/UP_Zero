@@ -58,7 +58,7 @@
 }
 .brand {
   border-radius: 1.5rem;
-  box-shadow: .5rem .5rem 2rem .1rem #d4d4d4;
+  box-shadow: 0.5rem 0.5rem 2rem 0.1rem #d4d4d4;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
@@ -70,7 +70,7 @@
 }
 
 .brand__content {
-  padding: .5rem 1.5rem 1rem 1.5rem;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
 }
 .brand__img {
   position: relative;
@@ -106,17 +106,19 @@
   margin: 3rem 0 5rem;
 }
 .brand-list__category {
+  text-align: center;
   font-weight: 900;
   font-size: 3.5rem;
   margin-bottom: 1rem;
 }
 
 /* Sort */
-.brand-list__sort {
-  gap: 0.5rem;
+.brand-list__count {
+  font-size: 1.5rem;
 }
-.sort-by {
+.brand-list__sort {
   font-size: 1.4rem;
+  gap: 0.5rem;
 }
 
 .sort-btn__bg {
@@ -160,7 +162,7 @@
 
 /* BRAND SEARCH */
 .brand-search__result {
-  font-size: 2.3rem;
+  font-size: 2rem;
 }
 .brand-search__header {
   background: rgb(248, 248, 248);
