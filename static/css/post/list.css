@@ -59,6 +59,53 @@
   justify-content: space-between;
 }
 
+.sort {
+  background: url(/static/images/arrow_down.svg) no-repeat 85% 50%;
+  background-size: 1rem;
+  border-radius: 0.4rem;
+  font-size: 1.3rem;
+  line-height: 19px;
+  font-style: normal;
+  color: white;
+  background-color: var(--mint);
+  width: 7rem;
+  height: 3.5rem;
+  border: none;
+  text-align: center;
+  text-align-last: center;
+  -webkit-appearance: none; /* for chrome */
+  -moz-appearance: none; /*for firefox*/
+  appearance: none;
+}
+
+.sort:focus {
+  outline: none;
+}
+
+.sort::-ms-expand {
+  display: none; /*for IE10,11*/
+}
+
+.sort option {
+  background-color: white;
+  color: var(--mint);
+}
+
+.sort:hover option {
+  opacity: 1;
+  visibility: visible;
+}
+
+.post-total {
+  display: flex;
+}
+
+.total-page {
+  padding: 0 0.5rem;
+  color: var(--mint);
+  font-weight: bolder;
+}
+
 .pagination {
   display: flex;
   align-items: center;

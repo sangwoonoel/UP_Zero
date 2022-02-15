@@ -70,9 +70,9 @@
         </div>
         <div class="post-footer">
             <div class="sort-select">
-                <select class="sort" name="sort" id="sort" onchange="SortChange(this)">
+                <select class="sort" name="sort" id="sort" onchange="SortChange(this)" style="padding-right: 12px;">
                     <option class="sort=latest" value="latest" id="latest">최신순</option>
-                    <option class="sort=like" value="like" id="like">좋아요순</option>
+                    <option class="sort=like" value="like" id="like">인기순</option>
                     <option class="sort=past" value="past" id="past">과거순</option>
                 </select>
             </div>
@@ -90,7 +90,7 @@
         </div>
     </div>
     <div class="post-total">
-        Total<span class="total-page">{{page_obj.paginator.num_pages}}</span>pages.
+        <span>Total</span><div class="total-page">{{page_obj.paginator.num_pages}}</div><span>pages.</span>
     </div>
     <div class="pagination">
         {% if page_obj.has_previous %}
@@ -118,14 +118,14 @@
                 name="page"
                 value="{{page_obj.next_page_number}}"
             >
-                <i class="fa-solid fa-angle-right"></i>
+            <i class="fa-solid fa-angle-right"></i>
             </button>
             <button
                 onclick="pagination(this)"
                 name="page"
                 value="{{page_obj.paginator.num_pages}}"
             >
-                <i class="fas fa-solid fa-angles-right"></i>
+            <i class="fas fa-solid fa-angles-right"></i>
             </button>
         {% else %}
         <button disabled style="width: 6.75rem;"> </button>
