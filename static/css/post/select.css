@@ -1,0 +1,63 @@
+.sort-select {
+  width: 10rem;
+}
+
+.sort-select:hover .optionList {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sort-select:hover .select-default span::after {
+  content: "▲";
+  float: right;
+  animation: changeLetter 0.5s linear 1;
+}
+
+@keyframes changeLetter {
+  0% {
+    content: "▼";
+  }
+  49% {
+    content: "▼";
+    opacity: 0;
+  }
+  50% {
+    content: "▲";
+    opacity: 0.1;
+  }
+  100% {
+    content: "▲";
+    opacity: 1;
+  }
+}
+
+.select-default {
+  padding: 1.1rem;
+  border-radius: 0.4rem;
+  background-color: white;
+  color: var(--mint);
+}
+
+.select-default span::after {
+  content: "▼";
+  float: right;
+}
+
+.optionList {
+  width: 10rem;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  margin-top: 0.5rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s linear, visibility 1s linear;
+  box-shadow: 0rem 0.4rem 1.5rem rgba(0, 0, 0, 0.25);
+  list-style: none;
+  text-align: center;
+}
+
+.optionListItem:hover {
+  background-color: #f0f9f8;
+  color: var(--mint);
+}

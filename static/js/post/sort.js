@@ -1,11 +1,6 @@
 const search = new URL(location.href).searchParams;
-const value = search.get("sort")
-const element = document.querySelector(`option[value=${value}]`);
-
-//정렬 option클릭시 고정 - select default 초기화 방지 
-if (element) {
-    element.selected = true;
-}
+const option = search.get("sort")
+const select = document.querySelector(".select-default span");
 
 const keyword = document.querySelector(".input-keyword");
 keyword.addEventListener("keydown", (e) => {
@@ -13,16 +8,29 @@ keyword.addEventListener("keydown", (e) => {
     PostSearch(this); // 엔터 쳐도 PostSearch 실행
 });
 
+switch(option) {
+    case 'latest':
+        select.innerText = '최신순';
+        break;
+    case 'like':
+        select.innerText = '인기순';
+        break;
+    case 'past':
+        select.innerText = '과거순';
+        break;
+}
+
 function SortChange(e) {
-    const keyword = search.get("keyword")
-    const page = search.get("page")
+    const keyword = search.get("keyword");
+    const page = search.get("page");
 
     if (keyword) {
-        location.href = "/post/list/?keyword="+keyword+"&sort="+ e.value;
+        location.href = "/post/list/?keyword="+keyword+"&sort="+ e.id;
     }
     else {
-    location.href = "/post/list/?sort="+ e.value;
+    location.href = "/post/list/?sort="+ e.id;
     } 
+
 }
 
 function PostSearch(e) {

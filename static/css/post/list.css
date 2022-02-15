@@ -59,6 +59,16 @@
   justify-content: space-between;
 }
 
+.post-total {
+  display: flex;
+}
+
+.total-page {
+  padding: 0 0.5rem;
+  color: var(--mint);
+  font-weight: bolder;
+}
+
 .pagination {
   display: flex;
   align-items: center;
