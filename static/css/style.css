@@ -26,6 +26,7 @@ blockquote {
 
 button {
   background: inherit;
+  outline: none;
   border: none;
   border-radius: 0;
   padding: 0;

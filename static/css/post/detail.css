@@ -81,7 +81,7 @@
     margin-top: 2rem;
 }
 
-.post-detail__btns a {
+.post-detail__btns a, .post-btn__del {
     color: var(--black);
     opacity: 0.8;
     background-color: var(--lightgrey);
