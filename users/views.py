@@ -287,7 +287,7 @@ def ForgotIDView(request):
 @login_required
 def update(request):
     if request.method == 'POST':
-        user_change_form = CustomUserChangeForm(request.POST, instance=request.user)
+        user_change_form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
         
         if user_change_form.is_valid():
             user_change_form.save()
