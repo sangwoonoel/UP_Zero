@@ -1,10 +1,12 @@
 {% extends 'base.html' %} {% load socialaccount %} {% block content %}
-{% block message %} 로그인 중 오류가 발생했습니다. {% endblock %}
-<a href="{% url 'users:login' %}">SLOWNIQUE 계정으로 로그인</a>
-<a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
-<a href="{% url 'users:password_reset' %}">비밀번호 찾기</a>
-<a href="{% provider_login_url 'naver' %}">네이버 로그인</a>
-<a href="{% provider_login_url 'google' %}">구글 로그인</a>
-<p>아직 계정이 없으신가요?</p>
-<a href="{% url 'users:signup' %}">Sign up</a>
+<main id="error_social-login">
+  {% block message %} 로그인 중 오류가 발생했습니다. {% endblock %}
+  <a href="{% url 'users:login' %}">SLOW:NIQUE 계정으로 로그인</a>
+  <a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
+  <a href="{% url 'users:password_reset' %}">비밀번호 찾기</a>
+  <a href="{% provider_login_url 'naver' %}">네이버 로그인</a>
+  <a href="{% provider_login_url 'google' %}">구글 로그인</a>
+  <p>아직 계정이 없으신가요?</p>
+  <a href="{% url 'users:signup' %}">Sign up</a>
+</main>
 {% endblock %}

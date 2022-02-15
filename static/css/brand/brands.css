@@ -53,23 +53,29 @@
 .brands {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
+  gap: 5rem;
   margin-bottom: 10rem;
+}
+.brand {
+  border-radius: 1.5rem;
+  box-shadow: .5rem .5rem 2rem .1rem #d4d4d4;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.brand:hover {
+  transform: scale(1.03);
 }
 .brand a {
   color: inherit;
 }
 
 .brand__content {
-  padding: 0 1rem;
+  padding: .5rem 1.5rem 1rem 1.5rem;
 }
 .brand__img {
   position: relative;
   width: 100%;
-  margin-bottom: 0.5rem;
   padding-top: calc(100% * 2 / 3);
-  border-radius: 1.5rem;
-  overflow: hidden;
 }
 .brand__img img {
   position: absolute;
@@ -78,11 +84,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.5s ease-in-out;
-}
-.brand__img img:hover {
-  filter: brightness(0.75);
-  transform: scale(1.05);
 }
 .brand__category,
 .brand__likes {
@@ -92,7 +93,7 @@
 .brand__name {
   font-size: 2.3rem;
   font-weight: 700;
-  margin: 0.5rem 0 1rem 0;
+  margin: 1rem 0;
 }
 .brand__desc {
   font-size: 1.4rem;
