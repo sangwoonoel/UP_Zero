@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/post/list.css' %}" />
 {% endblock %}
 {% block content %}
-<main id="post-list">
+<main id="poster">
     {% if request.GET.keyword %}
     <!-- 검색어 포함된 URL로 접속 시 -->
         <p class="post-search-title">
@@ -88,6 +88,9 @@
                 {% endif %}
             </div>      
         </div>
+    </div>
+    <div class="post-total">
+        Total<span class="total-page">{{page_obj.paginator.num_pages}}</span>pages.
     </div>
     <div class="pagination">
         {% if page_obj.has_previous %}
