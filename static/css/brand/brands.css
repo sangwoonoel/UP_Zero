@@ -40,6 +40,8 @@
   gap: 0.5rem;
 }
 .search-form input {
+  font-size: 1.5rem;
+  width: 20rem;
   outline: none;
   border: none;
   border-bottom: 0.2rem solid var(--black);
