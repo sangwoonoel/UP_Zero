@@ -24,45 +24,51 @@
         height="30rem"
       />
       {% endif %}
-      <a href="{% url 'post:author' %}?id={{post.user.username}}"
+      <a class="post-detail__username" href="{% url 'post:author' %}?id={{post.user.username}}"
         >{{ post.user }}</a
       >
     </div>
-    <h1 class="post-detail__title">{{ post.title }}</h1>
     <div class="post-detail__content">
+      <h1 class="post-detail__title">{{ post.title }}</h1>
       <div style="width: 75rem">
         {{ post.content | safe}}
       </div>
     </div>
+    <div class="post-reaction">
+        <div class="post-like">
+            <div class="post-like__container">
+                <button
+                    class="post-like__btn"
+                    title="좋아요"
+                    {% if user.is_authenticated %}
+                    onclick="onClickLike({{user.id}}, {{post.id}})"
+                    {% else %}
+                    onclick="onClickAlert()"
+                    {% endif %}
+                >
+                    <i class="fab fa-gratipay fa-lg"></i>
+                </button>
+                <p class="post-like__info">
+                    <span class="post-like__cnt">{{ like_cnt }}</span>
+                </p>
+            </div>
+        </div>
+        <div class="post-share">
+            <button class="post-share__btn" onclick="CopyUrlToClipboard()">
+            <i class="fa fa-share fa-lg"></i>
+            </button>
+        </div>
+    </div>
     <div class="post-detail__btns">
-      {% if request.user == post.user %}
-      <a href="{% url 'post:post_delete' pk=post.pk %}">삭제</a>
-      <a href="{% url 'post:post_update' pk=post.pk %}">수정</a>
-      {% endif %}
-      <a href="{% url 'post:list' %}">목록</a>
-    </div>
-    <div class="post-share">
-      <button class="post-share__btn" onclick="CopyUrlToClipboard()">
-        <i class="fa fa-share"></i>
-      </button>
-    </div>
-    <div class="post-like">
-      <div class="post-like__container">
-        <button
-          class="post-like__btn"
-          title="좋아요"
-          {% if user.is_authenticated %}
-          onclick="onClickLike({{user.id}}, {{post.id}})"
-          {% else %}
-          onclick="onClickAlert()"
-          {% endif %}
-        >
-          <i class="fab fa-gratipay"></i>
-        </button>
-        <p class="post-like__info">
-          <span class="post-like__cnt">{{ like_cnt }}</span>
-        </p>
+      <div class="btns__user">
+        <a class="post-btn__to-list" href="{% url 'post:list' %}">목록</a>
       </div>
+      {% if request.user == post.user %}
+      <div class="btns__writer">
+        <a class="post-btn__del" href="{% url 'post:post_delete' pk=post.pk %}">삭제</a>
+        <a class="post-btn__update" href="{% url 'post:post_update' pk=post.pk %}">수정</a>
+      </div>
+      {% endif %}
     </div>
   </div>
   <div class="post-comment">
@@ -70,7 +76,7 @@
       <span>댓글</span>
       <span class="post-comment__cnt">{{ comments_cnt }}</span>
     </p>
-    <ul class="post-comment__{{post.id}}">
+    <ul class="post-comment__ul post-comment__{{post.id}}">
       {% for comment in comments %} {% if comment.post == post %}
       <li class="comment__{{comment.id}}">
         <div class="comment__main">
@@ -84,22 +90,33 @@
             height="30rem"
           />
           {% endif %}
-          <a href="{% url 'post:author' %}?id={{comment.user.username}}"
-      ><span>{{ comment.user }}</span></a>
-          <span class="comment__message">{{ comment.message }}</span>
+          <a href="{% url 'post:author' %}?id={{comment.user.username}}">
+              <span class="comment__user">{{ comment.user }}</span>
+          </a>
+          <p class="comment__message">{{ comment.message }}</p>
           {% if request.user == comment.user %}
-          <button
-            class="comment__edit-btn"
-            onclick="onClickEdit({{comment.id}})"
+          <!-- <label 
+            class="comment__menu"
+            for="toggle"
           >
-            수정
-          </button>
-          <button
-            class="comment__del-btn"
-            onclick="onClickDel({{comment.id}})"
-          >
-            삭제
-          </button>
+            <i class="fa fa-ellipsis-vertical"></i>
+          </label> -->
+          <!-- <input type="checkbox" id="toggle"> -->
+          
+            <button
+                class="comment__edit-btn"
+                onclick="onClickEdit({{comment.id}})"
+            >
+                수정
+            </button>
+            <span class="button-division">|</span>
+            <button
+                class="comment__del-btn"
+                onclick="onClickDel({{comment.id}})"
+            >
+                삭제
+            </button>
+          
           {% endif %}
         </div>
         <div class="comment__edit" style="display: none">
@@ -121,7 +138,7 @@
     </ul>
     <div class="post-comment__input">
       <input
-        class="comment-input__{{post.id}}"
+        class="comment-input comment-input__{{post.id}}"
         type="text"
         placeholder="댓글을 입력하세요"
         onKeypress="javascript:if(event.keyCode==13) {onClickComment({{post.id}}, {{user.id}})}"
