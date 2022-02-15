@@ -2,6 +2,7 @@
 {% block title %}All posts{% endblock %} 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/post/list.css' %}" />
+<link rel="stylesheet" href="{% static 'css/post/select.css' %}" />
 {% endblock %}
 {% block content %}
 <main id="poster">
@@ -70,11 +71,14 @@
         </div>
         <div class="post-footer">
             <div class="sort-select">
-                <select class="sort" name="sort" id="sort" onchange="SortChange(this)" style="padding-right: 12px;">
-                    <option class="sort=latest" value="latest" id="latest">최신순</option>
-                    <option class="sort=like" value="like" id="like">인기순</option>
-                    <option class="sort=past" value="past" id="past">과거순</option>
-                </select>
+                <div class="select-default">
+                    <span>정렬</span>
+                </div>
+                <div class="optionList" >
+                    <li class="optionListItem" id="latest" value="latest" onclick="SortChange(this)">최신순</li>
+                    <li class="optionListItem" id="like" value="like" onclick="SortChange(this)">인기순</li>
+                    <li class="optionListItem" id="past" value="past" onclick="SortChange(this)">과거순</li>
+                </div>
             </div>
             <div class="post-create">
                 {% if user.is_authenticated %}
