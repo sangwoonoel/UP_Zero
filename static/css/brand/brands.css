@@ -60,7 +60,7 @@
 }
 .brand {
   border-radius: 1.5rem;
-  box-shadow: 0.5rem 0.5rem 2rem 0.1rem #d4d4d4;
+  box-shadow: 1rem 1rem 2rem 0.1rem #e0e0e0;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }

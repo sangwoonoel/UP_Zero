@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %}
-{% if not cate %}전체{% else %}{{cate}}{% endif %} 브랜드 | SLOW:NIQUE{% endblock %}
+{% extends 'base.html' %} {% load static %}
+{% block title %} {% if not cate%}전체{% else %}{{cate}}{% endif %} 브랜드 | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/brand/brands.css' %}" />
 <link rel="stylesheet" href="{% static 'css/components/pagination.css' %}" />
@@ -30,6 +30,7 @@
         </div>
       </div>
     </header>
+
     <section class="brands">
       {% for brand in paginated_brands %}
       <article class="brand">
@@ -41,9 +42,7 @@
             <div
               class="brand__sub-header d-flex justify-content-between align-items-center"
             >
-              <span class="brand__category"
-                >{{brand.category}}</span
-              >
+              <span class="brand__category">{{brand.category}}</span>
               <div class="brand__likes">
                 <i class="far fa-heart"></i>
                 {{brand.brandlike_set.all.count}}
@@ -52,7 +51,8 @@
             <div class="brand__header">
               <h1 class="brand__name text-center">{{brand}}</h1>
             </div>
-            <p class="brand__desc text-center">{{brand.desc}}</p></a
+            <p class="brand__desc text-center">{{brand.desc}}</p>
+          </div></a
         >
       </article>
       {% endfor %}
