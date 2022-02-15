@@ -268,9 +268,14 @@ def ForgotIDView(request):
 def update(request):
     if request.method == 'POST':
         user_change_form = CustomUserChangeForm(request.POST, instance=request.user)
+        
         if user_change_form.is_valid():
             user_change_form.save()
             return redirect('users:mypage')
+            
+        else:
+            ctx = {'user_change_form':user_change_form} 
+            return render(request, 'users/update.html', ctx)
     else:
         user_change_form = CustomUserChangeForm(instance = request.user) 
         return render(request, 'users/update.html', {'user_change_form':user_change_form})
