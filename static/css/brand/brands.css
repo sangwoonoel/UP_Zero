@@ -10,8 +10,9 @@
   position: fixed;
   z-index: 1;
   top: 10rem; /* depends on height of the main navbar */
-  padding: 0 20rem;
+  padding: 2rem 15rem;
   background: white;
+  gap: 0.5rem;
 }
 .brand-navbar .focus {
   width: 0.6rem;
@@ -23,7 +24,7 @@
   font-weight: 700;
 }
 .brand-navbar a {
-  padding: 0.4rem 2rem 1rem 2rem;
+  padding: 0.4rem 1.5rem 1rem 1.5rem;
   font-size: 1.7rem;
   color: inherit;
 }
@@ -33,21 +34,16 @@
 
 /* Layout & search bar */
 .brand-layout {
-  padding: 4.55rem 15rem 0 15rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
-}
-.search-form-container {
-  margin: 3rem 0;
+  padding: 8.55rem 15rem 0 16rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
 }
 .search-form {
-  width: 50%;
   gap: 0.5rem;
 }
 .search-form input {
-  width: 100%;
   outline: none;
   border: none;
   border-bottom: 0.2rem solid var(--black);
-  padding: 0.5rem;
+  padding: 0.3rem 1rem;
 }
 .search-form input::placeholder {
   color: var(--gray);
@@ -106,7 +102,7 @@
 /* BRAND LIST */
 /* Header */
 .brand-list__header {
-  margin-bottom: 3rem;
+  margin: 3rem 0 5rem;
 }
 .brand-list__category {
   font-weight: 900;
@@ -168,7 +164,7 @@
 .brand-search__header {
   background: rgb(248, 248, 248);
   padding: 3.5rem 0;
-  margin-bottom: 5rem;
+  margin: 3rem 0 5rem 0;
 }
 .brand-search__count {
   color: var(--mint);

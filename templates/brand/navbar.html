@@ -1,4 +1,4 @@
-<nav class="brand-navbar">
+<nav class="brand-navbar d-flex justify-content-between align-items-center">
   <ul class="d-flex">
     <li data-category="0" class="d-flex flex-column align-items-center">
       <div class="focus hidden"></div>
@@ -14,4 +14,5 @@
     </li>
     {% endfor %}
   </ul>
+  {% include "brand/search-form.html" %}
 </nav>
