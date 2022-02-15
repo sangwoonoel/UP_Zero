@@ -17,7 +17,6 @@
 .navbar__column {
   width: 50%;
   font-weight: 400;
-  overflow: hidden;
 }
 
 .navbar__column:last-child {

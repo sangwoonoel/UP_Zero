@@ -5,8 +5,8 @@ from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth import get_user_model
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=40, label = "아이디")
-    password = forms.CharField(widget=forms.PasswordInput, label = "비밀번호")
+    username = forms.CharField(max_length=40, label = "아이디", widget=forms.TextInput(attrs={'placeholder': '아이디를 입력해주세요'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': '비밀번호를 입력해주세요'}), label = "비밀번호")
 
     def clean(self):
         username = self.cleaned_data.get("username")
