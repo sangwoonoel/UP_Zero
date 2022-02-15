@@ -1,7 +1,6 @@
 /* COMMON BRAND LIST & SEARCH PAGE ELEMENTS */
 #brand-list,
 #brand-search {
-  font-family: "Noto Sans KR", sans-serif;
   position: relative;
 }
 
@@ -34,7 +33,7 @@
 
 /* Layout & search bar */
 .brand-layout {
-  padding: 4.55rem 10rem 0 10rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
+  padding: 4.55rem 15rem 0 15rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
 }
 .search-form-container {
   margin: 3rem 0;
