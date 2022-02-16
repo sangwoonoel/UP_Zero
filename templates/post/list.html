@@ -57,41 +57,46 @@
         </div>  
     </div>
     <div class="post-list">
-        {% for post in page_obj %}
-        <div class="post">
-            <a href="{% url 'post:post_detail' post.id %}">
-                <div class="post-title"><strong>{{post.title}}</strong></div>
-                <div class="post-preview">
-                    {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
-                </div>
-                <div class="post-write">
-                    <div class="post-created">
-                        {% if post.created_string == False %}
-                        <td>{{ post.created_at|date:'m월 d일' }}</td>
-                        {% else %}
-                        <td class="post_created_time">{{ post.created_string }}</td>
-                        {% endif %}
-                    </div>
-                    <div class="post-author" style="display: flex; align-items: center;">
-                        {% if post.user.image %}
-                        <!-- 나중에 if문 지워도 됨 -->
-                        <img class="avatar-img"
-                        src="{{post.user.image.url}}"
-                        alt="작성자 프로필 이미지"
-                        width="20rem"
-                        height="20rem"
-                        />
-                        {% endif %}
-                    </div>
-                    <span class="username">{{post.user}}</span>
-                </div>
-                <div class="post-res">
-                    <div class="post-like"><i class="like-icon fa-heart far"></i> {{post.postlike_set.count}}</div>
-                    <div class="post-comment"><i class="comment-icon far fa-comment"></i> {{post.comment_set.count}}</div>
-                </div>
-            </a>
+        <div class="vl">
         </div>
-        {% endfor %}
+        <div class="posts">
+            {% for post in page_obj %}
+            <div class="post">
+                <div class="post-created">
+                    {% if post.created_string == False %}
+                    <td>{{ post.created_at|date:'m월 d일' }}</td>
+                    {% else %}
+                    <td class="post_created_time"> &nbsp; &nbsp; &nbsp;{{ post.created_string }}</td>
+                    {% endif %}
+                </div>
+                <div class="post-circle"></div>
+                <a class="post-content" href="{% url 'post:post_detail' post.id %}">
+                    <div class="post-write">
+                        <div class="post-author" >
+                            {% if post.user.image %}
+                            <!-- 나중에 if문 지워도 됨 -->
+                            <img class="avatar-img"
+                            src="{{post.user.image.url}}"
+                            alt="작성자 프로필 이미지"
+                            width="20rem"
+                            height="20rem"
+                            />
+                            {% endif %}
+                        </div>
+                        <span class="username">{{post.user}}</span>
+                    </div>
+                    <div class="post-title"><strong>{{post.title}}</strong></div>
+                    <div class="post-preview">
+                        {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
+                    </div>
+                    <div class="post-res">
+                        <div class="post-like"><i class="like-icon fa-heart far"></i> {{post.postlike_set.count}}</div>
+                        <div class="post-comment"><i class="comment-icon far fa-comment"></i> {{post.comment_set.count}}</div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
     <div class="post-total">
         <span>Total</span><div class="total-page">{{page_obj.paginator.num_pages}}</div><span>pages.</span>

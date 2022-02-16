@@ -1,4 +1,61 @@
 .post-list {
   width: 100%;
   padding: 3.5rem 17.5rem 0 15rem;
+  display: flex;
+}
+
+.vl {
+  border-left: 1px solid var(--line-gray);
+  margin: 5rem 0 5rem 0;
+  padding-right: 1.2rem;
+  position: relative;
+}
+
+.posts {
+  width: 100%;
+}
+
+.post-created {
+  position: relative;
+  left: -7.5rem;
+  top: 3.5rem;
+  color: var(--gray);
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.post-circle {
+  background-color: var(--line-gray);
+  border-radius: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  left: -2rem;
+  top: 2rem;
+}
+
+.post-content {
+  display: flex;
+}
+
+.post-write {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -1.3rem;
+}
+
+.post-write span {
+  font-size: 1.1rem;
+  color: var(--user-black);
+}
+
+.post-author img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.post-preview,
+.post-res {
+  font-size: 1.4rem;
 }
