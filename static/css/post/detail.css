@@ -25,6 +25,10 @@
     padding: 0 1rem;
 }
 
+.post-detail__content > div > p {
+    width: 100%;
+}
+
 .post-detail__content {
     padding: 3rem;
 }
@@ -40,7 +44,6 @@
     padding-left: 2rem;
     padding-right: 2.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--lightgrey);
 }
 
 .post-reaction button {
@@ -77,8 +80,9 @@
 .post-detail__btns {
     display: flex;
     justify-content: space-between;
-    padding: 0 2rem;
-    margin-top: 2rem;
+    padding: 2rem 2rem;
+    margin-bottom: 0;
+    border-top: 1px solid var(--lightgrey);
 }
 
 .post-detail__btns a, .post-btn__del {
@@ -117,7 +121,7 @@
 }
 
 .post-comment__ul {
-    height: 90%;
+    height: 80%;
 }
 
 .comment__message {
@@ -155,6 +159,10 @@
 
 .comment__edit {
     padding: 1rem 0;
+}
+
+.post-comment__input {
+    padding-top: 3rem;
 }
 
 .comment-input, .comment__edit-input {
