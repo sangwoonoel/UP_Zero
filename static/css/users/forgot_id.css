@@ -1,0 +1,68 @@
+.forgot-id {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.forgot-id__title {
+    font-weight: 700;
+    font-size: 2.2rem;
+    opacity: 0.9;
+    padding: 3rem 0;
+}
+
+.forgot-id__desc {
+    text-align: center;
+    line-height: 3rem;
+    padding-bottom: 3rem;
+}
+
+.forgot-id__form p {
+    padding: 1rem 0;
+    font-size: 1.6rem;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+.email-input {
+    width: 100%;
+    height: 4.3rem;
+    border: 1px solid var(--lightgrey);
+    border-radius: 0.5rem;
+    padding: 1rem 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.email-input:focus {
+    outline: 1px solid var(--gray);
+}
+
+.email-button {
+    width: 100%;
+    border: none;
+    background-color: var(--black);
+    color: white;
+    height: 4.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.7rem;
+}
+
+.login-button {
+    width: 20rem;
+    border: none;
+    background-color: var(--black);
+    color: white;
+    height: 4.3rem;
+    border-radius: 0.5rem;
+    font-size: 1.7rem;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-button:hover {
+    color: white;
+}
