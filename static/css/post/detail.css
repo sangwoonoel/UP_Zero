@@ -5,7 +5,7 @@
 }
 
 .post {
-    width: 58%;
+    width: 55%;
     border: 1px solid var(--lightgrey);
     padding: 1.5rem;
 }
@@ -25,6 +25,10 @@
     padding: 0 1rem;
 }
 
+.post-detail__content > div > p {
+    width: 100%;
+}
+
 .post-detail__content {
     padding: 3rem;
 }
@@ -40,7 +44,6 @@
     padding-left: 2rem;
     padding-right: 2.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--lightgrey);
 }
 
 .post-reaction button {
@@ -77,11 +80,12 @@
 .post-detail__btns {
     display: flex;
     justify-content: space-between;
-    padding: 0 2rem;
-    margin-top: 2rem;
+    padding: 2rem 2rem;
+    margin-bottom: 0;
+    border-top: 1px solid var(--lightgrey);
 }
 
-.post-detail__btns a {
+.post-detail__btns a, .post-btn__del {
     color: var(--black);
     opacity: 0.8;
     background-color: var(--lightgrey);
@@ -103,7 +107,7 @@
 .post-comment {
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 22%;
     border: 1px solid var(--lightgrey);
     border-left: none;
     padding: 1.5rem;
@@ -117,7 +121,7 @@
 }
 
 .post-comment__ul {
-    height: 90%;
+    height: 80%;
 }
 
 .comment__message {
@@ -153,7 +157,15 @@
     font-size: 1.3rem;
 }
 
-.comment-input {
+.comment__edit {
+    padding: 1rem 0;
+}
+
+.post-comment__input {
+    padding-top: 3rem;
+}
+
+.comment-input, .comment__edit-input {
     width: 80%;
     height: 4rem;
     color: var(--black);
@@ -161,13 +173,14 @@
     border: 1px solid var(--gray);
     font-size: 1.3rem;
     border-radius: 0.2rem;
+    padding-left: 0.8rem;
 }
 
 .comment-input:focus {
     outline: none;
 }
 
-.comment__add-btn {
+.comment__add-btn, .comment__update-btn {
     border: none;
     background-color: var(--lightgrey);
     color: var(--black);
@@ -177,6 +190,6 @@
     font-size: 1.4rem;
 }
 
-.comment__add-btn:hover {
+.comment__add-btn:hover, .comment__update-btn:hover {
     background-color: var(--mint);
 }

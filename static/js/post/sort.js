@@ -10,13 +10,13 @@ keyword.addEventListener("keydown", (e) => {
 
 switch(option) {
     case 'latest':
-        select.innerText = '최신순';
+        select.innerText = '최신 순';
         break;
     case 'like':
-        select.innerText = '인기순';
+        select.innerText = '인기 순';
         break;
     case 'past':
-        select.innerText = '과거순';
+        select.innerText = '과거 순';
         break;
 }
 

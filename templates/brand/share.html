@@ -1,26 +1,31 @@
 {% load static %}
-<div class="share-button sharer" style="display: block">
-  <button class="share-btn"><i class="fas fa-share-alt"></i></button>
-  <div class="social bottom center networks-5">
-    <button
-      class="fbtn share kakao" onclick="shareKakao()""
-    >
-      <img src="{% static 'images/kakao.png' %}" alt="카카오톡으로 공유하기" width="40px" height="40px">
-    </button>
-    <button
-      class="fbtn share twitter"
-      onclick="shareTwitter()"
-    >
-      <i class="fa fa-twitter"></i>
-    </button>
-    <button
-    class="fbtn share facebook"
-    onclick="shareFacebook()"
-  >
-    <i class="fa fa-facebook"></i>
+<div class="brand__share">
+  <button class="share-btn">
+    <i class="fas fa-share-alt fa-xl"></i>
   </button>
-    <button class="fbtn share url-btn" onclick="copyURL()">
-      <i class="fas fa fa-link"></i>
-    </button>
-  </div>
+  <ul class="d-flex">
+    <li>
+      <button class="kakao" onclick="shareKakao()">
+        <img
+          src="{% static 'images/kakao.png' %}"
+          alt="카카오톡으로 공유하기"
+        />
+      </button>
+    </li>
+    <li>
+      <button class="twitter" onclick="shareTwitter()">
+        <i class="fa fa-twitter"></i>
+      </button>
+    </li>
+    <li>
+      <button class="facebook" onclick="shareFacebook()">
+        <i class="fa fa-facebook"></i>
+      </button>
+    </li>
+    <li>
+      <button class="url-btn" onclick="copyURL()">
+        <i class="fas fa fa-link"></i>
+      </button>
+    </li>
+  </ul>
 </div>

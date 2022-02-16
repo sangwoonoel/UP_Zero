@@ -1,44 +1,53 @@
-.social .fbtn {
-  width: 4rem;
-  height: 4rem;
+.kakao {
+  background: #fae100;
+}
+.kakao img {
+  position: relative;
+  right: -0.05rem;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+.facebook {
+  background: #3b5998;
+}
+.twitter {
+  background: #55acee;
+}
+.url-btn {
+  background: var(--black);
+}
+
+.brand__share {
+  position: relative;
+}
+.brand__share ul {
+  gap: 1rem;
+  position: absolute;
+  top: 3.5rem;
+  transform: translateX(-45%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.brand__share:hover ul {
+  opacity: 1;
+}
+.brand__share ul button {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  line-height: 1.8rem;
-  float: left;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  filter: drop-shadow(0.5rem 0.5rem 0.3rem rgba(0, 0, 0, 0.2));
+  color: white;
+  font-size: 1.5rem;
 }
-.social .fa {
-  padding: 1.5rem 0;
+.brand__share img,
+.brand__share i {
+  transition: all 0.2s ease-in-out;
 }
-.facebook {
-  background-color: #3b5998;
-}
-.twitter {
-  background-color: #55acee;
-}
-.url-btn {
-  background-color: black;
-}
-
-.share-button.sharer {
-  height: 2rem;
-}
-.share-button.sharer .social.active.bottom {
-  transform: translateY(1rem);
-}
-.share-button.sharer .social.active {
-  opacity: 1;
-  transition: all 0.4s ease;
-  visibility: visible;
-}
-.share-button.sharer .social.bottom {
-  margin-top: 1rem;
-  /* transform-origin: 0 0 0; */
-}
-.share-button.sharer .social {
-  margin-left: -5rem;
-  opacity: 0;
-  transition: all 0.4s ease;
-  visibility: hidden;
+.brand__share ul button:hover img,
+.brand__share ul button:hover i {
+  transform: scale(1.15);
 }

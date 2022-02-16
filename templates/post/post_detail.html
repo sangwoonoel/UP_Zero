@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% load static %}
+{% block title %}{{post.title}} | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/post/detail.css' %}" />
 {% endblock %}
@@ -34,41 +35,43 @@
         {{ post.content | safe}}
       </div>
     </div>
-    <div class="post-reaction">
-        <div class="post-like">
-            <div class="post-like__container">
-                <button
-                    class="post-like__btn"
-                    title="좋아요"
-                    {% if user.is_authenticated %}
-                    onclick="onClickLike({{user.id}}, {{post.id}})"
-                    {% else %}
-                    onclick="onClickAlert()"
-                    {% endif %}
-                >
-                    <i class="fab fa-gratipay fa-lg"></i>
+    <div class="post-components">
+        <div class="post-reaction">
+            <div class="post-like">
+                <div class="post-like__container">
+                    <button
+                        class="post-like__btn"
+                        title="좋아요"
+                        {% if user.is_authenticated %}
+                        onclick="onClickLike({{user.id}}, {{post.id}})"
+                        {% else %}
+                        onclick="onClickAlert()"
+                        {% endif %}
+                    >
+                        <i class="fab fa-gratipay fa-lg"></i>
+                    </button>
+                    <p class="post-like__info">
+                        <span class="post-like__cnt">{{ like_cnt }}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="post-share">
+                <button class="post-share__btn" onclick="CopyUrlToClipboard()">
+                <i class="fa fa-share fa-lg"></i>
                 </button>
-                <p class="post-like__info">
-                    <span class="post-like__cnt">{{ like_cnt }}</span>
-                </p>
             </div>
         </div>
-        <div class="post-share">
-            <button class="post-share__btn" onclick="CopyUrlToClipboard()">
-            <i class="fa fa-share fa-lg"></i>
-            </button>
+        <div class="post-detail__btns">
+        <div class="btns__user">
+            <a class="post-btn__to-list" href="{% url 'post:list' %}">목록</a>
         </div>
-    </div>
-    <div class="post-detail__btns">
-      <div class="btns__user">
-        <a class="post-btn__to-list" href="{% url 'post:list' %}">목록</a>
+        {% if request.user == post.user %}
+        <div class="btns__writer">
+            <button class="post-btn__del" onclick="deletePost('{% url 'post:post_delete' pk=post.pk %}')">삭제</button>
+            <a class="post-btn__update" href="{% url 'post:post_update' pk=post.pk %}">수정</a>
+        </div>
+        {% endif %}
       </div>
-      {% if request.user == post.user %}
-      <div class="btns__writer">
-        <a class="post-btn__del" href="{% url 'post:post_delete' pk=post.pk %}">삭제</a>
-        <a class="post-btn__update" href="{% url 'post:post_update' pk=post.pk %}">수정</a>
-      </div>
-      {% endif %}
     </div>
   </div>
   <div class="post-comment">
@@ -160,6 +163,7 @@
 </main>
 {% endblock %} {% block script %}
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{% static 'js/post/confirm.js' %}"></script>
 <script src="{% static 'js/post/like.js' %}"></script>
 <script src="{% static 'js/post/comment.js' %}"></script>
 <script src="{% static 'js/post/share.js' %}"></script>

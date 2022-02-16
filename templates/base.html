@@ -30,14 +30,14 @@
         <!-- 나중에 if문 지워도 됨 -->
         <div id="nav-mypage" class="login-user__avatar navbar__items" style="display: inline">
             <a class="avatar-container" href="{% url 'users:mypage' %}">
-                <img class="avatar-img" src="{{user.image.url}}" alt="유저 프로필 이미지" width="30rem"
-            height="30rem" />
+                <img class="avatar-img" src="{{user.image.url}}" alt="유저 프로필 이미지" width="32rem"
+            height="32rem" />
             </a>
         </div>
         {% endif %}
-        <a class="navbar__items log-btn" href="{% url 'users:logout' %}?next={{request.get_full_path}}">Log out</a>
+        <a class="navbar__items log-btn" href="{% url 'users:logout' %}?next={{ request.get_full_path }}"">Log out</a>
         {% else %}
-        <a class="navbar__items log-btn" href="{% url 'users:login' %}">Log in</a>
+        <a class="navbar__items log-btn" href="{% url 'users:login' %}?next={{ request.get_full_path }}">Log in</a>
         {% endif %}
       </div>
     </nav>

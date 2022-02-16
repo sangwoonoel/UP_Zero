@@ -1,7 +1,6 @@
 /* COMMON BRAND LIST & SEARCH PAGE ELEMENTS */
 #brand-list,
 #brand-search {
-  font-family: "Noto Sans KR", sans-serif;
   position: relative;
 }
 
@@ -11,8 +10,9 @@
   position: fixed;
   z-index: 1;
   top: 10rem; /* depends on height of the main navbar */
-  padding: 0 20rem;
+  padding: 2rem 15rem;
   background: white;
+  gap: 0.5rem;
 }
 .brand-navbar .focus {
   width: 0.6rem;
@@ -24,7 +24,7 @@
   font-weight: 700;
 }
 .brand-navbar a {
-  padding: 0.4rem 2rem 1rem 2rem;
+  padding: 0.4rem 1.5rem 1rem 1.5rem;
   font-size: 1.7rem;
   color: inherit;
 }
@@ -34,21 +34,18 @@
 
 /* Layout & search bar */
 .brand-layout {
-  padding: 4.55rem 10rem 0 10rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
-}
-.search-form-container {
-  margin: 3rem 0;
+  padding: 8.55rem 15rem 0 16rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
 }
 .search-form {
-  width: 50%;
   gap: 0.5rem;
 }
 .search-form input {
-  width: 100%;
+  font-size: 1.5rem;
+  width: 20rem;
   outline: none;
   border: none;
   border-bottom: 0.2rem solid var(--black);
-  padding: 0.5rem;
+  padding: 0.3rem 1rem;
 }
 .search-form input::placeholder {
   color: var(--gray);
@@ -58,23 +55,29 @@
 .brands {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
+  gap: 5rem;
   margin-bottom: 10rem;
+}
+.brand {
+  border-radius: 1.5rem;
+  box-shadow: 1rem 1rem 2rem 0.1rem #e0e0e0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.brand:hover {
+  transform: scale(1.03);
 }
 .brand a {
   color: inherit;
 }
 
 .brand__content {
-  padding: 0 1rem;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
 }
 .brand__img {
   position: relative;
   width: 100%;
-  margin-bottom: 0.5rem;
   padding-top: calc(100% * 2 / 3);
-  border-radius: 1.5rem;
-  overflow: hidden;
 }
 .brand__img img {
   position: absolute;
@@ -83,11 +86,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.5s ease-in-out;
-}
-.brand__img img:hover {
-  filter: brightness(0.75);
-  transform: scale(1.05);
 }
 .brand__category,
 .brand__likes {
@@ -97,7 +95,7 @@
 .brand__name {
   font-size: 2.3rem;
   font-weight: 700;
-  margin: 0.5rem 0 1rem 0;
+  margin: 1rem 0;
 }
 .brand__desc {
   font-size: 1.4rem;
@@ -107,20 +105,22 @@
 /* BRAND LIST */
 /* Header */
 .brand-list__header {
-  margin-bottom: 3rem;
+  margin: 3rem 0 5rem;
 }
 .brand-list__category {
+  text-align: center;
   font-weight: 900;
   font-size: 3.5rem;
   margin-bottom: 1rem;
 }
 
 /* Sort */
-.brand-list__sort {
-  gap: 0.5rem;
+.brand-list__count {
+  font-size: 1.5rem;
 }
-.sort-by {
+.brand-list__sort {
   font-size: 1.4rem;
+  gap: 0.5rem;
 }
 
 .sort-btn__bg {
@@ -138,7 +138,7 @@
   height: 1.5rem;
   border-radius: 50%;
   background: white;
-  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.2));
   transition: all 0.3s ease-in-out;
 }
 .sort-btn:hover .sort-btn__bg {
@@ -146,7 +146,7 @@
 }
 .sort-btn:hover .sort-btn__indicator {
   transform: translateX(2.5rem);
-  filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(-0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.2));
 }
 
 .sort-btn.active .sort-btn__bg {
@@ -154,22 +154,22 @@
   background: var(--mint);
 }
 .sort-btn.active .sort-btn__indicator {
-  filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(-0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.2));
 }
 .sort-btn.active:hover .sort-btn__indicator {
   transform: translateX(-2.5rem);
-  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.2));
 }
 /* END BRAND LIST */
 
 /* BRAND SEARCH */
 .brand-search__result {
-  font-size: 2.3rem;
+  font-size: 2rem;
 }
 .brand-search__header {
   background: rgb(248, 248, 248);
   padding: 3.5rem 0;
-  margin-bottom: 5rem;
+  margin: 3rem 0 5rem 0;
 }
 .brand-search__count {
   color: var(--mint);
