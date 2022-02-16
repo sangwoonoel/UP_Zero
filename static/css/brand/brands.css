@@ -12,21 +12,24 @@
   top: 10rem; /* depends on height of the main navbar */
   padding: 2rem 15rem;
   background: white;
-  gap: 0.5rem;
 }
 .brand-navbar .focus {
   width: 0.6rem;
   height: 0.6rem;
   border-radius: 50%;
+  margin-bottom: 0.4rem;
   background: var(--mint);
 }
 .brand-navbar li.active {
   font-weight: 700;
 }
 .brand-navbar a {
-  padding: 0.4rem 1.5rem 1rem 1.5rem;
+  padding: 0 1.5rem 1rem 1.5rem;
   font-size: 1.7rem;
   color: inherit;
+}
+.brand-navbar a:first-child {
+  padding-left: 0;
 }
 .brand-navbar a:hover {
   color: var(--mint);
@@ -34,7 +37,7 @@
 
 /* Layout & search bar */
 .brand-layout {
-  padding: 8.55rem 15rem 0 16rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
+  padding: 8.55rem 15rem 0 15rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
 }
 .search-form {
   gap: 0.5rem;
@@ -58,6 +61,12 @@
   gap: 5rem;
   margin-bottom: 10rem;
 }
+@media screen and (min-width: 1440px) {
+  .brands {
+    gap: 10rem;
+  }
+}
+
 .brand {
   border-radius: 1.5rem;
   box-shadow: 1rem 1rem 2rem 0.1rem #e0e0e0;

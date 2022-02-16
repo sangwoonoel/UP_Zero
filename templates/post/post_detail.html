@@ -45,7 +45,7 @@
                         {% if user.is_authenticated %}
                         onclick="onClickLike({{user.id}}, {{post.id}})"
                         {% else %}
-                        onclick="onClickAlert()"
+                        onclick="onClickLogin('{{request.path}}')"
                         {% endif %}
                     >
                         <i class="fab fa-gratipay fa-lg"></i>
@@ -153,7 +153,7 @@
         {% if user.is_authenticated %}
         onclick="onClickComment({{post.id}}, {{user.id}})"
         {% else %}
-        onclick="onClickAlert()"
+        onclick="onClickLogin('{{request.path}}')"
         {% endif %}
       >
         추가

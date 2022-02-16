@@ -39,8 +39,8 @@ const likeResHandler = (action) => {
   likeCnt.innerText = num;
 };
 
-const onClickLogin = () => {
+const onClickLogin = (url) => {
   if (confirm("로그인이 필요합니다. 로그인 하시겠습니까?")) {
-    location.href = `/login?next=${location.pathname}`;
+    location.href = `/login?next=${url}`;
   }
 };

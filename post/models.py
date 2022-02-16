@@ -18,7 +18,6 @@ class Post(models.Model):
     @property
     def created_string(self):
         time = datetime.now(tz=timezone.utc) - self.created_at
-        print(time)
         if time < timedelta(minutes=1):
             return '방금 전'
         elif time < timedelta(hours=1):
