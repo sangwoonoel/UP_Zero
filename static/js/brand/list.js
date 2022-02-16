@@ -10,7 +10,7 @@ if (cateId) {
   activeCate = document.querySelector(`li[data-category='0']`);
 }
 activeCate.classList.toggle("active");
-activeCate.querySelector(".focus").classList.toggle("hidden");
+activeCate.previousElementSibling.classList.toggle("hidden");
 
 // When brands are sorted
 if (sort === "like") {

@@ -45,7 +45,7 @@
                         {% if user.is_authenticated %}
                         onclick="onClickLike({{user.id}}, {{post.id}})"
                         {% else %}
-                        onclick="onClickAlert()"
+                        onclick="onClickLogin('{{request.path}}')"
                         {% endif %}
                     >
                         <i class="fab fa-gratipay fa-lg"></i>
@@ -153,7 +153,7 @@
         {% if user.is_authenticated %}
         onclick="onClickComment({{post.id}}, {{user.id}})"
         {% else %}
-        onclick="onClickAlert()"
+        onclick="onClickLogin('{{request.path}}')"
         {% endif %}
       >
         추가
@@ -163,7 +163,7 @@
 </main>
 {% endblock %} {% block script %}
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="{% static 'js/post/confirm.js' %}"></script>
+<script src="{% static 'js/confirm.js' %}"></script>
 <script src="{% static 'js/post/like.js' %}"></script>
 <script src="{% static 'js/post/comment.js' %}"></script>
 <script src="{% static 'js/post/share.js' %}"></script>

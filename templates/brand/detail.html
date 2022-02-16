@@ -54,7 +54,7 @@
             {% if user.is_authenticated %}
             onclick="onClickLike({{user.id}}, {{brand.id}})"
             {% else %}
-            onclick="onClickLogin()"            
+            onclick="onClickLogin('{{request.path}}')"            
             {% endif %}
           >
             <i class="fab fa-gratipay fa-xl"></i>

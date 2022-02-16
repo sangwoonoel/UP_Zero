@@ -1,23 +1,26 @@
-{% extends 'base.html' %} {% load static %}
-{% block content %} 
-{% if user.is_authenticated %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <main>
-    <p>Welcome, {{ user.username }}!</p>
-
-    <h1>브랜드 찜</h1>
-        {%for BrandLike in BrandLikes %}
-            <div>
-                <a href="{% url 'brand:detail' BrandLike.brand.id %}">     
-                    <img src="{{ BrandLike.brand.image.url }}" alt="브랜드 이미지" width="50rem" height="50rem" />
-                    <span>{{ BrandLike.brand.name }}</span>  
-                </a>
-                <a href="{% url 'users:mypage_brand_delete' BrandLike.id %}">삭제</a>
-
-            </div>
-        {% endfor %}
-
-    {% endif %}
+  <p>Welcome, {{user}}!</p>
+  <h1>브랜드 찜</h1>
+  {% for BrandLike in BrandLikes %}
+  <div>
+    <a href="{% url 'brand:detail' BrandLike.brand.id %}">
+      <img
+        src="{{ BrandLike.brand.image.url }}"
+        alt="브랜드 이미지"
+        width="50rem"
+        height="50rem"
+      />
+      <span>{{BrandLike.brand}}</span>
+    </a>
+    <button
+      onclick="deleteBrandLike('{% url 'users:mypage_brand_delete' BrandLike.id %}')"
+    >
+      <i class="fa-solid fa-circle-minus"></i>
+    </button>
+  </div>
+  {% endfor %}
 </main>
-{% endblock %}
-{% block script %}
+{% endblock %} {% block script %}
+<script src="{% static 'js/confirm.js' %}"></script>
 {% endblock %}

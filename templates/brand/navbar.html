@@ -1,17 +1,20 @@
 <nav class="brand-navbar d-flex justify-content-between align-items-center">
   <ul class="d-flex">
-    <li data-category="0" class="d-flex flex-column align-items-center">
-      <div class="focus hidden"></div>
-      <a href="{% url 'brand:list' %}">All</a>
-    </li>
-    {% for cate in cates %}
-    <li
-      data-category="{{cate.id}}"
+    <a
+      href="{% url 'brand:list' %}"
       class="d-flex flex-column align-items-center"
     >
       <div class="focus hidden"></div>
-      <a href="{% url 'brand:list' %}?category={{cate.id}}">{{cate}}</a>
-    </li>
+      <li data-category="0">전체</li>
+    </a>
+    {% for cate in cates %}
+    <a
+      href="{% url 'brand:list' %}?category={{cate.id}}"
+      class="d-flex flex-column align-items-center"
+    >
+      <div class="focus hidden"></div>
+      <li data-category="{{cate.id}}">{{cate}}</li>
+    </a>
     {% endfor %}
   </ul>
   {% include "brand/search-form.html" %}
