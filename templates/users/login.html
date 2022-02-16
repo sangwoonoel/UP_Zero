@@ -7,7 +7,11 @@
   <form class="login__form" method="POST">
     {% csrf_token %}
     {% if form.non_field_errors %}
-    {% for error in form.non_field_errors %} {{ error }} {% endfor %}
+    <div class="alert alert-danger" role="alert">
+      {% for error in form.non_field_errors %}
+      {{ error }}
+      {% endfor %}
+    </div>
     {% endif %}
     {{ form.username }}
     {{ form.password }}
