@@ -13,36 +13,36 @@ from .models import User
 from .forms import LoginForm, SignUpForm, CustomUserChangeForm
 import re
 
-class LoginView(View):
-    def get(self, request):
-        #form = LoginForm()
-        #return render(request, "accounts/login.html")
-        next = None
-        if request.GET.get("next"):
-            next = request.GET.get("next")
-        form = LoginForm()
-        return render(request, "users/login.html", {"form": form, "next": next})
+# class LoginView(View):
+#     def get(self, request):
+#         #form = LoginForm()
+#         #return render(request, "accounts/login.html")
+#         next = None
+#         if request.GET.get("next"):
+#             next = request.GET.get("next")
+#         form = LoginForm()
+#         return render(request, "users/login.html", {"form": form, "next": next})
 
-    def post(self, request):
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            user = authenticate(request, username=username, password=password)
+#     def post(self, request):
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get("username")
+#             password = form.cleaned_data.get("password")
+#             user = authenticate(request, username=username, password=password)
             
-            if user is not None:
-                login(request, user)
-                # print(user.pk)
-                # print(user.username)
-                # print(user.user_score)
-                if request.POST.get("next"):
-                    return redirect(request.POST.get("next"))
-                return redirect("/")
+#             if user is not None:
+#                 login(request, user)
+#                 # print(user.pk)
+#                 # print(user.username)
+#                 # print(user.user_score)
+#                 if request.POST.get("next"):
+#                     return redirect(request.POST.get("next"))
+#                 return redirect("/")
 
-            return render(request, "users/login.html")
+#             return render(request, "users/login.html")
 
-        ctx = {"form": form}
-        return render(request, "users/login.html", ctx)
+#         ctx = {"form": form}
+#         return render(request, "users/login.html", ctx)
 
 # def log_out(request):
 #     logout(request)
