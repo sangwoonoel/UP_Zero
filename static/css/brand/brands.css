@@ -138,7 +138,7 @@
   height: 1.5rem;
   border-radius: 50%;
   background: white;
-  filter: drop-shadow(0.2rem 0.4rem 6rem rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.2));
   transition: all 0.3s ease-in-out;
 }
 .sort-btn:hover .sort-btn__bg {

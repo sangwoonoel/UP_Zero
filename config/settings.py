@@ -86,6 +86,7 @@ AUTH_USER_MODEL = 'users.User'
 SITE_ID = 1
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -224,6 +225,3 @@ EMAIL_USE_TLS = True
 
 # 사이트와 관련한 자동응답을 받을 이메일 주소
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-from django.urls import reverse_lazy
-
-

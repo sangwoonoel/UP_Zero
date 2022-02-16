@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% load static %} {% load widget_tweaks %}
 {% block content %}
 <main>
-    <form
+  <form
     method="post"
     class="post-form"
     enctype="multipart/form-data"
     style="display: flex; flex-direction: column"
-    >
+  >
     <!-- 임시 CSS -->
     {% csrf_token %} {{ form.media }}
     <label for="id_title">제목:</label>
@@ -14,15 +14,30 @@
     <label for="id_content">내용:</label>
     {{ form.content|add_class:'post-form__content' }}
     <button type="submit">저장</button>
-    </form>
+  </form>
 </main>
 {% endblock %} {% block script %}
 <script>
+  CKEDITOR.on("dialogDefinition", function (e) {
+    let dialogName = e.data.name;
+    let dialogDefinition = e.data.definition;
+
+    if (dialogName === "image") {
+      let infoTab = dialogDefinition.getContents("info");
+      if (infoTab) {
+        infoTab.remove("txtAlt");
+        infoTab.remove("txtHSpace");
+        infoTab.remove("txtVSpace");
+        infoTab.remove("cmbAlign");
+        infoTab.remove("txtBorder");
+      }
+    }
+  });
+  CKEDITOR.config.removeDialogTabs =
+    "image:Link;image:advanced;link:target;link:advanced";
   CKEDITOR.config.image_previewText = CKEDITOR.tools.repeat(
     "미리보기 텍스트",
     1
   );
-  CKEDITOR.config.removeDialogTabs =
-    "image:Link;image:advanced;link:target;link:advanced";
 </script>
 {% endblock %}
