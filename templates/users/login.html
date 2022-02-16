@@ -5,7 +5,12 @@
 <main class="login">
   <h3 class="login__title">로그인</h3>
   <form class="login__form" method="POST">
-    {% csrf_token %} {{form.as_table}}
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %} {{ error }} {% endfor %}
+    {% endif %}
+    {{ form.username }}
+    {{ form.password }}
     <div class="forgot-info">
       <a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
       <span class="forgot-info__division"> | </span>

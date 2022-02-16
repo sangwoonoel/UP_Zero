@@ -1,8 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from .models import User
-from django.contrib.auth.forms import UserChangeForm, ReadOnlyPasswordHashField
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField, AuthenticationForm
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=40, label = "아이디", widget=forms.TextInput(attrs={'placeholder': '아이디를 입력해주세요'}))
@@ -40,11 +41,21 @@ class SignUpForm(UserCreationForm):
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': '비밀번호'}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': '비밀번호 확인'}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': '이메일'}))
-    nickname = forms.CharField(max_length=40, widget=forms.TextInput(attrs={'placeholder': '닉네임'}))
+    nickname = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'placeholder': '닉네임'}))
 
     class Meta:
         model = User
         fields = ("username", "password1", "password2", "email", "nickname")
+
+class AuthForm(AuthenticationForm):
+    error_messages = {
+        'invalid_login': _(
+            "올바른 아이디와 비밀번호를 입력해 주세요."
+        ),
+        'inactive': _("비활성화된 계정입니다."),
+    }
+class CustomLoginView(LoginView):
+    authentication_form = AuthForm
 
 class CustomUserChangeForm(UserChangeForm):
     password = ReadOnlyPasswordHashField(label="Password", widget=forms.HiddenInput())
