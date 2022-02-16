@@ -8,9 +8,7 @@
     {%for PostLike in PostLikes %}
         <div>
             <a href="{% url 'post:post_detail' PostLike.post.id %}">{{ PostLike.post.title }}</a>
-            <a href="">삭제</a>
-            
-            </div>
+            <a href="{% url 'users:mypage_scrap_delete' PostLike.id  %}">삭제</a>
         </div>
         {% endfor %}
 

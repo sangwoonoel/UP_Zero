@@ -7,9 +7,7 @@
 <main class="login">
   <h3 class="login__title">로그인</h3>
   <form class="login__form" method="POST">
-    {% csrf_token %} {{form.as_table}} {% if next %}
-    <input type="hidden" name="next" value="{{next}}" />
-    {% endif %}
+    {% csrf_token %} {{form.as_table}} 
     <div class="forgot-info">
         <a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
         <span class="forgot-info__division"> | </span>

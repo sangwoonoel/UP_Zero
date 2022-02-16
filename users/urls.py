@@ -8,8 +8,12 @@ extra_patterns = [
     path("", views.mypage, name="mypage"),
     path("brands/", views.brand_like, name="my_brand"),
     path("scraps/", views.post_like, name="my_scrap"),
-    path("posts/", views.user_post, name="my_post"),
     path("comments/", views.comments_list, name="my_comment"),
+    path("posts/", views.user_post, name="my_post"),
+    path("brand_delete/<int:pk>", views.mypage_brand_delete, name="mypage_brand_delete"),
+    path("scrap_delete/<int:pk>", views.mypage_scrap_delete, name="mypage_scrap_delete"),
+    path("comment_delete/<int:pk>", views.mypage_comment_delete, name="mypage_comment_delete"),
+    path("post_delete/<int:pk>", views.mypage_post_delete, name="mypage_post_delete"),
 ]
 
 urlpatterns = [
