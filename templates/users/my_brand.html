@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %} {% load static %}
 {% block content %} 
 {% if user.is_authenticated %}
 <main>
@@ -9,10 +9,18 @@
             <div>
             
                 <a href="{% url 'brand:detail' BrandLike.brand.id %}">{{ BrandLike.brand.name }}</a>
-                <a href="">삭제</a>
+                <a href="{% url 'users:mypage_brand_delete' BrandLike.id  %}">삭제</a>
+
             </div>
         {% endfor %}
 
     {% endif %}
 </main>
+{% endblock %}
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/brand/like.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="{% static 'js/brand/share.js' %}"></script>
 {% endblock %}

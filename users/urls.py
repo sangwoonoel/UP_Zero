@@ -1,6 +1,9 @@
 from django.urls import include, path
 from . import views
 from django.contrib.auth import views as auth_views
+from brand import views as brandview
+import json
+from django.http import JsonResponse
 
 app_name = 'users'
 
@@ -10,6 +13,7 @@ extra_patterns = [
     path("scraps/", views.post_like, name="my_scrap"),
     path("posts/", views.user_post, name="my_post"),
     path("comments/", views.comments_list, name="my_comment"),
+    path("brand_delete/<int:pk>", views.mypage_brand_delete, name="mypage_brand_delete"),
 ]
 
 urlpatterns = [

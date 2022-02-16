@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
@@ -12,6 +12,8 @@ from post.models import *
 from .models import User
 from .forms import LoginForm, SignUpForm, CustomUserChangeForm
 import re
+import json
+from django.http import JsonResponse
 
 class LoginView(View):
     def get(self, request):
@@ -218,10 +220,11 @@ def comments_list(request):
 
     return render(request, 'users/my_comment.html', context)
 
-def mypage_brand_delete(request):
-    BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
+def mypage_brand_delete(request,pk):
+    brandlike = get_object_or_404(BrandLike, id = pk)
+    print(brandlike)
     
-    BrandLikes[0].delete()
+    brandlike.delete()
     
     
     return redirect('users:mypage')
