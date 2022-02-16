@@ -7,9 +7,11 @@
     <h1>브랜드 찜</h1>
         {%for BrandLike in BrandLikes %}
             <div>
-            
-                <a href="{% url 'brand:detail' BrandLike.brand.id %}">{{ BrandLike.brand.name }}</a>
-                <a href="{% url 'users:mypage_brand_delete' BrandLike.id  %}">삭제</a>
+                <a href="{% url 'brand:detail' BrandLike.brand.id %}">     
+                    <img src="{{ BrandLike.brand.image.url }}" alt="브랜드 이미지" width="50rem" height="50rem" />
+                    <span>{{ BrandLike.brand.name }}</span>  
+                </a>
+                <a href="{% url 'users:mypage_brand_delete' BrandLike.id %}">삭제</a>
 
             </div>
         {% endfor %}
@@ -18,9 +20,4 @@
 </main>
 {% endblock %}
 {% block script %}
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="{% static 'js/brand/like.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="{% static 'js/brand/share.js' %}"></script>
 {% endblock %}

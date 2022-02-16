@@ -15,36 +15,36 @@ import re
 import json
 from django.http import JsonResponse
 
-class LoginView(View):
-    def get(self, request):
-        #form = LoginForm()
-        #return render(request, "accounts/login.html")
-        next = None
-        if request.GET.get("next"):
-            next = request.GET.get("next")
-        form = LoginForm()
-        return render(request, "users/login.html", {"form": form, "next": next})
+# class LoginView(View):
+#     def get(self, request):
+#         #form = LoginForm()
+#         #return render(request, "accounts/login.html")
+#         next = None
+#         if request.GET.get("next"):
+#             next = request.GET.get("next")
+#         form = LoginForm()
+#         return render(request, "users/login.html", {"form": form, "next": next})
 
-    def post(self, request):
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            user = authenticate(request, username=username, password=password)
+#     def post(self, request):
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get("username")
+#             password = form.cleaned_data.get("password")
+#             user = authenticate(request, username=username, password=password)
             
-            if user is not None:
-                login(request, user)
-                # print(user.pk)
-                # print(user.username)
-                # print(user.user_score)
-                if request.POST.get("next"):
-                    return redirect(request.POST.get("next"))
-                return redirect("/")
+#             if user is not None:
+#                 login(request, user)
+#                 # print(user.pk)
+#                 # print(user.username)
+#                 # print(user.user_score)
+#                 if request.POST.get("next"):
+#                     return redirect(request.POST.get("next"))
+#                 return redirect("/")
 
-            return render(request, "users/login.html")
+#             return render(request, "users/login.html")
 
-        ctx = {"form": form}
-        return render(request, "users/login.html", ctx)
+#         ctx = {"form": form}
+#         return render(request, "users/login.html", ctx)
 
 # def log_out(request):
 #     logout(request)
@@ -220,14 +220,7 @@ def comments_list(request):
 
     return render(request, 'users/my_comment.html', context)
 
-def mypage_brand_delete(request,pk):
-    brandlike = get_object_or_404(BrandLike, id = pk)
-    print(brandlike)
-    
-    brandlike.delete()
-    
-    
-    return redirect('users:mypage')
+
 
 
 # def mypage_brand_delete(request):
@@ -239,19 +232,25 @@ def mypage_brand_delete(request,pk):
     
 #     return render(request, 'users/brand_like.html', context)
 
+def mypage_brand_delete(request, pk):
+    brandlike = get_object_or_404(BrandLike, id = pk)
+    brandlike.delete()
+    return redirect('users:my_brand')
 
-def mypage_post_delete(request):
-    PostLikes = PostLike.objects.filter(user__id=request.user.pk)
-    PostLikes[0].delete()
-    
-    
-    return redirect('users:mypage')
+def mypage_scrap_delete(request, pk):
+    postlike = get_object_or_404(PostLike, id = pk)
+    postlike.delete()
+    return redirect('users:my_scrap')
 
-def mypage_comment_delete(request):
-    Comments = Comment.objects.filter(user__id=request.user.pk)
-    print(Comments)
-    Comments[0].delete()
-    return redirect('users:mypage')    
+def mypage_comment_delete(request, pk):
+    comment = get_object_or_404(Comment, id = pk)
+    comment.delete()
+    return redirect('users:my_comment')   
+    
+def mypage_post_delete(request, pk):
+    post = get_object_or_404(Post, id = pk)
+    post.delete()
+    return redirect('users:my_post')  
 
 # def user_post_delete(request):
 #     MyPosts = Post.objects.filter(user__id=request.user.pk)
