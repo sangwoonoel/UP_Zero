@@ -187,7 +187,7 @@ def mypage(request):
 
 @login_required
 def brand_like(request):
-    BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
+    BrandLikes = BrandLike.objects.filter(user__id=request.user.pk).order_by('-id')
    
     context = {'BrandLikes' : BrandLikes}
 
@@ -195,7 +195,7 @@ def brand_like(request):
 
 @login_required
 def post_like(request):
-    PostLikes = PostLike.objects.filter(user__id=request.user.pk)
+    PostLikes = PostLike.objects.filter(user__id=request.user.pk).order_by('-id')
     
     context = {'PostLikes' : PostLikes}
 
@@ -206,7 +206,7 @@ def post_like(request):
 
 @login_required
 def user_post(request):
-    MyPosts = Post.objects.filter(user__id=request.user.pk)
+    MyPosts = Post.objects.filter(user__id=request.user.pk).order_by('-created_at')
     
     context = {'MyPosts' : MyPosts}
 
@@ -214,7 +214,7 @@ def user_post(request):
 
 @login_required
 def comments_list(request):
-    Comments = Comment.objects.filter(user__id=request.user.pk)
+    Comments = Comment.objects.filter(user__id=request.user.pk).order_by('-created_at')
 
     context = {'Comments' : Comments}
 

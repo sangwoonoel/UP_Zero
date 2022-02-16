@@ -1,24 +1,34 @@
-{% extends 'base.html' %} 
-{% block content %} 
+{% extends 'base.html' %} {% load static %} {% block content %}
 <main>
-  {% if user.is_authenticated %}
-  <header class="mypage__header" style="display:flex;" >
-    {% if user.image %} <!-- 나중에 if문 지워도 됨 -->
-      <div class="mypage__avatar">
-        <img src="{{user.image.url}}" alt="유저 프로필 이미지" width="50rem" height="50rem" />
-      </div>
+  <header class="mypage__header" style="display: flex">
+    {% if user.image %}
+    <!-- 나중에 if문 지워도 됨 -->
+    <div class="mypage__avatar">
+      <img
+        src="{{user.image.url}}"
+        alt="유저 프로필 이미지"
+        width="50rem"
+        height="50rem"
+      />
+    </div>
     {% endif %}
-    <h1 class="mypage__nickname">
-      {{user.username}} <!-- will change to nickname -->
-    </h1>
+    <h1 class="mypage__user">{{user}}</h1>
   </header>
   {% for MyPost in MyPosts %}
-      <div>
-          <a href="{% url 'post:post_detail' MyPost.id %}">{{MyPost.title}}</a>
-          <a href="{% url 'users:mypage_post_delete' MyPost.id %}">삭제</a>
-          <a href="{% url 'post:post_update' MyPost.pk %}">수정</a>    
-      </div>
+  <div>
+    <a href="{% url 'post:post_detail' MyPost.id %}">{{MyPost}}</a>
+    <a href="{% url 'post:post_update' MyPost.id %}"
+      ><i class="fa-solid fa-eraser"></i
+    ></a>
+    <button
+      onclick="deletePost('{% url 'users:mypage_post_delete' MyPost.id %}')"
+    >
+      <i class="fa-solid fa-trash-can"></i>
+      <!-- 찜하기 취소 라는 말이 뭔가 어색해서 아이콘으로 넣었는데 그냥 텍스트로 하셔도 됩니다 -->
+    </button>
+  </div>
   {% endfor %}
-  {% endif %} 
 </main>
+{% endblock %} {% block script %}
+<script src="{% static 'js/confirm.js' %}"></script>
 {% endblock %}

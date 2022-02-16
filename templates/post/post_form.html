@@ -13,7 +13,9 @@
     {{ form.title|add_class:'post-form__title' }}
     <label for="id_content">내용:</label>
     {{ form.content|add_class:'post-form__content' }}
-    <button type="submit">저장</button>
+    <button type="submit" > <!-- 게시글 작성하시겠습니까? 라는 confirm 넣어 보려 했는데 일단 css 다되면 생각해 볼게요 -->
+      저장
+    </button>
   </form>
 </main>
 {% endblock %} {% block script %}
