@@ -24,7 +24,7 @@ class Post(models.Model):
             return str(int(time.seconds / 60)) + '분 전'
         elif time < timedelta(days=1):
             return str(int(time.seconds / 3600)) + '시간 전'
-        elif time < timedelta(days=7):
+        elif time < timedelta(days=4):
             time = datetime.now(tz=timezone.utc).date() - \
                 self.created_at.date()
             return str(time.days) + '일 전'
