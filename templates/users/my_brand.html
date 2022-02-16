@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %} {% load static %}
 {% block content %} 
 {% if user.is_authenticated %}
 <main>
@@ -7,12 +7,17 @@
     <h1>브랜드 찜</h1>
         {%for BrandLike in BrandLikes %}
             <div>
-            
-                <a href="{% url 'brand:detail' BrandLike.brand.id %}">{{ BrandLike.brand.name }}</a>
-                <a href="">삭제</a>
+                <a href="{% url 'brand:detail' BrandLike.brand.id %}">     
+                    <img src="{{ BrandLike.brand.image.url }}" alt="브랜드 이미지" width="50rem" height="50rem" />
+                    <span>{{ BrandLike.brand.name }}</span>  
+                </a>
+                <a href="{% url 'users:mypage_brand_delete' BrandLike.id %}">삭제</a>
+
             </div>
         {% endfor %}
 
     {% endif %}
 </main>
+{% endblock %}
+{% block script %}
 {% endblock %}

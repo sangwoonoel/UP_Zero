@@ -11,7 +11,7 @@
         
             <a href="{% url 'post:post_detail' Comment.post.id %}">{{Comment.message}}</a>
         
-            <a href="">삭제</a>
+            <a href="{% url 'users:mypage_comment_delete' Comment.id  %}">삭제</a>
         
                 
         </div>
