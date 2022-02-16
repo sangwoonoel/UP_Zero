@@ -2,7 +2,9 @@
 {% block title %}All posts{% endblock %} 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/post/list.css' %}" />
+<link rel="stylesheet" href="{% static 'css/post/header.css' %}" />
 <link rel="stylesheet" href="{% static 'css/post/select.css' %}" />
+<link rel="stylesheet" href="{% static 'css/post/body.css' %}" />
 {% endblock %}
 {% block content %}
 <main id="poster">
@@ -19,79 +21,77 @@
         </p>
     {% endif %}
     <div class="post-header">
-        <div class="keyword-container">
-            <input
-            class="input-keyword"
-            type="text"
-            name="keyword"
-            placeholder="게시물을 검색하세요"
-            value="{{keyword}}"
-            autocomplete
-            />
-            <button type="submit" value="검색" onclick="PostSearch(this)"><i class="fas fa-search"></i></button>
-        </div>
-    </div>
-    <div class="post-list">
-        <div class="posts">
-            {% for post in page_obj %}
-            <div class="post">
-                <a href="{% url 'post:post_detail' post.id %}">
-                    <div class="post-title"><strong>{{post.title}}</strong></div>
-                    <div class="post-preview">
-                        {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
-                    </div>
-                    <div class="post-write">
-                        <div class="post-created">
-                            {% if post.created_string == False %}
-                            <td>{{ post.created_at|date:'m월 d일' }}</td>
-                            {% else %}
-                            <td class="post_created_time">{{ post.created_string }}</td>
-                            {% endif %}
-                        </div>
-                        <div class="post-author" style="display: flex; align-items: center;">
-                            {% if post.user.image %}
-                            <!-- 나중에 if문 지워도 됨 -->
-                            <img class="avatar-img"
-                            src="{{post.user.image.url}}"
-                            alt="작성자 프로필 이미지"
-                            width="20rem"
-                            height="20rem"
-                            />
-                            {% endif %}
-                        </div>
-                        <span class="username">{{post.user}}</span>
-                    </div>
-                    <div class="post-res">
-                        <div class="post-like"><i class="like-icon fa-heart far"></i> {{post.postlike_set.count}}</div>
-                        <div class="post-comment"><i class="comment-icon far fa-comment"></i> {{post.comment_set.count}}</div>
-                    </div>
-                </a>
+        <div class="sort-header">
+            <div class="keyword-container">
+                <input
+                class="input-keyword"
+                type="text"
+                name="keyword"
+                placeholder="게시물을 검색하세요"
+                value="{{keyword}}"
+                autocomplete="off"
+                />
+                <button type="submit" value="검색" onclick="PostSearch(this)"><i class="fas fa-search"></i></button>
             </div>
-            {% endfor %}
-        </div>
-        <div class="post-footer">
             <div class="sort-select">
                 <div class="select-default">
                     <span>정렬</span>
                 </div>
                 <div class="optionList" >
-                    <li class="optionListItem" id="latest" value="latest" onclick="SortChange(this)">최신순</li>
-                    <li class="optionListItem" id="like" value="like" onclick="SortChange(this)">인기순</li>
-                    <li class="optionListItem" id="past" value="past" onclick="SortChange(this)">과거순</li>
+                    <li class="optionListItem" id="latest" value="latest" onclick="SortChange(this)">최신 순</li>
+                    <li class="optionListItem" id="like" value="like" onclick="SortChange(this)">인기 순</li>
+                    <li class="optionListItem" id="past" value="past" onclick="SortChange(this)">과거 순</li>
                 </div>
-            </div>
-            <div class="post-create">
-                {% if user.is_authenticated %}
-                <a class="post-create__btn" href="{% url 'post:post_create' %}"
-                    >게시물작성</a
-                >
-                {% else %}
-                <button class="post-create__btn" type="button" onclick="onClickAlert()">
-                    게시물작성
-                </button>
-                {% endif %}
-            </div>      
+            </div> 
         </div>
+        <div class="post-create">
+            {% if user.is_authenticated %}
+            <a class="post-create__btn" href="{% url 'post:post_create' %}"
+                ><img src="/static/images/add_btn.png" alt=""><span>게시물 작성</span></a
+            >
+            {% else %}
+            <button class="post-create__btn" type="button" onclick="onClickAlert()">
+                <img src="/static/images/add_btn.png" alt=""><span>게시물 작성</span>
+            </button>
+            {% endif %}
+        </div>  
+    </div>
+    <div class="post-list">
+        {% for post in page_obj %}
+        <div class="post">
+            <a href="{% url 'post:post_detail' post.id %}">
+                <div class="post-title"><strong>{{post.title}}</strong></div>
+                <div class="post-preview">
+                    {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
+                </div>
+                <div class="post-write">
+                    <div class="post-created">
+                        {% if post.created_string == False %}
+                        <td>{{ post.created_at|date:'m월 d일' }}</td>
+                        {% else %}
+                        <td class="post_created_time">{{ post.created_string }}</td>
+                        {% endif %}
+                    </div>
+                    <div class="post-author" style="display: flex; align-items: center;">
+                        {% if post.user.image %}
+                        <!-- 나중에 if문 지워도 됨 -->
+                        <img class="avatar-img"
+                        src="{{post.user.image.url}}"
+                        alt="작성자 프로필 이미지"
+                        width="20rem"
+                        height="20rem"
+                        />
+                        {% endif %}
+                    </div>
+                    <span class="username">{{post.user}}</span>
+                </div>
+                <div class="post-res">
+                    <div class="post-like"><i class="like-icon fa-heart far"></i> {{post.postlike_set.count}}</div>
+                    <div class="post-comment"><i class="comment-icon far fa-comment"></i> {{post.comment_set.count}}</div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
     <div class="post-total">
         <span>Total</span><div class="total-page">{{page_obj.paginator.num_pages}}</div><span>pages.</span>

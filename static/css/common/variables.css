@@ -2,6 +2,9 @@
   --black: rgb(30, 30, 30);
   --mint: rgb(131, 204, 200);
   --gray: #a6a6a6;
+  --dark-mint: #6da4a1;
   --lightgrey: rgb(211, 211, 211);
   --post-hover: #fbfbfb;
+  --box-shadow: rgba(0, 0, 0, 0.25);
+  --list-hover: #f0f9f8;
 }
