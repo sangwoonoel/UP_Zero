@@ -1,29 +1,25 @@
 {% extends 'base.html' %} {% load static %} {% load socialaccount %}
-{% block title %}로그인 | SLOW:NIQUE{% endblock %}
-{% block css %}
+{% block title %}로그인 | SLOW:NIQUE{% endblock %} {% block css %}
 <link rel="stylesheet" href="{% static 'css/users/login.css' %}" />
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <main class="login">
   <h3 class="login__title">로그인</h3>
   <form class="login__form" method="POST">
-    {% csrf_token %} {{form.as_table}} {% if next %}
-    <input type="hidden" name="next" value="{{next}}" />
-    {% endif %}
+    {% csrf_token %} {{form.as_table}}
     <div class="forgot-info">
-        <a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
-        <span class="forgot-info__division"> | </span>
-        <a href="{% url 'users:password_reset' %}">비밀번호 찾기</a>
+      <a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
+      <span class="forgot-info__division"> | </span>
+      <a href="{% url 'users:password_reset' %}">비밀번호 찾기</a>
     </div>
     <button>로그인</button>
   </form>
   <a class="login__naver" href="{% provider_login_url 'naver' %}">
-      <img src="/static/images/naver.png" width="32px" height="32px">
-      네이버 로그인
+    <img src="/static/images/naver.png" width="32px" height="32px" />
+    네이버 로그인
   </a>
   <a class="login__google" href="{% provider_login_url 'google' %}">
-      <img src="/static/images/google.png" width="22px" height="22px">
-      구글 로그인
+    <img src="/static/images/google.png" width="22px" height="22px" />
+    구글 로그인
   </a>
   <div class="to-signup">
     <p>아직 계정이 없으신가요?</p>
