@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
@@ -12,6 +12,8 @@ from post.models import *
 from .models import User
 from .forms import LoginForm, SignUpForm, CustomUserChangeForm
 import re
+import json
+from django.http import JsonResponse
 
 # class LoginView(View):
 #     def get(self, request):
@@ -218,13 +220,7 @@ def comments_list(request):
 
     return render(request, 'users/my_comment.html', context)
 
-def mypage_brand_delete(request):
-    BrandLikes = BrandLike.objects.filter(user__id=request.user.pk)
-    
-    BrandLikes[0].delete()
-    
-    
-    return redirect('users:mypage')
+
 
 
 # def mypage_brand_delete(request):
@@ -236,19 +232,25 @@ def mypage_brand_delete(request):
     
 #     return render(request, 'users/brand_like.html', context)
 
+def mypage_brand_delete(request, pk):
+    brandlike = get_object_or_404(BrandLike, id = pk)
+    brandlike.delete()
+    return redirect('users:my_brand')
 
-def mypage_post_delete(request):
-    PostLikes = PostLike.objects.filter(user__id=request.user.pk)
-    PostLikes[0].delete()
-    
-    
-    return redirect('users:mypage')
+def mypage_scrap_delete(request, pk):
+    postlike = get_object_or_404(PostLike, id = pk)
+    postlike.delete()
+    return redirect('users:my_scrap')
 
-def mypage_comment_delete(request):
-    Comments = Comment.objects.filter(user__id=request.user.pk)
-    print(Comments)
-    Comments[0].delete()
-    return redirect('users:mypage')    
+def mypage_comment_delete(request, pk):
+    comment = get_object_or_404(Comment, id = pk)
+    comment.delete()
+    return redirect('users:my_comment')   
+    
+def mypage_post_delete(request, pk):
+    post = get_object_or_404(Post, id = pk)
+    post.delete()
+    return redirect('users:my_post')  
 
 # def user_post_delete(request):
 #     MyPosts = Post.objects.filter(user__id=request.user.pk)
