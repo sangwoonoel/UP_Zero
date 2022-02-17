@@ -35,7 +35,7 @@
             </a>
         </div>
         {% endif %}
-        <a class="navbar__items log-btn" href="{% url 'users:logout' %}?next={{ request.get_full_path }}"">Log out</a>
+        <a class="navbar__items log-btn" href="{% url 'users:logout' %}?next={{ request.get_full_path }}">Log out</a>
         {% else %}
         <a class="navbar__items log-btn" href="{% url 'users:login' %}?next={{ request.get_full_path }}">Log in</a>
         {% endif %}
