@@ -17,7 +17,7 @@
 
 .post-created {
   position: relative;
-  left: -8rem;
+  left: -8.5rem;
   top: 3.5rem;
   color: var(--gray);
   font-size: 1.1rem;
@@ -44,6 +44,7 @@
   position: relative;
   top: -0.3rem;
   margin-right: 2.4rem;
+  width: 7rem;
 }
 
 .post-write span {
