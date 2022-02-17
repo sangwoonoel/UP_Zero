@@ -66,7 +66,7 @@
                     {% if post.created_string == False %}
                     <td>{{ post.created_at|date:'m월 d일' }}</td>
                     {% else %}
-                    <td class="post_created_time"> &nbsp; &nbsp; &nbsp;{{ post.created_string }}</td>
+                    <td class="post_created_time">{{ post.created_string }}</td>
                     {% endif %}
                 </div>
                 <div class="post-circle"></div>
@@ -147,5 +147,6 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{% static 'js/post/like.js' %}"></script>
 <script src="{% static 'js/post/sort.js' %}"></script>
+<script src="{% static 'js/post/created.js' %}"></script>
 {% endblock %}
 <!-- type = "submit" value = "검색"-->

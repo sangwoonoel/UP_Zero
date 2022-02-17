@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.db.models import Count
+from django.contrib.auth.decorators import login_required
 
 
 def post_detail(request, pk):
@@ -29,6 +30,7 @@ def post_detail(request, pk):
     return render(request, template_name='post/post_detail.html', context=ctx)
 
 
+@login_required
 def post_create(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -44,6 +46,7 @@ def post_create(request):
     return render(request, template_name='post/post_form.html', context=ctx)
 
 
+@login_required
 def post_update(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
@@ -60,12 +63,14 @@ def post_update(request, pk):
         return render(request, template_name='post/post_form.html', context=ctx)
 
 
+@login_required
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('post:list')
 
 
+@login_required
 @csrf_exempt
 def like_post(request):
     req = json.loads(request.body)
@@ -85,6 +90,7 @@ def like_post(request):
     return JsonResponse({"action": action})
 
 
+@login_required
 @csrf_exempt
 def create_comment(request):
     req = json.loads(request.body)
@@ -101,6 +107,7 @@ def create_comment(request):
     return JsonResponse({'user': str(user), 'username': user.username, 'post_id': post_id, 'message': message, 'comment_id': comment.id, 'img_url': img_url})
 
 
+@login_required
 @csrf_exempt
 def update_comment(request):
     req = json.loads(request.body)
@@ -116,6 +123,7 @@ def update_comment(request):
     return JsonResponse({'message': message, 'comment_id': comment_id})
 
 
+@login_required
 @csrf_exempt
 def delete_comment(request):
     req = json.loads(request.body)
