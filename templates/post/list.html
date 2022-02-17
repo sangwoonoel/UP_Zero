@@ -70,7 +70,7 @@
                     {% endif %}
                 </div>
                 <div class="post-circle"></div>
-                <a class="post-content" href="{% url 'post:post_detail' post.id %}">
+                <a class="post-profile" href="{% url 'post:post_detail' post.id %}">
                     <div class="post-write">
                         <div class="post-author" >
                             {% if post.user.image %}
@@ -85,13 +85,15 @@
                         </div>
                         <span class="username">{{post.user}}</span>
                     </div>
-                    <div class="post-title"><strong>{{post.title}}</strong></div>
-                    <div class="post-preview">
-                        {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
-                    </div>
-                    <div class="post-res">
-                        <div class="post-like"><i class="like-icon fa-heart far"></i> {{post.postlike_set.count}}</div>
-                        <div class="post-comment"><i class="comment-icon far fa-comment"></i> {{post.comment_set.count}}</div>
+                    <div class="post-content">
+                        <div class="post-title">{{post.title}}</div>
+                        <div class="post-preview">
+                            {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
+                        </div>
+                        <div class="post-res">
+                            <div class="post-like"><i class="like-icon fa-heart far"></i> {{post.postlike_set.count}}</div>
+                            <div class="post-comment"><i class="comment-icon far fa-comment"></i> {{post.comment_set.count}}</div>
+                        </div>
                     </div>
                 </a>
             </div>
