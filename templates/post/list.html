@@ -50,7 +50,7 @@
                 ><img src="/static/images/add_btn.png" alt=""><span>게시물 작성</span></a
             >
             {% else %}
-            <button class="post-create__btn" type="button" onclick="onClickAlert()">
+            <button class="post-create__btn" type="button" onclick="onClickLogin('{{request.path}}')">
                 <img src="/static/images/add_btn.png" alt=""><span>게시물 작성</span>
             </button>
             {% endif %}
