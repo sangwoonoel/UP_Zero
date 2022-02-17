@@ -46,6 +46,15 @@
 
 .post-total {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.8rem 17.5rem 0 22.2rem;
+  font-size: 1.5rem;
+  color: var(--dark-gray);
+}
+
+.total-pages {
+  display: flex;
 }
 
 .total-page {

@@ -101,7 +101,10 @@
         </div>
     </div>
     <div class="post-total">
-        <span>Total</span><div class="total-page">{{page_obj.paginator.num_pages}}</div><span>pages.</span>
+        <div class="total-pages">
+            <span>Total</span><div class="total-page">{{page_obj.paginator.num_pages}}</div><span>pages.</span>
+        </div>
+        <div>{{post_cnt}} feeds</div>
     </div>
     <div class="pagination">
         {% if page_obj.has_previous %}
@@ -119,9 +122,15 @@
             <button disabled style="width: 6.75rem;"> </button>
         {% endif %}
     
-        <span class="page"> <strong>{{page_obj.number}}</strong></span>
-        <span> / </span>
-        <span>{{page_obj.paginator.num_pages}} </span>
+        <div>
+            {% for page in page_obj.paginator.page_range %}
+                {% if page >= page_obj.number|add:-3 and page <= page_obj.number|add:3 %}
+                <span class="{% if page == page_obj.number %}current{% endif %}">
+                    <a href="?page={{ page }}">{{ page}}</a>
+                </span>
+                {% endif %}
+            {% endfor %}
+        </div>
     
         {% if page_obj.has_next %}
             <button
