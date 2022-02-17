@@ -62,10 +62,11 @@ const CreateHandleResponse = () => {
     commentEdit.setAttribute("class", "comment__edit");
     commentEdit.setAttribute("style", "display: none;");
     editInput.setAttribute("class", "comment__edit-input");
+    editInput.setAttribute("onKeypress", `javascript:if(event.keyCode==13) {onClickUpdate(${post_id},${comment_id})}`);
     editInput.setAttribute("value", `${message}`);
     editInput.setAttribute("type", "text");
     updateBtn.setAttribute("class", "comment__update-btn");
-    updateBtn.setAttribute("onclick", `onClickUpdate(${comment_id})`);
+    updateBtn.setAttribute("onclick", `onClickUpdate(${post_id},${comment_id})`);
     btnDivision.setAttribute("class", "button-division");
 
     delBtn.innerText = "삭제";

@@ -1,11 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %} 
+{% block title %}아이디찾기 | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/forgot_id.css' %}" />
+{% endblock %}
 {% block content %}
 
-<main>
-    <h3>
+<main class="forgot-id">
+    <h3 class="forgot-id__title">
         메일을 확인해주세요!
     </h3>
-    <a class="navbar__items log-btn" href="{% url 'users:login' %}">Log in</a>
+    <a class="login-button" href="{% url 'users:login' %}">Log in</a>
 </main>  
 
 
