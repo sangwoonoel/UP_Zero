@@ -98,7 +98,7 @@ def create_comment(request):
     comment = Comment.objects.create(user=user, post=post, message=message)
     comment.save()
 
-    return JsonResponse({'user': user.nickname, 'username': user.username, 'post_id': post_id, 'message': message, 'comment_id': comment.id, 'img_url': img_url})
+    return JsonResponse({'user': str(user), 'username': user.username, 'post_id': post_id, 'message': message, 'comment_id': comment.id, 'img_url': img_url})
 
 
 @csrf_exempt
@@ -143,7 +143,7 @@ def post_list(request):
     elif request.GET.get('sort') == 'latest':  # 최신순 정렬 선택한 경우
         posts = posts.order_by('-created_at')
 
-    paginator = Paginator(posts, 5)
+    paginator = Paginator(posts, 10)
     page = request.GET.get('page', 1)
     page_obj = paginator.get_page(page)
 

@@ -79,66 +79,68 @@
       <span>댓글</span>
       <span class="post-comment__cnt">{{ comments_cnt }}</span>
     </p>
-    <ul class="post-comment__ul post-comment__{{post.id}}">
-      {% for comment in comments %} {% if comment.post == post %}
-      <li class="comment__{{comment.id}}">
-        <div class="comment__main">
-          {% if comment.user.image %}
-          <!-- 나중에 if문 지워도 됨 -->
-          <img
-            class="avatar-img"
-            src="{{comment.user.image.url}}"
-            alt="댓글 작성자 프로필 이미지"
-            width="30rem"
-            height="30rem"
-          />
-          {% endif %}
-          <a href="{% url 'post:author' %}?id={{comment.user.username}}">
-              <span class="comment__user">{{ comment.user }}</span>
-          </a>
-          <p class="comment__message">{{ comment.message }}</p>
-          {% if request.user == comment.user %}
-          <!-- <label 
-            class="comment__menu"
-            for="toggle"
-          >
-            <i class="fa fa-ellipsis-vertical"></i>
-          </label> -->
-          <!-- <input type="checkbox" id="toggle"> -->
-          
+    <div class="post-comment__scroll">
+      <ul class="post-comment__ul post-comment__{{post.id}}">
+        {% for comment in comments %} {% if comment.post == post %}
+        <li class="comment__{{comment.id}}">
+            <div class="comment__main">
+            {% if comment.user.image %}
+            <!-- 나중에 if문 지워도 됨 -->
+            <img
+                class="avatar-img"
+                src="{{comment.user.image.url}}"
+                alt="댓글 작성자 프로필 이미지"
+                width="30rem"
+                height="30rem"
+            />
+            {% endif %}
+            <a href="{% url 'post:author' %}?id={{comment.user.username}}">
+                <span class="comment__user">{{ comment.user }}</span>
+            </a>
+            <p class="comment__message">{{ comment.message }}</p>
+            {% if request.user == comment.user %}
+            <!-- <label 
+                class="comment__menu"
+                for="toggle"
+            >
+                <i class="fa fa-ellipsis-vertical"></i>
+            </label> -->
+            <!-- <input type="checkbox" id="toggle"> -->
+            
+                <button
+                    class="comment__edit-btn"
+                    onclick="onClickEdit({{comment.id}})"
+                >
+                    수정
+                </button>
+                <span class="button-division">|</span>
+                <button
+                    class="comment__del-btn"
+                    onclick="onClickDel({{comment.id}})"
+                >
+                    삭제
+                </button>
+            
+            {% endif %}
+            </div>
+            <div class="comment__edit" style="display: none">
+            <input
+                class="comment__edit-input"
+                type="text"
+                value="{{comment.message}}"
+                onKeypress="javascript:if(event.keyCode==13) {onClickUpdate({{post.id}},{{comment.id}})}"
+            />
             <button
-                class="comment__edit-btn"
-                onclick="onClickEdit({{comment.id}})"
+                class="comment__update-btn"
+                onclick="onClickUpdate({{post.id}},{{comment.id}})"
             >
                 수정
             </button>
-            <span class="button-division">|</span>
-            <button
-                class="comment__del-btn"
-                onclick="onClickDel({{comment.id}})"
-            >
-                삭제
-            </button>
-          
-          {% endif %}
-        </div>
-        <div class="comment__edit" style="display: none">
-          <input
-            class="comment__edit-input"
-            type="text"
-            value="{{comment.message}}"
-            onKeypress="javascript:if(event.keyCode==13) {onClickUpdate({{post.id}},{{comment.id}})}"
-          />
-          <button
-            class="comment__update-btn"
-            onclick="onClickUpdate({{post.id}},{{comment.id}})"
-          >
-            수정
-          </button>
-        </div>
-      </li>
-      {% endif %} {% endfor %}
-    </ul>
+            </div>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+    </div>
     <div class="post-comment__input">
       <input
         class="comment-input comment-input__{{post.id}}"

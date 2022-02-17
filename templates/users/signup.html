@@ -1,4 +1,4 @@
-{% extends 'users/main.html' %} {% load static %}
+{% extends 'base.html' %} {% load static %}
 {% block title %}회원가입 | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/users/signup.css' %}" />
@@ -7,7 +7,6 @@
 {% block content %}
 <main class="signup">
     <h3 class="signup__title">회원가입</h3>
-    {{help_text}}
     <form class="signup__form" method="POST" action="">
         {% csrf_token %}
         

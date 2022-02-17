@@ -1,13 +1,13 @@
 .post-list {
   width: 100%;
-  padding: 3.5rem 17.5rem 0 15rem;
+  padding: 3.5rem 27.5rem 0 20rem;
   display: flex;
 }
 
 .vl {
   border-left: 1px solid var(--line-gray);
   margin: 5rem 0 5rem 0;
-  padding-right: 1.2rem;
+  padding-right: 2rem;
   position: relative;
 }
 
@@ -17,11 +17,10 @@
 
 .post-created {
   position: relative;
-  left: -7.5rem;
+  left: -8.5rem;
   top: 3.5rem;
   color: var(--gray);
   font-size: 1.1rem;
-  text-align: left;
 }
 
 .post-circle {
@@ -30,12 +29,13 @@
   width: 1.5rem;
   height: 1.5rem;
   position: relative;
-  left: -2rem;
+  left: -2.8rem;
   top: 2rem;
 }
 
-.post-content {
+.post-profile {
   display: flex;
+  border-bottom: 1px solid #e3e3e3;
 }
 
 .post-write {
@@ -43,6 +43,7 @@
   flex-direction: column;
   position: relative;
   top: -1.3rem;
+  margin-right: 2.4rem;
 }
 
 .post-write span {
@@ -55,7 +56,27 @@
   height: 5rem;
 }
 
-.post-preview,
-.post-res {
+.post-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -1.85rem;
+}
+
+.post-title,
+.post-preview {
   font-size: 1.4rem;
+}
+
+.post-title {
+  color: var(--user-black);
+}
+
+.post-preview {
+  color: #6d6d6d;
+  font-weight: lighter;
+}
+
+.post-res {
+  font-size: 1.2rem;
 }
