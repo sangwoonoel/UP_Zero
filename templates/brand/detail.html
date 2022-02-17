@@ -12,10 +12,11 @@
 {% endblock %} {% block title %}{{brand}} | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/brand/share.css' %}" />
+<link rel="stylesheet" href="{% static 'css/brand/detail.css' %}" />
 {% endblock %} {% block content %}
 <main id="brand-detail">
   <div class="brand-detail__breadcrumb">
-    <ul class="d-flex">
+    <ul class="brand-detail__cate d-flex">
       <li><a href="{% url 'brand:list' %}">전체</a></li>
       <i class="fas fa-chevron-right"></i>
       <li>
@@ -26,47 +27,56 @@
     </ul>
   </div>
   <section
-    class="brand d-flex"
+    class="brand"
     data-id="{{brand.id}}"
     data-liked="{{is_liked}}"
   >
-    <div class="brand__left">
+    <div
+     class="brand__background" 
+     style="background: linear-gradient(to right, var(--black) 20%, transparent), url({{brand.image.url}}); 
+            width: 100%;
+            height: 100vh; 
+            /* position: relative;  */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;"
+    >
       <img
         src="{{brand.image.url}}"
         alt="{{brand}}"
         class="brand__img"
-        width="500"
-        height="250"
-      /> <!-- 임시 사이즈 -->
-    </div>
-    <div class="brand__right">
-      <div class="brand__content">
-        <h1 class="brand__name">{{brand}}</h1>
-        <p class="brand__desc">{{brand.desc}}</p>
-        <p class="brand__info">{{brand.info}}</p>
-        <a href="{{brand.link}}" class="brand__link">{{brand.link}}</a>
-      </div>
-      <div class="brand__interactions d-flex">
-        <div class="brand__likes d-flex">
-          <button
-            class="like-btn"
-            title="좋아요"
-            {% if user.is_authenticated %}
-            onclick="onClickLike({{user.id}}, {{brand.id}})"
-            {% else %}
-            onclick="onClickLogin('{{request.path}}')"            
-            {% endif %}
-          >
-            <i class="fab fa-gratipay fa-xl"></i>
-          </button>
-          <p class="like-info">
-            <span class="like-cnt">{{brand.brandlike_set.all.count}}</span>명이
-            좋아한 브랜드
-          </p>
+        style="display: none;"
+      />
+      <div class="brand__main">
+        <div class="brand__content">
+          <h1 class="brand__name">{{brand}}</h1>
+          <p class="brand__desc">{{brand.desc}}</p>
+          <p class="brand__info">{{brand.info}}</p>
+          <a href="{{brand.link}}" class="brand__link"><i class="fa-solid fa-link"></i>브랜드 바로가기</a>
         </div>
-        {% include "brand/share.html" %}
+        <div class="brand__interactions">
+          <div class="brand__likes d-flex">
+            <button
+              class="like-btn"
+              title="좋아요"
+              {% if user.is_authenticated %}
+              onclick="onClickLike({{user.id}}, {{brand.id}})"
+              {% else %}
+              onclick="onClickLogin('{{request.path}}')"            
+              {% endif %}
+            >
+              <i class="fa-solid fa-heart fa-xl"></i>
+            </button>
+            <p class="like-info">
+              <span class="like-cnt">{{brand.brandlike_set.all.count}}</span>명이
+              좋아한 브랜드
+            </p>
+          </div>
+          {% include "brand/share.html" %}
+        </div>
       </div>
     </div>
+    
   </section>
 </main>
 {% endblock %} {% block script %}
