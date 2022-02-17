@@ -1,6 +1,6 @@
 .post-list {
   width: 100%;
-  padding: 3.5rem 27.5rem 0 20rem;
+  padding: 3.5rem 17.5rem 0 20rem;
   display: flex;
 }
 
@@ -17,7 +17,7 @@
 
 .post-created {
   position: relative;
-  left: -8.5rem;
+  left: -8rem;
   top: 3.5rem;
   color: var(--gray);
   font-size: 1.1rem;
@@ -42,25 +42,25 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  top: -1.3rem;
+  top: -0.3rem;
   margin-right: 2.4rem;
 }
 
 .post-write span {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: var(--user-black);
 }
 
 .post-author img {
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .post-content {
   display: flex;
   flex-direction: column;
   position: relative;
-  top: -1.85rem;
+  top: -1.45rem;
 }
 
 .post-title,
@@ -70,6 +70,7 @@
 
 .post-title {
   color: var(--user-black);
+  font-weight: bold;
 }
 
 .post-preview {
