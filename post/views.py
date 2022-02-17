@@ -41,7 +41,7 @@ def post_create(request):
             return redirect('post:post_detail', pk=post.pk)
     else:
         form = PostForm()
-    ctx = {'form': form}
+    ctx = {'form': form, 'function': '등록'}
 
     return render(request, template_name='post/post_form.html', context=ctx)
 
@@ -57,11 +57,13 @@ def post_update(request, pk):
             post = form.save()
             return redirect('post:post_detail', pk=post.pk)
     else:
-        form = PostForm(instance=post)
+        if request.user == post.user:
+            form = PostForm(instance=post)
 
-        ctx = {'form': form, 'post': post}
-        return render(request, template_name='post/post_form.html', context=ctx)
-
+            ctx = {'form': form, 'post': post, 'function': '수정'}
+            return render(request, template_name='post/post_form.html', context=ctx)
+        else:
+            return redirect('users:forbidden')
 
 @login_required
 def post_delete(request, pk):

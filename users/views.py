@@ -329,3 +329,5 @@ def password(request):
         password_change_form = PasswordChangeForm(request.user)
     return render(request, 'users/password.html',{'password_change_form':password_change_form})
 
+def forbid_access(request):
+    return render(request, 'forbidden.html')

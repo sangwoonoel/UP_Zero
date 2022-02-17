@@ -1,0 +1,37 @@
+#post-form {
+  padding: 13rem 15rem 0 15rem;
+}
+.django-ckeditor-widget {
+  width: 100%;
+}
+.django-ckeditor-widget,
+#cke_id_content {
+  margin: 0;
+}
+#cke_id_content {
+  width: 100% !important;
+}
+
+.post-form__form {
+  gap: 3rem;
+}
+.post-form__title {
+  width: 100%;
+  border: none;
+  border-bottom: 0.1rem solid var(--line-gray);
+  outline: none;
+  font-size: 4rem;
+  font-weight: 500;
+  padding: 1rem;
+}
+.post-form__title::placeholder {
+  color: var(--lightgrey);
+}
+.post-form__btn {
+  margin-top: 2.5rem;
+  opacity: 0.8;
+  background-color: var(--lightgrey);
+  font-size: 1.5rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 0.5rem;
+}

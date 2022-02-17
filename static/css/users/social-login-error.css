@@ -1,0 +1,89 @@
+a {
+  color: inherit;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.re-login-container {
+  padding-top: 10rem; /* same as margin-top of footer */
+}
+
+.message {
+  margin-bottom: 5rem;
+  font-size: 2rem;
+}
+
+.login-menu {
+  display: flex;
+  flex-direction: column;
+}
+.login__naver {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35rem;
+  border: none;
+  background-color: #02c300;
+  color: white;
+  height: 5.3rem;
+  border-radius: 0.5rem;
+  font-size: 1.7rem;
+  margin-top: 0.8rem;
+}
+.login__naver:hover {
+  color: white;
+}
+.login__slownique {
+  margin-top: 0;
+  background: rgb(10, 152, 187);
+}
+.login__slownique img {
+  margin: 0 0.5rem;
+}
+.login__google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35rem;
+  border: 0.1rem solid var(--gray);
+  background-color: white;
+  height: 5.3rem;
+  border-radius: 0.5rem;
+  font-size: 1.7rem;
+  margin-top: 0.8rem;
+}
+.login__google:hover {
+  color: var(--black);
+}
+.login__google img {
+  margin: 0 0.5rem;
+}
+
+.to-signup {
+  display: flex;
+  width: 35rem;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem 0;
+  font-size: 1.5rem;
+}
+.to-signup p {
+  color: var(--black);
+  opacity: 0.7;
+  padding: 0 1rem;
+}
+.to-signup a {
+  color: var(--black);
+  border: 0.1rem solid var(--black);
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
