@@ -10,21 +10,30 @@
   {% endfor %}
   <div class="mypage__title">
     <p>마이페이지</p>
-    <i class="fa-regular fa-bell"></i>
+    <i class="fa-regular fa-bell fa-2x"></i>
   </div>
   {% if user == user %}
   <!-- 왜 있는 거징? -지현 -->
   <div class="mypage__user-info">
-    <div class="user-info__left"></div>
-    <div class="user-info__right">
-        <a href="{% url 'users:update' %}"><i class="far fa-gear"></i></a>
+    <div class="user-info__left">
+        <img 
+        class="avatar-img"
+        src="{{user.image.url}}"
+        alt="게시글 작성자 프로필 이미지"
+        width="50rem"
+        height="50rem" alt="">
+        <span>{{ user }}</span>
     </div>
-    
+    <div class="user-info__right">
+        <a href="{% url 'users:update' %}"><i class="fa fa-gear fa-xl"></i></a>
+    </div>  
   </div>
   {% endif %}
-  <h1><a href="{% url 'users:my_brand' %}">브랜드 찜</a></h1>
-  <h1><a href="{% url 'users:my_scrap' %}">포스트 스크랩</a></h1>
-  <h1><a href="{% url 'users:my_post' %}">작성한 글 목록</a></h1>
-  <h1><a href="{% url 'users:my_comment' %}">내가 쓴 댓글</a></h1>
+  <div class="mypage__history">
+    <div><a href="{% url 'users:my_brand' %}">찜한 브랜드 보기</a></div>
+    <div><a href="{% url 'users:my_scrap' %}">좋아요한 글 보기</a></div>
+    <div><a href="{% url 'users:my_post' %}">내가 쓴 글 보기</a></div>
+    <div><a href="{% url 'users:my_comment' %}">내가 쓴 댓글 보기</a></div>
+  </div>
 </main>
 {% endblock %}
