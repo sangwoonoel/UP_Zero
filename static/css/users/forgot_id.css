@@ -18,6 +18,10 @@
     padding-bottom: 3rem;
 }
 
+.forgot-id__form {
+    width: 22%;
+}
+
 .forgot-id__form p {
     padding: 1rem 0;
     font-size: 1.6rem;
@@ -47,6 +51,7 @@
     height: 4.5rem;
     border-radius: 0.5rem;
     font-size: 1.7rem;
+    margin-top: 2rem;
 }
 
 .login-button {

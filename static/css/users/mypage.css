@@ -1,0 +1,22 @@
+.mypage {
+    padding: 10rem 18rem 0 15rem;
+}
+
+.mypage a {
+    color: var(--black);
+}
+
+.mypage__title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mypage__user-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mypage__history {
+    display: flex;
+    justify-content: space-around;
+}
