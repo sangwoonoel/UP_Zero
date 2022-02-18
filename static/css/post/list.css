@@ -46,36 +46,19 @@
 
 .post-total {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.8rem 17.5rem 0 22.2rem;
+  font-size: 1.5rem;
+  color: var(--dark-gray);
+}
+
+.total-pages {
+  display: flex;
 }
 
 .total-page {
   padding: 0 0.5rem;
   color: var(--mint);
   font-weight: bolder;
-}
-
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pagination button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  margin: 0;
-  padding: 0.5rem 1rem;
-
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
-  text-align: center;
-  text-decoration: none;
-  background: none;
-  display: inline-block;
-
-  border: none;
-  border-radius: 4px;
 }

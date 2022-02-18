@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 8rem 17.5rem 0 15rem;
+  padding: 8rem 17.5rem 0 20rem;
 }
 
 .keyword-container {
@@ -37,10 +37,9 @@
 
 .post-create {
   display: flex;
-  width: 11.6rem;
+  width: 12.8rem;
   height: 3rem;
   background-color: var(--mint);
-  box-shadow: 0rem 0.4rem 1.5rem var(--box-shadow);
   border-radius: 1rem;
   justify-content: center;
 }
