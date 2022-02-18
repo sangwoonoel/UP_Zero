@@ -65,6 +65,7 @@ def post_update(request, pk):
         else:
             return redirect('users:forbidden')
 
+
 @login_required
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -153,7 +154,7 @@ def post_list(request):
     elif request.GET.get('sort') == 'latest':  # 최신순 정렬 선택한 경우
         posts = posts.order_by('-created_at')
 
-    paginator = Paginator(posts, 10)
+    paginator = Paginator(posts, 4)
     page = request.GET.get('page', 1)
     page_obj = paginator.get_page(page)
     post_cnt = posts.count()

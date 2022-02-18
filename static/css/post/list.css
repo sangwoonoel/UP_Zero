@@ -62,30 +62,3 @@
   color: var(--mint);
   font-weight: bolder;
 }
-
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pagination button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  margin: 0;
-  padding: 0.5rem 1rem;
-
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
-  text-align: center;
-  text-decoration: none;
-  background: none;
-  display: inline-block;
-
-  border: none;
-  border-radius: 4px;
-}
-

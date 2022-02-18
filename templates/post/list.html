@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/post/header.css' %}" />
 <link rel="stylesheet" href="{% static 'css/post/select.css' %}" />
 <link rel="stylesheet" href="{% static 'css/post/body.css' %}" />
+<link rel="stylesheet" href="{% static 'css/post/pagination.css' %}" />
 {% endblock %}
 {% block content %}
 <main id="poster">
@@ -119,14 +120,25 @@
                 <i class="fa-solid fa-angle-left"></i>
             </button>
         {% else %}
-            <button disabled style="width: 6.75rem;"> </button>
+        <button class="freeze_btn"  name="page" value="1">
+            <i class="icon fa-solid fa-angles-left"></i>
+        </button>
+        <button 
+            class="freeze_btn"
+            name="page"
+            value=""
+        >
+            <i class="fa-solid fa-angle-left"></i>
+        </button>        
         {% endif %}
-    
-        <div>
+        <div class="pagination-current" style="display: flex;">
             {% for page in page_obj.paginator.page_range %}
                 {% if page >= page_obj.number|add:-3 and page <= page_obj.number|add:3 %}
                 <span class="{% if page == page_obj.number %}current{% endif %}">
-                    <a href="?page={{ page }}">{{ page}}</a>
+                    <a class="page-num" href="?page={{ page }}">
+                        <div class="page-circle"></div>
+                        <div class="page-number" >{{page}}</div>
+                    </a>
                 </span>
                 {% endif %}
             {% endfor %}
@@ -148,7 +160,18 @@
             <i class="fas fa-solid fa-angles-right"></i>
             </button>
         {% else %}
-        <button disabled style="width: 6.75rem;"> </button>
+            <button 
+                class="freeze_btn"
+                name="page"
+            >
+                <i class="fa-solid fa-angle-right"></i>
+            </button>
+            <button 
+                class="freeze_btn"
+                name="page"
+            >
+                <i class="fas fa-solid fa-angles-right"></i>
+            </button>
         {% endif %}
     </div>
 </main>

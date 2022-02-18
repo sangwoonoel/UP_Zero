@@ -40,7 +40,6 @@
   width: 12.8rem;
   height: 3rem;
   background-color: var(--mint);
-  box-shadow: 0rem 0.4rem 1.5rem var(--box-shadow);
   border-radius: 1rem;
   justify-content: center;
 }
