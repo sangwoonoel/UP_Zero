@@ -81,8 +81,8 @@
 .brand__likes {
     font-size: 1.8rem;
     font-weight: 500;
-    color: var(--black);
-    background-color: white;
+    color: white;
+    background: none;
     width: 35.2rem;
     padding: 1.5rem 8rem;
     border-radius: 0.3rem;

@@ -13,7 +13,8 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/brand/share.css' %}" />
 <link rel="stylesheet" href="{% static 'css/brand/detail.css' %}" />
-{% endblock %} {% block content %}
+{% endblock %}
+{% block content %}
 <main id="brand-detail">
   <div class="brand-detail__breadcrumb">
     <ul class="brand-detail__cate d-flex">
@@ -26,14 +27,10 @@
       </li>
     </ul>
   </div>
-  <section
-    class="brand"
-    data-id="{{brand.id}}"
-    data-liked="{{is_liked}}"
-  >
+  <section class="brand" data-id="{{brand.id}}" data-liked="{{is_liked}}">
     <div
-     class="brand__background" 
-     style="background: linear-gradient(to right, var(--black) 20%, transparent), url({{brand.image.url}}); 
+      class="brand__background"
+      style="background: linear-gradient(to right, var(--black) 20%, transparent), url({{brand.image.url}}); 
             width: 100%;
             height: 100vh; 
             /* position: relative;  */
@@ -45,14 +42,16 @@
         src="{{brand.image.url}}"
         alt="{{brand}}"
         class="brand__img"
-        style="display: none;"
+        style="display: none"
       />
       <div class="brand__main">
         <div class="brand__content">
           <h1 class="brand__name">{{brand}}</h1>
           <p class="brand__desc">{{brand.desc}}</p>
           <p class="brand__info">{{brand.info}}</p>
-          <a href="{{brand.link}}" class="brand__link"><i class="fa-solid fa-link"></i>브랜드 바로가기</a>
+          <a href="{{brand.link}}" class="brand__link"
+            ><i class="fa-solid fa-link"></i>브랜드 바로가기</a
+          >
         </div>
         <div class="brand__interactions">
           <div class="brand__likes d-flex">
@@ -62,21 +61,24 @@
               {% if user.is_authenticated %}
               onclick="onClickLike({{user.id}}, {{brand.id}})"
               {% else %}
-              onclick="onClickLogin('{{request.path}}')"            
+              onclick="onClickLogin('{{request.path}}')"
               {% endif %}
             >
+              {% if is_liked %}
               <i class="fa-solid fa-heart fa-xl"></i>
+              {% else %}
+              <i class="fa-regular fa-heart fa-xl"></i>
+              {% endif %}
             </button>
             <p class="like-info">
-              <span class="like-cnt">{{brand.brandlike_set.all.count}}</span>명이
-              좋아한 브랜드
+              <span class="like-cnt">{{brand.brandlike_set.all.count}}</span
+              >명이 좋아한 브랜드
             </p>
           </div>
           {% include "brand/share.html" %}
         </div>
       </div>
     </div>
-    
   </section>
 </main>
 {% endblock %} {% block script %}

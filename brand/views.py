@@ -41,11 +41,11 @@ def show_detail(request, pk):
 
     if request.user.is_authenticated:
         if BrandLike.objects.filter(user=request.user, brand=brand).exists():
-            is_liked = 'true'
+            is_liked = True
         else:
-            is_liked = 'false'
+            is_liked = False
     else:
-        is_liked = 'false'
+        is_liked = False
     
     return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked})
 

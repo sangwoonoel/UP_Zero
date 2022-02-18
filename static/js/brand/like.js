@@ -1,14 +1,14 @@
 const brand = document.querySelector(".brand");
 const isBrandLiked = brand.getAttribute("data-liked"); // when the page is loaded for the first time
 const likeBtn = brand.querySelector(".like-btn");
-if (isBrandLiked === "true") {
+if (isBrandLiked === "True") {
   likeBtn.style.color = "red";
 }
 
 const onClickLike = async (userID, brandID) => {
   const isBrandLiked = brand.getAttribute("data-liked"); // needs to be defined inside the function as well
   let action;
-  if (isBrandLiked === "true") {
+  if (isBrandLiked === "True") {
     action = "off";
   } else {
     action = "on";
@@ -28,12 +28,14 @@ const likeResHandler = (action) => {
   let num;
 
   if (action === "on") {
-    brand.setAttribute("data-liked", "true");
+    brand.setAttribute("data-liked", "True");
     likeBtn.style.color = "red";
+    likeBtn.innerHTML = '<i class="fa-solid fa-heart fa-xl"></i>';
     num = Number(likeCnt.innerText) + 1;
   } else {
-    brand.setAttribute("data-liked", "false");
-    likeBtn.style.color = "black";
+    brand.setAttribute("data-liked", "False");
+    likeBtn.style.color = "white";
+    likeBtn.innerHTML = '<i class="fa-regular fa-heart fa-xl"></i>';
     num = Number(likeCnt.innerText) - 1;
   }
   likeCnt.innerText = num;
