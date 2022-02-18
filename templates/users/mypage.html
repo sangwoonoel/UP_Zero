@@ -4,15 +4,22 @@
 <link rel="stylesheet" href="{% static 'css/users/mypage.css' %}" />
 {% endblock %}
 {% block content %}
-<main>
+<main class="mypage">
   {% for message in messages %}
   <div class="alert alert-{{ message.tags }} text-center">{{ message }}</div>
   {% endfor %}
-  <p>Welcome, {{ user }}!</p>
+  <div class="mypage__title">
+    <p>마이페이지</p>
+    <i class="fa-regular fa-bell"></i>
+  </div>
   {% if user == user %}
   <!-- 왜 있는 거징? -지현 -->
-  <div>
-    <a href="{% url 'users:update' %}">계정정보수정</a>
+  <div class="mypage__user-info">
+    <div class="user-info__left"></div>
+    <div class="user-info__right">
+        <a href="{% url 'users:update' %}"><i class="far fa-gear"></i></a>
+    </div>
+    
   </div>
   {% endif %}
   <h1><a href="{% url 'users:my_brand' %}">브랜드 찜</a></h1>
