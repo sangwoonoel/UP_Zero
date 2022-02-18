@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load static %}
+{% block title %}마이페이지 | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/mypage.css' %}" />
+{% endblock %}
+{% block content %}
 <main>
   {% for message in messages %}
   <div class="alert alert-{{ message.tags }} text-center">{{ message }}</div>
