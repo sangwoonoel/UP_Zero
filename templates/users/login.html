@@ -9,7 +9,7 @@
     {{ form.username }}
     {{ form.password }}
     {% for error in form.non_field_errors %}
-    <p class="login__error">{{ error }}</p>
+    <p class="error">{{ error }}</p>
     {% endfor %}
     <div class="forgot-info">
       <a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
