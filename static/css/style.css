@@ -48,6 +48,9 @@ body {
   font-size: 1.6rem;
   color: var(--black);
   font-family: "Noto Sans KR", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -66,6 +69,7 @@ a:visited {
 
 main {
   padding-top: 10rem;
+  flex-grow: 1;
 }
 
 footer {
