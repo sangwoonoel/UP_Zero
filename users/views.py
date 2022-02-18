@@ -13,7 +13,7 @@ from .models import User
 from .forms import LoginForm, SignUpForm, CustomUserChangeForm
 import re
 import json
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 
 # class LoginView(View):
 #     def get(self, request):
