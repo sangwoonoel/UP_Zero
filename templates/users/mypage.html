@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <main>
-  <p>Welcome, {{user}}!</p>
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} text-center">{{ message }}</div>
+  {% endfor %}
+  <p>Welcome, {{ user }}!</p>
   {% if user == user %}
   <!-- 왜 있는 거징? -지현 -->
   <div>

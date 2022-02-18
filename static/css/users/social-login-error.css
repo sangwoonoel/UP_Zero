@@ -18,7 +18,8 @@ main {
 
 .message {
   margin-bottom: 5rem;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
 }
 
 .login-menu {
@@ -43,7 +44,7 @@ main {
 }
 .login__slownique {
   margin-top: 0;
-  background: rgb(10, 152, 187);
+  background: var(--black);
 }
 .login__slownique img {
   margin: 0 0.5rem;

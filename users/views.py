@@ -13,7 +13,7 @@ from .models import User
 from .forms import LoginForm, SignUpForm, CustomUserChangeForm
 import re
 import json
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 
 # class LoginView(View):
 #     def get(self, request):
@@ -270,7 +270,7 @@ def ForgotIDView(request):
 			if user is not None:
 				template = render_to_string('users/email_template.html', {'name': user.nickname, 'id':user.username})
 				method_email = EmailMessage(
-					'Your ID is in the email',
+					'[SLOW:NIQUE] 아이디 찾기 안내',
 					template,
 					settings.EMAIL_HOST_USER,
 					[email],
@@ -278,7 +278,7 @@ def ForgotIDView(request):
 				method_email.send(fail_silently=False)
 				return render(request, 'users/id_sent.html', context)
 		except:	
-			messages.info(request, "There is no username along with the email")
+			messages.warning(request, '등록되지 않은 이메일입니다.')
 	context = {}
 	return render(request, 'users/forgot_id.html', context)
 
@@ -293,10 +293,11 @@ def update(request):
         
         if user_change_form.is_valid():
             user_change_form.save()
+            messages.success(request, '정보가 수정되었습니다.')
             return redirect('users:mypage')
             
         else:
-            ctx = {'user_change_form':user_change_form} 
+            ctx = {'user_change_form':user_change_form}
             return render(request, 'users/update.html', ctx)
     else:
         user_change_form = CustomUserChangeForm(instance = request.user) 

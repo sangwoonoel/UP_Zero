@@ -7,7 +7,7 @@
   <form class="login__form" method="POST">
     {% csrf_token %}
     {% if form.non_field_errors %}
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger text-center" role="alert">
       {% for error in form.non_field_errors %}
       {{ error }}
       {% endfor %}

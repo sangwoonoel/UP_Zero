@@ -28,7 +28,7 @@
     <a href="{% url 'users:password' %}">비밀번호 변경</a>
   </div>
 
-  <form method="POST" enctype="multipart/form-data" onsubmit="alert('정보가 수정되었습니다.')">
+  <form method="POST" enctype="multipart/form-data">
     {% csrf_token %} {% bootstrap_form user_change_form %}
     <button type="submit"/>수정</button>
   </form>

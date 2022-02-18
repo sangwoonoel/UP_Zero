@@ -9,7 +9,7 @@ class User(AbstractUser):
     email = models.EmailField('이메일', unique=True, error_messages={
             'unique': _('이미 등록된 이메일입니다.'),
         })
-    image = models.ImageField('프로필 이미지', default='logo.png', upload_to='users/', null=True)
+    image = models.ImageField('프로필 사진', default='logo.png', upload_to='users/', null=True)
 
     def __str__(self):
         if self.nickname:
