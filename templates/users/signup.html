@@ -3,36 +3,35 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/users/signup.css' %}" />
 {% endblock %}
-
 {% block content %}
 <main class="signup">
-    <h3 class="signup__title">회원가입</h3>
-    <form class="signup__form" method="POST" action="">
-        {% csrf_token %}
-        
-        {% if form.errors %}
-            <div class="alert alert-danger text-center" role="alert">
-            {% for field in form %}
-                {% if field.errors %}
-                {{ field.errors }}
-                {% endif %}
-            {% endfor %}
-            </div>
-        {% endif %}
-        <label for="signup-username">아이디</label>
-        <div id="username">{{form.username}}</div>
-        <label for="signup-password">비밀번호</label>
-        <div id="signup-password">{{form.password1}}</div>
-        <div>{{form.password2}}</div>
-        <label for="signup-email">이메일</label>
-        <div id="signup-email">{{form.email}}</div>
-        <label for="signup-nickname">닉네임</label>
-        <div id="signup-nickname">{{form.nickname}}</div>
+  <h3 class="signup__title">회원가입</h3>
+  <form class="signup__form" method="POST" action="">
+    {% csrf_token %}
+    <div class="signup__field-wrapper">
+      <label for="signup-username">아이디</label>
+      <div id="username">{{form.username}}</div>
+      {{form.username.errors}}
+    </div>
+    <div class="signup__field-wrapper">
+      <label for="signup-password">비밀번호</label>
+      <div id="signup-password">{{form.password1}}</div>
+      <div>{{form.password2}}</div>
+      {{form.password2.errors}}
+    </div>
+    <div class="signup__field-wrapper">
+      <label for="signup-email">이메일</label>
+      <div id="signup-email">{{form.email}}</div>
+      {{form.email.errors}}
+    </div>
+    <div class="signup__field-wrapper">
+      <label for="signup-nickname">닉네임</label>
+      <div id="signup-nickname">{{form.nickname}}</div>
+      {{form.nickname.errors}}
+    </div>
 
-
-                                    
-        <button>회원가입</button>
-    </form>
+    <button>회원가입</button>
+  </form>
 </main>
 
 {% endblock content %}

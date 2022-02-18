@@ -7,7 +7,7 @@
 <main>
   <div class="re-login-container d-flex flex-column align-items-center">
     <p class="message text-center">
-      {% block message %} 로그인 중 오류가 발생했습니다. 다시 시도해 주세요. {% endblock %}
+      {% block message %} 로그인 중 오류가 발생했습니다.<br>다시 시도해 주세요. {% endblock %}
     </p>
     <div class="login-menu">
       <a class="login__slownique login__naver" href="{% url 'users:login' %}"

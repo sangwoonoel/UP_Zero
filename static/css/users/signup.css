@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     width: 35rem;
+    gap: 1.5rem;
 }
 
 .signup__form label {
@@ -30,6 +31,9 @@
     border-radius: 0.5rem;
     padding: 1rem 1rem;
     font-size: 1.4rem;
+}
+
+#signup-password {
     margin-bottom: 1.5rem;
 }
 
@@ -51,6 +55,13 @@
     border-radius: 0.5rem;
     font-size: 1.7rem;
     margin-top: 2rem;
+}
+
+.signup__form .errorlist {
+    text-align: right;
+    font-size: 1.3rem;
+    color: var(--error);
+    margin-top: 0.5rem;
 }
 
 /* .signup__required {

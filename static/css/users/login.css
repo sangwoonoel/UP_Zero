@@ -105,6 +105,13 @@
     color: var(--black);
 }
 
+.login__error {
+    color: var(--error);
+    font-size: 1.3rem;
+    text-align: right;
+    margin-bottom: 0.5rem;
+}
+
 .to-signup {
     display: flex;
     width: 35rem;
@@ -126,9 +133,4 @@
     background-color: white;
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
-}
-
-.errorlist li {
-    color: red;
-    font-size: 1.3rem;
 }
