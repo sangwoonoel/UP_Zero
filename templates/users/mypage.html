@@ -8,32 +8,39 @@
   {% for message in messages %}
   <div class="alert alert-{{ message.tags }} text-center">{{ message }}</div>
   {% endfor %}
-  <div class="mypage__title">
+  <!-- <div class="mypage__title">
     <p>마이페이지</p>
     <i class="fa-regular fa-bell fa-2x"></i>
-  </div>
+  </div> -->
   {% if user == user %}
   <!-- 왜 있는 거징? -지현 -->
-  <div class="mypage__user-info">
-    <div class="user-info__left">
+  <div
+   class="user-info__bg"
+   style="background: url('/static/images/green.jpg') fixed;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          height: 35vh;"
+   >
+    <div class="mypage__user-info">
         <img 
-        class="avatar-img"
+        class="avatar-img user-info__img"
         src="{{user.image.url}}"
         alt="게시글 작성자 프로필 이미지"
-        width="50rem"
-        height="50rem" alt="">
-        <span>{{ user }}</span>
-    </div>
-    <div class="user-info__right">
-        <a href="{% url 'users:update' %}"><i class="fa fa-gear fa-xl"></i></a>
-    </div>  
+        width="120rem"
+        height="120rem" alt="">
+        <div class="user-info">
+            <span class="user-info__name">{{ user }}</span>   
+            <a class="user-info__update" href="{% url 'users:update' %}"><i class="fa-solid fa-pen"></i></a>
+        </div>
+    </div> 
   </div>
   {% endif %}
   <div class="mypage__history">
-    <div><a href="{% url 'users:my_brand' %}">찜한 브랜드 보기</a></div>
-    <div><a href="{% url 'users:my_scrap' %}">좋아요한 글 보기</a></div>
-    <div><a href="{% url 'users:my_post' %}">내가 쓴 글 보기</a></div>
-    <div><a href="{% url 'users:my_comment' %}">내가 쓴 댓글 보기</a></div>
+    <a href="{% url 'users:my_brand' %}"><div><i class="fa-solid fa-heart fa-2x"></i><span>찜한 브랜드 보기</span></div></a>
+    <a href="{% url 'users:my_scrap' %}"><div><i class="fa-solid fa-bookmark fa-2x"></i><span>좋아요한 글 보기</span></div></a>
+    <a href="{% url 'users:my_post' %}"><div><i class="fa-solid fa-clipboard fa-2x"></i><span>내가 쓴 글 보기</span></div></a>
+    <a href="{% url 'users:my_comment' %}"><div><i class="fa-solid fa-comment fa-2x"></i><span>내가 쓴 댓글 보기</span></div></a>
   </div>
 </main>
 {% endblock %}
