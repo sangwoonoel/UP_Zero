@@ -58,6 +58,7 @@
   list-style: none;
   text-align: center;
   color: var(--gray);
+  z-index: 100;
 }
 
 .optionListItem:hover {
