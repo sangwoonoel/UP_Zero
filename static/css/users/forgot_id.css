@@ -3,6 +3,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .forgot-id {
     flex-grow: 1;
     display: flex;
@@ -22,6 +23,10 @@ body {
     text-align: center;
     line-height: 3rem;
     padding-bottom: 3rem;
+}
+
+.forgot-id__form {
+    width: 22%;
 }
 
 .forgot-id__form p {
@@ -53,6 +58,7 @@ body {
     height: 4.5rem;
     border-radius: 0.5rem;
     font-size: 1.7rem;
+    margin-top: 2rem;
 }
 
 .login-button {
