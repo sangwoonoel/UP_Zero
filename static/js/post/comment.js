@@ -144,14 +144,18 @@ const onClickUpdate = (postId, commentId) => {
   const element = document.querySelector(`.comment__${commentId}`);
   const commentEdit = element.querySelector(".comment__edit");
   const message = commentEdit.querySelector(".comment__edit-input").value;
-  requestUpdate.open("POST", url, true);
-  requestUpdate.setRequestHeader(
-    "Content-Type",
-    "application/x-www-form-urlencoded"
-  );
-  requestUpdate.send(
-    JSON.stringify({ post_id: postId, message: message, comment_id: commentId })
-  );
+  if (message.length == 0) {
+      alert("댓글을 입력해주세요");
+  } else {
+    requestUpdate.open("POST", url, true);
+    requestUpdate.setRequestHeader(
+        "Content-Type",
+        "application/x-www-form-urlencoded"
+    );
+    requestUpdate.send(
+        JSON.stringify({ post_id: postId, message: message, comment_id: commentId })
+    );
+  }
 };
 
 requestUpdate.onreadystatechange = () => {
