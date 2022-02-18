@@ -1,26 +1,19 @@
-{% extends 'base.html' %} {% load static %} 
-{% block title %}아이디 찾기 | SLOW:NIQUE{% endblock %}
+{% extends 'base.html' %} {% load static %} {% block title %}아이디 찾기 | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/users/forgot_id.css' %}" />
 {% endblock %}
-
-
 {% block content %}
 <main class="forgot-id">
-	<h3 class="forgot-id__title">아이디 찾기</h3>
-	
-	<p class="forgot-id__desc">입력하신 이메일 주소로 아이디가 전송됩니다.</p>
-	
-	<form class="forgot-id__form" method="post">
-	
-		{% csrf_token %}
-		<p>이메일</p>
-        <input class="email-input" type="email" name="email">
-		<input class="email-button" type="Submit" name="email_submit">
-	
-		{% for message in messages %}
-			{{message}}
-		{% endfor %}
-	</form>	
+  <h3 class="forgot-id__title">아이디 찾기</h3>
+  <p class="forgot-id__desc">입력하신 이메일 주소로 아이디가 전송됩니다.</p>
+
+  <form class="forgot-id__form" method="post">
+    {% csrf_token %}
+    <p>이메일</p>
+    <input class="email-input" type="email" name="email" />
+    {% for message in messages %} {{ message }} {% endfor %}
+
+    <input class="email-button" type="Submit" name="email_submit" />
+  </form>
 </main>
-{% endblock content %}
+{% endblock %}

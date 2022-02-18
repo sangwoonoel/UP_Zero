@@ -58,7 +58,7 @@
       {% endfor %}
     </section>
 
-    {% if brands|length >= 12 %}
+    {% if brands|length > 12 %}
       <div class="pagination">
         {% if paginated_brands.has_previous %}
         <button onclick="pagination(this)" name="page" value="1">

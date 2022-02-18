@@ -15,7 +15,7 @@ body {
     font-weight: 700;
     font-size: 2.2rem;
     opacity: 0.9;
-    padding-bottom: 3rem;
+    padding: 3rem 0;
 }
 
 .forgot-id__desc {

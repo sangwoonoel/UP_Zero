@@ -1,4 +1,3 @@
-from email import message
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -271,7 +270,7 @@ def ForgotIDView(request):
 			if user is not None:
 				template = render_to_string('users/email_template.html', {'name': user.nickname, 'id':user.username})
 				method_email = EmailMessage(
-					'Your ID is in the email',
+					'[SLOW:NIQUE] 아이디 찾기 안내',
 					template,
 					settings.EMAIL_HOST_USER,
 					[email],
@@ -279,7 +278,7 @@ def ForgotIDView(request):
 				method_email.send(fail_silently=False)
 				return render(request, 'users/id_sent.html', context)
 		except:	
-			messages.info(request, "There is no username along with the email")
+			messages.warning(request, '등록되지 않은 이메일입니다.')
 	context = {}
 	return render(request, 'users/forgot_id.html', context)
 
