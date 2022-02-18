@@ -1,13 +1,7 @@
 {% extends 'base.html' %} {%block title %}Forbidden | SLOW:NIQUE{% endblock %}
 {% block css %}
 <style>
-  body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
   main {
-    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,10 +10,10 @@
     margin: 0;
   }
   p {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
   }
 </style>
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <main><p>접근 권한이 없는 페이지입니다.</p></main>
 {% endblock %}

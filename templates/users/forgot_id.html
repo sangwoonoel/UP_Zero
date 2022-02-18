@@ -12,7 +12,9 @@
     {% csrf_token %}
     <p>이메일</p>
     <input class="email-input" type="email" name="email" />
-    {% for message in messages %} {{ message }} {% endfor %}
+    <p class="error">
+      {% for message in messages %} {{ message }} {% endfor %}
+    </p>
 
     <input class="email-button" type="Submit" name="email_submit" />
   </form>

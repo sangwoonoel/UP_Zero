@@ -12,8 +12,6 @@ from post.models import *
 from .models import User
 from .forms import LoginForm, SignUpForm, CustomUserChangeForm
 import re
-import json
-from django.http import HttpResponse, JsonResponse
 
 # class LoginView(View):
 #     def get(self, request):
@@ -324,6 +322,7 @@ def password(request):
         if password_change_form.is_valid():
             user = password_change_form.save()
             update_session_auth_hash(request, user)
+            messages.success(request, '비밀번호가 변경되었습니다.')
             return redirect('users:mypage')
     
     else:

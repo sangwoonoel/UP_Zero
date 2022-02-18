@@ -67,6 +67,13 @@ a:visited {
   visibility: hidden;
 }
 
+.error {
+  color: var(--error);
+  font-size: 1.3rem;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
 main {
   padding-top: 10rem;
   flex-grow: 1;
