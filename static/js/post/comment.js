@@ -5,14 +5,18 @@ const requestUpdate = new XMLHttpRequest();
 const onClickComment = (postId, userId) => {
   const url = "/post/create_comment/";
   const message = document.querySelector(`.comment-input__${postId}`).value;
-  requestComment.open("POST", url, true);
-  requestComment.setRequestHeader(
-    "Content-Type",
-    "application/x-www-form-urlencoded"
-  );
-  requestComment.send(
-    JSON.stringify({ user_id: userId, post_id: postId, message: message })
-  );
+  if (message.length == 0) {
+      alert("댓글을 입력해주세요");
+  } else {
+    requestComment.open("POST", url, true);
+    requestComment.setRequestHeader(
+        "Content-Type",
+        "application/x-www-form-urlencoded"
+    );
+    requestComment.send(
+        JSON.stringify({ user_id: userId, post_id: postId, message: message })
+    );
+  }
 };
 
 requestComment.onreadystatechange = () => {
