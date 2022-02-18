@@ -1,3 +1,4 @@
+from email import message
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -293,10 +294,11 @@ def update(request):
         
         if user_change_form.is_valid():
             user_change_form.save()
+            messages.success(request, '정보가 수정되었습니다.')
             return redirect('users:mypage')
             
         else:
-            ctx = {'user_change_form':user_change_form} 
+            ctx = {'user_change_form':user_change_form}
             return render(request, 'users/update.html', ctx)
     else:
         user_change_form = CustomUserChangeForm(instance = request.user) 

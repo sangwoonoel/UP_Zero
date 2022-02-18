@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Count
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 import json
 from django.http import JsonResponse
 from .models import *
@@ -49,6 +50,7 @@ def show_detail(request, pk):
     return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked})
 
 
+@login_required
 @csrf_exempt
 def like_brand(request):
     req = json.loads(request.body)
