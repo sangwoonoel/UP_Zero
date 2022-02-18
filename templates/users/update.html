@@ -30,7 +30,7 @@
 
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %} {% bootstrap_form user_change_form %}
-    <button type="submit"/>수정</button>
+    <button type="submit">수정</button>
   </form>
 
   <a href="{% url 'users:delete' %}" class="btn btn-danger">회원탈퇴</a>

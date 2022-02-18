@@ -20,35 +20,30 @@ main {
 .main-header__txt {
     position: absolute;
     top: 15rem;
-    left: 24rem;
+    left: 20rem;
 }
 
 .main-header__title {
     color: white;
     font-size: 5rem;
-}
-
-.main-header__title:first-child {
     font-weight: 300;
 }
 
-.main-header__title:last-child {
+.main-header__title strong {
     font-weight: 500;
 }
 
-.main-header__desc {
-    font-weight: 300;
-    font-size: 1.8rem;
-}
 
 .main-header__desc {
+    font-weight: 300;
+    font-size: 2rem;
     color: white;
-    margin: 1.5rem 0;
+    margin: 1.5rem 0 2rem 0;
 }
 
 .main-header__a {
     margin-right: 1rem;
-    padding: 0.5rem 3rem;
+    padding: 0.8rem 3rem;
     font-weight: 500;
     font-size: 1.4rem;
     border-radius: 1.7rem;
@@ -61,11 +56,13 @@ main {
 
 .main-header__more:hover {
     color: white;
+    cursor: pointer;
 }
 
 .main-header__btn {
     background-color: var(--black);
     color: white;
+    cursor: pointer;
 }
 
 .main-header__btn:hover {
