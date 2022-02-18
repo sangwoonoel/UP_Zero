@@ -21,4 +21,8 @@ for (let creat of created) {
         creat.innerText = '\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0'+ time;
 
     }
+    else if (time.slice(-4) === '시간 전')
+    {
+        creat.innerText = '\u00a0\u00a0\u00a0'+ time;
+    }
 }
