@@ -190,7 +190,7 @@ CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'width': 750,
+        # 'width': 750,
         'toolbar': 'Custom',
         'toolbar_Custom': [
             ['Bold', 'Italic', 'Underline', 'Strike'],

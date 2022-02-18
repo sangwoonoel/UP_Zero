@@ -19,7 +19,7 @@ def show_list(request):
         brands = brands.annotate(like_cnt=Count('brandlike')) \
             .order_by('-like_cnt')
 
-    paginator = Paginator(brands, 9)
+    paginator = Paginator(brands, 12)
     page = request.GET.get('page', 1)
     paginated_brands = paginator.get_page(page)
 

@@ -1,12 +1,35 @@
-{% extends 'base.html' %} {% load socialaccount %} {% block content %}
-<main id="error_social-login">
-  {% block message %} 로그인 중 오류가 발생했습니다. 다시 시도해 주세요. {% endblock %}
-  <a href="{% url 'users:login' %}">SLOW:NIQUE 계정으로 로그인</a>
-  <a href="{% url 'users:forgot_id' %}">아이디 찾기</a>
-  <a href="{% url 'users:password_reset' %}">비밀번호 찾기</a>
-  <a href="{% provider_login_url 'naver' %}">네이버 로그인</a>
-  <a href="{% provider_login_url 'google' %}">구글 로그인</a>
-  <p>아직 계정이 없으신가요?</p>
-  <a href="{% url 'users:signup' %}">Sign up</a>
+{% extends 'base.html' %} {% load static %} {% load socialaccount %}
+{% block title %}Login Error | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/social-login-error.css' %}" />
+{% endblock %}
+{% block content %}
+<main>
+  <div class="re-login-container d-flex flex-column align-items-center">
+    <p class="message text-center">
+      {% block message %} 로그인 중 오류가 발생했습니다. 다시 시도해 주세요. {% endblock %}
+    </p>
+    <div class="login-menu">
+      <a class="login__slownique login__naver" href="{% url 'users:login' %}"
+        ><img
+          src="/static/images/slownique_simple.png"
+          width="25px"
+          height="25px"
+        />SLOW:NIQUE 계정으로 로그인</a
+      >
+      <a class="login__naver" href="{% provider_login_url 'naver' %}">
+        <img src="/static/images/naver.png" width="32px" height="32px" />
+        네이버 로그인
+      </a>
+      <a class="login__google" href="{% provider_login_url 'google' %}">
+        <img src="/static/images/google.png" width="22px" height="22px" />
+        구글 로그인
+      </a>
+      <div class="to-signup">
+        <p>아직 계정이 없으신가요?</p>
+        <a href="{% url 'users:signup' %}">회원가입</a>
+      </div>
+    </div>
+  </div>
 </main>
 {% endblock %}

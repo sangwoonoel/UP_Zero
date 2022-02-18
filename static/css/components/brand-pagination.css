@@ -1,0 +1,15 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination__pages {
+  margin: 0 1rem;
+}
+.pagination button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+}
