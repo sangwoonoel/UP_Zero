@@ -65,9 +65,9 @@
     padding-top: 0.2rem;
 }
 
-.post-share {
+/* .post-share {
     padding-bottom: 0.8rem;
-}
+} */
 
 .post-share button {
     color: var(--black);
@@ -226,4 +226,8 @@
 
 .comment__add-btn:hover, .comment__update-btn:hover {
     background-color: var(--mint);
+}
+
+input {
+    outline: none;
 }
