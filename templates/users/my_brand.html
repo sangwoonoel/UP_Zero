@@ -1,29 +1,44 @@
 {% extends 'base.html' %} {% load static %}
 {% block title %}찜한 브랜드 | SLOW:NIQUE{% endblock %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/users/mypage.css' %}" />
+<link rel="stylesheet" href="{% static 'css/users/mybrand.css' %}" />
 {% endblock %}
 {% block content %}
-<main>
-  <h1>찜한 브랜드 보기</h1>
-  {% for BrandLike in BrandLikes %}
-  <div>
-    <a href="{% url 'brand:detail' BrandLike.brand.id %}">
-      <img
-        src="{{ BrandLike.brand.image.url }}"
-        alt="브랜드 이미지"
-        width="50rem"
-        height="50rem"
-      />
-      <span>{{BrandLike.brand}}</span>
-    </a>
-    <button
-      onclick="deleteBrandLike('{% url 'users:mypage_brand_delete' BrandLike.id %}')"
-    >
-      <i class="fa-solid fa-circle-minus"></i>
-    </button>
+<main class="my-brand">
+    <div class="my-brand__header">
+        <h1 class="my-brand__title">찜한 브랜드 보기</h1>
+        <a href="{% url 'users:mypage' %}" class="my-brand__to-mypage">마이페이지</a>
+    </div>
+  <div class="my-brand__main">
+      {% for BrandLike in BrandLikes %}
+      <div class="my-brand__brand">
+        <button class="my-brand__btn"
+        onclick="deleteBrandLike('{% url 'users:mypage_brand_delete' BrandLike.id %}')"
+        >
+            <i class="fa-solid fa-minus fa-lg"></i>
+        </button>
+        <a class="my-brand__link" href="{% url 'brand:detail' BrandLike.brand.id %}">
+            <img
+                class="my-brand__img"
+                src="{{ BrandLike.brand.image.url }}"
+                alt="브랜드 이미지"
+            />
+            <div class="my-brand__content">
+                <div class="my-brand__info">
+                    <span class="brand__category">{{BrandLike.brand.category}}</span>
+                    <div class="brand__likes">
+                        <i class="far fa-heart"></i>
+                        {{BrandLike.brand.brandlike_set.all.count}}
+                    </div>
+                </div>
+                <div class="my-brand__name">
+                    <span>{{BrandLike.brand}}</span>
+                </div>
+            </div>
+        </a>
+      </div>
+      {% endfor %}
   </div>
-  {% endfor %}
 </main>
 {% endblock %} {% block script %}
 <script src="{% static 'js/confirm.js' %}"></script>

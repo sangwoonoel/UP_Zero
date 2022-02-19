@@ -1,0 +1,75 @@
+.my-comment {
+    width: 100%;
+    padding-left: 15rem;
+    padding-right: 15rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-comment__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    border-bottom: 1px solid var(--gray);
+    margin-bottom: 3rem;
+}
+
+.my-comment__title {
+    padding: 2rem 0;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.my-comment__to-mypage {
+    width: 9rem;
+    color: var(--black);
+    border: 1px solid var(--black);
+    text-align: center;
+    padding: 0.3rem 0;
+    border-radius: 0.7rem;
+    font-size: 1.5rem;
+}
+
+.my-comment__to-mypage:hover {
+    color: inherit;
+}
+
+.my-comment__comment {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 2rem 2rem;
+    border-bottom: 1px solid var(--lightgrey);
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.my-comment__comment:hover {
+    background-color: var(--list-hover);
+}
+
+.my-comment__to-post {
+    width: 90%;
+}
+
+.my-comment__link {
+    display: flex;
+    flex-direction: column;
+}
+
+.my-comment__link span:first-child {
+    color: var(--black);
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.my-comment__link span:last-child {
+    color: var(--gray);
+    font-size: 1.6rem;
+}
+
+.my-comment__btn {
+    color: var(--dark-gray);
+}

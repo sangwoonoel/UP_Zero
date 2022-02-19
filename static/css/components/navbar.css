@@ -30,10 +30,14 @@
   max-width: 20rem;
 }
 
-.navbar__items {
+.navbar__items:not(:last-child) {
   color: black;
   margin: 0 25px;
   letter-spacing: -0.5px;
+}
+
+.navbar__items:last-child {
+    margin-left: 25px;
 }
 
 .navbar__items:hover {

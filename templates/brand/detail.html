@@ -49,9 +49,6 @@
           <h1 class="brand__name">{{brand}}</h1>
           <p class="brand__desc">{{brand.desc}}</p>
           <p class="brand__info">{{brand.info}}</p>
-          <a href="{{brand.link}}" class="brand__link"
-            ><i class="fa-solid fa-link"></i>브랜드 바로가기</a
-          >
         </div>
         <div class="brand__interactions">
           <div class="brand__likes d-flex">
@@ -75,6 +72,9 @@
               >명이 좋아한 브랜드
             </p>
           </div>
+          <a href="{{brand.link}}" class="brand__link"
+            ><i class="fa-solid fa-link"></i>브랜드 바로가기</a
+          >
           {% include "brand/share.html" %}
         </div>
       </div>
