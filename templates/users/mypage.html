@@ -1,13 +1,11 @@
 {% extends 'base.html' %} {% load static %}
-{% block title %}마이페이지 | SLOW:NIQUE{% endblock %}
+{%block title %}마이페이지 | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/users/mypage.css' %}" />
 {% endblock %}
 {% block content %}
 <main class="mypage">
-  {% for message in messages %}
-  <div class="alert alert-{{ message.tags }} text-center">{{ message }}</div>
-  {% endfor %}
+  {% include "users/message.html" %}
   <!-- <div class="mypage__title">
     <p>마이페이지</p>
     <i class="fa-regular fa-bell fa-2x"></i>
@@ -15,32 +13,54 @@
   {% if user == user %}
   <!-- 왜 있는 거징? -지현 -->
   <div
-   class="user-info__bg"
-   style="background: url('/static/images/green.jpg') fixed;
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-          height: 35vh;"
-   >
+    class="user-info__bg"
+    style="
+      background: url('/static/images/green.jpg') fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      height: 35vh;
+    "
+  >
     <div class="mypage__user-info">
-        <img 
+      <img
         class="avatar-img user-info__img"
         src="{{user.image.url}}"
         alt="게시글 작성자 프로필 이미지"
         width="120rem"
-        height="120rem" alt="">
-        <div class="user-info">
-            <span class="user-info__name">{{ user }}</span>   
-            <a class="user-info__update" href="{% url 'users:update' %}"><i class="fa-solid fa-pen"></i></a>
-        </div>
-    </div> 
+        height="120rem"
+        alt=""
+      />
+      <div class="user-info">
+        <span class="user-info__name">{{ user }}</span>
+        <a class="user-info__update" href="{% url 'users:update' %}"
+          ><i class="fa-solid fa-pen"></i
+        ></a>
+      </div>
+    </div>
   </div>
   {% endif %}
   <div class="mypage__history">
-    <a href="{% url 'users:my_brand' %}"><div><i class="fa-solid fa-heart fa-2x"></i><span>찜한 브랜드 보기</span></div></a>
-    <a href="{% url 'users:my_scrap' %}"><div><i class="fa-solid fa-bookmark fa-2x"></i><span>좋아요한 글 보기</span></div></a>
-    <a href="{% url 'users:my_post' %}"><div><i class="fa-solid fa-clipboard fa-2x"></i><span>내가 쓴 글 보기</span></div></a>
-    <a href="{% url 'users:my_comment' %}"><div><i class="fa-solid fa-comment fa-2x"></i><span>내가 쓴 댓글 보기</span></div></a>
+    <a href="{% url 'users:my_brand' %}"
+      ><div>
+        <i class="fa-solid fa-heart fa-2x"></i><span>찜한 브랜드 보기</span>
+      </div></a
+    >
+    <a href="{% url 'users:my_scrap' %}"
+      ><div>
+        <i class="fa-solid fa-bookmark fa-2x"></i><span>좋아요한 글 보기</span>
+      </div></a
+    >
+    <a href="{% url 'users:my_post' %}"
+      ><div>
+        <i class="fa-solid fa-clipboard fa-2x"></i><span>내가 쓴 글 보기</span>
+      </div></a
+    >
+    <a href="{% url 'users:my_comment' %}"
+      ><div>
+        <i class="fa-solid fa-comment fa-2x"></i><span>내가 쓴 댓글 보기</span>
+      </div></a
+    >
   </div>
 </main>
 {% endblock %}

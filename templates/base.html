@@ -23,7 +23,7 @@
         <a class="navbar__logo-container" href="/"><img class="navbar__logo" src="{% static 'images/slownique_logo.png' %}" /></a>
       </div>
       <div class="navbar__column navbar-right">
-        <a id="nav-brand" class="navbar__items" href="{% url 'brand:list' %}">Brand</a>
+        <a id="nav-brand" class="navbar__items" href="{% url 'brand:list' %}">Brands</a>
         <a id="nav-community" class="navbar__items" href="{% url 'post:list' %}">Community</a>
         <a id="nav-fund" class="navbar__items" href="#" onclick="onClickFund()">Fund</a>
         {% if user.is_authenticated %} {% if user.image %}
