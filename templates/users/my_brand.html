@@ -1,7 +1,11 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %}
+{% block title %}찜한 브랜드 | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/mypage.css' %}" />
+{% endblock %}
+{% block content %}
 <main>
-  <p>Welcome, {{user}}!</p>
-  <h1>브랜드 찜</h1>
+  <h1>찜한 브랜드 보기</h1>
   {% for BrandLike in BrandLikes %}
   <div>
     <a href="{% url 'brand:detail' BrandLike.brand.id %}">
