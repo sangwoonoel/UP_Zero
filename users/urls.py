@@ -44,7 +44,7 @@ urlpatterns = [
     path('account/', include(account_patterns)),
     path('update/', views.update, name='update'),
     path('delete/', views.delete, name='delete'),
-    path('password/', views.password, name='password'),
+    path('change_password/', views.password, name='change_password'),
     path('forgot_id/', views.ForgotIDView, name="forgot_id"),
     # path("user_post_delete/", views.user_post_delete, name="user_post_delete")
     path('forbidden/', views.forbid_access, name='forbidden'),

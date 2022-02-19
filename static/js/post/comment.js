@@ -6,7 +6,7 @@ const onClickComment = (postId, userId) => {
   const url = "/post/create_comment/";
   const message = document.querySelector(`.comment-input__${postId}`).value;
   if (message.length == 0) {
-      alert("댓글을 입력해주세요");
+      alert("댓글을 입력해 주세요.");
   } else {
     requestComment.open("POST", url, true);
     requestComment.setRequestHeader(
@@ -145,7 +145,7 @@ const onClickUpdate = (postId, commentId) => {
   const commentEdit = element.querySelector(".comment__edit");
   const message = commentEdit.querySelector(".comment__edit-input").value;
   if (message.length == 0) {
-      alert("댓글을 입력해주세요");
+      alert("댓글을 입력해 주세요.");
   } else {
     requestUpdate.open("POST", url, true);
     requestUpdate.setRequestHeader(

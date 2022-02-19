@@ -30,7 +30,7 @@
   <h1 class="user-update__title">개인정보 수정</h1>
   <div class="user-update__id"><span>아이디</span> <span>{{request.user.username}}</span></div>
   <div class="user-update__password">
-    <a href="{% url 'users:password' %}">비밀번호 변경</a>
+    <a href="{% url 'users:change_password' %}">비밀번호 변경</a>
   </div>
   <!-- <img
     class="avatar-img user-info__img"

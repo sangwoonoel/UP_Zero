@@ -315,19 +315,19 @@ from django.contrib.auth import update_session_auth_hash
 @login_required
 def password(request):
     if request.method == 'POST':
-        password_change_form = PasswordChangeForm(request.user, request.POST)
+        form = PasswordChangeForm(request.user, request.POST)
         
         # 키워드인자명을 함께 써줘도 가능
-        # password_change_form = PasswordChangeForm(user=request.user, data=request.POST)
-        if password_change_form.is_valid():
-            user = password_change_form.save()
+        # form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            user = form.save()
             update_session_auth_hash(request, user)
             messages.success(request, '비밀번호가 변경되었습니다.')
             return redirect('users:mypage')
     
     else:
-        password_change_form = PasswordChangeForm(request.user)
-    return render(request, 'users/password.html',{'password_change_form':password_change_form})
+        form = PasswordChangeForm(request.user)
+    return render(request, 'users/password.html',{'form':form})
 
 def forbid_access(request):
     return render(request, 'forbidden.html')
