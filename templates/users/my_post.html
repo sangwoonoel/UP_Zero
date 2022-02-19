@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <main>
   <header class="mypage__header" style="display: flex">
-    {% if user.image %}
-    <!-- 나중에 if문 지워도 됨 -->
     <div class="mypage__avatar">
       <img
         src="{{user.image.url}}"
@@ -11,7 +9,6 @@
         height="50rem"
       />
     </div>
-    {% endif %}
     <h1 class="mypage__user">{{user}}</h1>
   </header>
   {% for MyPost in MyPosts %}

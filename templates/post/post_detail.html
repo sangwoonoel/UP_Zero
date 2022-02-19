@@ -15,8 +15,6 @@
     {% endif %}
   >
     <div class="post-detail__user d-flex">
-      {% if post.user.image %}
-      <!-- 나중에 if문 지워도 됨 -->
       <img
         class="avatar-img"
         src="{{post.user.image.url}}"
@@ -24,7 +22,6 @@
         width="30rem"
         height="30rem"
       />
-      {% endif %}
       <a class="post-detail__username" href="{% url 'post:author' %}?id={{post.user.username}}"
         >{{ post.user }}</a
       >
@@ -84,8 +81,6 @@
         {% for comment in comments %} {% if comment.post == post %}
         <li class="comment__{{comment.id}}">
             <div class="comment__main">
-            {% if comment.user.image %}
-            <!-- 나중에 if문 지워도 됨 -->
             <img
                 class="avatar-img"
                 src="{{comment.user.image.url}}"
@@ -93,7 +88,6 @@
                 width="30rem"
                 height="30rem"
             />
-            {% endif %}
             <a href="{% url 'post:author' %}?id={{comment.user.username}}">
                 <span class="comment__user">{{ comment.user }}</span>
             </a>

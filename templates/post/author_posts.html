@@ -7,7 +7,6 @@
 {% block content %}
 <main id="author-posts">
   <header class="author-posts__header">
-    {% if author.image %} <!-- 나중에 if문 지워도 됨 -->
     <div
     class="user-info__bg"
     style="
@@ -32,7 +31,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
   </header>
 
   <div class="author__post-list">
