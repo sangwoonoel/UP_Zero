@@ -60,10 +60,12 @@ def like_brand(request):
 
     user = get_object_or_404(User, id=user_id)
     brand = get_object_or_404(Brand, id=brand_id)
-
+    
     if action == 'on':
-        BrandLike.objects.create(user=user, brand=brand)
+        if not BrandLike.objects.filter(user=user, brand=brand).exists():
+            BrandLike.objects.create(user=user, brand=brand)
     else:
-        get_object_or_404(BrandLike, user=user, brand=brand).delete()
+        if BrandLike.objects.filter(user=user, brand=brand).count() == 1:
+            get_object_or_404(BrandLike, user=user, brand=brand).delete()
 
     return JsonResponse({'action':action})
