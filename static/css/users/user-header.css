@@ -1,0 +1,60 @@
+.mypage__header {
+  margin-bottom: 11.8rem;
+}
+
+.user_bg {
+  background: url("/static/images/green.jpg") fixed;
+  width: 100%;
+  height: 22.4rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.user_pr {
+  position: absolute;
+  top: 26.4rem;
+  left: 21.3rem;
+  display: flex;
+  text-align: center;
+}
+
+.user-img {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 70%;
+  object-fit: cover;
+  margin-right: 1.5rem;
+}
+
+.user_summary {
+  position: relative;
+  top: 6.9rem;
+}
+
+.user_name {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 0.3rem;
+}
+
+#user_name {
+  color: var(--user-black);
+}
+
+.user_post {
+  display: flex;
+  font-size: 1.3rem;
+  justify-content: space-between;
+}
+
+#write_post {
+  color: var(--mint);
+  padding-right: 1rem;
+}
+
+#like_post {
+  color: var(--line-gray);
+  letter-spacing: -0.1rem;
+}

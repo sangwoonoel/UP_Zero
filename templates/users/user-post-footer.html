@@ -1,0 +1,73 @@
+<div class="mypost-total">
+    <div class="total-pages">
+        <span>Total</span><div class="total-page">{{page_obj.paginator.num_pages}}</div><span>pages.</span>
+    </div>
+    <div>{{post_cnt}} feeds</div>
+</div>
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <button onclick="pagination(this)" name="page" value="1">
+            <i class="icon fa-solid fa-angles-left"></i>
+        </button>
+        <button
+            onclick="pagination(this)"
+            name="page"
+            value="{{page_obj.previous_page_number}}"
+        >
+            <i class="fa-solid fa-angle-left"></i>
+        </button>
+    {% else %}
+    <button class="freeze_btn"  name="page" value="1">
+        <i class="icon fa-solid fa-angles-left"></i>
+    </button>
+    <button 
+        class="freeze_btn"
+        name="page"
+        value=""
+    >
+        <i class="fa-solid fa-angle-left"></i>
+    </button>        
+    {% endif %}
+    <div class="pagination-current" style="display: flex;">
+        {% for page in page_obj.paginator.page_range %}
+            {% if page >= page_obj.number|add:-3 and page <= page_obj.number|add:3 %}
+            <span class="{% if page == page_obj.number %}current{% endif %}">
+                <a class="page-num" href="?page={{ page }}">
+                    <div class="page-circle"></div>
+                    <div class="page-number" >{{page}}</div>
+                </a>
+            </span>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% if page_obj.has_next %}
+        <button
+            onclick="pagination(this)"
+            name="page"
+            value="{{page_obj.next_page_number}}"
+        >
+        <i class="fa-solid fa-angle-right"></i>
+        </button>
+        <button
+            onclick="pagination(this)"
+            name="page"
+            value="{{page_obj.paginator.num_pages}}"
+        >
+        <i class="fas fa-solid fa-angles-right"></i>
+        </button>
+    {% else %}
+        <button 
+            class="freeze_btn"
+            name="page"
+        >
+            <i class="fa-solid fa-angle-right"></i>
+        </button>
+        <button 
+            class="freeze_btn"
+            name="page"
+        >
+            <i class="fas fa-solid fa-angles-right"></i>
+        </button>
+    {% endif %}
+</div>

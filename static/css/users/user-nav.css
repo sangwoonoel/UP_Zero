@@ -1,5 +1,66 @@
+.nav-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 17.5rem 0 15rem;
+}
+
+.nav-post {
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: bold;
+  gap: 1.3rem;
+}
+
+.nav-post a {
+  padding-bottom: 0.2rem;
+
+  border-bottom: 0.2rem solid var(--mint);
+  color: var(--mint);
+}
+
+#write-nav {
+}
+
+/* #like-post {
+  color: var(--dark-gray);
+  letter-spacing: -0.15rem;
+} */
+
+.nav-sort {
+  display: flex;
+}
+
+.keyword-container {
+  border-bottom: 0.2rem solid var(--dark-gray);
+  width: 25.5rem;
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+  margin-right: 0.5rem;
+}
+
+.keyword-container input {
+  border: none;
+  width: 21.5rem;
+  height: 2.4rem;
+}
+
+.keyword-container input::placeholder {
+  color: var(--gray);
+}
+
+.keyword-container input:focus {
+  outline: none;
+}
+
+.keyword-container button {
+  color: var(--dark-gray);
+  font-size: 2rem;
+}
+
 .sort-select {
-  width: 8rem;
+  width: 8.6rem;
 }
 
 .sort-select span {

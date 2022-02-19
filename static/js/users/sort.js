@@ -25,10 +25,10 @@ function SortChange(e) {
     const page = search.get("page");
 
     if (keyword) {
-        location.href = "/post/list/?keyword="+keyword+"&sort="+ e.id;
+        location.href = "/mypage/posts/?keyword="+keyword+"&sort="+ e.id;
     }
     else {
-    location.href = "/post/list/?sort="+ e.id;
+    location.href = "/mypage/posts/?sort="+ e.id;
     } 
 
 }
@@ -38,10 +38,10 @@ function PostSearch(e) {
     const sort = search.get("sort")
 
     if (sort) {
-        location.href = "/post/list/?keyword="+keyword+"&sort="+ sort;
+        location.href = "/mypage/posts/?keyword="+keyword+"&sort="+ sort;
     }
     else {
-        location.href = "/post/list/?keyword="+ keyword;
+        location.href = "/mypage/posts/?keyword="+ keyword;
     }
 }
 
@@ -51,18 +51,18 @@ function pagination(e) {
 
     if (sort){
         if (keyword) {
-            location.href = "/post/list/?keyword="+keyword+"&sort="+sort+"&page="+ e.value;
+            location.href = "/mypage/posts/?keyword="+keyword+"&sort="+sort+"&page="+ e.value;
         }
         else {
-        location.href = "/post/list/?sort="+sort+"&page="+ e.value;
+        location.href = "/mypage/posts/?sort="+sort+"&page="+ e.value;
         }
     }
     else {
         if (keyword) {
-            location.href = "/post/list/?keyword="+keyword+"&page="+ e.value;
+            location.href = "/mypage/posts/?keyword="+keyword+"&page="+ e.value;
         }
         else {
-            location.href = "/post/list/?page="+ e.value;
+            location.href = "/mypage/posts/?page="+ e.value;
 
         }
     }

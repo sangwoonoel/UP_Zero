@@ -44,7 +44,9 @@
   position: relative;
   top: -0.3rem;
   margin-right: 2.4rem;
-  width: 7.5rem;
+  min-width: 7.5rem;
+  align-items: center;
+  text-align: center;
 }
 
 .post-write span {
@@ -76,11 +78,24 @@
 }
 
 .post-preview {
-  color: #6d6d6d;
+  color: var(--dark-gray);
   font-weight: lighter;
 }
 
 .post-res {
   font-size: 1.2rem;
   width: 100rem;
+  display: flex;
+}
+
+.post-like {
+  margin-right: 1rem;
+}
+
+.like-icon {
+  color: rgb(164, 0, 1);
+}
+
+.comment-icon {
+  color: var(--mint);
 }

@@ -14,10 +14,7 @@
         <p class="post-search-title">
             {% if not posts %} 
                 검색 결과가 없습니다. 
-            {% else %}
-                <span class="post-search-title__keyword"> {{request.GET.keyword}} </span> 에
-                대한 <span class="post-search-title__cnt"> {{posts.count}} </span> 개의
-                게시물 검색 결과입니다. 
+
             {% endif %}
         </p>
     {% endif %}

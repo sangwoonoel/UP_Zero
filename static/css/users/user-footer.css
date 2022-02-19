@@ -1,0 +1,110 @@
+.mypost-total {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.8rem 17.5rem 0 15rem;
+  font-size: 1.5rem;
+  color: var(--dark-gray);
+}
+
+.total-pages {
+  display: flex;
+}
+
+.total-page {
+  padding: 0 0.5rem;
+  color: var(--mint);
+  font-weight: bolder;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  margin: 0;
+  padding: 0.5rem 1rem;
+
+  font-family: "Noto Sans KR", sans-serif;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  background: none;
+  color: var(--dark-gray);
+  display: inline-block;
+
+  border: none;
+  border-radius: 4px;
+}
+
+.pagination-current span {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  position: relative;
+  top: 2rem;
+}
+
+.pagination-current a:hover {
+  color: var(--mint);
+}
+
+.pagination-current a:hover .page-circle {
+  background-color: var(--mint);
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  bottom: 0.35rem;
+}
+
+.pagination-current a:hover .page-number {
+  position: relative;
+  left: 0.35rem;
+  position: relative;
+  bottom: 0.35rem;
+}
+
+.page-num {
+  color: var(--dark-gray);
+}
+
+.page-circle {
+  background-color: var(--dark-gray);
+  border-radius: 2rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-bottom: 0.6rem;
+  position: relative;
+  right: 0.12rem;
+}
+
+.page-number {
+  font-size: 0.1rem;
+}
+
+.current .page-circle {
+  background-color: var(--mint);
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  bottom: 0.35rem;
+}
+
+.current .page-number {
+  color: var(--mint);
+  position: relative;
+  left: 0.35rem;
+  position: relative;
+  bottom: 0.35rem;
+}
+
+.freeze_btn i {
+  color: #e3e3e3;
+}
