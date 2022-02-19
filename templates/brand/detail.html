@@ -54,7 +54,7 @@
           <div class="brand__likes d-flex">
             <button
               class="like-btn"
-              title="좋아요"
+              title="찜하기"
               {% if user.is_authenticated %}
               onclick="onClickLike({{user.id}}, {{brand.id}})"
               {% else %}

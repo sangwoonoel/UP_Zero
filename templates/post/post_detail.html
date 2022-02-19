@@ -14,13 +14,13 @@
     data-liked="false"
     {% endif %}
   >
-    <div class="post-detail__user d-flex">
+    <div class="post-detail__user d-flex align-items-center">
       <img
         class="avatar-img"
         src="{{post.user.image.url}}"
         alt="게시글 작성자 프로필 이미지"
-        width="30rem"
-        height="30rem"
+        width="30px"
+        height="30px"
       />
       <a class="post-detail__username" href="{% url 'post:author' %}?id={{post.user.username}}"
         >{{ post.user }}</a
@@ -72,8 +72,8 @@
     </div>
   </div>
   <div class="post-comment">
-    <p class="post-comment__info">
-      <span>댓글</span>
+    <p class="post-comment__info d-flex align-items-center">
+      <span class="me-1">댓글</span>
       <span class="post-comment__cnt">{{ comments_cnt }}</span>
     </p>
     <div class="post-comment__scroll">
@@ -135,7 +135,7 @@
         {% endif %} {% endfor %}
       </ul>
     </div>
-    <div class="post-comment__input">
+    <div class="post-comment__input d-flex align-items-center">
       <input
         class="comment-input comment-input__{{post.id}}"
         type="text"
