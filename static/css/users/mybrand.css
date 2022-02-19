@@ -1,0 +1,125 @@
+.my-brand {
+    width: 100%;
+    padding-left: 15rem;
+    padding-right: 15rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-brand__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    border-bottom: 1px solid var(--gray);
+    margin-bottom: 3rem;
+}
+
+.my-brand__title {
+    padding: 2rem 0;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.my-brand__to-mypage {
+    width: 9rem;
+    color: var(--black);
+    border: 1px solid var(--black);
+    text-align: center;
+    padding: 0.3rem 0;
+    border-radius: 0.7rem;
+    font-size: 1.5rem;
+}
+
+.my-brand__to-mypage:hover {
+    color: inherit;
+}
+
+.my-brand__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-gap: 3rem;
+    justify-content: center;
+}
+@media screen and (min-width: 1920px) {
+    .my-brand__main {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+.my-brand__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0;
+    border-radius: 1rem;
+    position: relative;
+    box-shadow: 1rem 1rem 2rem 0.1rem #e0e0e0;
+}
+
+.my-brand__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.my-brand__link {
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.my-brand__img {
+    width: 100%;
+    height: 20rem;
+}
+
+/* .my-brand__img:hover {
+    transform:scale(1.05);           
+    -webkit-transform:scale(1.05);     
+    -moz-transform:scale(1.05);      
+    -o-transform:scale(1.05);
+} */
+
+.my-brand__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    background-color: var(--black);
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid white;
+    border-radius: 70%;
+    z-index: 20;
+}
+
+.my-brand__btn i {
+    color: white;
+}
+
+.my-brand__content {
+    width: 100%;
+}
+
+.my-brand__info {
+    display: flex;
+    justify-content: space-between;
+    color: var(--gray);
+    font-weight: 500;
+    opacity: 0.8;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    font-size: 1.3rem;
+}
+
+.my-brand__name {
+    color: var(--black);
+    font-weight: 500;
+    font-size: 2rem;
+    text-align: center;
+    padding: 2rem 0;
+}
