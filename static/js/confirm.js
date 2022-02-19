@@ -3,8 +3,8 @@ const deleteBrandLike = (url) => {
     location.href = url;
   }
 };
-const deleteBookMark = (url) => {
-  if (confirm("북마크를 취소하시겠습니까?")) {
+const deletePostLike = (url) => {
+  if (confirm("좋아요를 취소하시겠습니까?")) {
     location.href = url;
   }
 };
