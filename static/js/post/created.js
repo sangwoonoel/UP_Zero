@@ -23,6 +23,11 @@ for (let creat of created) {
     }
     else if (time.slice(-4) === '시간 전')
     {
-        creat.innerText = '\u00a0\u00a0\u00a0'+ time;
+        if (time.length === 6){
+            creat.innerText =  time;
+        }
+        else{
+            creat.innerText = '\u00a0\u00a0\u00a0'+ time;
+        }
     }
 }
