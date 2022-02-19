@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% block bootstrap %}
+{% extends 'base.html' %} {% load static %}
+{%block title %}개인정보 수정 | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/update.css' %}" />
+{% endblock %}
+{% block bootstrap %}
 <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -21,18 +26,28 @@
   crossorigin="anonymous"
 ></script>
 {% endblock %} {% load bootstrap4 %} {% block content %}
-<main>
-  <h1>User Edit</h1>
-  <div><span>아이디</span> <span>{{request.user.username}}</span></div>
-  <div>
+<main id="user-update">
+  <h1 class="user-update__title">개인정보 수정</h1>
+  <div class="user-update__id"><span>아이디</span> <span>{{request.user.username}}</span></div>
+  <div class="user-update__password">
     <a href="{% url 'users:password' %}">비밀번호 변경</a>
   </div>
-
-  <form method="POST" enctype="multipart/form-data">
+  <!-- <img
+    class="avatar-img user-info__img"
+    src="{{user.image.url}}"
+    alt="게시글 작성자 프로필 이미지"
+    width="120rem"
+    height="120rem"
+    alt=""
+  /> -->
+  <form class="user-update__form" method="POST" enctype="multipart/form-data">
     {% csrf_token %} {% bootstrap_form user_change_form %}
-    <button type="submit">수정</button>
+    <div class="user-update__btns">
+        <button type="submit">수정</button>
+        <a href="{% url 'users:delete' %}" class="user-upadate__delete">회원탈퇴</a>
+    </div>
   </form>
 
-  <a href="{% url 'users:delete' %}" class="btn btn-danger">회원탈퇴</a>
+  
 </main>
 {% endblock %}
