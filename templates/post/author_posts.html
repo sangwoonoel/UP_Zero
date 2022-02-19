@@ -3,7 +3,6 @@
 {% block content %}
 <main id="author-posts">
   <header class="author-posts__header" style="display: flex">
-    {% if author.image %} <!-- 나중에 if문 지워도 됨 -->
     <div class="author-posts__avatar">
       <img
         src="{{author.image.url}}"
@@ -12,7 +11,6 @@
         height="50rem"
       />
     </div>
-    {% endif %}
     <h1 class="author-posts__title">
       <span class="author__nickname">{{author}}</span>님의 작성 게시글
     </h1>
