@@ -1,6 +1,11 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load static %}
+{%block title %}회원가입을 축하합니다 | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/first-login.css' %}" />
+{% endblock %}
+{% block content %}
 <main id="first-login">
-  <p>회원가입을 축하합니다!</p>
-  <a href="{% url 'users:login' %}">첫 로그인하러 가기</a>
+  <h1 class="first-login__message">회원가입을 축하합니다!</h1>
+  <a class="first-login__btn" href="{% url 'users:login' %}">첫 로그인하러 가기</a>
 </main>
 {% endblock %}
