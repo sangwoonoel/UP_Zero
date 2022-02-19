@@ -7,12 +7,12 @@
 <meta property="og:type" , content="website" />
 <meta property="og:title" , content="SLOW:NIQUE" />
 <meta property="og:description" , content="업사이클링으로 가는 첫걸음" />
-<!-- <meta property="og:url" , content="배포 도메인" /> -->
+<meta property="og:url" , content="{{request.build_absolute_uri}}" />
 <!-- <meta property="og:image" , content="로고" /> -->
 <meta name="twitter:title" , content="SLOW:NIQUE" />
 <meta name="twitter:description" , content="업사이클링으로 가는 첫걸음" />
 <meta name="twitter:card" , content="summary" />
-<!-- <meta name="twitter:url" , content="배포 도메인" /> -->
+<meta name="twitter:url" , content="{{request.build_absolute_uri}}" />
 <!-- <meta name="twitter:image" , content="로고" /> -->
 {% endblock %} 
 {% block content %}
@@ -22,9 +22,9 @@
         <div class="main-header__txt">
             <h3 class="main-header__title">FIRST STEP</h3>
             <h3 class="main-header__title">IN <strong>UPCYCLING</strong></h3>
-            <p class="main-header__desc">느려서 더 특별한 업사이클, 슬로니크에서 시작하세요.</p>
-            <a class="main-header__more main-header__a" href="#">Learn more</a>
-            <a class="main-header__btn main-header__a" href="{% url 'brand:list' %}">More Brand</a>
+            <p class="main-header__desc">느려서 더욱 특별한 업사이클링, 슬로니크에서 시작하세요.</p>
+            <a class="main-header__more main-header__a" href="#">Learn more ></a>
+            <a class="main-header__btn main-header__a" href="{% url 'brand:list' %}">More Brands ></a>
         </div>
     </header>
     <div class="main-brand">

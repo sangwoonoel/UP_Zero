@@ -2,12 +2,12 @@
 <meta property="og:type" , content="website" />
 <meta property="og:title" , content="{{brand}}" />
 <meta property="og:description" , content="{{brand.desc}}" />
-<meta property="og:url" , content="" /> <!-- 배포하면 HTML로 -->
+<meta property="og:url" , content="{{request.build_absolute_uri}}" />
 <meta property="og:image" , content="" />
 <meta name="twitter:title" , content="{{brand}}" />
 <meta name="twitter:description" , content="{{brand.desc}}" />
 <meta name="twitter:card" , content="summary" />
-<meta name="twitter:url" , content="" /> <!-- 배포하면 HTML로 -->
+<meta name="twitter:url" , content="{{request.build_absolute_uri}}" />
 <meta name="twitter:image" , content="" />
 {% endblock %} {% block title %}{{brand}} | SLOW:NIQUE{% endblock %}
 {% block css %}
@@ -17,9 +17,9 @@
 {% block content %}
 <main id="brand-detail">
   <div class="brand-detail__breadcrumb">
-    <ul class="brand-detail__cate d-flex">
+    <ul class="brand-detail__cate d-flex align-items-center">
       <li><a href="{% url 'brand:list' %}">전체</a></li>
-      <i class="fas fa-chevron-right"></i>
+      <i class="fas fa-chevron-right fa-sm"></i>
       <li>
         <a href="{% url 'brand:list' %}?category={{brand.category.id}}"
           >{{brand.category}}</a
