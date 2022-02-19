@@ -15,20 +15,25 @@
   background: #55acee;
 }
 .url-btn {
-  background: var(--black);
+  background: var(--gray);
 }
+
 
 .brand__share {
   position: relative;
 }
+
 .brand__share ul {
   gap: 1rem;
   position: absolute;
-  top: 2.8rem;
-  transform: translateX(-45%);
+  top: 2.6rem;
+  right: 0;
+  transform: translateX(-36.5%);
+  text-align: center;
   opacity: 0;
   transition: all 0.3s ease-in-out;
 }
+
 .brand__share:hover ul {
   opacity: 1;
 }

@@ -1,0 +1,10 @@
+.author__post-list {
+    display: flex;
+    justify-content: center;
+    padding: 13rem 15rem 0 15rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}

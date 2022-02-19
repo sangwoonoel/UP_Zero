@@ -1,11 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %}
+{%block title %}회원탈퇴 | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/delete.css' %}" />
+{% endblock %}
 {% block content %}
-<main>
-    <h1>User delete</h1>
-    <form method="POST">
+<main id="user-delete">
+    <h1 class="user-delete__title">회원탈퇴</h1>
+    <form class="user-delete__form" method="POST">
         {% csrf_token %}
-        <p>정말로 탈퇴하시겠습니까?</p>
-        <input type="submit" value="탈퇴"/>
+        <p class="user-delete__confirm">정말로 탈퇴하시겠습니까?</p>
+        <input class="user-delete__btn" type="submit" value="탈퇴"/>
     </form>
 </main>
 

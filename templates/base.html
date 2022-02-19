@@ -23,18 +23,16 @@
         <a class="navbar__logo-container" href="/"><img class="navbar__logo" src="{% static 'images/slownique_logo.png' %}" /></a>
       </div>
       <div class="navbar__column navbar-right">
-        <a id="nav-brand" class="navbar__items" href="{% url 'brand:list' %}">Brand</a>
+        <a id="nav-brand" class="navbar__items" href="{% url 'brand:list' %}">Brands</a>
         <a id="nav-community" class="navbar__items" href="{% url 'post:list' %}">Community</a>
         <a id="nav-fund" class="navbar__items" href="#" onclick="onClickFund()">Fund</a>
-        {% if user.is_authenticated %} {% if user.image %}
-        <!-- 나중에 if문 지워도 됨 -->
+        {% if user.is_authenticated %}
         <div id="nav-mypage" class="login-user__avatar navbar__items" style="display: inline">
             <a class="avatar-container" href="{% url 'users:mypage' %}">
                 <img class="avatar-img" src="{{user.image.url}}" alt="유저 프로필 이미지" width="34rem"
             height="34rem" />
             </a>
         </div>
-        {% endif %}
         <a class="navbar__items log-btn" href="{% url 'users:logout' %}?next={{ request.get_full_path }}">Log out</a>
         {% else %}
         <a class="navbar__items log-btn" href="{% url 'users:login' %}?next={{ request.get_full_path }}">Log in</a>
@@ -64,7 +62,7 @@
             navBrand.className += " curr";
         } else if (currentUrl.includes('post')) {
             navComunity.className += " curr";
-        } else if (currentUrl.includes('login') || currentUrl.includes('signup') || currentUrl.includes('forgot')) {
+        } else if (currentUrl.includes('login') || currentUrl.includes('signup') || currentUrl.includes('forgot') || currentUrl.includes('password')) {
             navRight.className += " hidden";
         }
 

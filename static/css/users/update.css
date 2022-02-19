@@ -1,0 +1,103 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#user-update {
+    padding-right: 15rem;
+    padding-left: 15rem;
+    padding-bottom: 10rem;
+    position: relative;
+    width: 80rem;
+}
+
+.user-update__title {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.user-update__id {
+    margin-bottom: 1rem;
+}
+
+.user-update__id span:first-child {
+    font-weight: 500;
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: var(--dark-gray);
+}
+
+.user-update__id span:last-child {
+    font-size: 2.2rem;
+}
+
+.user-update__password {
+    margin-bottom: 1rem;
+}
+
+.user-update__password a {
+    color: var(--dark-gray);
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+.user-update__password a:hover {
+    color: var(--dark-mint);
+    text-decoration: underline;
+}
+
+.user-update__btns {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: absolute;
+    right: 15rem;
+    bottom: 0;
+}
+
+.user-update__form label {
+    color: var(--dark-gray);
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.user-update__form input[type=text], input[type=email] {
+    margin-bottom: 1rem;
+    height: 4.3rem;
+    font-size: 1.5rem;
+    padding: 0 0.6rem;
+}
+
+.user-update__form input[type=text]:focus, input[type=email]:focus {
+    outline: none;
+}
+
+.form-group a {
+    color: var(--gray);
+}
+
+.user-update__form input[type=file] button {
+    background-color: var(--gray);
+}
+
+.user-update__form button, .user-upadate__delete {
+    background-color: var(--black);
+    color: white;
+    width: 10rem;
+    font-size: 1.7rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    padding: 0.6rem 0;
+}
+
+.user-upadate__delete {
+    background-color: var(--red);
+}
+
+.user-upadate__delete:hover {
+    color: white;
+}

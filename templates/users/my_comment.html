@@ -1,19 +1,32 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<main>
-  <p>Welcome, {{user}}!</p>
-  <h1>내가 쓴 댓글</h1>
-  {% for Comment in Comments %}
-  <div>
-    <a href="{% url 'post:post_detail' Comment.post.id %}"
-      >{{Comment.message}}</a
-    >
-    <button
-      onclick="deleteComment('{% url 'users:mypage_comment_delete' Comment.id %}')"
-    >
-      <i class="fa-solid fa-trash-can"></i>
-    </button>
-  </div>
-  {% endfor %}
+{% extends 'base.html' %} {% load static %}
+{% block title %}내가 쓴 댓글 | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/mycomment.css' %}" />
+{% endblock %}
+{% block content %}
+<main class="my-comment">
+    <div class="my-comment__header">
+        <h1 class="my-comment__title">내가 쓴 댓글</h1>
+        <a href="{% url 'users:mypage' %}" class="my-comment__to-mypage">마이페이지</a>
+    </div>
+    <div class="my-comment__main">
+        {% for Comment in Comments %}
+        <div class="my-comment__comment">
+            <div class="my-comment__to-post">
+                <a class="my-comment__link" href="{% url 'post:post_detail' Comment.post.id %}">
+                    <span>{{Comment.message}}</span>
+                    <span>{{Comment.post.title}}</span>
+                </a>
+            </div>
+            <button
+            class="my-comment__btn"
+            onclick="deleteComment('{% url 'users:mypage_comment_delete' Comment.id %}')"
+            >
+                <i class="fa-solid fa-trash-can fa-lg"></i>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
 </main>
 {% endblock %} {% block script %}
 <script src="{% static 'js/confirm.js' %}"></script>

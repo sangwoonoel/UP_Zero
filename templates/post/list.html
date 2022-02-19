@@ -71,15 +71,12 @@
                 <a class="post-profile" href="{% url 'post:post_detail' post.id %}">
                     <div class="post-write">
                         <div class="post-author" >
-                            {% if post.user.image %}
-                            <!-- 나중에 if문 지워도 됨 -->
                             <img class="avatar-img"
                             src="{{post.user.image.url}}"
                             alt="작성자 프로필 이미지"
                             width="20rem"
                             height="20rem"
                             />
-                            {% endif %}
                         </div>
                         <span class="username">{{post.user}}</span>
                     </div>

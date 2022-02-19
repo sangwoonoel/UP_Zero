@@ -44,16 +44,6 @@ p {
   padding: 0;
 }
 
-body {
-  width: 100%;
-  font-size: 1.6rem;
-  color: var(--black);
-  font-family: "Noto Sans KR", sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 a {
   text-decoration: none;
   outline: none;
@@ -73,6 +63,26 @@ a:visited {
   font-size: 1.3rem;
   text-align: right;
   margin-top: 0.5rem;
+}
+
+.alert .btn-close {
+  position: relative;
+  padding: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.fade {
+  transition: opacity 0.5s ease-in-out;
+}
+
+body {
+  width: 100%;
+  font-size: 1.6rem;
+  color: var(--black);
+  font-family: "Noto Sans KR", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
