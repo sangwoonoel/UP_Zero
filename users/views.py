@@ -204,12 +204,42 @@ def brand_like(request):
 
 @login_required
 def post_like(request):
-    PostLikes = PostLike.objects.filter(
+
+    q = Q()
+
+    LikePosts = PostLike.objects.filter(
         user__id=request.user.pk).order_by('-id')
 
-    context = {'PostLikes': PostLikes}
+    post = Post.objects.filter(
+        user__id=request.user.pk)
 
-    return render(request, 'users/my_scrap.html', context)
+    if request.GET.get('keyword'):
+        keyword = request.GET.get('keyword')
+        q.add(Q(user__id=request.user.pk), q.AND)
+        q.add(Q(title__icontains=keyword) | Q(
+            content__icontains=keyword), q.AND)
+
+        PostLikes = PostLike.objects.filter(q).order_by('-created_at')
+    else:
+        PostLikes = PostLike.objects.filter(
+            user__id=request.user.pk).order_by('-id')
+
+    if request.GET.get('sort') == 'like':  # 좋아요 정렬 선택한 경우
+        PostLikes = PostLikes.annotate(like_cnt=Count('postlike')) \
+            .order_by('-like_cnt', '-created_at')
+    elif request.GET.get('sort') == 'past':  # 과거순 정렬 선택한 경우
+        PostLikes = PostLikes.order_by('created_at')
+    elif request.GET.get('sort') == 'latest':  # 최신순 정렬 선택한 경우
+        PostLikes = PostLikes.order_by('-created_at')
+
+    paginator = Paginator(PostLikes, 10)
+    page = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page)
+    cnt = PostLikes.count()
+    total_post_cnt = post.count()
+    total_like_cnt = LikePosts.count()
+
+    return render(request, 'users/my_scrap.html', locals())
 
 
 # @login_required
@@ -251,9 +281,9 @@ def user_post(request):
     paginator = Paginator(MyPosts, 10)
     page = request.GET.get('page', 1)
     page_obj = paginator.get_page(page)
-    post_cnt = MyPosts.count()
+    cnt = MyPosts.count()
     total_post_cnt = post.count()
-    like_cnt = LikePosts.count()
+    total_like_cnt = LikePosts.count()
 
     return render(request, 'users/my_post.html', locals())
 
