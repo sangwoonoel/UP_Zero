@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Count
@@ -46,8 +47,9 @@ def show_detail(request, pk):
             is_liked = False
     else:
         is_liked = False
-    
-    return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked})
+
+    key = settings.KAKAO_API_KEY
+    return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked, 'key':key})
 
 
 @login_required

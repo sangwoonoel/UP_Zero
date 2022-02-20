@@ -1,15 +1,23 @@
-{% extends 'base.html' %} {% load static %} {% block meta %}
-<meta property="og:type" , content="website" />
-<meta property="og:title" , content="{{brand}}" />
-<meta property="og:description" , content="{{brand.desc}}" />
-<meta property="og:url" , content="{{request.build_absolute_uri}}" />
-<meta property="og:image" , content="" />
-<meta name="twitter:title" , content="{{brand}}" />
-<meta name="twitter:description" , content="{{brand.desc}}" />
-<meta name="twitter:card" , content="summary" />
-<meta name="twitter:url" , content="{{request.build_absolute_uri}}" />
-<meta name="twitter:image" , content="" />
-{% endblock %} {% block title %}{{brand}} | SLOW:NIQUE{% endblock %}
+{% extends 'base.html' %} {% load static %}
+{% block meta %}
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{brand}}" />
+<meta property="og:description" content="{{brand.desc}}" />
+<meta property="og:url" content="{{request.build_absolute_uri}}" />
+<meta
+  property="og:image"
+  content="{{request.scheme}}://{{request.get_host}}/media/{{brand.image}}"
+/>
+<meta name="twitter:title" content="{{brand}}" />
+<meta name="twitter:description" content="{{brand.desc}}" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="{{request.build_absolute_uri}}" />
+<meta
+  name="twitter:image"
+  content="{{request.scheme}}://{{request.get_host}}/media/{{brand.image}}"
+/>
+{% endblock %}
+{% block title %}{{brand}} | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/brand/share.css' %}" />
 <link rel="stylesheet" href="{% static 'css/brand/detail.css' %}" />
@@ -72,7 +80,7 @@
               >명이 찜한 브랜드
             </p>
           </div>
-          <a href="{{brand.link}}" class="brand__link"
+          <a href="{{brand.link}}" class="brand__link" target="_blank"
             ><i class="fa-solid fa-link"></i>브랜드 바로가기</a
           >
           {% include "brand/share.html" %}
@@ -81,10 +89,65 @@
     </div>
   </section>
 </main>
-{% endblock %} {% block script %}
+{% endblock %}
+{% block script %}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{% static 'js/brand/like.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="{% static 'js/brand/share.js' %}"></script>
+<script>
+  const title = "{{brand}}";
+  const url = location.href;
+  const imageUrl =
+    "{{request.scheme}}://{{request.get_host}}/media/{{brand.image}}";
+
+  Kakao.init("{{key}}");
+  const shareKakao = () => {
+    Kakao.Link.sendDefault({
+      objectType: "feed",
+      content: {
+        title: title,
+        description: "{{brand.desc}}",
+        imageUrl: imageUrl,
+        link: {
+          webUrl: url,
+          // mobileWebUrl: url,
+        },
+      },
+      social: {
+        likeCount: Number(document.querySelector(".like-cnt").innerText),
+      },
+      buttons: [
+        {
+          title: "자세히 보기",
+          link: {
+            webUrl: url,
+          },
+        },
+        // {
+        //   title: '모바일',
+        //   link: {
+        //     mobileWebUrl: url,
+        //   },
+        // },
+      ],
+    });
+  };
+
+  const shareTwitter = () => {
+    open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`);
+  };
+  const shareFacebook = () => {
+    open(`http://www.facebook.com/sharer.php?u=${url}&t=${title}`);
+  };
+  const copyURL = () => {
+    let dummy = document.createElement("input");
+    document.body.append(dummy);
+    dummy.value = url;
+    dummy.select();
+    document.execCommand("copy");
+    dummy.remove();
+    alert("URL이 복사되었습니다.");
+  };
+</script>
 {% endblock %}
