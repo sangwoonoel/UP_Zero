@@ -8,4 +8,7 @@ class BrandAdmin(admin.ModelAdmin):
 @admin.register(BrandLike)
 class BrandLikeAdmin(admin.ModelAdmin):
     search_fields = ['user__username', 'user__nickname', 'brand__name']
-admin.site.register(Category)
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+    search_fields = ['id', 'name']
