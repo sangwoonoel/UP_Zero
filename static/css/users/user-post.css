@@ -1,0 +1,120 @@
+.mypost-list {
+  width: 100%;
+  padding: 2.5rem 17.5rem 0 15rem;
+  display: flex;
+}
+
+.vl {
+  border-left: 1px solid var(--line-gray);
+  margin: 6.7rem 0 5.7rem 0;
+  padding-right: 2rem;
+  position: relative;
+}
+
+.myposts {
+  width: 100%;
+}
+
+.mypost {
+  border-bottom: 0.1rem solid #e3e3e3;
+  height: 12rem;
+}
+
+.mypost a {
+  color: var(--black);
+}
+
+.mypost:hover {
+  background-color: var(--post-hover);
+  border-radius: 1rem;
+}
+
+.mypost:hover .mypost-circle {
+  background-color: var(--mint);
+}
+
+.mypost-created {
+  position: relative;
+  left: -8.5rem;
+  top: 5.8rem;
+  color: var(--gray);
+  font-size: 1.1rem;
+}
+
+.mypost-circle {
+  background-color: var(--line-gray);
+  border-radius: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  left: -2.8rem;
+  top: 4.4rem;
+}
+
+.mypost-profile {
+  display: flex;
+}
+
+.mypost-content {
+  margin-left: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -0.5rem;
+}
+
+.mypost-title,
+.mypost-preview {
+  font-size: 1.4rem;
+  width: 100rem;
+}
+
+.mypost-title {
+  color: var(--user-black);
+  font-weight: bold;
+}
+
+.mypost-preview {
+  color: #6d6d6d;
+  font-weight: lighter;
+  padding: 0.5rem 0;
+}
+
+.mypost-res {
+  font-size: 1.2rem;
+  width: 100rem;
+  display: flex;
+}
+
+.mypost-like {
+  margin-right: 1rem;
+}
+
+.like-icon {
+  color: rgb(164, 0, 1);
+}
+
+.comment-icon {
+  color: var(--mint);
+}
+
+.mypost-up-del {
+  position: relative;
+  text-align: right;
+  right: 5rem;
+  bottom: 6rem;
+}
+
+.mypost-update {
+  font-size: 2.2rem;
+}
+.mypost-delete {
+  font-size: 2.2rem;
+  margin-left: 3rem;
+}
+
+.mypost-update:hover,
+.mypost-delete:hover {
+  color: var(--mint);
+}

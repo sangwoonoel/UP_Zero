@@ -18,32 +18,6 @@
   background-color: var(--mint);
 }
 
-.post-preview {
-  color: var(--gray);
-}
-
-.post-write {
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
-
-.post-res {
-  display: flex;
-}
-
-.post-like {
-  margin-right: 1rem;
-}
-
-.like-icon {
-  color: rgb(164, 0, 1);
-}
-
-.comment-icon {
-  color: var(--mint);
-}
-
 .post-total {
   display: flex;
   justify-content: space-between;
