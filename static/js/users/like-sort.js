@@ -3,14 +3,20 @@ const option = search.get("sort")
 const select = document.querySelector(".select-default span");
 
 const current = window.location.pathname;
-const write_post = document.querySelector("#write-post");
+
+const write_nav = document.querySelector("#write_post");
+const like_nav = document.querySelector("#like_post");
+const write_post = document.querySelector("#write-nav");
 const like_post = document.querySelector("#like-post");
 
 if (current.includes('/mypage/posts/')) {
     like_post.style=" color: var(--dark-gray); border: none";
+    like_nav.style=" color: var(--line-gray);";
 }
-else {
+else if(current.includes('/mypage/scraps/')){
     write_post.style=" color: var(--dark-gray); border: none";
+    write_nav.style=" color: var(--line-gray);";
+
 
 }
 
@@ -37,10 +43,10 @@ function SortChange(e) {
     const page = search.get("page");
 
     if (keyword) {
-        location.href = "/mypage/posts/?keyword="+keyword+"&sort="+ e.id;
+        location.href = "/mypage/scraps/?keyword="+keyword+"&sort="+ e.id;
     }
     else {
-    location.href = "/mypage/posts/?sort="+ e.id;
+    location.href = "/mypage/scraps/?sort="+ e.id;
     } 
 
 }
@@ -50,10 +56,10 @@ function PostSearch(e) {
     const sort = search.get("sort")
 
     if (sort) {
-        location.href = "/mypage/posts/?keyword="+keyword+"&sort="+ sort;
+        location.href = "/mypage/scraps/?keyword="+keyword+"&sort="+ sort;
     }
     else {
-        location.href = "/mypage/posts/?keyword="+ keyword;
+        location.href = "/mypage/scraps/?keyword="+ keyword;
     }
 }
 
@@ -63,18 +69,18 @@ function pagination(e) {
 
     if (sort){
         if (keyword) {
-            location.href = "/mypage/posts/?keyword="+keyword+"&sort="+sort+"&page="+ e.value;
+            location.href = "/mypage/scraps/?keyword="+keyword+"&sort="+sort+"&page="+ e.value;
         }
         else {
-        location.href = "/mypage/posts/?sort="+sort+"&page="+ e.value;
+        location.href = "/mypage/scraps/?sort="+sort+"&page="+ e.value;
         }
     }
     else {
         if (keyword) {
-            location.href = "/mypage/posts/?keyword="+keyword+"&page="+ e.value;
+            location.href = "/mypage/scraps/?keyword="+keyword+"&page="+ e.value;
         }
         else {
-            location.href = "/mypage/posts/?page="+ e.value;
+            location.href = "/mypage/scraps/?page="+ e.value;
 
         }
     }

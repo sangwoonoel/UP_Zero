@@ -49,12 +49,14 @@
   justify-content: space-between;
 }
 
-#write_post {
+.user_post a {
   color: var(--mint);
+}
+
+#write_post {
   padding-right: 1rem;
 }
 
 #like_post {
-  color: var(--line-gray);
   letter-spacing: -0.1rem;
 }
