@@ -18,6 +18,7 @@
 .mypost {
   border-bottom: 0.1rem solid #e3e3e3;
   height: 12rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .mypost a {
@@ -25,7 +26,7 @@
 }
 
 .mypost:hover {
-  background-color: var(--post-hover);
+  background-color: var(--list-hover);
   border-radius: 1rem;
 }
 
@@ -49,6 +50,7 @@
   position: relative;
   left: -2.8rem;
   top: 4.4rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .mypost-profile {

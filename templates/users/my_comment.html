@@ -2,12 +2,29 @@
 {% block title %}내가 쓴 댓글 | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/users/mycomment.css' %}" />
+<link rel="stylesheet" href="{% static 'css/users/user-header.css' %}" />
 {% endblock %}
 {% block content %}
 <main class="my-comment">
+    <header class="mypage__header">
+        <div class="user_bg">
+            <div class="user_pr">
+                <img 
+                class="user-img"
+                src="{{user.image.url}}"
+                alt="게시글 작성자 프로필 이미지"
+                >
+                <div class="user_summary">
+                    <div class="user_name"><a id="user_name" href="{% url 'users:mypage' %}">{{user}}</div></a>
+                    <div class="user_comments">
+                        <div class="user_comment">내가 쓴 댓글 {{ comments_cnt }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="my-comment__header">
         <h1 class="my-comment__title">내가 쓴 댓글</h1>
-        <a href="{% url 'users:mypage' %}" class="my-comment__to-mypage">마이페이지</a>
     </div>
     <div class="my-comment__main">
         {% for Comment in Comments %}

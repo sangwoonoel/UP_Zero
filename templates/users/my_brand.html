@@ -2,12 +2,29 @@
 {% block title %}찜한 브랜드 | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/users/mybrand.css' %}" />
+<link rel="stylesheet" href="{% static 'css/users/user-header.css' %}" />
 {% endblock %}
 {% block content %}
 <main class="my-brand">
+    <header class="mypage__header">
+        <div class="user_bg">
+            <div class="user_pr">
+                <img 
+                class="user-img"
+                src="{{user.image.url}}"
+                alt="게시글 작성자 프로필 이미지"
+                >
+                <div class="user_summary">
+                    <div class="user_name"><a id="user_name" href="{% url 'users:mypage' %}">{{user}}</div></a>
+                    <div class="user_brand">
+                        <div class="like_brand">찜한 브랜드 {{ brand_like_cnt }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="my-brand__header">
-        <h1 class="my-brand__title">찜한 브랜드 보기</h1>
-        <a href="{% url 'users:mypage' %}" class="my-brand__to-mypage">마이페이지</a>
+        <h1 class="my-brand__title">찜한 브랜드</h1>
     </div>
   <div class="my-brand__main">
       {% for BrandLike in BrandLikes %}

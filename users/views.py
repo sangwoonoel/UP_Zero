@@ -195,8 +195,9 @@ def mypage(request):
 def brand_like(request):
     BrandLikes = BrandLike.objects.filter(
         user__id=request.user.pk).order_by('-id')
+    brand_like_cnt = BrandLikes.count()
 
-    context = {'BrandLikes': BrandLikes}
+    context = {'BrandLikes': BrandLikes, 'brand_like_cnt':brand_like_cnt}
 
     return render(request, 'users/my_brand.html', context)
 
@@ -261,8 +262,9 @@ def user_post(request):
 def comments_list(request):
     Comments = Comment.objects.filter(
         user__id=request.user.pk).order_by('-created_at')
+    comments_cnt = Comments.count()
 
-    context = {'Comments': Comments}
+    context = {'Comments': Comments, 'comments_cnt':comments_cnt}
 
     return render(request, 'users/my_comment.html', context)
 

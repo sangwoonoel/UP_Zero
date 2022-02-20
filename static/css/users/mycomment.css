@@ -1,38 +1,39 @@
 .my-comment {
     width: 100%;
-    padding-left: 15rem;
-    padding-right: 15rem;
     display: flex;
     flex-direction: column;
 }
+
+.user_comments {
+    display: flex;
+    font-size: 1.3rem;
+    justify-content: space-between;
+  }
+  
+.user_comment {
+    color: var(--mint);
+    padding-right: 1rem;
+    }
 
 .my-comment__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0 1rem 0;
-    border-bottom: 1px solid var(--gray);
     margin-bottom: 3rem;
+    padding-left: 15rem;
+    padding-right: 15rem;
 }
 
 .my-comment__title {
-    padding: 2rem 0;
-    font-size: 2.5rem;
-    font-weight: 500;
+    font-size: 2rem;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--black);
 }
 
-.my-comment__to-mypage {
-    width: 9rem;
-    color: var(--black);
-    border: 1px solid var(--black);
-    text-align: center;
-    padding: 0.3rem 0;
-    border-radius: 0.7rem;
-    font-size: 1.5rem;
-}
-
-.my-comment__to-mypage:hover {
-    color: inherit;
+.my-comment__main {
+    padding: 0 15rem;
 }
 
 .my-comment__comment {
