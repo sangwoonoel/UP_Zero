@@ -1,10 +1,34 @@
-.author__post-list {
+#author-posts {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    padding: 13rem 15rem 0 15rem;
+    flex-direction: column;
+}
+
+.user_posts {
+    display: flex;
+    font-size: 1.3rem;
+    justify-content: space-between;
+  }
+  
+.user_post {
+    color: var(--mint);
+    padding-right: 1rem;
+}
+
+.author-post__list {
+    width: 100%;
+    padding: 2.5rem 17.5rem 0 23rem;
+    display: flex;
+}
+
+.mypage__header {
+    margin-bottom: 7rem;
+}
+
+/* .author__post-list {
+    padding: 0 15rem;
 }
 
 .pagination {
-    display: flex;
-    justify-content: center;
-}
+    padding: 0 15rem;
+} */

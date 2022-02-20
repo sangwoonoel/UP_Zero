@@ -165,6 +165,7 @@ def post_list(request):
 def show_author_posts(request):
     author = get_object_or_404(User, username=request.GET.get('id'))
     posts = Post.objects.filter(user=author).order_by('-created_at')
+    posts_cnt = posts.count()
 
     paginator = Paginator(posts, 5)
     page = request.GET.get('page', 1)
