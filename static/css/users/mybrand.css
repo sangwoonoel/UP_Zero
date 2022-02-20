@@ -55,6 +55,7 @@
     border-radius: 1rem;
     position: relative;
     box-shadow: 1rem 1rem 2rem 0.1rem #e0e0e0;
+    margin-bottom: 2rem;
 }
 
 .my-brand__link {
@@ -72,6 +73,7 @@
 .my-brand__img {
     width: 100%;
     height: 20rem;
+    object-fit: cover;
 }
 
 /* .my-brand__img:hover {
