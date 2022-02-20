@@ -197,7 +197,7 @@ def brand_like(request):
         user__id=request.user.pk).order_by('-id')
     brand_like_cnt = BrandLikes.count()
 
-    context = {'BrandLikes': BrandLikes, 'brand_like_cnt':brand_like_cnt}
+    context = {'BrandLikes': BrandLikes, 'brand_like_cnt': brand_like_cnt}
 
     return render(request, 'users/my_brand.html', context)
 
@@ -294,7 +294,7 @@ def comments_list(request):
         user__id=request.user.pk).order_by('-created_at')
     comments_cnt = Comments.count()
 
-    context = {'Comments': Comments, 'comments_cnt':comments_cnt}
+    context = {'Comments': Comments, 'comments_cnt': comments_cnt}
 
     return render(request, 'users/my_comment.html', context)
 
