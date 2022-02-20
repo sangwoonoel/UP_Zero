@@ -2,8 +2,17 @@ const search = new URL(location.href).searchParams;
 const option = search.get("sort")
 const select = document.querySelector(".select-default span");
 
-current = window.location.pathname;
-console.log(current);
+const current = window.location.pathname;
+const write_post = document.querySelector("#write-post");
+const like_post = document.querySelector("#like-post");
+
+if (current.includes('/mypage/posts/')) {
+    like_post.style=" color: var(--dark-gray); border: none";
+}
+else {
+    write_post.style=" color: var(--dark-gray); border: none";
+
+}
 
 const keyword = document.querySelector(".input-keyword");
 keyword.addEventListener("keydown", (e) => {
