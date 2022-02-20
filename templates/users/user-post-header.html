@@ -10,7 +10,7 @@
                 <div class="user_name"><a id="user_name" href="{% url 'users:mypage' %}">{{user}}</div></a>
                 <div class="user_post">
                     <div class="write_post"><a id="write_post" href="{% url 'users:my_post' %}">작성글 {{total_post_cnt}}</div></a>
-                    <div class="like_post"><a id="like_post" href="{% url 'users:my_scrap' %}">좋아요 한 글&nbsp;&nbsp;{{like_cnt}}</div></a>
+                    <div class="like_post"><a id="like_post" href="{% url 'users:my_scrap' %}">좋아요 한 글&nbsp;&nbsp;{{total_like_cnt}}</div></a>
                 </div>
             </div>
         </div>

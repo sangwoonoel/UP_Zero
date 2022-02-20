@@ -1,21 +1,60 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} 
+{% block title %}좋아요 한 게시물 | SLOW:NIQUE{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/user-header.css' %}" />
+<link rel="stylesheet" href="{% static 'css/users/user-nav.css' %}" />
+<link rel="stylesheet" href="{% static 'css/users/user-post.css' %}" />
+<link rel="stylesheet" href="{% static 'css/users/user-footer.css' %}" />
+
+{% endblock %}
+
+{% block content %}
 <main>
-  <p>Welcome, {{user}}!</p>
-  <h1>포스트 스크랩</h1>
-  <!-- 스크랩 대신 북마크 용어 어떨까?? - 지현 -->
-  {% for PostLike in PostLikes %}
-  <div>
-    <a href="{% url 'post:post_detail' PostLike.post.id %}"
-      >{{PostLike.post}}</a
-    >
-    <button
-      onclick="deletePostLike('{% url 'users:mypage_scrap_delete' PostLike.id %}')"
-    >
-      <i class="fa-solid fa-circle-minus"></i>
-    </button>
+  {% include "users/user-post-header.html" %}
+  {% include "users/user-post-search.html" %}
+  <div class="mypost-list">
+    <div class="vl">
+    </div>
+    <div class="myposts">
+      {% for MyPost in page_obj %}
+      <div class="mypost">
+          <div class="mypost-created">
+              <td>{{ MyPost.post.created_at|date:'m월 d일' }}</td>
+          </div>
+          <div class="mypost-circle"></div>
+          <a class="mypost-profile" href="{% url 'post:post_detail' MyPost.post.id %}">
+              <div class="mypost-content">
+                  <div class="mypost-title">{{MyPost.post}}</div>
+                  <div class="mypost-preview">
+                      {{MyPost.post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
+                  </div>
+                  <div class="mypost-res">
+                      <div class="mypost-like"><i class="like-icon fa-heart far"></i> {{MyPost.post.postlike_set.count}}</div>
+                      <div class="mypost-comment"><i class="comment-icon far fa-comment"></i> {{MyPost.post.comment_set.count}}</div>
+                  </div>
+              </div>
+          </a>
+          <div class="mypost-up-del">
+            <a class="mypost-update" href="{% url 'post:post_update' MyPost.post.id %}"
+              ><i class="fa-solid fa-eraser"></i
+              >
+            </a>
+            <button 
+              class="mypost-delete"
+              onclick="deletePost('{% url 'users:mypage_post_delete' MyPost.post.id %}')"
+            >
+            <i class="fa-solid fa-trash-can"></i>
+            <!-- 찜하기 취소 라는 말이 뭔가 어색해서 아이콘으로 넣었는데 그냥 텍스트로 하셔도 됩니다 -->
+            </button>            
+          </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
-  {% endfor %}
+  {% include "users/user-post-footer.html" %}
 </main>
 {% endblock %} {% block script %}
 <script src="{% static 'js/users/confirm.js' %}"></script>
+<script src="{% static 'js/users/like-sort.js' %}"></script>
 {% endblock %}
+
