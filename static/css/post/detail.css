@@ -18,7 +18,7 @@
 .post-detail__user {
     width: 100%;
     border-bottom: 1px solid var(--lightgrey);
-    height: 4.5rem;
+    padding-bottom: 1.5rem;
 }
 
 .post-detail__username {
@@ -65,9 +65,9 @@
     padding-top: 0.2rem;
 }
 
-.post-share {
+/* .post-share {
     padding-bottom: 0.8rem;
-}
+} */
 
 .post-share button {
     color: var(--black);
@@ -80,7 +80,7 @@
 .post-detail__btns {
     display: flex;
     justify-content: space-between;
-    padding: 2rem 2rem 0 2rem;
+    padding: 1.5rem 2rem 0 2rem;
     margin-bottom: 0;
     border-top: 1px solid var(--lightgrey);
 }
@@ -116,14 +116,15 @@
 
 .post-comment__info {
     width: 100%;
-    border-bottom: 1px solid var(--lightgrey);
-    height: 5rem;
-    padding: 5px 0;
+    border-bottom: 0.1rem solid var(--lightgrey);
+    height: 4.6rem;
+    padding-bottom: 1.5rem;
 }
 
 .post-comment__scroll {
     width: 100%;
     height: 65%;
+    /* height: 48.6rem; */
     position: relative;
 }
 
@@ -135,7 +136,7 @@
    bottom: 0;
    overflow-y: scroll;
    border-bottom: 1px solid var(--lightgrey);
-   padding-bottom: 1.5rem;
+   padding: 1rem 0;
 }
 
 .post-comment__ul::-webkit-scrollbar {
@@ -158,7 +159,7 @@
 }
 
 .comment__main {
-    margin-top: 1rem;
+    padding: 1rem 0;
 }
 
 .comment__main > a {
@@ -191,9 +192,10 @@
     position: absolute;
     bottom: 1.5rem;
     right: 0;
-    left: 0.7rem;
-    padding-top: 0.8rem;
+    left: 1rem;
+    padding-top: 1.5rem;
     background-color: white;
+    gap: 0.5rem;
 }
 
 .comment-input, .comment__edit-input {
@@ -224,4 +226,8 @@
 
 .comment__add-btn:hover, .comment__update-btn:hover {
     background-color: var(--mint);
+}
+
+input {
+    outline: none;
 }
