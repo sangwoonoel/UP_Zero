@@ -114,7 +114,12 @@
   margin-left: 3rem;
 }
 
-.mypost-update:hover,
+.mypost-update i,
+.mypost-delete {
+  color: var(--dark-gray);
+}
+
+.mypost-update:hover i,
 .mypost-delete:hover {
   color: var(--mint);
 }

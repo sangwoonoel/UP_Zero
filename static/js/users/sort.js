@@ -2,6 +2,9 @@ const search = new URL(location.href).searchParams;
 const option = search.get("sort")
 const select = document.querySelector(".select-default span");
 
+current = window.location.pathname;
+console.log(current);
+
 const keyword = document.querySelector(".input-keyword");
 keyword.addEventListener("keydown", (e) => {
     if (e.keyCode !== 13) return;
