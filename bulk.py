@@ -7,7 +7,7 @@ django.setup()
 
 from brand.models import Brand
 
-path = 'C:/slownique/brand7.csv'
+path = 'brand7.csv'
 f = open(path, 'r', encoding='cp949')
 data = []
 
