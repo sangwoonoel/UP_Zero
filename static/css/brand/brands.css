@@ -6,12 +6,18 @@
 
 /* Navbar */
 .brand-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   position: fixed;
   z-index: 1;
   top: 10rem; /* depends on height of the main navbar */
   padding: 2rem 15rem;
   background: white;
+}
+.brand-navbar ul {
+  display: flex;
 }
 .brand-navbar .focus {
   width: 0.6rem;
@@ -35,6 +41,27 @@
   color: var(--mint);
 }
 
+@media screen and (max-width: 390px) {
+  .brand-navbar {
+    justify-content: center;
+    position: static;
+    padding: 0;
+  }
+  .brand-navbar ul {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem 1.5rem 0.5rem 1.5rem;
+    position: fixed;
+    z-index: 1;
+    top: 7rem;
+    background: white;
+  }
+  .brand-navbar a:first-child {
+    padding-left: 1.5rem;
+  }
+}
+
 /* Layout & search bar */
 .brand-layout {
   padding: 8.55rem 15rem 0 15rem; /* depends on height of the brand navbar, horizontal padding of the main navbar */
@@ -52,6 +79,18 @@
 }
 .search-form input::placeholder {
   color: var(--gray);
+}
+
+@media screen and (max-width: 390px) {
+  .brand-layout {
+    padding: 4.5rem 2rem 0 2rem;
+  }
+  .search-form-container {
+    padding-top: 8rem;
+  }
+  .search-form input {
+    width: 23rem;
+  }
 }
 
 /* Section */
@@ -109,12 +148,28 @@
 .brand__desc {
   font-size: 1.4rem;
 }
+
+@media screen and (max-width: 390px) {
+  .brands {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .brand {
+    box-shadow: 0.2rem 0.2rem 1rem 0.2rem #e0e0e0;
+  }
+  .brand__name {
+    font-size: 2rem;
+  }
+  .brand__content {
+    padding: 1rem;
+  }
+}
 /* END COMMON ELEMENTS */
 
 /* BRAND LIST */
 /* Header */
 .brand-list__header {
-  margin: 3rem 0 5rem;
+  margin: 3rem 0 5rem 0;
 }
 .brand-list__category {
   text-align: center;
@@ -168,6 +223,31 @@
 .sort-btn.active:hover .sort-btn__indicator {
   transform: translateX(-2.5rem);
   filter: drop-shadow(0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.2));
+}
+
+@media screen and (max-width: 390px) {
+  .brand-list__header {
+    margin: 0 0 3rem 0;
+  }
+  .brand-list__category {
+    margin-bottom: 2rem;
+  }
+  .brand-list__count {
+    font-size: 1.4rem;
+  }
+  .brand-list__sort {
+    font-size: 1.2rem;
+  }
+
+  .sort-btn__bg {
+    width: 4.3rem;
+    height: 2.1rem;
+    padding: 0 0.45rem;
+  }
+  .sort-btn__indicator {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
 }
 /* END BRAND LIST */
 
