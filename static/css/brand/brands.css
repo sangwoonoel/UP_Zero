@@ -57,6 +57,9 @@
     top: 7rem;
     background: white;
   }
+  .brand-navbar a {
+    font-size: 1.6rem;
+  }
   .brand-navbar a:first-child {
     padding-left: 1.5rem;
   }
@@ -83,13 +86,15 @@
 
 @media screen and (max-width: 390px) {
   .brand-layout {
-    padding: 4.5rem 2rem 0 2rem;
+    padding: 5rem 2rem 0 2rem;
   }
   .search-form-container {
-    padding-top: 8rem;
+    padding-top: 5.5rem;
   }
   .search-form input {
     width: 23rem;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
   }
 }
 
@@ -157,11 +162,15 @@
   .brand {
     box-shadow: 0.2rem 0.2rem 1rem 0.2rem #e0e0e0;
   }
+  .brand__sub-header,
+  .brand__desc {
+    padding: 0 1rem;
+  }
   .brand__name {
     font-size: 2rem;
   }
   .brand__content {
-    padding: 1rem;
+    padding: 0.5rem 0 1rem 0;
   }
 }
 /* END COMMON ELEMENTS */
@@ -230,7 +239,7 @@
     margin: 0 0 3rem 0;
   }
   .brand-list__category {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   .brand-list__count {
     font-size: 1.4rem;
