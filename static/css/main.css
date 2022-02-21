@@ -13,7 +13,7 @@ main {
 
 .main-header > img {
     max-width: 100%;
-    height: 320rem;
+    height: 32rem;
     object-fit: cover;
     position: relative;
 }
@@ -109,6 +109,10 @@ main {
     text-align: center;
 }
 
+.main-brand__img {
+    height: 200px;
+}
+
 .main-brand__img, .main-brand__info {
     margin-top: 5rem;
 }
@@ -159,18 +163,18 @@ main {
         position: absolute;
         top: 3rem;
         left: 2rem;
-        padding-top: 5.5rem;
+        padding-top: 5.2rem;
     }
 
     .main-header__title {
         color: white;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: 300;
     }
 
     .main-header__desc {
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 0.9rem;
         margin-top: 0.3rem;
         margin-bottom: 0;
     }
@@ -179,13 +183,59 @@ main {
         margin-right: 0.7rem;
         padding: 0.2rem 0.8rem;
         font-weight: 400;
-        font-size: 1rem;
+        font-size: 0.9rem;
         border-radius: 1.7rem;
     }
 
     .main-brand__title {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         font-weight: 500;
-        margin-top: 3rem;
+        margin-top: 4rem;
+    }
+
+    .main-brand__wrapper {
+        width: 85%;
+        grid-template-rows: 20rem 20rem 20rem;
+    }
+
+    .main-brand__img {
+        padding-top: 4rem;
+    }
+
+    .main-brand__img > img {
+        height: 8rem;
+    }
+
+    .main-brand__img, .main-brand__info {
+        margin-top: 2rem;
+    }
+    
+    .main-brand__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 1rem;
+    }
+    
+    .info__name {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .info__desc {
+        font-weight: 200;
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .underline {
+        margin-top: 0.5rem;
+        width: 13rem;
+        height: 0.2rem;
+        background-color: var(--black);
+    }
+    
+    .underline-right {
+        margin-left: 4rem;
     }
 }
