@@ -121,3 +121,9 @@ footer ul {
   font-size: 1.3rem;
   color: var(--dark-gray);
 }
+
+@media screen and (max-width: 430px) {
+  footer {
+    display: none;
+  }
+}
