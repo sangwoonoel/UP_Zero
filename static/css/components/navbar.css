@@ -32,12 +32,12 @@
 
 .navbar__items:not(:last-child) {
   color: black;
-  margin: 0 25px;
-  letter-spacing: -0.5px;
+  margin: 0 2.5rem;
+  letter-spacing: -0.05rem;
 }
 
 .navbar__items:last-child {
-    margin-left: 25px;
+  margin-left: 2.5rem;
 }
 
 .navbar__items:hover {
@@ -53,8 +53,8 @@
   color: white;
   font-size: 1.3rem;
   background-color: var(--black);
-  padding: 7px 13px;
-  border-radius: 20px;
+  padding: 0.7rem 1.3rem;
+  border-radius: 2rem;
   white-space: nowrap;
 }
 
@@ -67,48 +67,46 @@
   font-weight: 600;
 }
 
-
-
 @media screen and (max-width: 390px) {
-    .navbar {
-        display: flex;
-        width: 100%;
-        height: 7rem;
-        padding: 0 1.5rem;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background-color: white;
-        z-index: 100;
-    }
+  .navbar {
+    display: flex;
+    width: 100%;
+    height: 7rem;
+    padding: 0 1.5rem;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 100;
+  }
 
-    .navbar__logo {
-        width: 65%;
-    }
+  .navbar__logo {
+    width: 65%;
+  }
 
-    .navbar__items:not(:last-child) {
-        margin: 0 4px;
-        font-size: 1.05rem;
-    }
+  .navbar__items:not(:last-child) {
+    margin: 0 4px;
+    font-size: 1.05rem;
+  }
 
-    .navbar__items:last-child {
-        margin-left: 4px;
-    }
+  .navbar__items:last-child {
+    margin-left: 4px;
+  }
 
-    .avatar-img {
-        width: 2rem;
-        height: 2rem;
-    }
+  .avatar-img {
+    width: 2rem;
+    height: 2rem;
+  }
 
-    .log-btn {
-        color: white;
-        font-size: 1.05rem;
-        background-color: var(--black);
-        padding: 0.2rem 0.5rem;
-        border-radius: 10px;
-        white-space: nowrap;
-    }
+  .log-btn {
+    color: white;
+    font-size: 1.05rem;
+    background-color: var(--black);
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    white-space: nowrap;
+  }
 }

@@ -24,7 +24,7 @@
   display: inline-block;
 
   border: none;
-  border-radius: 4px;
+  border-radius: 0.4rem;
 }
 
 .pagination-current span {
