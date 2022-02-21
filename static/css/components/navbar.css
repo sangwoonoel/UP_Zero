@@ -69,7 +69,7 @@
 
 
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 430px) {
     .navbar {
         display: flex;
         width: 100%;

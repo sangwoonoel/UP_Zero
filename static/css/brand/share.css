@@ -20,14 +20,14 @@
 
 
 .brand__share {
-  position: relative;
+    position: relative;
 }
 
 .brand__share ul {
   gap: 1rem;
   position: absolute;
   top: 2.6rem;
-  right: 0;
+  left: 30rem;
   transform: translateX(-36.5%);
   text-align: center;
   opacity: 0;
@@ -55,4 +55,12 @@
 .brand__share ul button:hover img,
 .brand__share ul button:hover i {
   transform: scale(1.15);
+}
+
+@media screen and (max-width: 390px) {
+    .brand__share ul {
+        top: 6rem;
+        left: 17rem;
+        transform: translateX(-76%);
+    }
 }
