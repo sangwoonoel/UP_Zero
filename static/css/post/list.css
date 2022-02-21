@@ -5,8 +5,9 @@
   width: 100%;
 }
 
-.post, .post-circle {
-    transition: all 0.3s ease-in-out;
+.post,
+.post-circle {
+  transition: all 0.3s ease-in-out;
 }
 
 .post a {
