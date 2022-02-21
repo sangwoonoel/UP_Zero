@@ -91,7 +91,7 @@
 
     .navbar__items:not(:last-child) {
         margin: 0 4px;
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
 
     .navbar__items:last-child {
@@ -105,7 +105,7 @@
 
     .log-btn {
         color: white;
-        font-size: 1px;
+        font-size: 1.05rem;
         background-color: var(--black);
         padding: 0.2rem 0.5rem;
         border-radius: 10px;
