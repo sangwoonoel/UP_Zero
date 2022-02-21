@@ -31,14 +31,11 @@
   width: 100%;
   height: 5.3rem;
   border: 0.1rem solid var(--lightgrey);
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
   border-radius: 0.5rem;
   padding: 1rem 1rem;
   font-size: 1.4rem;
-}
-@media screen and (max-width: 430px) {
-  .login__form input {
-    --webkit-border-radius: 0.5rem;
-  }
 }
 
 .login__form input::placeholder {
