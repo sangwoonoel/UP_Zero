@@ -126,3 +126,13 @@ footer ul {
   font-size: 1.3rem;
   color: var(--dark-gray);
 }
+
+@media screen and (max-width: 430px) {
+  main {
+    padding-top: 7rem;
+  }
+
+  footer {
+    display: none;
+  }
+}

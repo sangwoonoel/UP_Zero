@@ -99,3 +99,77 @@
 .comment-icon {
   color: var(--mint);
 }
+
+@media screen and (max-width: 430px) {
+  .post-list {
+    width: 100%;
+    padding: 0.35rem 1.75rem 0 1.5rem;
+    display: flex;
+  }
+
+  .vl,
+  .post-circle {
+    display: none;
+  }
+
+  .post-created {
+    position: relative;
+    left: 31rem;
+    top: 1rem;
+    color: var(--gray);
+    font-size: 1rem;
+  }
+
+  .post-profile {
+    display: flex;
+    border-bottom: 0.01rem solid #e3e3e3;
+  }
+
+  .post-write {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -0.5rem;
+    margin-right: 0.24rem;
+    min-width: 7.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .post-write span {
+    font-size: 1.2rem;
+    color: var(--user-black);
+  }
+
+  .post-author img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .post-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -0.5rem;
+  }
+
+  .post-title,
+  .post-preview {
+    font-size: 1.3rem;
+    width: 20rem;
+  }
+
+  .post-preview {
+    font-size: 1.2rem;
+  }
+
+  .post-res {
+    font-size: 1.1rem;
+    width: 20rem;
+    display: flex;
+  }
+
+  .post-like {
+    margin-right: 0.5rem;
+  }
+}

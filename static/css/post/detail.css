@@ -25,9 +25,14 @@
   padding: 0 1rem;
 }
 
-.post-detail__content > div > p {
-  width: 100%;
+
+.post-detail__content > div {
+    width: 100%;
 }
+
+/* .post-detail__content > div > p {
+    width: 72.7%;
+} */
 
 .post-detail__content {
   display: flex;
@@ -155,10 +160,11 @@
 }
 
 .comment__message {
-  padding-top: 0.7rem;
-  padding-bottom: 0.5rem;
-  margin-bottom: 0;
-  font-size: 1.5rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    word-break: break-all;
 }
 
 .comment__main {
@@ -175,11 +181,12 @@
 }
 
 .comment__main > button {
-  background: none;
-  border: none;
-  color: var(--gray);
-  padding: 0 0.3rem;
-  font-size: 1.3rem;
+    background: none;
+    border: none;
+    color: var(--gray);
+    padding: 0 0.3rem;
+    font-size: 1.3rem;
+    white-space: nowrap;
 }
 
 .button-division {
@@ -235,5 +242,109 @@
 }
 
 input {
-  outline: none;
+    outline: none;
+}
+
+
+@media screen and (max-width: 430px) {
+    .post-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .post {
+        width: 90%;
+        padding: 1rem 1.5rem;
+        border-bottom: none;
+    }
+
+    .post-comment {
+        width: 90%;
+        height: 25rem;
+        padding: 1rem 1.5rem;
+        border: 1px solid var(--lightgrey);
+    }
+
+    .post-detail__user {
+        padding-bottom: 0.8rem;
+    }
+
+    .post-detail__content {
+        padding: 2rem 0.8rem;
+    }
+
+    .post-detail__content > div > p {
+        font-size: 1.3rem;
+    }
+
+    .post-reaction {
+        padding: 0.5rem 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    .post-detail__btns {
+        padding: 1rem 1.5rem 0 1.5rem;
+    }
+    
+    .post-detail__btns a, .post-btn__del {
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+    }
+    
+    .post-btn__update {
+        margin-left: 0.6rem;
+    }
+
+    .post-comment__info {
+        height: 3rem;
+        padding-bottom: 0.6rem;
+        font-size: 1.5rem;
+    }
+
+    .post-comment__input {
+        height: 2.5rem;
+        font-size: 1.1rem;
+        padding-top: 0.5rem;
+    }
+
+    .comment__add-btn, .comment__update-btn {
+        height: 3.4rem;
+        width: 15%;
+        font-size: 1.3rem;
+    }
+
+    .comment__update-btn {
+        margin-left: 0.5rem;
+    }
+
+    .comment__main {
+        padding: 0 0 0.6rem 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .comment__user {
+        margin: 0 0.7rem 0 0.5rem;
+    }
+
+    .comment__message {
+        padding: 0;
+        margin-bottom: 0;
+        font-size: 1.3rem;
+    }
+    
+    .comment__main > button {
+        padding: 0;
+        font-size: 1.1rem;
+        margin: 0 0.5rem;
+        white-space: nowrap;
+    }
+    
+    .button-division {
+        font-size: 1.1rem;
+    }
+    
+    .comment__edit {
+        padding: 1rem 0;
+    }
 }

@@ -41,3 +41,36 @@
   color: var(--mint);
   font-weight: bolder;
 }
+
+@media screen and (max-width: 430px) {
+  #poster {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .post:hover {
+    background-color: var(--post-hover);
+    border-radius: 1rem;
+  }
+
+  .post-total {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.18rem 1.75rem 0 1.5rem;
+    font-size: 1rem;
+    color: var(--dark-gray);
+  }
+
+  .total-pages {
+    display: flex;
+  }
+
+  .total-page {
+    padding: 0 0.5rem;
+    color: var(--mint);
+    font-weight: bolder;
+  }
+}

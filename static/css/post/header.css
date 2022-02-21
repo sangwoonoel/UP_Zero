@@ -63,3 +63,69 @@
   padding-bottom: 0.3rem;
   color: white;
 }
+
+@media screen and (max-width: 430px) {
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.8rem 1.75rem 1rem 1.5rem;
+  }
+
+  .keyword-container {
+    border-bottom: 0.2rem solid var(--mint);
+    width: 25rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .keyword-container input {
+    border: none;
+    width: 23rem;
+  }
+
+  .keyword-container input::placeholder {
+    display: none;
+  }
+
+  .keyword-container input:focus {
+    outline: none;
+  }
+
+  .keyword-container button {
+    color: var(--gray);
+    font-size: 1.5rem;
+  }
+
+  .sort-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .post-create {
+    display: flex;
+    width: 2.8rem;
+    height: 2.8rem;
+    background-color: var(--mint);
+    border-radius: 5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .post-create__btn {
+    position: relative;
+    left: 0.06rem;
+    bottom: 0.1rem;
+    width: 4.2rem;
+    height: 4.2rem;
+  }
+
+  .post-create__btn span {
+    display: none;
+  }
+
+  .post-create__btn img {
+    width: 4.2rem;
+    height: 4.2rem;
+  }
+}

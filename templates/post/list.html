@@ -81,9 +81,9 @@
                         <span class="username">{{post.user}}</span>
                     </div>
                     <div class="post-content">
-                        <div class="post-title">{{post.title}}</div>
+                        <div class="post-title">{{post.title|striptags|cut:"&nbsp;"|truncatechars:20}}</div>
                         <div class="post-preview">
-                            {{post.content|striptags|cut:"&nbsp;"|truncatechars:50}}
+                            {{post.content|striptags|cut:"&nbsp;"|truncatechars:20}}
                         </div>
                         <div class="post-res">
                             <div class="post-like"><i class="like-icon fa-heart far"></i> {{post.postlike_set.count}}</div>
