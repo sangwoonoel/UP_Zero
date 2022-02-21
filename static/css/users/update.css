@@ -101,3 +101,17 @@ body {
 .user-upadate__delete:hover {
     color: white;
 }
+
+@media screen and (max-width: 430px) {
+    #user-update {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        padding-bottom: 2rem;
+        width: 80%;
+    }
+
+    .user-update__btns {
+        right: 6rem;
+        bottom: 5rem;
+    }
+}
