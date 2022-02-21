@@ -87,10 +87,10 @@
 
 @media screen and (max-width: 430px) {
   .brand-layout {
-    padding: 5rem 2rem 0 2rem;
+    padding: 5rem 2rem 2rem 2rem;
   }
   .search-form-container {
-    padding-top: 6rem;
+    padding-top: 8rem;
   }
   .search-form input {
     width: 23rem;
@@ -107,6 +107,7 @@
 @media screen and (min-width: 1920px) {
   .brands {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-bottom: 5rem;
   }
 }
 
