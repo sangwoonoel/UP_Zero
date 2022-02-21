@@ -1,76 +1,76 @@
 .my-comment {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .user_comments {
-    display: flex;
-    font-size: 1.3rem;
-    justify-content: space-between;
-  }
-  
+  display: flex;
+  font-size: 1.3rem;
+  justify-content: space-between;
+}
+
 .user_comment {
-    color: var(--mint);
-    padding-right: 1rem;
+  color: var(--mint);
+  padding-right: 1rem;
 }
 
 .my-comment__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0 1rem 0;
-    margin-bottom: 3rem;
-    padding-left: 15rem;
-    padding-right: 15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0 1rem 0;
+  margin-bottom: 3rem;
+  padding-left: 15rem;
+  padding-right: 15rem;
 }
 
 .my-comment__title {
-    font-size: 2rem;
-    padding-bottom: 0.5rem;
-    font-weight: bold;
-    border-bottom: 2px solid var(--black);
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
+  border-bottom: 0.2rem solid var(--black);
 }
 
 .my-comment__main {
-    padding: 0 15rem;
+  padding: 0 15rem;
 }
 
 .my-comment__comment {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 2rem 2rem;
-    border-bottom: 1px solid var(--lightgrey);
-    align-items: center;
-    transition: all 0.3s ease-in-out;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 2rem 2rem;
+  border-bottom: 0.1rem solid var(--lightgrey);
+  align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .my-comment__comment:hover {
-    background-color: var(--list-hover);
+  background-color: var(--list-hover);
 }
 
 .my-comment__to-post {
-    width: 90%;
+  width: 90%;
 }
 
 .my-comment__link {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .my-comment__link span:first-child {
-    color: var(--black);
-    font-size: 1.8rem;
-    line-height: 2.5rem;
-    margin-bottom: 0.8rem;
+  color: var(--black);
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .my-comment__link span:last-child {
-    color: var(--gray);
-    font-size: 1.6rem;
+  color: var(--gray);
+  font-size: 1.6rem;
 }
 
 .my-comment__btn {
-    color: var(--dark-gray);
+  color: var(--dark-gray);
 }

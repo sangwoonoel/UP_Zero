@@ -5,7 +5,7 @@
 }
 
 .vl {
-  border-left: 1px solid var(--line-gray);
+  border-left: 0.1rem solid var(--line-gray);
   margin: 4.4rem 0 5.2rem 0;
   padding-right: 2rem;
   position: relative;
