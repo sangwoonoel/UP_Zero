@@ -79,6 +79,7 @@
   border: none;
   border-bottom: 0.2rem solid var(--black);
   padding: 0.3rem 1rem;
+  -webkit-border-radius: 0;
 }
 .search-form input::placeholder {
   color: var(--gray);
@@ -110,6 +111,7 @@
 }
 
 .brand {
+  margin-bottom: 1rem;
   border-radius: 1.5rem;
   box-shadow: 1rem 1rem 2rem 0.1rem #e0e0e0;
   overflow: hidden;
@@ -157,8 +159,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
+
   .brand {
     box-shadow: 0.2rem 0.2rem 1rem 0.2rem #e0e0e0;
+    margin-bottom: 1.5rem;
   }
   .brand__sub-header,
   .brand__desc {

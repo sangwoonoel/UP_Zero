@@ -60,3 +60,30 @@
 #like_post {
   letter-spacing: -0.1rem;
 }
+
+@media screen and (max-width: 430px) {
+  .mypage__header {
+    margin-bottom: 10rem;
+  }
+
+  .user_bg {
+    background-position: 85%;
+    /* background: url("/static/images/green.jpg");
+    background-size: cover; */
+  }
+  .user_pr {
+    top: 22.5rem;
+    left: 13.5rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .user-img {
+    margin-right: 0;
+  }
+  .user_summary {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
