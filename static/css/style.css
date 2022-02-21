@@ -6,6 +6,7 @@
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 ol,
@@ -31,6 +32,11 @@ button {
   border: none;
   border-radius: 0;
   padding: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }
 
 h1,
@@ -123,6 +129,10 @@ footer ul {
 }
 
 @media screen and (max-width: 430px) {
+  main {
+    padding-top: 7rem;
+  }
+
   footer {
     display: none;
   }
