@@ -261,10 +261,8 @@
 /* END BRAND LIST */
 
 /* BRAND SEARCH */
-.brand-search__result {
-  font-size: 2rem;
-}
 .brand-search__header {
+  font-size: 2rem;
   background: rgb(248, 248, 248);
   padding: 3.5rem 0;
   margin: 3rem 0 5rem 0;
@@ -272,4 +270,13 @@
 .brand-search__count {
   color: var(--mint);
 }
+@media screen and (max-width: 390px) {
+  #brand-search .brand-layout {
+    padding-top: 3.5rem;
+  }
+.brand-search__header {
+  font-size: 1.7rem;
+  padding: 2.5rem 0;
+    margin: 0rem 0 3rem 0;
+}}
 /* END BRAND SEARCH */
