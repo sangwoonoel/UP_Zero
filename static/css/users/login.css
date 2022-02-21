@@ -35,6 +35,11 @@
   padding: 1rem 1rem;
   font-size: 1.4rem;
 }
+@media screen and (max-width: 430px) {
+  .login__form input {
+    --webkit-border-radius: 0.5rem;
+  }
+}
 
 .login__form input::placeholder {
   color: var(--lightgrey);

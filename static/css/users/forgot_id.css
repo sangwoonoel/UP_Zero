@@ -74,3 +74,12 @@
 .login-button:hover {
   color: white;
 }
+
+@media screen and (max-width: 430px) {
+  .forgot-id__form {
+    width: 85%;
+  }
+  .email-input {
+    --webkit-border-radius: 0.5rem;
+  }
+}

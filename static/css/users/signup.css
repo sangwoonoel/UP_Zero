@@ -70,3 +70,12 @@
     height: 10px;
     border-radius: 5px;
 } */
+
+@media screen and (max-width: 430px) {
+  .signup {
+    padding-bottom: 10rem;
+  }
+  .signup__form input {
+    --webkit-border-radius: 0.5rem;
+  }
+}
