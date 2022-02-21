@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" sizes="16x16" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     {% block meta %} {% endblock %}
     <title>{% block title %}SLOW:NIQUE{% endblock %}</title>
     <link
@@ -40,7 +40,44 @@
       </div>
     </nav>
     {% block content %} {% endblock %}
-    <footer></footer>
+    <footer>
+      <div id="footer_logo">
+        SLOW:NIQUE
+      </div>
+      <div id="about_us">
+        <ul>
+          <li class="footer_title">About us</li>
+          <li class="footer_content">about us.slow:nique</li>
+        </ul>
+      </div>
+      <div id="category">
+        <ul>
+          <li class="footer_title">Category</li>
+          <li class="footer_content">Brand</li>
+          <li class="footer_content">Community</li>
+          <li class="footer_content">Fund</li>
+        </ul>
+      </div>
+      <div id="privacy_policy">
+        <ul>
+          <li class="footer_title">Privacy policy</li>
+          <li class="footer_content">개인정보처리방침</li>
+        </ul>
+      </div>
+      <div id="contact_us">
+        <ul>
+          <li class="footer_title">Contact Us</li>
+          <li class="footer_content">E - mail</li>
+          <li class="footer_content">Phone</li>
+        </ul>
+      </div>
+      <div id="creator">
+        <ul>
+          <li class="footer_title">Creator</li>
+          <li class="footer_content">Team Up&Zero</li>
+        </ul>
+      </div>
+    </footer>
     <script src="https://kit.fontawesome.com/d380af643d.js" crossorigin="anonymous"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

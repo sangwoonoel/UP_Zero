@@ -5,7 +5,6 @@ for (let creat of created) {
     {
         if(time.length === 4){
             creat.innerText = '\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0'+ time;
-            console.log(time)
         }
         else {
             creat.innerText = '\u00a0\u00a0\u00a0\u00a0'+ time;

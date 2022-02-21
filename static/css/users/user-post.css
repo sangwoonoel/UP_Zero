@@ -2,10 +2,11 @@
   width: 100%;
   padding: 2.5rem 17.5rem 0 15rem;
   display: flex;
+  min-height: 100%;
 }
 
 .vl {
-  border-left: 1px solid var(--line-gray);
+  border-left: 0.1rem solid var(--line-gray);
   margin: 6.7rem 0 5.7rem 0;
   padding-right: 2rem;
   position: relative;

@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .pagination button {
@@ -23,7 +24,7 @@
   display: inline-block;
 
   border: none;
-  border-radius: 4px;
+  border-radius: 0.4rem;
 }
 
 .pagination-current span {

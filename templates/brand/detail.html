@@ -6,7 +6,7 @@
 <meta property="og:url" content="{{request.build_absolute_uri}}" />
 <meta
   property="og:image"
-  content="{{request.scheme}}://{{request.get_host}}/media/{{brand.image}}"
+  content=""
 />
 <meta name="twitter:title" content="{{brand}}" />
 <meta name="twitter:description" content="{{brand.desc}}" />
@@ -14,7 +14,7 @@
 <meta name="twitter:url" content="{{request.build_absolute_uri}}" />
 <meta
   name="twitter:image"
-  content="{{request.scheme}}://{{request.get_host}}/media/{{brand.image}}"
+  content=""
 />
 {% endblock %}
 {% block title %}{{brand}} | SLOW:NIQUE{% endblock %}
@@ -97,9 +97,14 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
   const title = "{{brand}}";
-  const url = location.href;
-  const imageUrl =
-    "{{request.scheme}}://{{request.get_host}}/media/{{brand.image}}";
+  const url = "{{request.build_absolute_uri}}";
+  const imageUrl = document.querySelector(".brand__img").src;
+  document.querySelector("meta[property='og:image']").setAttribute(
+    "content", imageUrl
+  );
+  document.querySelector("meta[name='twitter:image']").setAttribute(
+    "content", imageUrl
+  );
 
   Kakao.init("{{key}}");
   const shareKakao = () => {

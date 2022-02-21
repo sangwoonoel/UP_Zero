@@ -32,12 +32,12 @@
 
 .navbar__items:not(:last-child) {
   color: black;
-  margin: 0 25px;
-  letter-spacing: -0.5px;
+  margin: 0 2.5rem;
+  letter-spacing: -0.05rem;
 }
 
 .navbar__items:last-child {
-    margin-left: 25px;
+  margin-left: 2.5rem;
 }
 
 .navbar__items:hover {
@@ -53,8 +53,8 @@
   color: white;
   font-size: 1.3rem;
   background-color: var(--black);
-  padding: 7px 13px;
-  border-radius: 20px;
+  padding: 0.7rem 1.3rem;
+  border-radius: 2rem;
   white-space: nowrap;
 }
 
@@ -66,7 +66,6 @@
 .curr {
   font-weight: 600;
 }
-
 
 
 @media screen and (max-width: 430px) {
