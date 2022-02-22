@@ -84,13 +84,20 @@
 @media screen and (max-width: 430px) {
   .user-info__bg {
     position: relative;
-    height: 20vh;
+    height: 25vh;
   }
 
   .user-info__img {
     margin-bottom: 1rem;
     width: 8rem;
     height: 8rem;
+  }
+
+  .mypage__user-info {
+    bottom: -8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
   }
 
   .user-info__name {
@@ -116,10 +123,7 @@
   }
 
   .mypage__history a:nth-child(2) {
-    border: none;
-  }
-
-  .mypage__history a:last-child {
-    border-top: 0.1rem solid var(--mint);
+    border-bottom: 0.1rem solid var(--mint);
+    border-right: none;
   }
 }
