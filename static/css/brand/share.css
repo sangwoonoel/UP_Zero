@@ -18,16 +18,15 @@
   background: var(--gray);
 }
 
-
 .brand__share {
-    position: relative;
+  position: relative;
 }
 
 .brand__share ul {
   gap: 1rem;
   position: absolute;
   top: 2.6rem;
-  left: 30rem;
+  left: 31rem;
   transform: translateX(-36.5%);
   text-align: center;
   opacity: 0;
@@ -58,9 +57,9 @@
 }
 
 @media screen and (max-width: 390px) {
-    .brand__share ul {
-        top: 6rem;
-        left: 17rem;
-        transform: translateX(-76%);
-    }
+  .brand__share ul {
+    top: 6rem;
+    left: 17rem;
+    transform: translateX(-76%);
+  }
 }
