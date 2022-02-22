@@ -104,8 +104,8 @@
 
   .post-create {
     display: flex;
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 2.4rem;
+    height: 2.4rem;
     background-color: var(--mint);
     border-radius: 5rem;
     justify-content: center;
@@ -115,7 +115,8 @@
   .post-create__btn {
     position: relative;
     left: 0.06rem;
-    bottom: 0.1rem;
+    bottom: -0.24rem;
+
     width: 4.2rem;
     height: 4.2rem;
   }
@@ -136,6 +137,6 @@
   .post-create button img {
     position: relative;
     left: -1.3rem;
-    bottom: 1.3rem;
+    bottom: 1.4rem;
   }
 }
