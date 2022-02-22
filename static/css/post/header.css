@@ -128,4 +128,14 @@
     width: 4.2rem;
     height: 4.2rem;
   }
+
+  .post-create button {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .post-create button img {
+    position: relative;
+    left: -1.3rem;
+    bottom: 1.3rem;
+  }
 }

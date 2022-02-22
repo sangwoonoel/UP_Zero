@@ -90,3 +90,9 @@
 .freeze_btn i {
   color: #e3e3e3;
 }
+
+@media screen and (max-width: 430px) {
+  .pagination {
+    margin-bottom: 3rem;
+  }
+}

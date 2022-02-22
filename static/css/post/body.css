@@ -103,7 +103,7 @@
 @media screen and (max-width: 430px) {
   .post-list {
     width: 100%;
-    padding: 0.35rem 1.75rem 0 1.5rem;
+    padding: 0.35rem 1.5rem 0 1.5rem;
     display: flex;
   }
 
@@ -114,7 +114,7 @@
 
   .post-created {
     position: relative;
-    left: 31rem;
+    left: 31.75rem;
     top: 1rem;
     color: var(--gray);
     font-size: 1rem;
