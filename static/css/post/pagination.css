@@ -91,8 +91,24 @@
   color: #e3e3e3;
 }
 
+.mb-footer {
+  display: none;
+}
+
 @media screen and (max-width: 430px) {
   .pagination {
     margin-bottom: 3rem;
+  }
+
+  .pagination-current span {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    position: relative;
+    top: 0.1rem;
+  }
+
+  .pagination button {
+    position: relative;
+    bottom: 1.9rem;
   }
 }
