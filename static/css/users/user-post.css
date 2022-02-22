@@ -181,16 +181,24 @@
     flex-direction: column;
     position: relative;
     top: 2rem;
+
   }
 
   .mypost-title,
   .mypost-preview {
     font-size: 1.3rem;
-    width: 20rem;
+    width: 2rem;
+  }
+
+  .mypost-title {
+    position: relative;
+    right: 9.15rem;
   }
 
   .mypost-preview {
     font-size: 1.2rem;
+    position: relative;
+    right: 9.15rem;
   }
 
   .mypost-res {
@@ -201,5 +209,21 @@
 
   .mypost-like {
     margin-right: 0.5rem;
+  }
+
+  .mypost-up-del {
+    position: relative;
+    text-align: right;
+    right: 0.1rem;
+
+    bottom: 2.5rem;
+  }
+  
+  .mypost-update {
+    font-size: 1.5rem;
+  }
+  .mypost-delete {
+    font-size: 1.5rem;
+    margin-left: 1rem;
   }
 }
