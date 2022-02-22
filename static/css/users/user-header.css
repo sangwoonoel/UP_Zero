@@ -68,6 +68,7 @@
 
   .user_bg {
     background: url("/static/images/green.jpg");
+    background-size: cover;
     background-position: 85%;
   }
   .user_pr {

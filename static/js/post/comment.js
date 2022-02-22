@@ -177,17 +177,12 @@ requestUpdate.onreadystatechange = () => {
 const UpdateHandleResponse = () => {
   if (requestUpdate.status < 400) {
     const { message, comment_id } = JSON.parse(requestUpdate.response);
-    console.log(message);
     const element = document.querySelector(`.comment__${comment_id}`);
     const commentMain = element.querySelector(".comment__main");
     const commentEdit = element.querySelector(".comment__edit");
     const comment = commentMain.querySelector(".comment__message");
 
-    if (window.innerWidth <= 430) {
-      commentMain.style.display = "flex";
-    } else {
-      commentMain.style.display = "display";
-    }
+    commentMain.style.display = "display";
     commentEdit.style.display = "none";
     comment.innerText = `${message}`;
   }
