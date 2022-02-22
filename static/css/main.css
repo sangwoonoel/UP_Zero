@@ -114,6 +114,10 @@ main {
   height: 20rem;
 }
 
+/* .main-brand__img > img {
+    height: 100%;
+} */
+
 .main-brand__img,
 .main-brand__info {
   margin-top: 5rem;
