@@ -1,6 +1,6 @@
 function CopyUrlToClipboard() {
   const t = document.createElement("input");
-  t.style.display = "hidden";
+  t.setAttribute("type", "hidden");
   document.body.appendChild(t);
 
   t.value = window.document.location.href; // 현재 URL 을 세팅해 줍니다.

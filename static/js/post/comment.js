@@ -182,7 +182,7 @@ const UpdateHandleResponse = () => {
     const commentEdit = element.querySelector(".comment__edit");
     const comment = commentMain.querySelector(".comment__message");
 
-    commentMain.style.display = "display";
+    commentMain.style.display = "block";
     commentEdit.style.display = "none";
     comment.innerText = `${message}`;
   }
