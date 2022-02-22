@@ -126,3 +126,80 @@
 .mypost-delete:hover {
   color: var(--mint);
 }
+
+@media screen and (max-width: 430px) {
+  .mypost-list {
+    width: 100%;
+    padding: 0.35rem 1.5rem 0 1.5rem;
+    display: flex;
+  }
+
+  .vl,
+  .mypost-circle {
+    display: none;
+  }
+
+  .mypost-created {
+    position: relative;
+    left: 31.75rem;
+    top: 1rem;
+    color: var(--gray);
+    font-size: 1rem;
+  }
+
+  .mypost-profile {
+    display: flex;
+  }
+
+  .mypost-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -0.5rem;
+    min-width: 2.5rem;
+    align-items: center;
+    text-align: center;
+    margin-left: 0.25rem;
+  }
+
+  .mypost-title {
+    font-size: 1.3rem;
+  }
+
+  .mypost-preview {
+    font-size: 1.2rem;
+    color: var(--user-black);
+  }
+
+  .mypost-author img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .mypost-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 2rem;
+  }
+
+  .mypost-title,
+  .mypost-preview {
+    font-size: 1.3rem;
+    width: 20rem;
+  }
+
+  .mypost-preview {
+    font-size: 1.2rem;
+  }
+
+  .mypost-res {
+    font-size: 1.1rem;
+    width: 20rem;
+    display: flex;
+  }
+
+  .mypost-like {
+    margin-right: 0.5rem;
+  }
+}

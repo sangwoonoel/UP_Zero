@@ -19,9 +19,6 @@
   color: var(--mint);
 }
 
-#write-nav {
-}
-
 /* #like-post {
   color: var(--dark-gray);
   letter-spacing: -0.15rem;
@@ -129,4 +126,35 @@
 .optionListItem:hover {
   background-color: var(--list-hover);
   color: var(--mint);
+}
+
+@media screen and (max-width: 430px) {
+  .mypage__header {
+    margin-bottom: 1rem;
+  }
+  .user_summary {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0.1rem;
+  }
+
+  .nav-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 1.5rem 0 1.5rem;
+  }
+
+  .nav-post {
+    display: none;
+  }
+  .nav-sort {
+    margin-top: 10rem;
+  }
+  .sort-select {
+    position: relative;
+    left: 2.75rem;
+  }
 }

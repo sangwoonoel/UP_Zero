@@ -108,3 +108,24 @@
 .freeze_btn i {
   color: #e3e3e3;
 }
+
+@media screen and (max-width: 430px) {
+  .mypost-total {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.18rem 1.75rem 0 1.5rem;
+    font-size: 1.2rem;
+    color: var(--dark-gray);
+  }
+
+  .mypost-pages {
+    display: flex;
+  }
+
+  .mypost-page {
+    padding: 0 0.5rem;
+    color: var(--mint);
+    font-weight: bolder;
+  }
+}
