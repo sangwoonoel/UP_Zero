@@ -87,4 +87,9 @@
     align-items: center;
     margin-top: 0.5rem;
   }
+
+  #user_name {
+    position: relative;
+    left: 2.2rem;
+  }
 }
