@@ -182,7 +182,12 @@ const UpdateHandleResponse = () => {
     const commentEdit = element.querySelector(".comment__edit");
     const comment = commentMain.querySelector(".comment__message");
 
+    if (window.innerWidth <= 430) {
+    commentMain.style.display = "flex";
+    }
+    else {
     commentMain.style.display = "block";
+    }
     commentEdit.style.display = "none";
     comment.innerText = `${message}`;
   }
