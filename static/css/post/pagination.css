@@ -100,15 +100,20 @@
     margin-bottom: 3rem;
   }
 
+  .page-circle {
+    display: none;
+  }
+
   .pagination-current span {
     padding-right: 1rem;
     padding-left: 1rem;
     position: relative;
-    top: 0.1rem;
+    top: 0.5rem;
   }
 
-  .pagination button {
+  .current .page-number {
+    color: var(--mint);
     position: relative;
-    bottom: 1.9rem;
+    top: 0.015rem;
   }
 }
