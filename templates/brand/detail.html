@@ -1,28 +1,19 @@
-{% extends 'base.html' %} {% load static %}
-{% block meta %}
+{% extends 'base.html' %} {% load static %} {% block meta %}
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{{brand}}" />
 <meta property="og:description" content="{{brand.desc}}" />
 <meta property="og:url" content="{{request.build_absolute_uri}}" />
-<meta
-  property="og:image"
-  content=""
-/>
+<meta property="og:image" content="" />
 <meta name="twitter:title" content="{{brand}}" />
 <meta name="twitter:description" content="{{brand.desc}}" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:url" content="{{request.build_absolute_uri}}" />
-<meta
-  name="twitter:image"
-  content=""
-/>
-{% endblock %}
-{% block title %}{{brand}} | SLOW:NIQUE{% endblock %}
+<meta name="twitter:image" content="" />
+{% endblock %} {% block title %}{{brand}} | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/brand/share.css' %}" />
 <link rel="stylesheet" href="{% static 'css/brand/detail.css' %}" />
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <main id="brand-detail">
   <div class="brand-detail__breadcrumb">
     <ul class="brand-detail__cate d-flex align-items-center">
@@ -89,8 +80,7 @@
     </div>
   </section>
 </main>
-{% endblock %}
-{% block script %}
+{% endblock %} {% block script %}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{% static 'js/brand/like.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -99,12 +89,12 @@
   const title = "{{brand}}";
   const url = "{{request.build_absolute_uri}}";
   const imageUrl = document.querySelector(".brand__img").src;
-  document.querySelector("meta[property='og:image']").setAttribute(
-    "content", imageUrl
-  );
-  document.querySelector("meta[name='twitter:image']").setAttribute(
-    "content", imageUrl
-  );
+  document
+    .querySelector("meta[property='og:image']")
+    .setAttribute("content", imageUrl);
+  document
+    .querySelector("meta[name='twitter:image']")
+    .setAttribute("content", imageUrl);
 
   Kakao.init("{{key}}");
   const shareKakao = () => {
@@ -116,7 +106,7 @@
         imageUrl: imageUrl,
         link: {
           webUrl: url,
-          // mobileWebUrl: url,
+          mobileWebUrl: url,
         },
       },
       social: {
@@ -127,13 +117,14 @@
           title: "자세히 보기",
           link: {
             webUrl: url,
+            mobileWebUrl: url,
           },
         },
         // {
-        //   title: '모바일',
+        //   title: "자세히 보기",
         //   link: {
         //     mobileWebUrl: url,
-        //   },
+        // },
         // },
       ],
     });
