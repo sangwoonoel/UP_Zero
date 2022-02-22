@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 import json
 from django.http import JsonResponse
 from .models import *
+from django.db.models import Q
 
 def show_list(request):
     brands = Brand.objects.order_by('name')
@@ -31,7 +32,7 @@ def show_list(request):
 
 def show_search_results(request):
     keyword = request.GET.get('keyword')
-    brands = Brand.objects.filter(name__icontains=keyword).order_by('name')
+    brands = Brand.objects.filter(Q(name__icontains=keyword)|Q(info__icontains=keyword)).distinct().order_by('name')
 
     cates = Category.objects.all() # for brand/navbar.html
     return render(request, 'brand/search-results.html', {'brands': brands, 'cates': cates})
