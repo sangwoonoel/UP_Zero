@@ -1,164 +1,165 @@
 #brand-detail {
-    width: 100%;
+  width: 100%;
 }
 
 .brand {
-    width: 100%;
+  width: 100%;
 }
 
 .brand-detail__cate {
-    align-items: center;
-    font-size: 1.7rem;
-    padding: 1rem 15rem;
+  align-items: center;
+  font-size: 1.7rem;
+  padding: 1rem 15rem;
 }
 
 .brand-detail__cate a {
-    font-weight: 500;
-    color: var(--black);
+  font-weight: 500;
+  color: var(--black);
 }
 
 .brand-detail__cate a:hover {
-    color: var(--mint);
+  color: var(--mint);
 }
 
 .brand-detail__cate i {
-    padding: 0 1rem;
-    color: var(--mint);
+  padding: 0 1rem;
+  color: var(--mint);
 }
 
-
 .brand__main {
-    width: 55%;
-    padding: 5rem 0 0 15rem;
+  width: 55%;
+  padding: 5rem 0 0 15rem;
 }
 
 .brand__content {
-    color: white;
-    height: 100%;
-    margin-bottom: 3rem;
+  color: white;
+  height: 100%;
+  margin-bottom: 3rem;
 }
 
 .brand__name {
-    font-size: 6rem;
-    font-weight: 700;
+  font-size: 6rem;
+  font-weight: 700;
 }
 
 .brand__desc {
-    font-size: 2.5rem;
-    font-weight: 500;
-    padding: 2rem 0;
+  font-size: 2.5rem;
+  font-weight: 500;
+  padding: 2rem 0;
 }
 
 .brand__info {
-    font-size: 1.8rem;
-    line-height: 3rem;
-    margin-bottom: 5rem;
-    font-weight: 300;
+  font-size: 1.8rem;
+  line-height: 3rem;
+  margin-bottom: 5rem;
+  font-weight: 300;
 }
 
 .brand__link {
-    width: 35.2rem;
-    font-size: 1.8rem;
-    font-weight: 500;
-    text-align: center;
-    color: var(--black);
-    background-color: white;
-    padding: 1.5rem 0;
-    border-radius: 0.3rem;
+  width: 35.2rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--black);
+  background-color: white;
+  padding: 1.5rem 0;
+  border-radius: 0.3rem;
 }
 
 .brand__link:hover {
-    color: var(--black);
+  color: var(--black);
 }
 
-.brand__link i, .brand__likes i, .share-btn i {
-    margin-right: 1rem;
+.brand__link i,
+.brand__likes i,
+.share-btn i {
+  margin-right: 1rem;
 }
 
 .brand__interactions {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 }
 
 .brand__likes {
-    font-size: 1.8rem;
-    font-weight: 500;
-    color: white;
-    background: none;
-    width: 35.2rem;
-    padding: 1.5rem 8rem;
-    border-radius: 0.3rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: white;
+  background: none;
+  width: 35.2rem;
+  padding: 1.5rem 8rem;
+  border-radius: 0.3rem;
 }
 
 .share-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    font-weight: 500;
-    color: var(--black);
-    background-color: white;
-    width: 35.2rem;
-    padding: 1.5rem 8rem;
-    border-radius: 0.3rem;
-    margin-top: 1.8rem;
-    margin-right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--black);
+  background-color: white;
+  width: 35.2rem;
+  padding: 1.5rem 8rem;
+  border-radius: 0.3rem;
+  margin-top: 1.8rem;
+  margin-right: 0;
 }
 
 footer {
-    display: none;
+  display: none;
 }
 
 @media screen and (max-width: 430px) {
-    .brand-detail__cate {
-        font-size: 1.3rem;
-        padding: 0.5rem 1.5rem;
-    }
+  .brand-detail__cate {
+    font-size: 1.3rem;
+    padding: 0.5rem 1.5rem;
+  }
 
-    .brand__main {
-        width: 100%;
-        padding: 7rem 1.5rem 0 1.5rem;
-    }
+  .brand__main {
+    width: 100%;
+    padding: 5rem 1.5rem 0 1.5rem;
+  }
 
-    .brand__name {
-        font-size: 3rem;
-    }
-    
-    .brand__desc {
-        font-size: 2rem;
-    }
-    
-    .brand__info {
-        font-size: 1.4rem;
-        line-height: 2.5rem;
-        margin-bottom: 5rem;
-    }
+  .brand__name {
+    font-size: 3rem;
+  }
 
-    .brand__link {
-        width: 25rem;
-        font-size: 1.5rem;
-        padding: 1.5rem 0;
-    }
+  .brand__desc {
+    font-size: 2rem;
+  }
 
-    .brand__likes {
-        font-size: 1.5rem;
-        width: 25rem;
-        padding: 1.5rem 0;
-        justify-content: flex-start;
-    }
+  .brand__info {
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+    margin-bottom: 3rem;
+  }
 
-    .share-btn {
-        font-size: 1.5rem;
-        width: 25rem;
-        padding: 1.5rem 0;
-        margin-top: 1.5rem;
-    }
+  .brand__link {
+    width: 25rem;
+    font-size: 1.5rem;
+    padding: 1.5rem 0;
+  }
 
-    .brand__interactions {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .brand__likes {
+    font-size: 1.5rem;
+    width: 25rem;
+    padding: 1.5rem 0;
+    justify-content: flex-start;
+  }
+
+  .share-btn {
+    font-size: 1.5rem;
+    width: 25rem;
+    padding: 1.5rem 0;
+    margin-top: 1.5rem;
+  }
+
+  .brand__interactions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

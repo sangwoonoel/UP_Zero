@@ -6,15 +6,15 @@ const onClickComment = (postId, userId) => {
   const url = "/post/create_comment/";
   const message = document.querySelector(`.comment-input__${postId}`).value;
   if (message.length == 0) {
-      alert("댓글을 입력해 주세요.");
+    alert("댓글을 입력해 주세요.");
   } else {
     requestComment.open("POST", url, true);
     requestComment.setRequestHeader(
-        "Content-Type",
-        "application/x-www-form-urlencoded"
+      "Content-Type",
+      "application/x-www-form-urlencoded"
     );
     requestComment.send(
-        JSON.stringify({ user_id: userId, post_id: postId, message: message })
+      JSON.stringify({ user_id: userId, post_id: postId, message: message })
     );
   }
 };
@@ -66,11 +66,17 @@ const CreateHandleResponse = () => {
     commentEdit.setAttribute("class", "comment__edit");
     commentEdit.setAttribute("style", "display: none;");
     editInput.setAttribute("class", "comment__edit-input");
-    editInput.setAttribute("onKeypress", `javascript:if(event.keyCode==13) {onClickUpdate(${post_id},${comment_id})}`);
+    editInput.setAttribute(
+      "onKeypress",
+      `javascript:if(event.keyCode==13) {onClickUpdate(${post_id},${comment_id})}`
+    );
     editInput.setAttribute("value", `${message}`);
     editInput.setAttribute("type", "text");
     updateBtn.setAttribute("class", "comment__update-btn");
-    updateBtn.setAttribute("onclick", `onClickUpdate(${post_id},${comment_id})`);
+    updateBtn.setAttribute(
+      "onclick",
+      `onClickUpdate(${post_id},${comment_id})`
+    );
     btnDivision.setAttribute("class", "button-division");
 
     delBtn.innerText = "삭제";
@@ -145,15 +151,19 @@ const onClickUpdate = (postId, commentId) => {
   const commentEdit = element.querySelector(".comment__edit");
   const message = commentEdit.querySelector(".comment__edit-input").value;
   if (message.length == 0) {
-      alert("댓글을 입력해 주세요.");
+    alert("댓글을 입력해 주세요.");
   } else {
     requestUpdate.open("POST", url, true);
     requestUpdate.setRequestHeader(
-        "Content-Type",
-        "application/x-www-form-urlencoded"
+      "Content-Type",
+      "application/x-www-form-urlencoded"
     );
     requestUpdate.send(
-        JSON.stringify({ post_id: postId, message: message, comment_id: commentId })
+      JSON.stringify({
+        post_id: postId,
+        message: message,
+        comment_id: commentId,
+      })
     );
   }
 };
@@ -173,7 +183,11 @@ const UpdateHandleResponse = () => {
     const commentEdit = element.querySelector(".comment__edit");
     const comment = commentMain.querySelector(".comment__message");
 
-    commentMain.style.display = "block";
+    if (window.innerWidth <= 430) {
+      commentMain.style.display = "flex";
+    } else {
+      commentMain.style.display = "display";
+    }
     commentEdit.style.display = "none";
     comment.innerText = `${message}`;
   }
