@@ -187,24 +187,27 @@
   .mypost-title,
   .mypost-preview {
     font-size: 1.3rem;
-    width: 2rem;
+    width: 100%;
   }
 
   .mypost-title {
     position: relative;
-    right: 9.15rem;
+    text-align: left;
   }
 
   .mypost-preview {
     font-size: 1.2rem;
     position: relative;
-    right: 9.15rem;
+    text-align: left;
+
   }
 
   .mypost-res {
     font-size: 1.1rem;
-    width: 20rem;
+    width: 100%;
     display: flex;
+    text-align: left;
+
   }
 
   .mypost-like {
