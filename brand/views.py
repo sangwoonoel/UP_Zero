@@ -32,7 +32,7 @@ def show_list(request):
 
 def show_search_results(request):
     keyword = request.GET.get('keyword')
-    brands = Brand.objects.filter(Q(name__icontains=keyword)|Q(info__icontains=keyword)).distinct().order_by('name')
+    brands = Brand.objects.filter(Q(name__icontains=keyword)|Q(desc__icontains=keyword)|Q(info__icontains=keyword)).distinct().order_by('name')
 
     cates = Category.objects.all() # for brand/navbar.html
     return render(request, 'brand/search-results.html', {'brands': brands, 'cates': cates})
