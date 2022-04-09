@@ -3,12 +3,12 @@
 <meta property="og:title" content="{{brand}}" />
 <meta property="og:description" content="{{brand.desc}}" />
 <meta property="og:url" content="{{request.build_absolute_uri}}" />
-<meta property="og:image" content="" />
+<meta property="og:image" content="{{domain}}{{brand.image.url}}" />
 <meta name="twitter:title" content="{{brand}}" />
 <meta name="twitter:description" content="{{brand.desc}}" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:url" content="{{request.build_absolute_uri}}" />
-<meta name="twitter:image" content="" />
+<meta name="twitter:image" content="{{domain}}{{brand.image.url}}" />
 {% endblock %} {% block title %}{{brand}} | SLOW:NIQUE{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/brand/share.css' %}" />
@@ -89,12 +89,10 @@
   const title = "{{brand}}";
   const url = "{{request.build_absolute_uri}}";
   const imageUrl = document.querySelector(".brand__img").src;
-  document
-    .querySelector("meta[property='og:image']")
-    .setAttribute("content", imageUrl);
-  document
-    .querySelector("meta[name='twitter:image']")
-    .setAttribute("content", imageUrl);
+  // document
+  //   .querySelector("meta[property='og:image']").content = imageUrl;
+  // document
+  //   .querySelector("meta[name='twitter:image']").content = imageUrl;
 
   Kakao.init("{{key}}");
   const shareKakao = () => {

@@ -49,8 +49,9 @@ def show_detail(request, pk):
     else:
         is_liked = False
 
+    domain = request.build_absolute_uri('/')[:-1]
     key = settings.KAKAO_API_KEY
-    return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked, 'key':key})
+    return render(request, 'brand/detail.html', {'brand':brand, 'is_liked':is_liked, 'key':key, 'domain':domain})
 
 
 @login_required
