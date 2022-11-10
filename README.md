@@ -13,7 +13,7 @@ https://slownique.cf/
 
 - Python, Django, HTML/CSS, JavaScript
 - Figma
-- Notion, Slack, Google Drive
+- [Notion](https://eight-profit-b8e.notion.site/UP-ZERO-23d1f8ce7bc145e18b0bc44df26d298d), Slack, Google Drive
 
 <br>
 
